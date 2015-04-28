@@ -1,0 +1,10 @@
+https://styde.net/laravel-5/
+
+https://github.com/mrakodol/Laravel-5-Bootstrap-3-Starter-Site
+
+Estructura
+
+-app --> Aqui se ponen los modelos
+-app/http/routes.php ---> Archivo de rutas
+-resources/views --> Views
+-public --> aqui van los css, js , img
