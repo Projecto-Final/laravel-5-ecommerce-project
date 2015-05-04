@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLiniasMTable extends Migration {
+class CreateLiniasMsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateLiniasMTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('liniasM', function(Blueprint $table)
+		Schema::create('liniasMs', function(Blueprint $table)
 		{
             $table->increments('id');
             $table->string('nombre');
@@ -32,7 +32,7 @@ class CreateLiniasMTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('liniasM');
+		Schema::drop('liniasMs');
 	}
 
 }

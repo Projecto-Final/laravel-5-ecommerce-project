@@ -15,13 +15,13 @@ class CreateConfiguracionPujasTable extends Migration {
 		Schema::create('configuracion_pujas', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->float('pujaMaxima');
-            $table->integer('id_producto')->unsigned();
-            $table->foreign('id_producto')->references('id')->on('articulos');
+            $table->float('puja_maxima');
+            $table->integer('id_articulo')->unsigned();
+            $table->foreign('id_articulo')->references('id')->on('articulos');
             $table->integer('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->boolean('superada');
-            $table->date('fechaConfig');
+            $table->date('fecha_config');
             $table->rememberToken();
             $table->timestamps();
 		});

@@ -16,7 +16,6 @@ class CreateMensajesTable extends Migration {
 		{
             $table->increments('id');
             $table->string('titulo');
-            $table->longText('texto');
             $table->integer('id_emisor')->unsigned();
             $table->foreign('id_emisor')->references('id')->on('usuarios');
             $table->integer('id_receptor')->unsigned();

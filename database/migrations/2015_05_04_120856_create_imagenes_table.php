@@ -16,8 +16,8 @@ class CreateImagenesTable extends Migration {
 		{
             $table->increments('id');
             $table->string('descripcion');
-            $table->integer('id_producto')->unsigned();
-            $table->foreign('id_producto')->references('id')->on('articulos');
+            $table->integer('id_articulo')->unsigned();
+            $table->foreign('id_articulo')->references('id')->on('articulos');
             $table->string('imagen');
             $table->rememberToken();
             $table->timestamps();

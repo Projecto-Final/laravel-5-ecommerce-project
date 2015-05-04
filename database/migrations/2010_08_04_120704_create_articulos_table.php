@@ -15,18 +15,18 @@ class CreateArticulosTable extends Migration {
 		Schema::create('articulos', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->string('nombreProducto');
+            $table->string('nombre_producto');
             $table->string('modelo');
             $table->string('estado');
             $table->string('descripcion');
             $table->string('localizacion');
-            $table->double('precioVenta');
-            $table->date('fechaInicio');
-            $table->date('fechaFinal');
+            $table->double('precio_venta');
+            $table->date('fecha_inicio');
+            $table->date('fecha_final');
             $table->boolean('vendido');
-            $table->date('fechaVenda');
-            $table->double('precioInicial');
-            $table->double('pujaMayor');
+            $table->date('fecha_venda');
+            $table->double('precio_inicial');
+            $table->double('puja_mayor');
             $table->integer('id_subastador')->unsigned();
             $table->foreign('id_subastador')->references('id')->on('usuarios');
             $table->integer('id_subcategoria')->unsigned();
