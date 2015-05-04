@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG', false),
+	'debug' => env('APP_DEBUG'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -136,16 +136,6 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
-		'Illuminate\Html\HtmlServiceProvider',
-
-		/*
-		 * 3rd Party Service Providers...
-		 */
-		'yajra\Datatables\DatatablesServiceProvider',
-		'Laracasts\Generators\GeneratorsServiceProvider',
-		'Laracasts\Flash\FlashServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
-
 		/*
 		 * Application Service Providers...
 		 */
@@ -202,16 +192,6 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
-		'Form'      => 'Illuminate\Html\FormFacade',
-		'HTML'      => 'Illuminate\Html\HtmlFacade',
-
-		/*
-		 * 3rd Party Aliases...
-		 */
-		'Datatables'  => 'yajra\Datatables\Datatables',
-		'Flash' => 'laracasts/Flash/Flash',
-		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
 	],
 
