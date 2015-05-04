@@ -19,10 +19,14 @@ use App\Categorias;
 @section('articulos')
 <?php
 $users = Categorias::all();
-for($i = 0; $i < count($users); $i++){
+//for($i = 0; $i < count($users); $i++){
 
 
 ?>
+
+@foreach ($users as $user)
+    {{ $user->nombre}}
+@endforeach
 <div class="item item-animate col-xs-6 col-sm-4 col-md-4 col-lg-2 col-phone-12" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                           <div class="item-inner clearfix">
                             <div class="badges"> </div>
@@ -30,7 +34,7 @@ for($i = 0; $i < count($users); $i++){
                             </div>
                             <div class="item-info">
                               <div class="info-inner">
-                                <div class="item-title"> <a href="http://demo.snstheme.com/sns-riveshop/index.php/retis-lapen.html" onclick="javascript: return true" title=" Retis lapen casen "> <?php echo $users[$i]->nombre; ?></a> </div>
+                                <div class="item-title"> <a href="http://demo.snstheme.com/sns-riveshop/index.php/retis-lapen.html" onclick="javascript: return true" title=" Retis lapen casen "> <?php /*echo $users[$i]->nombre;*/ ?></a> </div>
                                 <div class="item-content clearfix">
                                   <div class="item-price">
                                     <div class="price-box"> <span class="price">$125.00</span> </div>
@@ -45,7 +49,7 @@ for($i = 0; $i < count($users); $i++){
                           </div>
                         </div>
                         <?php
-                        }
+                        //}
                          ?>
 @stop
 @section('content')
