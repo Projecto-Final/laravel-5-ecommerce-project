@@ -127,6 +127,7 @@
 // $p = new Articulo;
 // Esperando implementacion de articulos.
 // $articulos = Articulo::all();
+$temp = [["Caca de Perro",2],["Iphone 6",1299],["Smartphone 2",699],["Tablet 4",958],["HentaiKey",6969],["Manga 2",9999]];
 
 ?>
 
@@ -147,7 +148,7 @@
                                 <div class="rating">
                                   <p class="no-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                 </div>
-                                <button title="Add to Cart" class="btn-cart" onclick="setLocation('http://demo.snstheme.com/sns-riveshop/index.php/checkout/cart/add/uenc/aHR0cDovL2RlbW8uc25zdGhlbWUuY29tL3Nucy1yaXZlc2hvcC9pbmRleC5waHAvP19fX3N0b3JlPXNwYWlu/product/274/form_key/nX6STUT8dkC9CBdX/')">Add to Cart</button>
+                                <button title="Add to Cart" class="btn-cart" onclick="">Subastar</button>
                               </div>
                             </div>
                           </div>
