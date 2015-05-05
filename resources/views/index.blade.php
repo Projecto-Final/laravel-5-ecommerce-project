@@ -127,7 +127,7 @@
 // $p = new Articulo;
 // Esperando implementacion de articulos.
 // $articulos = Articulo::all();
-$temp = [["articulo1",4],["articulo2",42]];
+$temp = [["Caca de Perro",2],["Iphone 6",1299],["Smartphone 2",699],["Tablet 4",958],["HentaiKey",6969]];
 
 ?>
 
