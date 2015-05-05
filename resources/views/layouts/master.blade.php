@@ -28,7 +28,7 @@
     <div class="m-usuario">
       <nav class="container">
         <ul class="enlaces">
-          <li> <a href="#foo"><i class="fa fa-user"></i> Iniciar Sessión</a> </li>
+          <li> <a href="iniciar_sesion"><i class="fa fa-user"></i> Iniciar Sessión</a> </li>
           <li> <a href="#foo"><i class="fa fa-user-plus"></i> Nuevo Usuario</a> </li>
         </ul>
       </nav>
@@ -89,6 +89,8 @@
 	@yield('categorias_i_sponsor')
 
 	@yield('articulos_subastas')
+	
+	@yield('registro_login')
   
   <!-- FIN CATEGORIA Y SPONSOR -->
 <footer id="C3">
