@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categorias extends Model {
+class Mensaje extends Model {
 
-	protected $table = 'categorias';
+
+	protected $table = 'mensajes';
 
 }

@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Empresa extends Model {
+class LiniaM extends Model {
 
-	protected $table = 'empresas';
+	protected $table = 'liniasms';
+
 
 }
