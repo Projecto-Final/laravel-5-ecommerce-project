@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2015 a las 17:43:36
+-- Tiempo de generación: 05-05-2015 a las 16:42:16
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -61,7 +61,16 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'John', '', NULL, '2015-05-04 15:33:09', '2015-05-04 15:33:09'),
+(2, 'jejajaj', '', NULL, '2015-05-04 15:34:53', '2015-05-04 15:34:53'),
+(3, 'jajajaja', '', NULL, '2015-05-04 15:34:59', '2015-05-04 15:34:59');
 
 -- --------------------------------------------------------
 
@@ -240,7 +249,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -329,7 +339,7 @@ ALTER TABLE `subcategorias`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `usuarios_username_unique` (`username`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `usuarios_username_unique` (`username`), ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `valoracions`
@@ -350,7 +360,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `configuracion_pujas`
 --
