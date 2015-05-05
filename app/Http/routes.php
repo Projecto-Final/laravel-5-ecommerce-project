@@ -22,3 +22,8 @@ Route::get('polla', function()
     return view('asd');
 });
 
+Route::get('iniciar_sesion', function()
+{
+    return view('iniciar_sesion');
+});
+

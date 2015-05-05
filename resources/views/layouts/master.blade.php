@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>App Name - @yield('title')</title>
+<title>@yield('titulo') - 3F&M - Subastas Online </title>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="../resources/views/css/font-awesome.min.css">
 <link href="../resources/views/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css">
 </head>
 <body>
-   @yield('cargaLoquesea')
+
 <div id="container-fluid">
   <div class="contenedor-header">
     <div class="m-usuario">
@@ -37,7 +37,7 @@
       <div class="contenido-header">
         <div class="row">
           <div class="col-md-3 col-sm-12 col-xs-12">
-            <div class="logo-container"> <a href="#" title="YaPujo." class="logo"> <strong> YaPujo. </strong> <img src="../resources/views/images/logo.png" alt="YaPujo."> </a> </div>
+            <div class="contenedor-logo"> <a href="#" title="YaPujo." class="logo"> <strong> YaPujo. </strong> <img src="../resources/views/images/logo.png" alt="YaPujo."> </a> </div>
           </div>
           <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="acceso_rapido">
@@ -49,9 +49,9 @@
                     <option value="Ropa">Ropa</option>
                     <option value="Accesorios">Accesorios</option>
                   </select>
-                  <input type="text" name="buscar" class="input-text" placeholder="Buscar en todas las subastas...">
+                  <input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas...">
                 </div>
-                <div class="submit-button">
+                <div class="boton-submit">
                   <button type="button" name="realizar-busqueda" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
                 </div>
               </div>
@@ -83,99 +83,132 @@
   </div>
   
   <!-- FIN HEADER -->
-   <div class="inf-clientes">
-     @yield('inf-client')
-  </div>
   
-  <!-- fin info clientes -->
+	@yield('info_extra')
   
-  <div id="box-slideshow" class="box-slideshow wrap">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-          <div class="block block-sns-layered-nav">
-            <div class="block-layered-nav-inner">
-              <div class="block-title"> <span>Categorias</span> </div>
-              <div class="block-content clearfix" style="height: 402px;">
-                <ul id="sns_sidenav" class="nav_accordion">
-                  <li class="level0 nav-1">
-                    <div class="accr_header"><a href="http://demo.snstheme.com/sns-riveshop/index.php/mobiles.html"> <span>Mobiles</span> </a></div>
-                  </li>
-                  <li class="level0 nav-2">
-                    <div class="accr_header"><a href="http://demo.snstheme.com/sns-riveshop/index.php/tablets.html"> <span>Tablets</span> </a></div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-          <div id="sns_slideshow">
-            <div class="sns-revolutionslider-wrap">
-              <div class="wrap-inner" style="overflow: visible;">
-                <div class="sns-revolutionslider revslider-initialised tp-simpleresponsive" id="sns_revolutionslider17340255551430400226" style="height: 450px;">
-                  <ul class="list-unstyled" style="display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;">
-                    <li style="width: 100%; height: 100%; overflow: hidden; visibility: visible; left: 0px; top: 0px; z-index: 20; opacity: 1; position: absolute;">
-                      <div class="slotholder" style="width:100%;height:100%;">
-                        <div class="tp-bgimg defaultimg" src="../resources/views/images/oferta999.jpg" style="width: 100%; height: 100%; opacity: 1; background-image: url(../resources/views/images/oferta999.jpg); background-color: rgba(0, 0, 0, 0); background-position: 50% 50%; background-repeat: no-repeat;"></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="banner t1"> <img src="../resources/views/images/monster.jpg" style="width: 100%;"> </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	@yield('categorias_i_sponsor')
+
+	@yield('articulos_subastas')
   
   <!-- FIN CATEGORIA Y SPONSOR -->
-  
-  <div id="sns_content" class="wrap layout-m">
-    <div class="container">
-      <div class="row">
-        <div id="sns_main" class="col-md-12 col-main">
-          <div id="sns_mainmidle">
-            <div class="std">
-              <div class="no-display">&nbsp;</div>
-            </div>
-            <div id="sns_producttabs3375621631430404908" class="sns-producttabs">
-              <div class="sns-pdt-head">
-                <h2>NUEVAS SUBASTAS</h2>
-              </div>
-              <div class="sns-pdt-container"> 
-                <!--Begin Tab Nav --> 
-                
-                <!-- End Tab Nav --> 
-                <!--Begin Tab Content -->
-                <div class="sns-pdt-content wide-4 normal-4 tabletlandscape-3 tabletportrait-3 mobilelandscape-2 mobileportrait-1">
-                  <div class="pdt-content tab-content-actived is-loaded pdt_39">
-                    <div class="pdt-list products-grid zoomOut play">
-                      <div class="inner-3267714721430404908">
-                        @yield('articulos')
-                        <div class="clearfix visible-xs"></div>
-                        <div class="clearfix visible-md"></div>
-                        <div class="clearfix visible-sm"></div>
-                        <div class="clearfix visible-lg"></div>
-                      </div>
-                    </div>
-                    <div class="pdt-loadmore data-inserted" data-href="pdt_39" data-type="category" data-catid="39" data-orderby="position" data-all="20" data-start="6" data-loadnum="6">
-                      <div class="btn-loadmore" style="display: block;"> <span class="loadmore button">VER MAS PRODUCTOS</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--End Tab Content --> 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<footer id="C3">
+				  <div id="sns_footer_top" class="wrap footer">
+					<div class="container">
+					  <div class="sns_footer-top">
+						<div class="row">
+						  <div class="col-sm-9">
+							<div class="block-twitter">
+							  <div class="block_head_left">
+								<h3>Twitter</h3>
+								<div class="navslider"> <a class="prev" href="#"><i class="fa fa-angle-left"></i></a> <a class="next" href="#"><i class="fa fa-angle-right"></i></a> </div>
+							  </div>
+							  <div class="block-content clearfix">
+								<div id="sns_twitter" class=" no-avartar no-followlink no-interactlink">
+								  <div class="posts owl-carousel owl-theme" style="opacity: 1; display: block;">
+									<div class="owl-wrapper-outer">
+									  <div class="owl-wrapper" style="width: 5088px; left: 0px; display: block; -webkit-transition: all 0ms ease; transition: all 0ms ease;">
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-sm-3">
+							<div class="block-business">
+							  <h3>Business Hours</h3>
+							  <ul class="list-unstyle">
+								<li><a href="#">Mon-Fri: ---------------------- <span>8am-5pm</span></a></li>
+								<li><a href="#">Sat: ---------------------- <span>8am-11pm</span></a></li>
+								<li><a href="#">Sun: ---------------------- <span>Closed</span></a></li>
+							  </ul>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <!-- final pre-footer ( redes sociales -->
+				  <div id="sns_footer_middle" class="wrap footer">
+					<div class="container">
+					  <div class="row">
+						<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column1">
+						  <h3>Lenguajes Utilizados</h3>
+						  <ul>
+							<li><a href="#">PHP</a></li>
+							<li><a href="#">HTML5</a></li>
+							<li><a href="#">CSS3</a></li>
+							<li><a href="#">JAVASCRIPT</a></li>
+							<li><a href="#">MYSQL</a></li>
+						  </ul>
+						</div>
+						<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column2">
+						  <h3>EQUIPO DESARROLLO</h3>
+						  <ul>
+							<li><a href="#">Alejandro Maroto</a></li>
+							<li><a href="#">Adria Pozo</a></li>
+							<li><a href="#">Bartomeu Cot</a></li>
+							<li><a href="#">Sergio Sanchez</a></li>
+							<li><a href="#">Panchito</a></li>
+						  </ul>
+						</div>
+						<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column3">
+						  <h3>Utilidades</h3>
+						  <ul>
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Orders and Returns</a></li>
+							<li><a href="#">Site Map</a></li>
+							<li><a href="#">Search Terms</a></li>
+							<li><a href="#">Advanced Search</a></li>
+							<li><a href="#">My order</a></li>
+						  </ul>
+						</div>
+						<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column4">
+						  <div class="about">
+							<h3>About RiveShop</h3>
+							<ul class="list-unstyle">
+							  <li><a class="address" href="#">Address: 1234 Street Name, City Name</a></li>
+							  <li><a class="phone" href="#">Phone: (12340) 567-987</a></li>
+							  <li><a class="mail" href="#"> <span>Email: </span>suppor@snstheme.com</a></li>
+							</ul>
+						  </div>
+						  <div class="sns-social">
+							<h3>Follow Us On</h3>
+							<ul>
+							  <li><a class="fa fa-facebook-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-twitter-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-youtube-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-google-plus-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-vimeo-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-linkedin-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							  <li><a class="fa fa-github-square" title="" href="#" target="_self" data-original-title="SNS Theme" data-toggle="tooltip">&nbsp;</a></li>
+							</ul>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <!-- final pre-footer 2 enlaces -->
+				  <div id="sns_footer_bottom" class="footer wrap">
+					<div class="container">
+					  <div class="row">
+						<div class="sns-footer-content">
+						  <div class="copy-right"> © 2015 99Pujas. Todos los derechos reservados. Tema: Clear White Theme diseñado por (<a href="http://www.snstheme.com/" title="">3FYM</a>) Laravel  </div>
+						  <div class="payment">
+							<div class="payment-method">
+							  <ul class="payment list-unstyled">
+								<li><a class="fa fa-cc-visa" title="Visa" href="#"></a></li>
+								<li><a class="fa fa-paypal" title="PayPal Certificado" href="#"></a></li>
+								<li><a class="fa fa-cc-mastercard" title="MasterCard" href="#"></a></li>
+								<li><a class="fa fa-envelope-o" title="Contra-Reembolso" href="#"></a></li>
+							  </ul>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+			  </footer>
 </div>
 <script src="js/bootstrap.min.js"></script>
 </body>
