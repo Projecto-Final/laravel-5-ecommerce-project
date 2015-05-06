@@ -13,6 +13,6 @@ class ConfiguracionPuja extends Model {
 	
 	public function pujas()
 	{
-		return $this->hasMany('App\Puja', 'pujador_id', 'id');
+		return $this->hasMany('App\Puja', 'confpuja_id', 'id');
 	}
 }

@@ -10,4 +10,9 @@ class Puja extends Model {
 	{
 		return $this->belongsTo('App\Usuario');
 	}
+
+	public function autoPujas()
+	{
+		return $this->belongsTo('App\ConfiguracionPuja');
+	}
 }
