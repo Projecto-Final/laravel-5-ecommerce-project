@@ -17,4 +17,9 @@ class Mensaje extends Model {
 		return $this->hasMany('App\LiniaM', 'mensaje_id', 'id');
 	}
 
+	public function usuarios()
+	{
+		return $this->belongsTo('App\Usuario');
+	}
+
 }

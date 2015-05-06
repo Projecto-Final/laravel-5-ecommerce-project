@@ -6,4 +6,8 @@ class Puja extends Model {
 
 	protected $table = 'pujas';
 
+	public function usuarios()
+	{
+		return $this->belongsTo('App\Usuario');
+	}
 }

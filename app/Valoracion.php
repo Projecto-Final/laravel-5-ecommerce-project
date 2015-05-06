@@ -19,4 +19,5 @@ class Valoracion extends Model {
 		return $this->belongsTo('App\Usuario');
 	}
 
+
 }

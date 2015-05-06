@@ -17,9 +17,9 @@ Route::get('/', function()
     return view('index');
 });
 
-Route::get('polla', function()
+Route::get('test', function()
 {
-    return view('CLASSLARAVELPRUEBASBYPOZOMAROTO');
+    return view('testing');
 });
 
 Route::get('iniciar_sesion', function()
