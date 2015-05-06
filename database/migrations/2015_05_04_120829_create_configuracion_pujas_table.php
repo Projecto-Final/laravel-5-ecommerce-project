@@ -16,10 +16,10 @@ class CreateConfiguracionPujasTable extends Migration {
 		{
             $table->increments('id');
             $table->float('puja_maxima');
-            $table->integer('id_articulo')->unsigned();
-            $table->foreign('id_articulo')->references('id')->on('articulos');
-            $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->integer('articulo_id')->unsigned();
+            $table->foreign('articulo_id')->references('id')->on('articulos');
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->boolean('superada');
             $table->date('fecha_config');
             $table->rememberToken();

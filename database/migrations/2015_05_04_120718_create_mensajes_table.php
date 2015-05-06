@@ -16,10 +16,10 @@ class CreateMensajesTable extends Migration {
 		{
             $table->increments('id');
             $table->string('titulo');
-            $table->integer('id_emisor')->unsigned();
-            $table->foreign('id_emisor')->references('id')->on('usuarios');
-            $table->integer('id_receptor')->unsigned();
-            $table->foreign('id_receptor')->references('id')->on('usuarios');
+            $table->integer('emisor_id')->unsigned();
+            $table->foreign('emisor_id')->references('id')->on('usuarios');
+            $table->integer('receptor_id')->unsigned();
+            $table->foreign('receptor_id')->references('id')->on('usuarios');
             $table->date('fecha');
             $table->rememberToken();
             $table->timestamps();

@@ -16,10 +16,10 @@ class CreateValoracionsTable extends Migration {
 		{
             $table->increments('id');
             $table->longText('texto');
-            $table->integer('id_valorado')->unsigned();
-            $table->foreign('id_valorado')->references('id')->on('usuarios');
-            $table->integer('id_validante')->unsigned();
-            $table->foreign('id_validante')->references('id')->on('usuarios');
+            $table->integer('valorado_id')->unsigned();
+            $table->foreign('valorado_id')->references('id')->on('usuarios');
+            $table->integer('validante_id')->unsigned();
+            $table->foreign('validante_id')->references('id')->on('usuarios');
             $table->integer('puntuacion')->unsigned();
             $table->foreign('puntuacion')->references('id')->on('escalas');
             $table->date('fecha');

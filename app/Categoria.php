@@ -6,4 +6,8 @@ class Categoria extends Model {
 
 	protected $table = 'categorias';
 
+	public function subcategorias()
+	{
+		return $this->hasMany('App\Subcategoria');
+	}
 }

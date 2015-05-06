@@ -16,10 +16,10 @@ class CreatePujasTable extends Migration {
 		{
             $table->increments('id');
             $table->float('cantidad');
-            $table->integer('id_articulo')->unsigned();
-            $table->foreign('id_articulo')->references('id')->on('articulos');
-            $table->integer('id_pujador')->unsigned();
-            $table->foreign('id_pujador')->references('id')->on('usuarios');
+            $table->integer('articulo_id')->unsigned();
+            $table->foreign('articulo_id')->references('id')->on('articulos');
+            $table->integer('pujador_id')->unsigned();
+            $table->foreign('pujador_id')->references('id')->on('usuarios');
             $table->date('fecha_puja');
             $table->rememberToken();
             $table->timestamps();

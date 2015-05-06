@@ -18,8 +18,8 @@ class CreateLiniasMsTable extends Migration {
             $table->string('nombre');
             $table->text('texto');
             $table->date('fecha');
-            $table->integer('id_mensaje')->unsigned();
-            $table->foreign('id_mensaje')->references('id')->on('mensajes');
+            $table->integer('mensaje_id')->unsigned();
+            $table->foreign('mensaje_id')->references('id')->on('mensajes');
             $table->rememberToken();
             $table->timestamps();
 		});

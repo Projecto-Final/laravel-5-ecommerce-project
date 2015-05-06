@@ -14,7 +14,7 @@ class Valoracion extends Model {
 
 	}
 
-	public function usuario()
+	public function usuarios()
 	{
 		return $this->belongsTo('App\Usuario');
 	}

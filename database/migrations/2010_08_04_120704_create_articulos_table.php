@@ -27,12 +27,12 @@ class CreateArticulosTable extends Migration {
             $table->date('fecha_venda');
             $table->double('precio_inicial');
             $table->double('puja_mayor');
-            $table->integer('id_subastador')->unsigned();
-            $table->foreign('id_subastador')->references('id')->on('usuarios');
-            $table->integer('id_subcategoria')->unsigned();
-            $table->foreign('id_subcategoria')->references('id')->on('subcategorias');
-            $table->integer('id_comprador')->unsigned();
-            $table->foreign('id_comprador')->references('id')->on('usuarios');
+            $table->integer('subastador_id')->unsigned();
+            $table->foreign('subastador_id')->references('id')->on('usuarios');
+            $table->integer('subcategoria_id')->unsigned();
+            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
+            $table->integer('comprador_id')->unsigned();
+            $table->foreign('comprador_id')->references('id')->on('usuarios');
             $table->rememberToken();
             $table->timestamps();
 		});
