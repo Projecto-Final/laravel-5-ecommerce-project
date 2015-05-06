@@ -19,7 +19,7 @@ Route::get('/', function()
 
 Route::get('polla', function()
 {
-    return view('asd');
+    return view('CLASSLARAVELPRUEBASBYPOZOMAROTO');
 });
 
 Route::get('iniciar_sesion', function()

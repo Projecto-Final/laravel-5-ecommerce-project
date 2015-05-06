@@ -6,18 +6,20 @@ class Usuario extends Model {
 
 	protected $table = 'usuarios';
 
-	public function __construct($nombre,$apellido,$direccion,$username,$contrasena){
-		$this->nombre = $nombre;
-		$this->apellido = $apellido;
-		$this->direccion = $direccion;
-		$this->username = $username;
-		$this->contrasena = $contrasena;
-	}
 
 	public function valoracion()
 	{
 		return $this->hasMany('App\Valoracion');
 	}
 
+	public function Mrecibidos()
+	{
+		return $this->hasMany('App\Mensaje', 'receptor_id', 'id');
+	}
+
+	public function Menviados()
+	{
+		return $this->hasMany('App\Mensaje', 'emisor_id', 'id');
+	}
 
 }
