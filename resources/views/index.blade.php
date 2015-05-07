@@ -1,7 +1,7 @@
 <?php use App\Articulo; ?>
 
 
-@extends('layouts.master')
+@extends('layouts.madre')
 
 
 @section('titulo', 'PAGINA PRINCIPAL')

@@ -767,7 +767,7 @@ Iniciar session usuario
 .col2-set .content {
   padding: 15px;
   border: 1px solid #ddd;
-  height: 270px;
+  height: 300px;
 }
 #sns_content #login-form h2 {
   margin: 0 0 15px;
@@ -783,11 +783,7 @@ Iniciar session usuario
   margin-bottom: 10px;
 }
 }
-.col2-set .content {
-  padding: 15px;
-  border: 1px solid #ddd;
-  height: 270px;
-}
+
 #sns_content #login-form h2 {
   margin: 0 0 15px;
 }

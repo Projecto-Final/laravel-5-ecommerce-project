@@ -1,8 +1,5 @@
-<?php 
-use App\Categoria;
-
-?>
-@extends('layouts.master')
+<?php use App\Categoria; ?>
+@extends('layouts.madre')
 
 
 @section('titulo', 'REGISTRARSE O INICIAR SESSION')
