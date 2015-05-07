@@ -28,10 +28,21 @@
 			<div class="contenedor-header">
 				<div class="m-usuario">
 					<nav class="container">
-						<ul class="enlaces">
-							<li> <a href="iniciar_sesion"><i class="fa fa-user"></i> Iniciar Sessión</a> </li>
+					@if (Auth::check())
+					<div class="box-left">
+						<p class="welcome-msg">Bienvenido, {{ Auth::user()->username }}</p>
+					</div>
+			    	<ul class="enlaces">
+						<li> <a href="iniciar_sesion"><i class="fa fa-user"></i> Mis cosas</a> </li>
+						<li> <a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a> </li>
+					</ul>
+				    @else
+				    <ul class="enlaces">
+							<li> <a href="iniciar_sesion"><i class="fa fa-sign-in"></i> Iniciar Sessión</a> </li>
 							<li> <a href="#foo"><i class="fa fa-user-plus"></i> Nuevo Usuario</a> </li>
-						</ul>
+					</ul>
+					@endif
+						
 					</nav>
 				</div>
 				<div class="container">

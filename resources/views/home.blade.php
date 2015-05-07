@@ -1,6 +1,10 @@
 @extends('app')
 
 @section('content')
+<?php 
+$user = Auth::user();
+?>
+<h1>{{ "Bienvenido: ".Auth::user()->username }}</h1>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">

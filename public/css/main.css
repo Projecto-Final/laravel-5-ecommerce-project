@@ -111,7 +111,16 @@ CSS PERSONALIZADO
   background: #26acce;
   width: auto;
 }
-
+.m-usuario .box-left {
+  float: left;
+}
+.m-usuario .box-left > p.welcome-msg {
+  margin: 0;
+  line-height: 30px;
+  padding: 10px;
+  text-align: center;
+  float: left;
+}
 /* LOGO Y BUSCADOR */
 .contenedor-logo {
   text-align: left;
