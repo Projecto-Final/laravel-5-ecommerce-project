@@ -1,18 +1,18 @@
 <html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>@yield('titulo') - 3F&M - Subastas Online </title>
+	<title>@yield('titulo') - 3F&M - Subastas Online </title>
 
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="http://127.0.0.1/proyecto/public/css/font-awesome.min.css">
-		<link href="http://127.0.0.1/proyecto/public/css/bootstrap.min.css" rel="stylesheet">
-		<link href="http://127.0.0.1/proyecto/public/css/main.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://127.0.0.1/proyecto/public/css/font-awesome.min.css">
+	<link href="http://127.0.0.1/proyecto/public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://127.0.0.1/proyecto/public/css/main.css" rel="stylesheet">
 
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -28,20 +28,20 @@
 			<div class="contenedor-header">
 				<div class="m-usuario">
 					<nav class="container">
-					@if (Auth::check())
-					<div class="box-left">
-						<p class="welcome-msg">Bienvenido, {{ Auth::user()->username }}</p>
-					</div>
-			    	<ul class="enlaces">
-						<li> <a href="iniciar_sesion"><i class="fa fa-user"></i> Mis cosas</a> </li>
-						<li> <a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a> </li>
-					</ul>
-				    @else
-				    <ul class="enlaces">
-							<li> <a href="iniciar_sesion"><i class="fa fa-sign-in"></i> Iniciar Sessión</a> </li>
+						@if (Auth::check())
+						<div class="box-left">
+							<p class="welcome-msg">Bienvenido, {{ Auth::user()->username }}</p>
+						</div>
+						<ul class="enlaces">
+							<li> <a href="usuario"><i class="fa fa-user"></i> Mis cosas</a> </li>
+							<li> <a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a> </li>
+						</ul>
+						@else
+						<ul class="enlaces">
+							<li> <a href="auth/login"><i class="fa fa-sign-in"></i> Iniciar Sessión</a> </li>
 							<li> <a href="#foo"><i class="fa fa-user-plus"></i> Nuevo Usuario</a> </li>
-					</ul>
-					@endif
+						</ul>
+						@endif
 						
 					</nav>
 				</div>
@@ -105,6 +105,8 @@
 			@yield('articulos_subastas')
 
 			@yield('registro_login')
+
+			@yield('opciones_usuario')
 
 			<!-- FIN CATEGORIA Y SPONSOR -->
 			<footer id="C3">
@@ -181,11 +183,11 @@
 							</div>
 							<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column4">
 								<div class="about">
-									<h3>About RiveShop</h3>
+									<h3>SUPPREME</h3>
 									<ul class="list-unstyle">
 										<li><a class="address" href="#">Address: 1234 Street Name, City Name</a></li>
-										<li><a class="phone" href="#">Phone: (12340) 567-987</a></li>
-										<li><a class="mail" href="#"> <span>Email: </span>suppor@snstheme.com</a></li>
+										<li><a class="phone" href="#">Phone: 56445675467</a></li>
+										<li><a class="mail" href="#"> <span>Email: </span>suppor@3f&m.com</a></li>
 									</ul>
 								</div>
 								<div class="sns-social">
