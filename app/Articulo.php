@@ -6,7 +6,7 @@ class Articulo extends Model {
 
 	protected $table = 'articulos';
 
-	public function usuarios()
+	public function usuario()
 	{
 		return $this->belongsTo('App\Usuario');
 	}

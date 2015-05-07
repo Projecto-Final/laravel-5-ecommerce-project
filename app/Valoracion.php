@@ -5,18 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 class Valoracion extends Model {
 
 	protected $table = 'valoracions';
-	public function __construct($comprador, $vendedor, $puntuacion,$fecha,$texto){
-		$this->id_valorado = $vendedor;
-		$this->id_validante= $comprador;
-		$this->puntuacion=$puntuacion;
-		$this->fecha=$fecha;
-		$this->texto=$texto;
 
-	}
-
-	public function usuarios()
+	public function validante()
 	{
-		return $this->belongsTo('App\Usuario');
+		return $this->belongsTo('App\Usuario','validante_id','id');
+	}
+	public function valorado()
+	{
+		return $this->belongsTo('App\Usuario','valorado_id','id');
 	}
 
 

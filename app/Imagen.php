@@ -6,7 +6,7 @@ class Imagen extends Model {
 
 	protected $table = 'imagenes';
 
-	public function articulos()
+	public function articulo()
 	{
 		return $this->belongsTo('App\Articulo');
 	}

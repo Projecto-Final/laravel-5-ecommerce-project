@@ -6,7 +6,7 @@ class ConfiguracionPuja extends Model {
 
 	protected $table = 'configuracion_pujas';
 	
-	public function usuarios()
+	public function usuario()
 	{
 		return $this->belongsTo('App\Usuario');
 	}

@@ -6,7 +6,7 @@ class LiniaM extends Model {
 
 	protected $table = 'liniasms';
 	
-	public function mensajes()
+	public function mensaje()
 	{
 		return $this->belongsTo('App\Mensaje');
 	}

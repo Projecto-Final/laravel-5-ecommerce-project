@@ -6,16 +6,16 @@ class Puja extends Model {
 
 	protected $table = 'pujas';
 
-	public function usuarios()
+	public function usuario()
 	{
 		return $this->belongsTo('App\Usuario');
 	}
 
-	public function autoPujas()
+	public function autoPuja()
 	{
 		return $this->belongsTo('App\ConfiguracionPuja');
 	}
-	public function articulos()
+	public function articulo()
 	{
 		return $this->belongsTo('App\Articulo');
 	}

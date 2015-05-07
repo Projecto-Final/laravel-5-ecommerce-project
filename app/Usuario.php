@@ -5,11 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model {
 
 	protected $table = 'usuarios';
-	public function valoracion()
-	{
-		return $this->hasMany('App\Valoracion');
-	}
-
 	public function Mrecibidos()
 	{
 		return $this->hasMany('App\Mensaje', 'receptor_id', 'id');
@@ -44,8 +39,8 @@ class Usuario extends Model {
 	{
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
-	public function articulos()
-	{
-		return $this->belongsTo('App\Articulo');
-	}
+	// public function articulo()
+	// {
+	// 	return $this->belongsTo('App\Articulo');
+	// }
 }
