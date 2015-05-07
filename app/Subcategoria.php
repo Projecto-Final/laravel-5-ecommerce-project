@@ -10,4 +10,8 @@ class Subcategoria extends Model {
 	{
 		return $this->belongsTo('App\Categoria');
 	}
+	public function articulos()
+	{
+		return $this->belongsTo('App\Articulo');
+	}
 }

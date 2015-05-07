@@ -15,4 +15,8 @@ class Puja extends Model {
 	{
 		return $this->belongsTo('App\ConfiguracionPuja');
 	}
+	public function articulos()
+	{
+		return $this->belongsTo('App\Articulo');
+	}
 }

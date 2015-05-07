@@ -44,4 +44,8 @@ class Usuario extends Model {
 	{
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
+	public function articulos()
+	{
+		return $this->belongsTo('App\Articulo');
+	}
 }
