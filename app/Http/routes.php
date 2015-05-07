@@ -40,4 +40,4 @@ Route::get('iniciar_sesion', function()
 
 
 // Consultas de datos de la Database.
-Route::get('get_registeredUsers', 'LogedUserMethods@get_registered');
+Route::get('get_registeredUsers', 'LogedUserMethods@get_registeredUsers');

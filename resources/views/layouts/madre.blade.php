@@ -1,3 +1,5 @@
+<?php use App\Articulo;  ?>
+
 <html lang="es">
 <head>
 	<meta charset="utf-8">
