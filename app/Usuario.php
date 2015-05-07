@@ -1,10 +1,31 @@
 <?php namespace App;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Usuario extends Model {
+class Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract {
+
+	use Authenticatable, CanResetPassword;
+
 
 	protected $table = 'usuarios';
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['username', 'email', 'password'];
+
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['password', 'remember_token'];
+
 	public function Mrecibidos()
 	{
 		return $this->hasMany('App\Mensaje', 'receptor_id', 'id');
@@ -39,8 +60,4 @@ class Usuario extends Model {
 	{
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
-	// public function articulo()
-	// {
-	// 	return $this->belongsTo('App\Articulo');
-	// }
 }

@@ -11,19 +11,24 @@
 |
 */
 
+Route::get('/', 'WelcomeController@index');
+
+Route::get('home', 'HomeController@index');
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+	]);
+
 //Route::get('/', 'WelcomeController@index');
-Route::get('/', function()
-{
-    return view('index');
-});
 
 Route::get('test', function()
 {
-    return view('testing');
+	return view('testing');
 });
 
 Route::get('iniciar_sesion', function()
 {
-    return view('iniciar_sesion');
+	return view('iniciar_sesion');
 });
 
