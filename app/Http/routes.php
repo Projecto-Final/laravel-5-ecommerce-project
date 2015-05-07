@@ -38,3 +38,6 @@ Route::get('iniciar_sesion', function()
 	return view('iniciar_sesion');
 });
 
+
+// Consultas de datos de la Database.
+Route::get('get_registeredUsers', 'LogedUserMethods@get_registered');
