@@ -21,6 +21,7 @@ class CreateUsuariosTable extends Migration {
             $table->string('imagen');
             $table->integer('reputacion');
             $table->integer('permisos');
+            $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('username')->unique();
             $table->rememberToken();
