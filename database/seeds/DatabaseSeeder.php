@@ -14,8 +14,16 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		// $this->call('ArticulosTableSeeder');
+		// $this->call('CategoriasTableSeeder');
+		// $this->call('ConfiguracionPujasTableSeeder');
+		// $this->call('EmpresasTableSeeder');
+		// $this->call('EscalasTableSeeder');
+		// $this->call('LiniasMsTableSeeder');
+		// $this->call('MensajesTableSeeder');
+		// $this->call('PujasTableSeeder');
+		// $this->call('SubCategoriasTableSeeder');
 		$this->call('UsuariosTableSeeder');
 	}
 
 }
-
