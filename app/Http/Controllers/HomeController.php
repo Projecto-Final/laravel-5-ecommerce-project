@@ -24,13 +24,23 @@ class HomeController extends Controller {
 	}
 
 	/**
-	 * Show the application dashboard to the user.
+	 * REDIRECCIONA AL INDEX, SI EL USUARIO LOGUEA SATISFACTORIAMENTE.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('index');
+	}
+
+	/**
+	 * IMPRIME EL PANEL DE CONTROL DEL USUARIO A PETICION URL.
+	 *
+	 * @return Response
+	 */
+	public function cp_usuario()
+	{
+		return view('cp_usuario');
 	}
 
 }
