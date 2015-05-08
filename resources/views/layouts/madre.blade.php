@@ -40,8 +40,8 @@
 						</ul>
 						@else
 						<ul class="enlaces">
-							<li> <a href="auth/login"><i class="fa fa-sign-in"></i> Iniciar Sessión</a> </li>
-							<li> <a href="#foo"><i class="fa fa-user-plus"></i> Nuevo Usuario</a> </li>
+							<li> <a href="{{ url('auth/login') }}"><i class="fa fa-sign-in"></i> Iniciar Sessión</a> </li>
+							<li> <a href="{{ url('auth/register') }}"><i class="fa fa-user-plus"></i> Nuevo Usuario</a> </li>
 						</ul>
 						@endif
 						
