@@ -63,7 +63,7 @@
                 <div class="col2-set">
                   <div class="col-1 new-users">
                     <div class="buttons-set">
-                      <button type="button" title="Create an Account" class="button" onclick="">Registrar Nuevo Usuario</button>
+                      <a type="button" href="{{ url('/auth/register') }}"title="Create an Account" class="button" onclick="">Registrar Nuevo Usuario</a>
                     </div>
                   </div>
                   <div class="col-2 registered-users">
