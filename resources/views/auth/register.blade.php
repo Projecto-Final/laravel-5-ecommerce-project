@@ -11,32 +11,44 @@
 						<div class="page-title">
 							<h1>Registrar nuevo usuario</h1>
 						</div>
-						<form action="#" method="post" id="form-validate">
+						<form role="form" method="POST" action="{{ url('/auth/register') }}" id="form-validate">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="fieldset">
 								<input type="hidden" name="success_url" value="">
 								<input type="hidden" name="error_url" value="">
 								<h2 class="legend">Información Personal</h2>
 								<ul class="form-list">
+									@if (count($errors) > 0)
+									<div class="alert alert-danger">
+										<strong>Whoops!</strong> There were some problems with your input.<br><br>
+										<ul>
+											@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+									@endif
+
 									<li class="fields">
 										<div class="customer-name">
 											<div class="field name-firstname">
 												<label for="nombre" class="required"><em>*</em>Nombre</label>
 												<div class="input-box">
-													<input type="text" id="nombre" name="nombre" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+													<input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" title="Nombre" maxlength="255" class="input-text required-entry">
 												</div>
 											</div>
 											<div class="field name-lastname">
 												<label for="apellidos" class="required"><em>*</em>Apellidos</label>
 												<div class="input-box">
-													<input type="text" id="apellidos" name="apellidos" value="" title="Apellidos" maxlength="255" class="input-text required-entry">
+													<input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" title="Apellido" maxlength="255" class="input-text required-entry">
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
-										<label for="email_address" class="required"><em>*</em>Correo Electronico</label>
+										<label for="apodo" class="required"><em>*</em>Apodo</label>
 										<div class="input-box">
-											<input type="text" name="email" id="email_address" value="" title="Correo Electronico" class="input-text validate-email required-entry">
+											<input type="text" id="username" class="input-text validate-email required-entry"  name="username" value="{{ old('username') }}">
 										</div>
 									</li>
 									<li class="control">
@@ -52,23 +64,23 @@
 								<ul class="form-list">
 									<li class="fields">
 										<div class="field">
-											<label for="confirmation" class="required"><em>*</em>Nombre de usuario</label>
+											<label for="confirmation" class="required"><em>*</em>Email</label>
 											<div class="input-box">
-												<input type="password" name="confirmation" title="Confirm Password" id="confirmation" class="input-text required-entry validate-cpassword">
+												<input type="email" id="email_address" name="email" value="{{ old('email') }}" title="Correo Electronico" class="input-text validate-email required-entry">
 											</div>
 										</div>
 									</li>
 									<li class="fields">
 										<div class="field">
-											<label for="contrasena" class="required"><em>*</em>Contraseña</label>
+											<label for="password" class="required"><em>*</em>Contraseña</label>
 											<div class="input-box">
-												<input type="password" name="contrasena" id="contrasena" title="Contraseña" class="input-text required-entry validate-password">
+												<input type="password" name="password" id="password" title="password" class="input-text required-entry validate-password">
 											</div>
 										</div>
 										<div class="field">
 											<label for="confirmacion" class="required"><em>*</em>Confirmar Contraseña</label>
 											<div class="input-box">
-												<input type="password" name="confirmacion" title="Confirm Password" id="confirmacion" class="input-text required-entry validate-cpassword">
+												<input type="password" name="password_confirmation" title="Confirm Password" class="input-text required-entry validate-cpassword">
 											</div>
 										</div>
 									</li>
