@@ -35,8 +35,6 @@ class CategoriasTableSeeder extends Seeder {
 			'descripcion' => 'Aqui pueden aparecer hasta dinosaurios',
 		]);
 
-		TestDummy::times(1)->create('App\Categoria');
-
 	}
 
 }

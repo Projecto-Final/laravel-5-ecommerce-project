@@ -26,7 +26,7 @@ class UsuariosTableSeeder extends Seeder {
 			'nombre' => 'Usuario',
 			'apellido' => 'Technician',
 			'direccion' => 'C/ cadaques, La Llagosta',
-			'imagen' => 'default.jpg',
+			'imagen' => 'default2.jpg',
 			'reputacion' => 1,
 			'permisos' => 0,
 			'password' => bcrypt('niconiconii'),
@@ -38,7 +38,7 @@ class UsuariosTableSeeder extends Seeder {
 			'nombre' => 'Usuaria',
 			'apellido' => 'Tehnician',
 			'direccion' => 'C/ serrucho, Canovelles',
-			'imagen' => 'default.jpg',
+			'imagen' => 'default3.jpg',
 			'reputacion' => 1,
 			'permisos' => 0,
 			'password' => bcrypt('123456'),
@@ -46,6 +46,6 @@ class UsuariosTableSeeder extends Seeder {
 			'email' => 'asdf@user.com',
 		]);
 
-		TestDummy::times(1)->create('App\Usuario');
+		
 	}
 }
