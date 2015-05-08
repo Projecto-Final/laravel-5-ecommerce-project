@@ -40,7 +40,8 @@ Route::get('iniciar_sesion', function()
 
 
 // Consultas de datos de la Database ( usuarios logueados ).
-Route::get('get_registeredUsers', 'LogedUserMethods@get_registeredUsers');
+Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
+Route::post('crear_subasta', 'LogedUserMethods@create_subasta');
 
 // Consultas de datos en la Database ( usuarios guest ).
 Route::get('get_allCategories', 'GuestUserMethods@get_allCategories');
