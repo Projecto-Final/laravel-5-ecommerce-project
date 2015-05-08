@@ -32,4 +32,24 @@ class LogedUserMethods extends Controller {
 		return $data = Usuario::all();
 	}
 
+	/**
+	 * 
+	 *
+	 * @return Response
+	 */
+	public function form_subasta()
+	{
+		return view('form_subasta');
+	}
+
+	/**
+	 * 
+	 *
+	 * @return Response
+	 */
+	public function crear_subasta($params)
+	{
+		
+	}
+
 }
