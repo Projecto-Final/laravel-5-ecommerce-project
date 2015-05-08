@@ -1,26 +1,23 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Mensaje;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
-
-class MensajessTableSeeder extends Seeder {
+class MensajesTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('mensajes')->delete();
 
-		\App\Mensaje::create([
+		Mensaje::create([
 			'titulo' => 'ola k ase',
 			'emisor_id' => 2,
 			'receptor_id' => 3,
 		]);
-		\App\Mensaje::create([
-			'nombre' => 'tss',
+		Mensaje::create([
+			'titulo' => 'tss',
 			'emisor_id' => 1,
 			'receptor_id' => 2,
 		]);
-
-		TestDummy::times(1)->create('App\Mensaje');
 	}
 }

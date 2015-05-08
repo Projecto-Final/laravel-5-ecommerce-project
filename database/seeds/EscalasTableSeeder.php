@@ -1,31 +1,28 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use App\Escala;
 
 class EscalasTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('escalas')->delete();
 
-		\App\Escala::create([
+		Escala::create([
 			'descripcion' => 'pesimo',
 		]);
-		\App\Escala::create([
+		Escala::create([
 			'descripcion' => 'pasable',
 		]);
-		\App\Escala::create([
+		Escala::create([
 			'descripcion' => 'bueno',
 		]);
-		\App\Escala::create([
+		Escala::create([
 			'descripcion' => 'optimo',
 		]);
-		\App\Escala::create([
+		Escala::create([
 			'descripcion' => 'excelente',
 		]);
-
-		TestDummy::times(1)->create('App\Escala');
 	}
 }

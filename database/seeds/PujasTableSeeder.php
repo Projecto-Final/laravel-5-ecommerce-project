@@ -1,22 +1,28 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use App\Puja;
 
 class PujasTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('pujas')->delete();
 
-		\App\Puja::create([
+		Puja::create([
 			'cantidad' => 300,
+			'confpuja_id' => -1,
 			'articulo_id' => 2,
 			'pujador_id' => 2,
-			'fecha_puja' => strtotime("2015-05-07 17:11:00"),
+			'fecha_puja' => "2015-05-07 17:11:00",
 		]);
 
-		TestDummy::times(1)->create('App\Puja');
+		Puja::create([
+			'cantidad' => 120,
+			'confpuja_id' => -1,
+			'articulo_id' => 3,
+			'pujador_id' => 1,
+			'fecha_puja' => "2015-05-12 23:59:32",
+		]);
 	}
 }

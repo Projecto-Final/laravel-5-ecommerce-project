@@ -1,27 +1,24 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\LiniaM;
 
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
-
-class LiniasMsTableSeeder extends Seeder {
+class LiniaMsTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('liniasMs')->delete();
 
-		\App\LiniasM::create([
+		LiniaM::create([
 			'texto' => 'Puedo olerte el pelo?',
-			'fecha' => strtotime("2015-05-07 12:11:00"),
+			'fecha' => "2015-05-23 00:00:00",
 			'mensaje_id' => 1,
 		]);
 
-		\App\LiniasM::create([
+		LiniaM::create([
 			'texto' => 'Cuidao con lo que dices',
-			'fecha' => strtotime("2015-05-07 12:11:01"),
+			'fecha' => "2015-05-23 00:00:11",
 			'mensaje_id' => 2,
 		]);
-
-		TestDummy::times(1)->create('App\LiniasM');
 	}
 }

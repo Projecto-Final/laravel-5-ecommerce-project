@@ -1,40 +1,37 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use App\Categoria;
 
 class CategoriasTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('categorias')->delete();
 
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Tecnologia',
 			'descripcion' => 'Nos sobran fifas de segunda mano, ninguno de este año',
 		]);
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Ropa',
 			'descripcion' => 'To sesi to porno',
 		]);
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Libros',
 			'descripcion' => 'Posturea que eres intelectual',
 		]);
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Muebles',
 			'descripcion' => 'Porque te gusta la madera',
 		]);
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Jugetes',
 			'descripcion' => 'Si entras aqui es que no eres tan mayor',
 		]);                                                                          
-		\App\Categoria::create([
+		Categoria::create([
 			'nombre' => 'Otros',
 			'descripcion' => 'Aqui pueden aparecer hasta dinosaurios',
 		]);
-
 	}
-
 }

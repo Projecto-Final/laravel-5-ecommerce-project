@@ -1,20 +1,17 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-// composer require laracasts/testdummy
-use Laracasts\TestDummy\Factory as TestDummy;
+use App\Empresa;
 
 class EmpresasTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('empresas')->delete();
 
-		\App\Empresa::create([
+		Empresa::create([
 			'nombre' => '3F&M',
 			'direccion' => 'C/ Stand, La Llagosta',
 		]);
-
-		TestDummy::times(1)->create('App\Empresa');
 	}
 }

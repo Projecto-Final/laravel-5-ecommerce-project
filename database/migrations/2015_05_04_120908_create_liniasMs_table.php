@@ -15,7 +15,6 @@ class CreateLiniasMsTable extends Migration {
 		Schema::create('liniasMs', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->string('nombre');
             $table->text('texto');
             $table->date('fecha');
             $table->integer('mensaje_id')->unsigned();
