@@ -9,9 +9,9 @@
 	<title>@yield('titulo') - 3F&M - Subastas Online </title>
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="http://127.0.0.1/proyecto/public/css/font-awesome.min.css">
-	<link href="http://127.0.0.1/proyecto/public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="http://127.0.0.1/proyecto/public/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
+	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url('css/main.css') }}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
