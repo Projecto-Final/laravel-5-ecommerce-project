@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('MensajesTableSeeder');
 		// $this->call('PujasTableSeeder');
 		// $this->call('SubCategoriasTableSeeder');
-		 $this->call('UsuariosTableSeeder');
-		 $this->call('CategoriasTableSeeder');
+		$this->call('UsuariosTableSeeder');
+		$this->call('CategoriasTableSeeder');
 	}
 
 }
