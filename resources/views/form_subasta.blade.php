@@ -21,7 +21,7 @@
                 <div class="fieldset">
                   <input type="hidden" name="success_url" value="">
                   <input type="hidden" name="error_url" value="">
-                  <h2 class="legend">Descripción Articulo</h2>
+                  <h2 class="legend">Detalles Articulo</h2>
                   <ul class="form-list">
                     <li class="fields">
                       <div class="customer-name">
@@ -71,7 +71,62 @@
                     </li>
                   </ul>
                 </div>
-                
+                <div class="fieldset">
+                  <input type="hidden" name="success_url" value="">
+                  <input type="hidden" name="error_url" value="">
+                  <h2 class="legend">Configuracion</h2>
+                  <ul class="form-list">
+                    <li class="fields">
+                      <div class="customer-name">
+                        <div class="field ">
+                          <label for="narticulo" class="required"><em>*</em>Categoria</label>
+                          <div class="input-box">
+	                          <select name="categoria" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+	                          	<option value="">categoTal</option>
+	                          </select>
+                          </div>
+                        </div>
+                         <div class="field ">
+                          <label for="marticulo" class="required"><em>*</em>Sub-Categoria</label>
+                          <div class="input-box">
+                           <select name="categoria" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+	                          	<option value="">categoTal</option>
+	                          </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="form-list">
+                    <li class="fields">
+                      <div class="customer-name">
+                        <div class="field ">
+                          <label for="narticulo" class="required"><em>*</em>Precio inicial</label>
+                          <div class="input-box">
+                            <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          </div>
+                        </div>
+                         <div class="field ">
+                          <label for="marticulo" class="required"><em>*</em>Incremento de las pujas</label>
+                          <div class="input-box">
+                            <input type="text" id="marticulo" name="marticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="form-list">
+                    <li class="fields">
+                      <div class="customer-name">
+                        <div class="field ">
+                          <label for="narticulo" class="required"><em>*</em>Fecha de vencimiento</label>
+                          <div class="input-box">
+                            <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          </div>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
                 <div class="buttons-set">
                   <p class="required">* Campos requeridos</p>
                   <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
