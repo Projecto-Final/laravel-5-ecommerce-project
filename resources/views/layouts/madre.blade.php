@@ -58,11 +58,18 @@
 									<div class="formulario-busqueda">
 										<div class="select-input">
 											<select>
-												<option value="Smartphones">Smartphones</option>
-												<option value="Camaras">Camaras</option>
-												<option value="Ropa">Ropa</option>
-												<option value="Accesorios">Accesorios</option>
 											</select>
+											<script>
+											// Script pro rellenar dropdown!
+														$.getJSON("get_allCategories", function(result){
+															var scatm = "";
+													        $.each(result, function(i, field){
+													          scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+													        });
+													         $(".formulario-busqueda > .select-input > select").html(scatm);
+													    });
+													    
+											</script>
 											<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas...">
 										</div>
 										<div class="boton-submit">
@@ -230,6 +237,6 @@
 				</div>
 			</footer>
 		</div>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="http://127.0.0.1/proyecto/public/js/bootstrap.min.js"></script>
 	</body>
 </html>

@@ -39,5 +39,8 @@ Route::get('iniciar_sesion', function()
 });
 
 
-// Consultas de datos de la Database.
+// Consultas de datos de la Database ( usuarios logueados ).
 Route::get('get_registeredUsers', 'LogedUserMethods@get_registeredUsers');
+
+// Consultas de datos en la Database ( usuarios guest ).
+Route::get('get_allCategories', 'GuestUserMethods@get_allCategories');
