@@ -11,27 +11,27 @@ class CategoriasTableSeeder extends Seeder {
 
 		Categoria::create([
 			'nombre' => 'Tecnologia',
-			'descripcion' => 'Nos sobran fifas de segunda mano, ninguno de este año',
+			'descripcion' => 'Artículos de ayer y hoy a precios irresistibles.',
 		]);
 		Categoria::create([
 			'nombre' => 'Ropa',
-			'descripcion' => 'To sesi to porno',
+			'descripcion' => 'Artículos de moda, de todo tipo, 60,70, 80 y 90, hasta la actualidad.',
 		]);
 		Categoria::create([
 			'nombre' => 'Libros',
-			'descripcion' => 'Posturea que eres intelectual',
+			'descripcion' => 'Los mejores precios, clásicos de la literatura, best sellers, entre otros.',
 		]);
 		Categoria::create([
 			'nombre' => 'Muebles',
-			'descripcion' => 'Porque te gusta la madera',
+			'descripcion' => 'Todo tipo de tendencias en muebles, contemporáneos, modernos, clásicos, west y mucho mas.',
 		]);
 		Categoria::create([
 			'nombre' => 'Jugetes',
-			'descripcion' => 'Si entras aqui es que no eres tan mayor',
+			'descripcion' => 'Quien ha dicho juguetes? echa un vistazo, encuentra el regalo ideal.',
 		]);                                                                          
 		Categoria::create([
 			'nombre' => 'Otros',
-			'descripcion' => 'Aqui pueden aparecer hasta dinosaurios',
+			'descripcion' => 'Si nos falta alguna categoría,es posible que puedas encontrar lo que buscas en esta sección.',
 		]);
 	}
 }

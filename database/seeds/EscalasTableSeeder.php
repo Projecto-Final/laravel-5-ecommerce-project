@@ -10,19 +10,19 @@ class EscalasTableSeeder extends Seeder {
 		DB::table('escalas')->delete();
 
 		Escala::create([
-			'descripcion' => 'pesimo',
+			'descripcion' => 'nefasto',
 		]);
 		Escala::create([
-			'descripcion' => 'pasable',
-		]);
-		Escala::create([
-			'descripcion' => 'bueno',
+			'descripcion' => 'tolerable',
 		]);
 		Escala::create([
 			'descripcion' => 'optimo',
 		]);
 		Escala::create([
-			'descripcion' => 'excelente',
+			'descripcion' => 'bueno',
+		]);
+		Escala::create([
+			'descripcion' => 'perfecto',
 		]);
 	}
 }

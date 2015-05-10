@@ -10,13 +10,13 @@ class LiniaMsTableSeeder extends Seeder {
 		DB::table('liniasMs')->delete();
 
 		LiniaM::create([
-			'texto' => 'Puedo olerte el pelo?',
+			'texto' => 'Hola, cuando procedo a realizar el envió y que tipo prefieres?',
 			'fecha' => "2015-05-23 00:00:00",
 			'mensaje_id' => 1,
 		]);
 
 		LiniaM::create([
-			'texto' => 'Cuidao con lo que dices',
+			'texto' => 'Pues, cuando antes puedas por favor, el envió lo preferiría contra-reembolso, por nacex!',
 			'fecha' => "2015-05-23 00:00:11",
 			'mensaje_id' => 2,
 		]);
