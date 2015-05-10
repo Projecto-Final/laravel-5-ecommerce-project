@@ -102,6 +102,7 @@
                            <select name="categoria" id="subcategoria" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                             <option value="">Seleccione una categoria.</option>
                           </select>
+                          <div id="descriptext" class="input-box"></div>
                           <script>
                               // Script pro rellenar dropdown!
                               $(".field select#categoria").change(function() {
@@ -113,6 +114,16 @@
                                   });
                                   $(".field select#subcategoria").html(scatm);
                                 });
+
+
+                              });
+
+                              $(".field select#subcategoria").change(function() { 
+                                var aux2 = "get_subCategoryDescription/"+$(".field select#subcategoria").val();
+                                $.get(aux2 , function(result){
+                                  $("#descriptext").html("<p style='color:green;'>Descripcion:</b>"+result);
+                                });
+
                               });
                             </script>
                           </div>

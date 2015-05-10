@@ -67,6 +67,17 @@ class LogedUserMethods extends Controller {
 	}
 
 	/**
+	 * OBTENER DESCRIPCIÓN SUB-CATEGORIA SELECCIONADA
+	 * 
+	 * @return Response
+	 */
+	public function get_subCategoryDescription($idSubCategoria)
+	{
+		$descr = Subcategoria::find($idSubCategoria)->descripcion;
+		return $descr;
+	}
+
+	/**
 	 * 
 	 *
 	 * @return Response
