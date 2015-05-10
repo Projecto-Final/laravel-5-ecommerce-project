@@ -39,9 +39,20 @@ Route::get('iniciar_sesion', function()
 });
 
 
-// Consultas de datos de la Database ( usuarios logueados ).
+// RUTAS USUARIOS NO-AUTENTIFICADOS
+Route::get('get_allCategories', 'GuestUserMethods@get_allCategories');
+
+
+// RUTAS USUARIOS AUTENTIFICADOS
+
 Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
 Route::post('crear_subasta', 'LogedUserMethods@create_subasta');
 
-// Consultas de datos en la Database ( usuarios guest ).
-Route::get('get_allCategories', 'GuestUserMethods@get_allCategories');
+/* Obtener Todas las categorías. */
+Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
+
+/* Obtener Todas las Subcategorías. */
+Route::get('get_allSubCategories', 'LogedUserMethods@get_allSubCategories');
+
+/* Obtener Todas las Subcategorías en una categorías. */
+Route::get('get_allSubCategoriesOnCategory/{idCategoria}', 'LogedUserMethods@get_allSubCategoriesOnCategory');

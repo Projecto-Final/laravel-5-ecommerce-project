@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 use App\Usuario;
+use App\Subcategoria;
+use App\Categoria;
 
 class LogedUserMethods extends Controller {
 
@@ -30,6 +32,38 @@ class LogedUserMethods extends Controller {
 	public function get_registeredUsers()
 	{
 		return $data = Usuario::all();
+	}
+
+	/**
+	 * OBTENER TODAS LAS CATEGORIAS
+	 * 
+	 * @return Response
+	 */
+	public function get_allCategories()
+	{
+		return $data = Categoria::all();
+	}
+
+	/**
+	 * OBTENER TODAS LAS SUB-CATEGORIAS
+	 * 
+	 * @return Response
+	 */
+	public function get_allSubCategories()
+	{
+		return $data = Subcategoria::all();
+	}
+
+	/**
+	 * OBTENER TODAS LAS SUB-CATEGORIAS enlazadas
+	 * CON LA CATEGORIA SELECCIONADA.
+	 * 
+	 * @return Response
+	 */
+	public function get_allSubCategoriesOnCategory($idCategoria)
+	{
+		$subCategorias = Categoria::find($idCategoria)->subcategorias;
+		return $subCategorias;
 	}
 
 	/**

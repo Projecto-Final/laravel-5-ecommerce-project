@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 use App\Categoria;
 
+
 class GuestUserMethods extends Controller {
 
 	/*
