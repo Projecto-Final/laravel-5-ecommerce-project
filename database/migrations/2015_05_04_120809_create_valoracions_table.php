@@ -19,8 +19,8 @@ class CreateValoracionsTable extends Migration {
             $table->integer('valorado_id')->unsigned();
             $table->foreign('valorado_id')->references('id')->on('usuarios');
             $table->integer('validante_id')->unsigned();
-            $table->float('validante_id')->references('id')->on('usuarios');
-            $table->float('puntuacion')->unsigned();
+            $table->foreign('validante_id')->references('id')->on('usuarios');
+            $table->integer('puntuacion')->unsigned();
             $table->foreign('puntuacion')->references('id')->on('escalas');
             $table->date('fecha');
             $table->rememberToken();
