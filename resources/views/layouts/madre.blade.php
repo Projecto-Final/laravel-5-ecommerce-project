@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
 	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url('css/main.css') }}" rel="stylesheet">
+	<link href="{{ url('css/perfil_user.css') }}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

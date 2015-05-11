@@ -1,0 +1,55 @@
+.img_perfil{
+	border-radius: 200px 200px 200px 200px;
+	-moz-border-radius: 200px 200px 200px 200px;
+	-webkit-border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;
+	background-size: cover;
+	background-position: center;
+	margin-bottom: 5px;
+	margin-top: -70px;
+	border:solid black 2px;
+	width: 200px;
+	height: 200px;
+	clear: both;
+}
+.stadistic_info_user{
+	background-color:rgba(0, 0, 0, 0.68);
+	clear: both;
+	margin-bottom: 0px;
+	text-align: center;
+	padding: 0%;
+	margin-top: 230px;
+}
+.info_active{
+	opacity: !important 1;
+	padding: 1.5%;
+	font-size: 25px;
+}
+.back_img{
+	color:white;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 350px;
+	max-width: 100%;
+	clear: both;
+
+}
+.header_perfil{
+	margin-bottom: 20px;
+}
+.conf_perfil{
+	padding: 5px;
+	border:2px dotted black;
+	background-color:#2B99B5;
+	color:black;
+}
+
+.conf_perfil > button {
+	background-color: #e7e7e7;
+}
+.conf_perfil > button:hover{
+	background-color: #B2B0B0;
+}
