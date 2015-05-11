@@ -11,12 +11,12 @@
 <div id="sns_content" class="wrap layout-m">
 
   <div class="container-fluid header_perfil" >
-    <div class="row back_img" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen) }});">
+    <div class="row back_img" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_background) }});">
       <div id="" class="col-md-12 col-main col-xs-12" >
         <div id="">
           <div class="stadistic_info_user col-xs-12 col-md-12">
            <div class="container">
-            <div class=" img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen) }}) ;"></div>
+            <div class=" img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_perfil) }}) ;"></div>
 
             <?php $id = auth::id();$user = Usuario::find(1);?>
             <div class="col-md-8 info_active col-xs-12">
