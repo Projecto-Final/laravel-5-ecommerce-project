@@ -61,7 +61,7 @@
 											</select>
 											<script>
 											// Script pro rellenar dropdown!
-														$.getJSON("get_allCategories", function(result){
+														$.getJSON("{{ url('get_allCategories') }}", function(result){
 															var scatm = "";
 													        $.each(result, function(i, field){
 													          scatm += "<option value="+field.id+">"+field.nombre+"</option>";
