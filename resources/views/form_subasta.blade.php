@@ -8,6 +8,7 @@
 
 
 @section('info_extra')
+<script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
 <div id="sns_content" class="wrap layout-m new-subasta">
   <div class="container">
     <div class="row">
@@ -31,12 +32,14 @@
                         <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
                         <div class="input-box">
                           <input type="text" id="nombre_producto" name="nombre_producto" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <span class='error' id='nombre_producto_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
                       <div class="field ">
                         <label for="modelo" class="required"><em>*</em>Modelo</label>
                         <div class="input-box">
                           <input type="text" id="modelo" name="modelo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                        <span class='error' id='modelo_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
                     </div>
@@ -49,12 +52,14 @@
                         <label for="localizacion" class="required"><em>*</em>Localización</label>
                         <div class="input-box">
                           <input type="text" id="localizacion" name="localizacion" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                         <span class='error' id='localizacion_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
                       <div class="field ">
                         <label for="estado" class="required"><em>*</em>Estado</label>
                         <div class="input-box">
                           <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <span class='error' id='estado_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
                     </div>
@@ -67,6 +72,7 @@
                         <label for="descripcion" class="required"><em>*</em>Descripción</label>
                         <div class="input-box">
                           <textarea id="descripcion" name="descripcion" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="descarticulo"> </textarea>
+                       <span class='error' id='descripcion_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
                     </div>
@@ -83,9 +89,10 @@
                       <div class="field">
                         <label for="categoria" class="required"><em>*</em>Categoria</label>
                         <div class="input-box">
-                         <select id="categoria" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                         <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
                           <option value="">Cargando...</option>
                         </select>
+                        <span class='error' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
                         <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_allCategories') }}", function(result){
@@ -101,9 +108,10 @@
                         <div class="field ">
                           <label for="subcategoria" class="required"><em>*</em>Sub-Categoria</label>
                           <div class="input-box">
-                           <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                           <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" name="sel_subcategroia" maxlength="255" class="input-text required-entry">
                             <option value="">Seleccione una categoria.</option>
                           </select>
+                           <span class='error' id='sel_subcategroia_error'>&nbsp;Debes escojer una</span></td>
                           <div id="descriptext" class="input-box"></div>
                           <script>
                               // Script pro rellenar dropdown!
@@ -138,12 +146,14 @@
                           <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
                           <div class="input-box">
                             <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <span class='error' id='precio_inicial_error'>&nbsp;Campo obligatorio</span></td>
                           </div>
                         </div>
                         <div class="field ">
                           <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
                           <div class="input-box">
                             <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                            <span class='error' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>
                           </div>
                         </div>
                       </div>
@@ -164,7 +174,9 @@
                   <div class="buttons-set">
                     <p class="required">* Campos requeridos</p>
                     <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
-                    <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button>
+                <!--     <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button> -->
+
+                    <input type='button' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
                   </div>
                 </form>
               </div>
