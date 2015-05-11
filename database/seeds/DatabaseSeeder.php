@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PujasTableSeeder');
 		$this->call('LiniaMsTableSeeder');
 		$this->call('SubcategoriasTableSeeder');
+		$this->call('ValoracionsTableSeeder');
 
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
