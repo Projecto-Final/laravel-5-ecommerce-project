@@ -17,7 +17,9 @@
             <div class="page-title">
               <h1>Nueva subasta</h1>
             </div>
-            <form action="#" method="post" id="form-validate">
+            <form action="{{ url('add_subasta') }}" method="post" id="form-validate">
+              <input type="hidden" name="_method" value="PUT">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="fieldset">
                 <input type="hidden" name="success_url" value="">
                 <input type="hidden" name="error_url" value="">
@@ -26,33 +28,15 @@
                   <li class="fields">
                     <div class="customer-name">
                       <div class="field ">
-                        <label for="narticulo" class="required"><em>*</em>Nombre Articulo</label>
+                        <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
                         <div class="input-box">
-                          <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <input type="text" id="nombre_producto" name="nombre_producto" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                         </div>
                       </div>
                       <div class="field ">
-                        <label for="marticulo" class="required"><em>*</em>Modelo</label>
+                        <label for="modelo" class="required"><em>*</em>Modelo</label>
                         <div class="input-box">
-                          <input type="text" id="marticulo" name="marticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="form-list">
-                  <li class="fields">
-                    <div class="customer-name">
-                      <div class="field ">
-                        <label for="narticulo" class="required"><em>*</em>Localización</label>
-                        <div class="input-box">
-                          <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                        </div>
-                      </div>
-                      <div class="field ">
-                        <label for="marticulo" class="required"><em>*</em>Estado</label>
-                        <div class="input-box">
-                          <input type="text" id="marticulo" name="marticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <input type="text" id="modelo" name="modelo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                         </div>
                       </div>
                     </div>
@@ -62,9 +46,27 @@
                   <li class="fields">
                     <div class="customer-name">
                       <div class="field ">
-                        <label for="narticulo" class="required"><em>*</em>Descripción</label>
+                        <label for="localizacion" class="required"><em>*</em>Localización</label>
                         <div class="input-box">
-                          <textarea id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="comment" form="usrform"> </textarea>
+                          <input type="text" id="localizacion" name="localizacion" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                        </div>
+                      </div>
+                      <div class="field ">
+                        <label for="estado" class="required"><em>*</em>Estado</label>
+                        <div class="input-box">
+                          <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="form-list">
+                  <li class="fields">
+                    <div class="customer-name">
+                      <div class="field ">
+                        <label for="descripcion" class="required"><em>*</em>Descripción</label>
+                        <div class="input-box">
+                          <textarea id="descripcion" name="descripcion" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="descarticulo"> </textarea>
                         </div>
                       </div>
                     </div>
@@ -79,14 +81,14 @@
                   <li class="fields">
                     <div class="customer-name">
                       <div class="field">
-                        <label for="narticulo" class="required"><em>*</em>Categoria</label>
+                        <label for="categoria" class="required"><em>*</em>Categoria</label>
                         <div class="input-box">
-                         <select name="categoria" id="categoria" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                         <select name="categoria" id="categoria" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                           <option value="">Cargando...</option>
                         </select>
                         <script>
                               // Script pro rellenar dropdown!
-                              $.getJSON("get_allCategories", function(result){
+                              $.getJSON("{{ url('get_allCategories') }}", function(result){
                                 var scatm = "";
                                 $.each(result, function(i, field){
                                   scatm += "<option value="+field.id+">"+field.nombre+"</option>";
@@ -97,16 +99,16 @@
                           </div>
                         </div>
                         <div class="field ">
-                          <label for="marticulo" class="required"><em>*</em>Sub-Categoria</label>
+                          <label for="subcategoria" class="required"><em>*</em>Sub-Categoria</label>
                           <div class="input-box">
-                           <select name="categoria" id="subcategoria" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                           <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                             <option value="">Seleccione una categoria.</option>
                           </select>
                           <div id="descriptext" class="input-box"></div>
                           <script>
                               // Script pro rellenar dropdown!
                               $(".field select#categoria").change(function() {
-                                var aux = "get_allSubCategoriesOnCategory/"+$(".field select#categoria").val();
+                                var aux = "{{ url('get_allSubCategoriesOnCategory') }}/"+$(".field select#categoria").val();
                                 $.getJSON(aux , function(result){
                                   var scatm = "";
                                   $.each(result, function(i, field){
@@ -114,8 +116,6 @@
                                   });
                                   $(".field select#subcategoria").html(scatm);
                                 });
-
-
                               });
 
                               $(".field select#subcategoria").change(function() { 
@@ -135,15 +135,15 @@
                     <li class="fields">
                       <div class="customer-name">
                         <div class="field ">
-                          <label for="narticulo" class="required"><em>*</em>Precio inicial</label>
+                          <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
                           <div class="input-box">
-                            <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                            <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                           </div>
                         </div>
                         <div class="field ">
-                          <label for="marticulo" class="required"><em>*</em>Incremento de las pujas</label>
+                          <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
                           <div class="input-box">
-                            <input type="text" id="marticulo" name="marticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                            <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                           </div>
                         </div>
                       </div>
@@ -153,9 +153,9 @@
                     <li class="fields">
                       <div class="customer-name">
                         <div class="field ">
-                          <label for="narticulo" class="required"><em>*</em>Fecha de vencimiento</label>
+                          <label for="fecha_final" class="required"><em>*</em>Fecha de vencimiento</label>
                           <div class="input-box">
-                            <input type="text" id="narticulo" name="narticulo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                            <input type="text" id="fecha_final" name="fecha_final" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                           </div>
                         </div>
                       </li>

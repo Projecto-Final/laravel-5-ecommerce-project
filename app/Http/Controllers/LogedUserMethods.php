@@ -3,6 +3,8 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 
+use Illuminate\Http\Request;
+
 class LogedUserMethods extends Controller {
 
 	/*
@@ -92,9 +94,10 @@ class LogedUserMethods extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function crear_subasta($params)
+	public function add_subasta(Request $request)
 	{
-		
+		$input = $request->all();
+		print_r($input);
 	}
 
 }

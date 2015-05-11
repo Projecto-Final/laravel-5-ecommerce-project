@@ -46,7 +46,8 @@ Route::get('get_allCategories', 'GlobalController@get_allCategories');
 // RUTAS USUARIOS AUTENTIFICADOS ( AUTH )
 
 Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
-Route::post('crear_subasta', 'LogedUserMethods@create_subasta');
+Route::put('add_subasta', 'LogedUserMethods@add_subasta');
+
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
