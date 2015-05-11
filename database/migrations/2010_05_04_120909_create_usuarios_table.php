@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration {
             $table->string('direccion');
             $table->string('imagen_perfil');
             $table->string('imagen_background');
-            $table->integer('reputacion');
+            $table->float('reputacion');
             $table->integer('permisos');
             $table->string('email')->unique();
             $table->string('password', 60);
