@@ -39,17 +39,17 @@ Route::get('iniciar_sesion', function()
 });
 
 
-// RUTAS USUARIOS NO-AUTENTIFICADOS
-Route::get('get_allCategories', 'GuestUserMethods@get_allCategories');
+// RUTAS GLOBALES ( AUTH/GUEST )
+Route::get('get_allCategories', 'GlobalController@get_allCategories');
 
 
-// RUTAS USUARIOS AUTENTIFICADOS
+// RUTAS USUARIOS AUTENTIFICADOS ( AUTH )
 
 Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
 Route::post('crear_subasta', 'LogedUserMethods@create_subasta');
 
 /* Obtener Todas las categorías. */
-Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
+//Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
 
 /* Obtener Todas las Subcategorías. */
 Route::get('get_allSubCategories', 'LogedUserMethods@get_allSubCategories');
