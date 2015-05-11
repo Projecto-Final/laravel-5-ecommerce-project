@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
+use App\Usuario;
+use App\Subcategoria;
 use App\Categoria;
-
 
 class GuestUserMethods extends Controller {
 
@@ -32,5 +33,7 @@ class GuestUserMethods extends Controller {
 	{
 		return $data = Categoria::all();
 	}
+
+
 
 }
