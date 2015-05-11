@@ -98,41 +98,33 @@ class LogedUserMethods extends Controller {
 	 */
 	public function add_subasta(Request $request)
 	{
-		$submitedArray = $request->all();
+		try {
+			$submitedArray = $request->all();
 
-		$userId = Auth::id();
+			$userId = Auth::id();
 
-		$fecha_inicio = date('Y-m-d');
+			$fecha_inicio = date('Y-m-d');
 
-		print_r("modelo PRODUCTO = ".$submitedArray['modelo']."<BR>");
-		print_r("NOMBRE PRODUCTO = ".$submitedArray['nombre_producto']."<BR>");
-		print_r("localizacion PRODUCTO = ".$submitedArray['localizacion']."<BR>");
-		print_r("estado PRODUCTO = ".$submitedArray['estado']."<BR>");
-		print_r("descripcion PRODUCTO = ".$submitedArray['descripcion']."<BR>");
-		print_r("subcategoria PRODUCTO = ".$submitedArray['subcategoria']."<BR>");
-		print_r("precio_inicial PRODUCTO = ".$submitedArray['precio_inicial']."<BR>");
-		print_r("incremento_precio PRODUCTO = ".$submitedArray['incremento_precio']."<BR>");
-		print_r("fecha_final PRODUCTO = ".$submitedArray['fecha_final']."<BR>");
+			$articulo = Articulo::create([
+				'nombre_producto' => $submitedArray['nombre_producto'],
+				'modelo' => $submitedArray['modelo'],
+				'estado' => $submitedArray['estado'],
+				'localizacion' => $submitedArray['localizacion'],
+				'fecha_inicio' => $fecha_inicio,
+				'fecha_final' => $submitedArray['fecha_final'],
+				'precio_inicial' => $submitedArray['precio_inicial'],
+				'subastador_id' => $userId,
+				'subcategoria_id' => $submitedArray['subcategoria'],
+				'incremento_precio' => $submitedArray['incremento_precio'],
+				'comprador_id' => null,
 
-		$articulo = Articulo::create([
-			'nombre_producto' => $submitedArray['nombre_producto'],
-			'modelo' => $submitedArray['modelo'],
-			'estado' => $submitedArray['estado'],
-			'localizacion' => $submitedArray['localizacion'],
-			'fecha_inicio' => $fecha_inicio,
-			'fecha_final' => $submitedArray['fecha_final'],
-			'precio_inicial' => $submitedArray['precio_inicial'],
-			'subastador_id' => $userId,
-			'subcategoria_id' => $submitedArray['subcategoria'],
-			'incremento_precio' => $submitedArray['incremento_precio'],
+				]);
+			return view("index");
 
-			]);
-
-		$articulo::save();
-
+		} catch(\Illuminate\Database\QueryException $e) {
+			return view("home");
+		}
 		
-		
-		echo "<BR>USERID = ".$userId;
 	}
 
 }

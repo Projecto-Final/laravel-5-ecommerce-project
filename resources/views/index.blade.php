@@ -9,6 +9,8 @@
 
 
 @section('info_extra')
+
+
 <div class="contenedor-informacion-clientes">
     <div class="container">
       <div class="row">
@@ -84,23 +86,23 @@
 <?php
 // $p = new Articulo;
 // Esperando implementacion de articulos.
-// $articulos = Articulo::all();
+$articulos = Articulo::all();
 $temp = [["Caca de Perro",2],["Iphone 6",1299],["Smartphone 2",699],["Tablet 4",958],["HentaiKey",6969],["Manga 2",9999]];
 
 ?>
 
-@forelse($temp as $tem)
+@forelse($articulos as $articulo)
 <!-- MUESTRA -->
                         <div class="item item-animate col-xs-6 col-sm-4 col-md-4 col-lg-2 col-phone-12" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                           <div class="item-inner clearfix">
                             <div class="badges"> </div>
-                            <div class="item-img"> <a class="product-image" href="http://demo.snstheme.com/sns-riveshop/index.php/retis-lapen.html" title=" Retis lapen casen "> <span class="image-main"> <img src="http://demo.snstheme.com/sns-riveshop/media/catalog/product/cache/9/small_image/225x281.25/9df78eab33525d08d6e5fb8d27136e95/0/0/00007.jpg" alt=" Retis lapen casen "> </span> </a> </div>
+                            <div class="item-img"> <a class="product-image" href="" title=" Retis lapen casen "> <span class="image-main"> <img src="" alt=" Retis lapen casen "> </span> </a> </div>
                             <div class="item-info">
                               <div class="info-inner">
-                                <div class="item-title"> <a href="http://demo.snstheme.com/sns-riveshop/index.php/retis-lapen.html" onclick="javascript: return true" title=" Retis lapen casen ">{{ $tem[0] }} </a> </div>
+                                <div class="item-title"> <a href="http://demo.snstheme.com/sns-riveshop/index.php/retis-lapen.html" onclick="javascript: return true" title=" Retis lapen casen ">{{ $articulo['nombre_producto'] }} </a> </div>
                                 <div class="item-content clearfix">
                                   <div class="item-price">
-                                    <div class="price-box"> <span class="price">${{ $tem[1] }}</span> </div>
+                                    <div class="price-box"> <span class="price">{{ $articulo['puja_mayor'] }} <i class="fa fa-eur"></i></span> </div>
                                   </div>
                                 </div>
                                 <div class="rating">
