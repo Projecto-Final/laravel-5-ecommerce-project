@@ -72,7 +72,7 @@
 										<div class="field">
 											<label for="confirmation" class="required"><em>*</em>Email</label>
 											<div class="input-box">
-												<input type="email" id="email_address" name="email" value="{{ old('email') }}" title="Correo Electronico" class="input-text validate-email required-entry">
+												<input type="email" id="email_address" name="email" value="{{ old('email') }}" title="Correo Electronico" class="input-text validate-email required-entry"></br>
 												<span class='error' id='email_address_error'>&nbsp;Campo obligatorio</span></td>
 												<span class='error' id='email_address_error2'>&nbsp;Debe ser una direccion de correo valida</span></td>
 											</div>
@@ -82,7 +82,7 @@
 										<div class="field">
 											<label for="password" class="required"><em>*</em>Contraseña</label>
 											<div class="input-box">
-												<input type="password" name="password" id="password" title="password" class="input-text required-entry validate-password">
+												<input type="password" name="password" id="password" title="password" class="input-text required-entry validate-password"></br>
 												<span class='error' id='password_error'>&nbsp;Campo obligatorio</span></td>
 												<span class='error' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span></td>
 											</div>
@@ -90,7 +90,7 @@
 										<div class="field">
 											<label for="confirmacion" class="required"><em>*</em>Confirmar Contraseña</label>
 											<div class="input-box">
-												<input type="password" id="password_confirmation" name="password_confirmation" title="Confirm Password" class="input-text required-entry validate-cpassword">
+												<input type="password" id="password_confirmation" name="password_confirmation" title="Confirm Password" class="input-text required-entry validate-cpassword"></br>
 												<span class='error' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>
 												<span class='error' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>
 											</div>

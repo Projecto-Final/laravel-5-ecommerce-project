@@ -36,7 +36,7 @@
  					//alert(current.checked);
 
  					if(current.checked==false){
- 						alert("Deve aceptar las condiciones de uso y politica de privacidad");
+ 						alert("Debe aceptar las condiciones de uso y politica de privacidad");
  						getIdMsg(current,true,false);
  						//error=true;
  					}
@@ -46,6 +46,12 @@
  				if(val!=""){
 	//el no campo esta vacio
 	getIdMsg(current,false,false);
+	if(current.name=="email"){
+		if(validarEmail(val)==false){
+			getIdMsg(current,true,true);
+		}
+	}
+
 	if(current.name=="password"){
 
 
