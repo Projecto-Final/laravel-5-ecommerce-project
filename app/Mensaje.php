@@ -6,6 +6,13 @@ class Mensaje extends Model {
 
 
 	protected $table = 'mensajes';
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['titulo', 'emisor_id', 'receptor_id'];
+
 
 	public function receptor()
 	{

@@ -26,6 +26,7 @@ class CreateArticulosTable extends Migration {
             $table->boolean('vendido');
             $table->date('fecha_venda');
             $table->double('precio_inicial');
+            $table->double('incremento_precio');
             $table->double('puja_mayor');
             $table->integer('subastador_id')->unsigned();
             $table->foreign('subastador_id')->references('id')->on('usuarios');

@@ -18,7 +18,8 @@ class CreateUsuariosTable extends Migration {
             $table->string('nombre');
             $table->string('apellido');
             $table->string('direccion');
-            $table->string('imagen');
+            $table->string('imagen_perfil');
+            $table->string('imagen_background');
             $table->integer('reputacion');
             $table->integer('permisos');
             $table->string('email')->unique();
