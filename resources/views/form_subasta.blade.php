@@ -83,7 +83,7 @@
                       <div class="field">
                         <label for="categoria" class="required"><em>*</em>Categoria</label>
                         <div class="input-box">
-                         <select name="categoria" id="categoria" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                         <select id="categoria" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                           <option value="">Cargando...</option>
                         </select>
                         <script>
