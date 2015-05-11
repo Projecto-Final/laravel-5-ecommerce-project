@@ -23,7 +23,7 @@
 .info_active{
 	opacity: !important 1;
 	padding: 1.5%;
-	font-size: 25px;
+	font-size: 20px;
 }
 .back_img{
 	color:white;
@@ -33,7 +33,6 @@
 	-o-background-size: cover;
 	background-size: cover;
 	height: 350px;
-	max-width: 100%;
 	clear: both;
 
 }
@@ -42,14 +41,31 @@
 }
 .conf_perfil{
 	padding: 5px;
-	border:2px dotted black;
-	background-color:#2B99B5;
 	color:black;
 }
 
 .conf_perfil > button {
-	background-color: #e7e7e7;
+	-webkit-border-radius: 87px;
+	-moz-border-radius: 87px;
+	border-radius: 87px;
+	color:white;
+	width:100%;
+	background-color: rgba(6, 154, 236, 0.43);
 }
 .conf_perfil > button:hover{
+	width:100%;
 	background-color: #B2B0B0;
+}
+.contact-info{
+	font-size: 15px;
+}
+
+.contact-info > p{
+	font-size: 20px;
+	border-bottom: 10px solid #e5e5e5;
+    font-weight: bold;
+    margin-bottom: 10px;
+    }
+.contact-info > span{
+	text-align: inline;
 }
