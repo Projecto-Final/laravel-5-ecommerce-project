@@ -46,20 +46,13 @@
          <div class="bb"><a href="mis-pujas" role="button">Mis Ventas</a></div>
          <div class="bb"><a href="usuario" role="button">Mis valoraciones</a></div>
          <div class="bb"><a href="mis-pujas" role="button">Mis Subastas</a></div>
-       </div>
-       <div class="col-md-6 contact-info" >
-        <h3 >Información básica</h3>
-        <p>Apodo :</p>{{ Auth::user()->username }}
-        <p>Nombre :</p>{{ Auth::user()->nombre }}
-        <p>Apellidos :</p>{{ Auth::user()->apellido }}
-        <p>Direccion :</p>{{ Auth::user()->direccion }}
-        <p>Email :</p>{{ Auth::user()->email }}
-        <p>Status :</p>{{ Auth::user()->permisos }} Standard
-        <p>Fecha de creación de la cuenta :</p>{{ Auth::user()->created_at }}
+        </div>
+        <div class="col-md-6 contact-info" >
+          <h3>Mis pujas</h3>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 @stop

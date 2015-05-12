@@ -21,6 +21,8 @@ Route::get('home', 'HomeController@index');
 
 Route::get('usuario', 'HomeController@cp_usuario');
 
+Route::get('mis-pujas', 'HomeController@puja_usuario');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

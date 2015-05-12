@@ -43,4 +43,9 @@ class HomeController extends Controller {
 		return view('cp_usuario');
 	}
 
+	public function puja_usuario()
+	{
+		return view('puja_usuario');
+	}
+
 }

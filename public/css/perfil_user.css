@@ -43,8 +43,14 @@
 	padding: 5px;
 	color:black;
 }
-
-.conf_perfil > button {
+.conf_perfil > a{
+	text-decoration: none;
+	color:white;
+}
+.conf_perfil > .bb {
+	font-size: 18px;
+	margin-bottom: 10px;
+	text-align: center;
 	-webkit-border-radius: 87px;
 	-moz-border-radius: 87px;
 	border-radius: 87px;
@@ -52,8 +58,8 @@
 	width:100%;
 	background-color: rgba(6, 154, 236, 0.43);
 }
-.conf_perfil > button:hover{
-	width:100%;
+.conf_perfil > .bb:hover{
+	width: 100%;
 	background-color: #B2B0B0;
 }
 .contact-info{
@@ -69,3 +75,4 @@
 .contact-info > span{
 	text-align: inline;
 }
+
