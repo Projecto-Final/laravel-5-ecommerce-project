@@ -32,7 +32,7 @@ class CreateArticulosTable extends Migration {
             $table->foreign('subastador_id')->references('id')->on('usuarios');
             $table->integer('subcategoria_id')->unsigned();
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
-            $table->integer('comprador_id')->unsigned();
+            $table->integer('comprador_id')->unsigned()->nullable();
             $table->foreign('comprador_id')->references('id')->on('usuarios');
             $table->rememberToken();
             $table->timestamps();
