@@ -64,3 +64,7 @@ Route::get('get_allSubCategoriesOnCategory/{idCategoria}', 'LogedUserMethods@get
 
 /* Obtener Todas las Subcategorías en una categorías. */
 Route::get('get_subCategoryDescription/{idSubCategoria}', 'LogedUserMethods@get_subCategoryDescription');
+
+
+/* Obtener la informacion del usuario */
+Route::get('get_perfil', 'LogedUserMethods@get_perfil');

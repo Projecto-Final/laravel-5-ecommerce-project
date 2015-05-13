@@ -127,4 +127,18 @@ class LogedUserMethods extends Controller {
 		
 	}
 
+
+
+
+
+	/* Methods perfil de usuario*/
+
+
+	/*Obtener usuario de la sesion iniciada */
+	public function get_perfil()
+	{			
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		return $user;
+	}
 }
