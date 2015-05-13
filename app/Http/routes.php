@@ -44,6 +44,8 @@ Route::get('iniciar_sesion', function()
 // RUTAS GLOBALES ( AUTH/GUEST )
 Route::get('get_allCategories', 'GlobalController@get_allCategories');
 
+Route::get('subasta/{idSubasta}', 'GlobalController@get_selectedSubasta');
+
 
 // RUTAS USUARIOS AUTENTIFICADOS ( AUTH )
 
