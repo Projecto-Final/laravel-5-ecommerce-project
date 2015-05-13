@@ -31,6 +31,5 @@ class GlobalController extends Controller {
     public function get_selectedSubasta($idArticulo)
     {
         $data = Articulo::find($idArticulo);
-        echo $idArticulo;
     }
 }
