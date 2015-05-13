@@ -18,7 +18,7 @@
             <div class="page-title">
               <h1>Nueva subasta</h1>
             </div>
-            <form action="{{ url('add_subasta') }}" method="post" id="form-validate">
+            <form action="{{ url('add_subasta') }}" method="post" enctype="multipart/form-data" id="form-validate">
               <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="fieldset">

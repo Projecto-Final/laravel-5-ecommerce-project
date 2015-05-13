@@ -7,6 +7,7 @@ use Session;
 use Auth;
 use Illuminate\Http\Request;
 
+
 class LogedUserMethods extends Controller {
 
 	/*
@@ -122,11 +123,14 @@ class LogedUserMethods extends Controller {
 				]);
 
 			$articulo->id;
-
+echo "<pre>";
 			//$img = Imagen::create()
+			echo "</pre>";
 
-			Request::file('imgart_1')->move("/public");
+			$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
+			$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 
+			$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
 			//return view("index");
 
 		//} catch(\Illuminate\Database\QueryException $e) {
