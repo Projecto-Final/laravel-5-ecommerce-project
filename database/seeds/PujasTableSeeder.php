@@ -11,6 +11,7 @@ class PujasTableSeeder extends Seeder {
 
 		Puja::create([
 			'cantidad' => 300,
+			'superada' => false,
 			'confpuja_id' => -1,
 			'articulo_id' => 2,
 			'pujador_id' => 2,
@@ -19,6 +20,7 @@ class PujasTableSeeder extends Seeder {
 
 		Puja::create([
 			'cantidad' => 120,
+			'superada' => false,
 			'confpuja_id' => -1,
 			'articulo_id' => 3,
 			'pujador_id' => 1,

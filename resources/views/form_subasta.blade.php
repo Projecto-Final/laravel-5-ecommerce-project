@@ -18,7 +18,7 @@
             <div class="page-title">
               <h1>Nueva subasta</h1>
             </div>
-            <form action="{{ url('add_subasta') }}" method="post" id="form-validate">
+            <form action="{{ url('add_subasta') }}" method="post" enctype="multipart/form-data" id="form-validate">
               <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="fieldset">
@@ -87,50 +87,41 @@
                   <li class="fields">
                     <div class="customer-name">
                       <div class="field ">
-                        <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
-                        <div class="input-box">
-
-                          <form class="form-horizontal" role="form" method="POST" action="/form/create">
-                            <input type="hidden" name="_token" value="">
-                            <div class="form-group">
-                              <label for="email" class="col-sm-3 control-label">IMAGENES</label> <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> + IMAGENES</button>
-                              <div class="col-sm-6">
-                                <input type="file" id="template_file" name="img0"><BR>
-                                <script>
-
-                                </script>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="col-sm-offset-3 col-sm-3">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> SUBIR IMAGENES</button>
-                              </div>
-                            </div>
-                          </form>
-                          <pre class="previewImages"></pre>
-
+                        <label for="email" class="control-label">IMAGENES</label>
+                        <div id="img_container">
+                          <input type="file" id="imgart_1" class="cnt" name="img_0"> <BR>
                         </div>
+                        
+                        <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> SUBIR IMAGENES</button>
+                        <script>
+                          $("#masImagenes").click(function() {
+                            if($(".cnt").length < 6){
+                              var addto = "#imgart_"+$(".cnt").length;
+                              $(addto).after('<input type="file" class="cnt" id="imgart_'+($(".cnt").length+1)+'" name="img'+$(".cnt").length+'">');
+                            }
+                          });
+                        </script>
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="fieldset">
-              <input type="hidden" name="success_url" value="">
-              <input type="hidden" name="error_url" value="">
-              <h2 class="legend">Configuracion</h2>
-              <ul class="form-list">
-                <li class="fields">
-                  <div class="customer-name">
-                    <div class="field">
-                      <label for="categoria" class="required"><em>*</em>Categoria</label>
-                      <div class="input-box">
-                       <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
-                        <option value="">Cargando...</option>
-                      </select>
-                      <span class='error' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
-                      <script>
+                  </li>
+                </ul>
+              </div>
+              <div class="fieldset">
+                <input type="hidden" name="success_url" value="">
+                <input type="hidden" name="error_url" value="">
+                <h2 class="legend">Configuracion</h2>
+                <ul class="form-list">
+                  <li class="fields">
+                    <div class="customer-name">
+                      <div class="field">
+                        <label for="categoria" class="required"><em>*</em>Categoria</label>
+                        <div class="input-box">
+                         <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
+                          <option value="">Cargando...</option>
+                        </select>
+                        <span class='error' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
+                        <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_allCategories') }}", function(result){
                                 var scatm = "";
@@ -213,7 +204,7 @@
                     <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
                     <!--     <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button> -->
 
-                    <input type='button' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
+                    <input type='submit' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
                   </div>
                 </form>
               </div>

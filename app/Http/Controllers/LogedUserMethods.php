@@ -3,10 +3,16 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
+use App\Imagen;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use DB;
+=======
+
+
+>>>>>>> origin/master
 class LogedUserMethods extends Controller {
 
 	/*
@@ -98,7 +104,7 @@ class LogedUserMethods extends Controller {
 	 */
 	public function add_subasta(Request $request)
 	{
-		try {
+		//try {
 			$submitedArray = $request->all();
 
 			$userId = Auth::id();
@@ -114,16 +120,33 @@ class LogedUserMethods extends Controller {
 				'fecha_final' => $submitedArray['fecha_final'],
 				'precio_inicial' => $submitedArray['precio_inicial'],
 				'subastador_id' => $userId,
+				'comprador_id' => null,
 				'subcategoria_id' => $submitedArray['subcategoria'],
 				'incremento_precio' => $submitedArray['incremento_precio'],
 				'comprador_id' => null,
 
 				]);
-			return view("index");
 
-		} catch(\Illuminate\Database\QueryException $e) {
-			return view("home");
-		}
+			$articulo->id;
+echo "<pre>";
+			//
+			echo "</pre>";
+
+			$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
+			$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+
+			$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
+
+			$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			//return view("index");
+
+		//} catch(\Illuminate\Database\QueryException $e) {
+		//	return view("home");
+		//}
 		
 	}
 
