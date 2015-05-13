@@ -133,12 +133,51 @@ class LogedUserMethods extends Controller {
 
 	/* Methods perfil de usuario*/
 
-
 	/*Obtener usuario de la sesion iniciada */
 	public function get_perfil()
 	{			
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		return $user;
+	}
+
+	/*Obtener pujas del usuario */
+
+	public function get_pujas(){
+		$id = Auth::user()->id;
+		$pujas = Usuario::find($id)->pujas;
+		return $pujas;
+	}
+
+	/*Obtener ventas del usuario */
+
+	public function get_ventas(){
+		$id = Auth::user()->id;
+		$ventas = Usuario::find($id)->ventas;
+		return $ventas;
+	}
+
+	/*Obtener valoraciones del usuario */
+
+	public function get_valoraciones(){
+		$id = Auth::user()->id;
+		$pujas = Usuario::find($id)->pujas;
+		return $pujas;
+	}
+
+	/*Obtener subastas del usuario */
+
+	public function get_subastas(){
+		$id = Auth::user()->id;
+		$pujas = Usuario::find($id)->pujas;
+		return $pujas;
+	}
+
+	/*Obtener pujas automaticas del usuario */
+
+	public function get_pujasAuto(){
+		$id = Auth::user()->id;
+		$pujas = Usuario::find($id)->pujas;
+		return $pujas;
 	}
 }
