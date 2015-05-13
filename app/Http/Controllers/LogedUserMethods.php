@@ -7,12 +7,7 @@ use App\Imagen;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use DB;
-=======
 
-
->>>>>>> origin/master
 class LogedUserMethods extends Controller {
 
 	/*
