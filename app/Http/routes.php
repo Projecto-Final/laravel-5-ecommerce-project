@@ -66,5 +66,20 @@ Route::get('get_allSubCategoriesOnCategory/{idCategoria}', 'LogedUserMethods@get
 Route::get('get_subCategoryDescription/{idSubCategoria}', 'LogedUserMethods@get_subCategoryDescription');
 
 
+
+
+
+/*Routes perfil usuario*/
+
 /* Obtener la informacion del usuario */
 Route::get('get_perfil', 'LogedUserMethods@get_perfil');
+/* Obtener  pujas del usuario */
+Route::get('get_pujas', 'LogedUserMethods@get_pujas');
+/* Obtener  ventas del usuario */
+Route::get('get_ventas', 'LogedUserMethods@get_ventas');
+/* Obtener  valoraciones del usuario */
+Route::get('get_valoraciones', 'LogedUserMethods@get_valoraciones');
+/* Obtener  subastas del usuario */
+Route::get('get_subastas', 'LogedUserMethods@get_subastas');
+/* Obtener  pujas_automatica del usuario */
+Route::get('get_pujasAuto', 'LogedUserMethods@get_pujasAuto');
