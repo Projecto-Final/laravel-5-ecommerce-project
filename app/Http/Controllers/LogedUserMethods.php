@@ -98,7 +98,7 @@ class LogedUserMethods extends Controller {
 	 */
 	public function add_subasta(Request $request)
 	{
-		try {
+		//try {
 			$submitedArray = $request->all();
 
 			$userId = Auth::id();
@@ -114,16 +114,24 @@ class LogedUserMethods extends Controller {
 				'fecha_final' => $submitedArray['fecha_final'],
 				'precio_inicial' => $submitedArray['precio_inicial'],
 				'subastador_id' => $userId,
+				'comprador_id' => null,
 				'subcategoria_id' => $submitedArray['subcategoria'],
 				'incremento_precio' => $submitedArray['incremento_precio'],
 				'comprador_id' => null,
 
 				]);
-			return view("index");
 
-		} catch(\Illuminate\Database\QueryException $e) {
-			return view("home");
-		}
+			$articulo->id;
+
+			//$img = Imagen::create()
+
+			Request::file('imgart_1')->move("/public");
+
+			//return view("index");
+
+		//} catch(\Illuminate\Database\QueryException $e) {
+		//	return view("home");
+		//}
 		
 	}
 

@@ -204,7 +204,7 @@
                     <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
                     <!--     <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button> -->
 
-                    <input type='button' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
+                    <input type='submit' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
                   </div>
                 </form>
               </div>
