@@ -2,7 +2,7 @@
 @extends('layouts.madre')
 
 @section('extclases')
-<link href="{{ url('css/subasta.css') }}" rel="stylesheet">
+
 @stop
 
 @section('titulo', 'PAGINA PRINCIPAL')
