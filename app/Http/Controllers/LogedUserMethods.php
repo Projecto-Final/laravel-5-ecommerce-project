@@ -118,6 +118,7 @@ class LogedUserMethods extends Controller {
 				'comprador_id' => null,
 				'subcategoria_id' => $submitedArray['subcategoria'],
 				'incremento_precio' => $submitedArray['incremento_precio'],
+				'puja_mayor' => $submitedArray['precio_inicial'],
 				'comprador_id' => null,
 
 				]);
