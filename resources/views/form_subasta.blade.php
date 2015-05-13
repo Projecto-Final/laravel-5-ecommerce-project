@@ -8,7 +8,6 @@
 
 
 @section('info_extra')
-
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
 <div id="sns_content" class="wrap layout-m new-subasta">
   <div class="container">
@@ -90,8 +89,24 @@
                       <div class="field ">
                         <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
                         <div class="input-box">
-                          <input type="text" id="nombre_producto" name="nombre_producto" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                          <span class='error' id='nombre_producto_error'>&nbsp;Campo obligatorio</span></td>
+
+                          <form class="form-horizontal" role="form" method="POST" action="/form/create">
+                            <input type="hidden" name="_token" value="">
+                            <div class="form-group">
+                              <label for="email" class="col-sm-3 control-label">IMAGENES</label> <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> + IMAGENES</button>
+                              <div class="col-sm-6">
+                                <input type="file" id="template_file" name="img0"><BR>
+                                <script>
+
+                                </script>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-3">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> SUBIR IMAGENES</button>
+                              </div>
+                            </div>
+                          </form>
                           <pre class="previewImages"></pre>
 
                         </div>
