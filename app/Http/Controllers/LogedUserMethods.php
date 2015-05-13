@@ -3,6 +3,7 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
+use App\Imagen;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
@@ -124,13 +125,19 @@ class LogedUserMethods extends Controller {
 
 			$articulo->id;
 echo "<pre>";
-			//$img = Imagen::create()
+			//
 			echo "</pre>";
 
 			$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
 			$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 
 			$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
+
+			$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
 			//return view("index");
 
 		//} catch(\Illuminate\Database\QueryException $e) {
