@@ -24,11 +24,8 @@
             <?php $id = auth::id();$user = Usuario::find(1);?>
             <div class="col-md-8 info_active col-xs-12">
               Compras {{$user->valCompra->count()}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$user->valVenta->count()}} <i class="fa fa-money"></i>
-              || Reputacion <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+              || Reputacion
+              <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$user->reputacion}}"></input>
               || Pujas {{$user->pujas->count()}} <i class="fa fa-fire"></i>
             </div> 
           </div>
