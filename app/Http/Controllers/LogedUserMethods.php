@@ -6,7 +6,7 @@ use App\Articulo;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
-
+use DB;
 class LogedUserMethods extends Controller {
 
 	/*
@@ -145,7 +145,10 @@ class LogedUserMethods extends Controller {
 
 	public function get_pujas(){
 		$id = Auth::user()->id;
-		$pujas = Usuario::find($id)->pujas;
+		$pujas[0] = Usuario::find($id)->pujas;
+		for ($i=0; $i < count($pujas[0]); $i++) { 
+			$pujas[1][$i] = $pujas[0][$i]->articulo;
+		}
 		return $pujas;
 	}
 
@@ -153,31 +156,23 @@ class LogedUserMethods extends Controller {
 
 	public function get_ventas(){
 		$id = Auth::user()->id;
-		$ventas = Usuario::find($id)->ventas;
+		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->Where ('subastador_id','=',$id)->get();
 		return $ventas;
 	}
 
-	/*Obtener valoraciones del usuario */
-
-	public function get_valoraciones(){
-		$id = Auth::user()->id;
-		$pujas = Usuario::find($id)->pujas;
-		return $pujas;
-	}
-
-	/*Obtener subastas del usuario */
+	// /*Obtener subastas del usuario */
 
 	public function get_subastas(){
 		$id = Auth::user()->id;
-		$pujas = Usuario::find($id)->pujas;
-		return $pujas;
+		$subastas = DB::table('articulos')->where('comprador_id', '=', 0)->Where ('subastador_id','=',$id)->get();		
+		return $subastas;
 	}
 
-	/*Obtener pujas automaticas del usuario */
+	// /*Obtener pujas automaticas del usuario */
 
-	public function get_pujasAuto(){
-		$id = Auth::user()->id;
-		$pujas = Usuario::find($id)->pujas;
-		return $pujas;
-	}
+	// public function get_pujasAuto(){
+	// 	$id = Auth::user()->id;
+	// 	$pujas = Usuario::find($id)->pujas;
+	// 	return $pujas;
+	// }
 }

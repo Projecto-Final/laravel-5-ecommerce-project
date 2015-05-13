@@ -21,18 +21,19 @@
            <div class="container">
             <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_perfil) }}) ;"></div>
 
-            <?php $id = auth::id();$user = Usuario::find(1);?>
+            <?php $id = auth::id();$user = Usuario::find($id);?>
             <div class="col-md-8 info_active col-xs-12">
               Compras {{$user->valCompra->count()}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$user->valVenta->count()}} <i class="fa fa-money"></i>
-              || Reputacion
-              <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$user->reputacion}}"></input>
               || Pujas {{$user->pujas->count()}} <i class="fa fa-fire"></i>
-            </div> 
-          </div>
+            </br>
+            Reputacion
+            <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$user->reputacion}}"></input>
+          </div> 
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div class="container">
@@ -41,16 +42,16 @@
       <div id="sns_mainmidle background_user">
         <div class="col-md-3 conf_perfil">
          <button class="bb" onclick="perfil();" >Perfil</button>
-         <button class="bb" onclick="" >Mis Pujas</button>
+         <button class="bb" onclick="pujas();" >Mis Pujas</button>
          <button class="bb" onclick="" >Pujas automaticas</button>
-         <button class="bb" onclick="" >Mis Ventas</button>
+         <button class="bb" onclick="ventas();" >Mis Ventas</button>
          <button class="bb" onclick="" >Mis valoraciones</button>
-         <button class="bb" onclick="" >Mis Subastas</button>
+         <button class="bb" onclick="subastas();" >Mis Subastas</button>
        </div>
        <div class="col-md-9 contact-info"></div>
-    </div>
-  </div>
-</div>
+     </div>
+   </div>
+ </div>
 </div>
 
 
