@@ -100,6 +100,7 @@ class LogedUserMethods extends Controller {
 	public function add_subasta(Request $request)
 	{
 		try {
+
 			$submitedArray = $request->all();
 
 			$userId = Auth::id();
@@ -186,13 +187,15 @@ class LogedUserMethods extends Controller {
 				'descripcion' => "blabla",
 				]);
 			}
-
 			
-			return view("index");
+			return redirect('subasta/'.$articulo->id);
+			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
 
-		} catch(\Illuminate\Database\QueryException $e) {
-			return view('index', ['notificacion_aviso' => 'La subasta contiene un error, por favor, comprueba que los']);
+
+		} catch(ErrorException $e) {
+			return view('index', ['notificacion_error' => 'La subasta contiene un error, por favor, comprueba que los']);
 		}
+
 		
 	}
 

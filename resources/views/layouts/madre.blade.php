@@ -42,7 +42,7 @@
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
 		<script>
-			notifications();
+			notifications("tiipo","texto descr","enlace");
 		</script>
 
 		<div id="container-fluid">
