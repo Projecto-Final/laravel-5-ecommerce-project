@@ -35,9 +35,6 @@
 				}, timeInMs);
 				timeInMs = timeInMs+extraTimePerNotification;
 				}
-				
-
-				
 	  }
 	  function closeNotificationBox(boxID){
 				$('.notification-box'+boxID+'').css("transition","all 1s");

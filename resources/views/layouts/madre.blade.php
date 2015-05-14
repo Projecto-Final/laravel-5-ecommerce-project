@@ -35,17 +35,16 @@
 	</head>
 	<body>
 		<div class="col-md-offset-3">
-			<div class="notification-box error"><p><b>error: </b>Lorem ipsum dolor is a caucasic ununchecked text that is very long on extension margen</p><i class="glyphicon glyphicon-remove-circle"></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
+			<div class="notification-box error"><p><b>error: </b> text</p><i class=""></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box warning"><p><b>warning: </b>text</p><i class="glyphicon glyphicon-warning-sign"></i><div onClick="closeNotificationBox('.warning')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box advice"><p><b>advice: </b>text</p><i class="glyphicon glyphicon-bell"></i><div onClick="closeNotificationBox('.advice')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box notice"><p><b>notice: </b>text</p><i class="glyphicon glyphicon-grain"></i><div onClick="closeNotificationBox('.notice')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
-
 		<script>
-
 			notifications();
 		</script>
+
 		<div id="container-fluid">
 			<div class="contenedor-header">
 				<div class="m-usuario">
