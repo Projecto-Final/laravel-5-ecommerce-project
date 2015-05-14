@@ -27,12 +27,11 @@
             @endif
             <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$imagenes[$i]->imagen) }}');"></div>
           </a>
-          @endfor
-
+        @endfor
         </div>
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
-            <h5>PRECIO ACTUAL DEL ARTICULO</h5>
+            <h5>PRECIO ACTUAL DEL ARTICULO - FECHA CIERRE PUJA {{ $subasta['fecha_final'] }}</h5>
             <form class="form-inline">
               <div class="form-group">
                 <div class="input-group">
@@ -49,7 +48,7 @@
               <td>Enviament:</td>
               <td colspan="3">
                 45,50 EUR<br>
-                Ubicacio de l'article: suecia<br>
+                Ubicacio de l'article: {{ $subasta['localizacion']}}<br>
                 Envia a: tot el mon.
               </td>
             </tr>

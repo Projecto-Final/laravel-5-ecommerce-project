@@ -94,7 +94,7 @@ $img = Articulo::find(4)->imagenes;
 @forelse($articulos as $articulo)
 <!-- MUESTRA -->
 
-                        <div class="item item-animate col-xs-6 col-sm-4 col-md-4 col-lg-2 col-phone-12" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
+                        <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                           <div class="item-inner clearfix">
                             <div class="badges"> </div>
                             <div class="item-img"> <a class="product-image" href="{{ url('subasta/'.$articulo['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/subastas/'.Imagen::where('articulo_id', '=', $articulo['id'])->firstOrFail()->imagen) }}" alt=" Retis lapen casen "> </span> </a> </div>

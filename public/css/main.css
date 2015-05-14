@@ -423,6 +423,7 @@ SUBASTAS POR CATEGORIAS
   overflow: hidden;
 }
 .products-grid .item .item-inner .item-img .product-image {
+  height: 150px;
   display: block;
   text-align: center;
   position: relative;
