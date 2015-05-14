@@ -83,3 +83,5 @@ Route::get('get_valoraciones', 'LogedUserMethods@get_valoraciones');
 Route::get('get_subastas', 'LogedUserMethods@get_subastas');
 /* Obtener  pujas_automatica del usuario */
 Route::get('get_pujasAuto', 'LogedUserMethods@get_pujasAuto');
+/* Obtener  compras del usuario */
+Route::get('get_compras', 'LogedUserMethods@get_compras');

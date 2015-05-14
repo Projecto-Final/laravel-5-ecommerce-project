@@ -18,6 +18,37 @@ function perfil(){
 }	
 
 
+function compras(){
+	var url = "get_compras";
+	var txt="";
+	txt+="<h3>Mis Ventas</h3>"
+	txt+='<table class="table table-striped">';
+	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";
+	txt +="<th>Producto</th>";
+	txt +="<th>Fecha inicio</th>";
+	txt +="<th>Fecha final</th>";
+	txt +="<th>Precio inicial</th>";
+	txt +="<th>Fecha venta</th>";
+	txt +="<th>Precio venta</th></tr></thead>";
+	$.get(url,function(data,status){
+		
+		for (var i = 0; i < data.length; i++) {
+			txt+= '<tr class="info">';
+			txt +="<td><img src='http://www.imagenesparadescargar.org/wp-content/uploads/buscar-Fotos-de-skate..jpg' height='auto' width='60px'/></td>";
+			txt +="<td>"+data[i].nombre_producto+"</td>";
+			txt +="<td>"+data[i].fecha_inicio+"</td>";
+			txt +="<td>"+data[i].fecha_final+"</td>";
+			txt +="<td>"+data[i].precio_inicial+"</td>";
+			txt +="<td>"+data[i].fecha_venda+"</td>";
+			txt +="<td>"+data[i].precio_venta+"</td></tr>";
+		};
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});
+}
+
+
 function ventas(){
 	var url = "get_ventas";
 	var txt="";
@@ -64,7 +95,7 @@ function pujas(){
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
 			if(data[2][i][0]!=null){
-			txt +="<td>"+data[2][i][0].imagen+"</td>";
+				txt +="<td>"+data[2][i][0].imagen+"</td>";
 			}else{
 				txt +="<td>NO</td>";
 			}
