@@ -825,7 +825,7 @@ ul.form-list, ul.tags-list {
   list-style: none;
   padding: 0;
 }
-.error{
+.errorJS{
   color: red;
   display:none;
 }

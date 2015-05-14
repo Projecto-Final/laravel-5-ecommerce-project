@@ -37,14 +37,14 @@
 												<label for="nombre" class="required"><em>*</em>Nombre</label>
 												<div class="input-box">
 													<input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" title="Nombre" maxlength="255" class="input-text required-entry">
-													<span class='error' id='nombre_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span></td>
 												</div>
 											</div>
 											<div class="field name-lastname">
 												<label for="apellidos" class="required"><em>*</em>Apellidos</label>
 												<div class="input-box">
 													<input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" title="Apellido" maxlength="255" class="input-text required-entry">
-													<span class='error' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
 												</div>
 											</div>
 										</div>
@@ -53,7 +53,7 @@
 										<label for="apodo" class="required"><em>*</em>Apodo</label>
 										<div class="input-box">
 											<input type="text" id="username" class="input-text validate-email required-entry"  name="username" value="{{ old('username') }}">
-											<span class='error' id='username_error'>&nbsp;Campo obligatorio</span></td>
+											<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span></td>
 										</div>
 									</li>
 									<li class="control">
@@ -61,7 +61,7 @@
 											<input type="checkbox" name="politica_privacidad" title="Sign Up for Newsletter" value="1" id="politica_privacidad" class="checkbox">
 										</div>
 										<label for="politica_privacidad">Acepto las condiciones de uso y politica de privacidad.</label></td>
-										<span class='error' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span></td>
+										<span class='errorJS' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span></td>
 									</li>
 								</ul>
 							</div>
@@ -73,8 +73,8 @@
 											<label for="confirmation" class="required"><em>*</em>Email</label>
 											<div class="input-box">
 												<input type="email" id="email_address" name="email" value="{{ old('email') }}" title="Correo Electronico" class="input-text validate-email required-entry"></br>
-												<span class='error' id='email_address_error'>&nbsp;Campo obligatorio</span></td>
-												<span class='error' id='email_address_error2'>&nbsp;Debe ser una direccion de correo valida</span></td>
+												<span class='errorJS' id='email_address_error'>&nbsp;Campo obligatorio</span></td>
+												<span class='errorJS' id='email_address_error2'>&nbsp;Debe ser una direccion de correo valida</span></td>
 											</div>
 										</div>
 									</li>
@@ -83,16 +83,16 @@
 											<label for="password" class="required"><em>*</em>Contraseña</label>
 											<div class="input-box">
 												<input type="password" name="password" id="password" title="password" class="input-text required-entry validate-password"></br>
-												<span class='error' id='password_error'>&nbsp;Campo obligatorio</span></td>
-												<span class='error' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span></td>
+												<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span></td>
+												<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span></td>
 											</div>
 										</div>
 										<div class="field">
 											<label for="confirmacion" class="required"><em>*</em>Confirmar Contraseña</label>
 											<div class="input-box">
 												<input type="password" id="password_confirmation" name="password_confirmation" title="Confirm Password" class="input-text required-entry validate-cpassword"></br>
-												<span class='error' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>
-												<span class='error' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>
+												<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>
+												<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>
 											</div>
 										</div>
 									</li>
