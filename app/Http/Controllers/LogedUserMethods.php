@@ -4,6 +4,7 @@ use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
 use App\Imagen;
+use App\Valoracion;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
@@ -171,60 +172,60 @@ class LogedUserMethods extends Controller {
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			if(isset($submitedArray['img_1'])){
 				$img_extension = $submitedArray['img_1']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_1']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			if(isset($submitedArray['img_2'])){
 				$img_extension = $submitedArray['img_2']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_2']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			if(isset($submitedArray['img_3'])){
 				$img_extension = $submitedArray['img_3']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_3']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			if(isset($submitedArray['img_4'])){
 				$img_extension = $submitedArray['img_4']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_4']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			if(isset($submitedArray['img_5'])){
 				$img_extension = $submitedArray['img_5']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 				$submitedArray['img_5']->move(public_path("images/subastas"),$img_name);
 				$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+					'articulo_id' => $articulo->id,
+					'imagen' => $img_name,
+					'descripcion' => "blabla",
+					]);
 			}
 			
 			return redirect('subasta/'.$articulo->id);
@@ -253,17 +254,16 @@ class LogedUserMethods extends Controller {
 	}
 	// /*Obtener pujas del usuario */
 
-	 public function get_pujas(){
-	 	$id = Auth::user()->id;
+	public function get_pujas(){
+		$id = Auth::user()->id;
 		$pujas[0] = Usuario::find($id)->pujas;
-	 	for ($i=0; $i < count($pujas[0]); $i++) { 
-	 		$pujas[1][$i] = $pujas[0][$i]->articulo;
-	 		$pujas[2][$i] = $pujas[0][$i]->articulo->imagenes;
-	 		$pujas[3][$i] = $pujas[0][$i]->autoPuja;
-	 	}
-	 	var_dump($pujas);
-	 	return $pujas;
-	 }
+		for ($i=0; $i < count($pujas[0]); $i++) { 
+			$pujas[1][$i] = $pujas[0][$i]->articulo;
+			$pujas[2][$i] = $pujas[0][$i]->articulo->imagenes;
+			$pujas[3][$i] = $pujas[0][$i]->autoPuja;
+		}
+		return $pujas;
+	}
 
 
 
@@ -271,7 +271,7 @@ class LogedUserMethods extends Controller {
 
 	public function get_ventas(){
 		$id = Auth::user()->id;
-		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('subastador_id','!=',-1)->where('subastador_id','=',$id)->get();// ventas
+		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('subastador_id','=',$id)->get();// ventas
 		return $ventas;
 	}
 
@@ -279,18 +279,21 @@ class LogedUserMethods extends Controller {
 
 	public function get_subastas(){
 		$id = Auth::user()->id;
-		$subastas[0] = DB::table('articulos')->where('comprador_id', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
-		$subastas[1] = DB::table('articulos')->where('comprador_id', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
+		$subastas[0] = DB::table('articulos')->where('precio_venta', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
+		$subastas[1] = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
 		return $subastas;
 	}
 
 	// /*Obtener pujas automaticas del usuario */
 
 
-	public function get_valoraciones(){		
+	public function get_valoraciones(){	
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
-		$val = DB::table('valoracions')->where('valorado_id','=',$id)->get();
+		$val[0] = $user->valVenta;
+		for ($i=0; $i < count($val[0]); $i++) { 
+			$val[1][$i] = $val[0][$i]->validante->nombre;
+		}
 		return $val;
 	}
 
