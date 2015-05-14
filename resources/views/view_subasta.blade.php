@@ -13,12 +13,15 @@
 @section('info_extra')
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
 
-{{ $imagenes }}
-
 <div id="single-bid-view">
 <div class="container">
   <section class="row">
         <div class="col-lg-5 col-md-6 col-xs-4">
+        @foreach ($imagenes as $imagen)
+          <a class="image-gallery col-md-12" href="#">
+            <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$imagen->imagen) }}');"></div>
+          </a>
+        @endforeach
           <a class="image-gallery col-md-12" href="#">
             <div class="image-art" style="background-image: url('http://lorempixel.com/1400/904/');"></div>
           </a>
