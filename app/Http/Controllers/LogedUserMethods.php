@@ -7,6 +7,7 @@ use App\Imagen;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
+use DB;
 
 class LogedUserMethods extends Controller {
 
@@ -100,44 +101,44 @@ class LogedUserMethods extends Controller {
 	public function add_subasta(Request $request)
 	{
 		//try {
-			$submitedArray = $request->all();
+		$submitedArray = $request->all();
 
-			$userId = Auth::id();
+		$userId = Auth::id();
 
-			$fecha_inicio = date('Y-m-d');
+		$fecha_inicio = date('Y-m-d');
 
-			$articulo = Articulo::create([
-				'nombre_producto' => $submitedArray['nombre_producto'],
-				'modelo' => $submitedArray['modelo'],
-				'estado' => $submitedArray['estado'],
-				'localizacion' => $submitedArray['localizacion'],
-				'fecha_inicio' => $fecha_inicio,
-				'fecha_final' => $submitedArray['fecha_final'],
-				'precio_inicial' => $submitedArray['precio_inicial'],
-				'subastador_id' => $userId,
-				'comprador_id' => null,
-				'subcategoria_id' => $submitedArray['subcategoria'],
-				'incremento_precio' => $submitedArray['incremento_precio'],
-				'puja_mayor' => $submitedArray['precio_inicial'],
-				'comprador_id' => null,
+		$articulo = Articulo::create([
+			'nombre_producto' => $submitedArray['nombre_producto'],
+			'modelo' => $submitedArray['modelo'],
+			'estado' => $submitedArray['estado'],
+			'localizacion' => $submitedArray['localizacion'],
+			'fecha_inicio' => $fecha_inicio,
+			'fecha_final' => $submitedArray['fecha_final'],
+			'precio_inicial' => $submitedArray['precio_inicial'],
+			'subastador_id' => $userId,
+			'comprador_id' => null,
+			'subcategoria_id' => $submitedArray['subcategoria'],
+			'incremento_precio' => $submitedArray['incremento_precio'],
+			'puja_mayor' => $submitedArray['precio_inicial'],
+			'comprador_id' => null,
 
-				]);
+			]);
 
-			$articulo->id;
-echo "<pre>";
+		$articulo->id;
+		echo "<pre>";
 			//
-			echo "</pre>";
+		echo "</pre>";
 
-			$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
-			$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+		$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
+		$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
 
-			$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
+		$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
 
-			$img = Imagen::create([
-				'articulo_id' => $articulo->id,
-				'imagen' => $img_name,
-				'descripcion' => "blabla",
-				]);
+		$img = Imagen::create([
+			'articulo_id' => $articulo->id,
+			'imagen' => $img_name,
+			'descripcion' => "blabla",
+			]);
 			//return view("index");
 
 		//} catch(\Illuminate\Database\QueryException $e) {
@@ -159,23 +160,27 @@ echo "<pre>";
 		$user = Usuario::find($id);
 		return $user;
 	}
+	// /*Obtener pujas del usuario */
 
-	/*Obtener pujas del usuario */
-
-	public function get_pujas(){
-		$id = Auth::user()->id;
+	 public function get_pujas(){
+	 	$id = Auth::user()->id;
 		$pujas[0] = Usuario::find($id)->pujas;
-		for ($i=0; $i < count($pujas[0]); $i++) { 
-			$pujas[1][$i] = $pujas[0][$i]->articulo;
-		}
-		return $pujas;
-	}
+	 	for ($i=0; $i < count($pujas[0]); $i++) { 
+	 		$pujas[1][$i] = $pujas[0][$i]->articulo;
+	 		$pujas[2][$i] = $pujas[0][$i]->articulo->imagenes;
+	 		$pujas[3][$i] = $pujas[0][$i]->autoPuja;
+	 	}
+	 	var_dump($pujas);
+	 	return $pujas;
+	 }
+
+
 
 	/*Obtener ventas del usuario */
 
 	public function get_ventas(){
 		$id = Auth::user()->id;
-		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->Where ('subastador_id','=',$id)->get();
+		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('subastador_id','!=',-1)->where('subastador_id','=',$id)->get();// ventas
 		return $ventas;
 	}
 
@@ -183,11 +188,20 @@ echo "<pre>";
 
 	public function get_subastas(){
 		$id = Auth::user()->id;
-		$subastas = DB::table('articulos')->where('comprador_id', '=', 0)->Where ('subastador_id','=',$id)->get();		
+		$subastas[0] = DB::table('articulos')->where('comprador_id', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
+		$subastas[1] = DB::table('articulos')->where('comprador_id', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
 		return $subastas;
 	}
 
 	// /*Obtener pujas automaticas del usuario */
+
+
+	public function get_valoraciones(){		
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		$val = DB::table('valoracions')->where('valorado_id','=',$id)->get();
+		return $val;
+	}
 
 	// public function get_pujasAuto(){
 	// 	$id = Auth::user()->id;

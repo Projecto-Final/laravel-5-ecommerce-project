@@ -45,7 +45,7 @@
          <button class="bb" onclick="pujas();" >Mis Pujas</button>
          <button class="bb" onclick="" >Pujas automaticas</button>
          <button class="bb" onclick="ventas();" >Mis Ventas</button>
-         <button class="bb" onclick="" >Mis valoraciones</button>
+         <button class="bb" onclick="valoraciones();" >Mis valoraciones</button>
          <button class="bb" onclick="subastas();" >Mis Subastas</button>
        </div>
        <div class="col-md-9 contact-info"></div>
