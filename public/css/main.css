@@ -346,6 +346,9 @@ SUBASTAS POR CATEGORIAS
   position: relative;
   min-height: 500px;
 }
+#sns_content .sns-producttabs {
+  padding: 0px !important;
+}
 
 #sns_mainmidle > div.sns-producttabs {
   padding: 0;

@@ -90,7 +90,6 @@ $articulos = Articulo::all();
 
 // como funcionan
 $img = Articulo::find(4)->imagenes;
-print_r(count($img));
 ?>
 @forelse($articulos as $articulo)
 <!-- MUESTRA -->
