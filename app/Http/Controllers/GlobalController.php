@@ -32,6 +32,7 @@ class GlobalController extends Controller {
     {
         $articulo = Articulo::find($idArticulo);
         $subastador = Usuario::find($articulo['subastador_id']);
-        return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador] );
+        $imagenes = $articulo->imagenes;
+        return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
     }
 }

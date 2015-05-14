@@ -140,10 +140,101 @@ class LogedUserMethods extends Controller {
 			'descripcion' => "blabla",
 			]);
 			//return view("index");
+		try {
 
-		//} catch(\Illuminate\Database\QueryException $e) {
-		//	return view("home");
-		//}
+			$submitedArray = $request->all();
+
+			$userId = Auth::id();
+
+			$fecha_inicio = date('Y-m-d');
+
+			$articulo = Articulo::create([
+				'nombre_producto' => $submitedArray['nombre_producto'],
+				'modelo' => $submitedArray['modelo'],
+				'estado' => $submitedArray['estado'],
+				'localizacion' => $submitedArray['localizacion'],
+				'fecha_inicio' => $fecha_inicio,
+				'fecha_final' => $submitedArray['fecha_final'],
+				'precio_inicial' => $submitedArray['precio_inicial'],
+				'subastador_id' => $userId,
+				'comprador_id' => null,
+				'subcategoria_id' => $submitedArray['subcategoria'],
+				'incremento_precio' => $submitedArray['incremento_precio'],
+				'puja_mayor' => $submitedArray['precio_inicial'],
+				'comprador_id' => null,
+
+				]);
+
+			
+			if(isset($submitedArray['img_0'])){
+				$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_0']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			if(isset($submitedArray['img_1'])){
+				$img_extension = $submitedArray['img_1']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_1']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			if(isset($submitedArray['img_2'])){
+				$img_extension = $submitedArray['img_2']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_2']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			if(isset($submitedArray['img_3'])){
+				$img_extension = $submitedArray['img_3']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_3']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			if(isset($submitedArray['img_4'])){
+				$img_extension = $submitedArray['img_4']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_4']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			if(isset($submitedArray['img_5'])){
+				$img_extension = $submitedArray['img_5']->getClientOriginalExtension();
+				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$submitedArray['img_5']->move(public_path("images/subastas"),$img_name);
+				$img = Imagen::create([
+				'articulo_id' => $articulo->id,
+				'imagen' => $img_name,
+				'descripcion' => "blabla",
+				]);
+			}
+			
+			return redirect('subasta/'.$articulo->id);
+			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
+
+
+		} catch(ErrorException $e) {
+			return view('index', ['notificacion_error' => 'La subasta contiene un error, por favor, comprueba que los']);
+		}
+
 		
 	}
 

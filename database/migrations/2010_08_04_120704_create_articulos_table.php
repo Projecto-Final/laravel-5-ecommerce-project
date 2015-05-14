@@ -21,10 +21,9 @@ class CreateArticulosTable extends Migration {
             $table->string('descripcion');
             $table->string('localizacion');
             $table->double('precio_venta');
-            $table->date('fecha_inicio');
-            $table->date('fecha_final');
-            $table->boolean('vendido');
-            $table->date('fecha_venda');
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_final');
+            $table->dateTime('fecha_venda');
             $table->double('precio_inicial');
             $table->double('incremento_precio');
             $table->double('puja_mayor');

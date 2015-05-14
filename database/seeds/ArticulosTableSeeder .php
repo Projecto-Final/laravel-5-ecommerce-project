@@ -15,10 +15,9 @@ class ArticulosTableSeeder extends Seeder {
 			'estado' => 'Optimo',
 			'descripcion' => 'Juego de poses',
 			'localizacion' => 'La Llagosta',
-			'precio_venta' => -1,
-			'fecha_inicio' => "2015-05-07 00:00:00",
-			'fecha_final' => "2015-07-07 00:00:00",
-			'vendido' => false,
+			'precio_venta' => 0,
+			'fecha_inicio' => "2015-05-2 16:45:12",
+			'fecha_final' => "2015-05-9 16:45:00",
 			'fecha_venda' => "0000-00-00 00:00:00",
 			'precio_inicial' => 20,
 			'incremento_precio' => 60,
@@ -26,7 +25,11 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 1,
 			'comprador_id' => -1,
-		]);
+			]);
+		$fecha = new DateTime('NOW');
+		$fecha->modify('-1 day');
+		$fecha2 = new DateTime('NOW');
+		$fecha2->modify('+6 day');
 
 		Articulo::create([
 			'nombre_producto' => 'maroto',
@@ -35,9 +38,8 @@ class ArticulosTableSeeder extends Seeder {
 			'descripcion' => 'flequillo op',
 			'localizacion' => 'La Llagosta',
 			'precio_venta' => -1,
-			'fecha_inicio' => "2015-05-07 00:00:00",
-			'fecha_final' => "2015-06-01 00:00:00",
-			'vendido' => false,
+			'fecha_inicio' => $fecha->format('Y-m-d H:i:s'),
+			'fecha_final' => $fecha2->format('Y-m-d H:i:s'),
 			'fecha_venda' => "0000-00-00 00:00:00",
 			'precio_inicial' => 200,
 			'incremento_precio' => 20,
@@ -46,7 +48,7 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 18,
 			'comprador_id' => -1,
-		]);
+			]);
 
 		Articulo::create([
 			'nombre_producto' => 'Silla de Oficina Neo',
@@ -55,15 +57,14 @@ class ArticulosTableSeeder extends Seeder {
 			'descripcion' => 'Silla de oficina roja',
 			'localizacion' => 'Canovellas',
 			'precio_venta' => 120,
-			'fecha_inicio' => "2015-04-07 00:00:00",
-			'fecha_final' => "2015-05-23 00:00:00",
-			'vendido' => false,
-			'fecha_venda' => "2015-05-23 00:00:00",
+			'fecha_inicio' => "2015-04-07 23:55:00",
+			'fecha_final' => "2015-04-14 23:55:00",
+			'fecha_venda' => "2015-04-14 23:55:00",
 			'precio_inicial' => 100,
 			'puja_mayor' => 120,
-			'subastador_id' => 2,
+			'subastador_id' => 3,
 			'subcategoria_id' => 11,
-			'comprador_id' => 1,
-		]);
+			'comprador_id' => 2,
+			]);
 	}
 }

@@ -16,7 +16,6 @@ class CreateLiniasMsTable extends Migration {
 		{
             $table->increments('id');
             $table->text('texto');
-            $table->date('fecha');
             $table->integer('mensaje_id')->unsigned();
             $table->foreign('mensaje_id')->references('id')->on('mensajes');
             $table->rememberToken();
