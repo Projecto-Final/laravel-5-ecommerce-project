@@ -20,7 +20,7 @@ class CreateMensajesTable extends Migration {
             $table->foreign('emisor_id')->references('id')->on('usuarios');
             $table->integer('receptor_id')->unsigned();
             $table->foreign('receptor_id')->references('id')->on('usuarios');
-            $table->date('fecha');
+            $table->dateTime('fecha');
             $table->rememberToken();
             $table->timestamps();
 		});

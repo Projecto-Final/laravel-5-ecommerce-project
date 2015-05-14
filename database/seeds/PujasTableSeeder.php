@@ -9,13 +9,15 @@ class PujasTableSeeder extends Seeder {
 	{
 		DB::table('pujas')->delete();
 
+		$fecha = new DateTime('Y-m-d H:i:s');
+
 		Puja::create([
 			'cantidad' => 300,
 			'superada' => false,
 			'confpuja_id' => -1,
 			'articulo_id' => 2,
 			'pujador_id' => 2,
-			'fecha_puja' => "2015-05-07 17:11:00",
+			'fecha_puja' => $fecha,
 		]);
 
 		Puja::create([
@@ -24,7 +26,7 @@ class PujasTableSeeder extends Seeder {
 			'confpuja_id' => -1,
 			'articulo_id' => 3,
 			'pujador_id' => 1,
-			'fecha_puja' => "2015-05-12 23:59:32",
+			'fecha_puja' => "2015-04-12 12:35:12",
 		]);
 	}
 }

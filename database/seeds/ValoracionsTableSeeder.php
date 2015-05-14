@@ -14,7 +14,7 @@ class ValoracionsTableSeeder extends Seeder {
 			'valorado_id' => 3,
 			'validante_id' => 2,
 			'puntuacion' => 5,
-			'fecha' => "2015-05-23 00:00:00",
+			'fecha' => "2015-04-15 13:01:24",
 		]);
 	}
 }

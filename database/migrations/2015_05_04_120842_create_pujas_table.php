@@ -23,7 +23,7 @@ class CreatePujasTable extends Migration {
             $table->foreign('articulo_id')->references('id')->on('articulos');
             $table->integer('pujador_id')->unsigned();
             $table->foreign('pujador_id')->references('id')->on('usuarios');
-            $table->date('fecha_puja');
+            $table->dateTime('fecha_puja');
             $table->rememberToken();
             $table->timestamps();
 		});

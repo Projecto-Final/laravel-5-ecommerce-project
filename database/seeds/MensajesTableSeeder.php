@@ -10,14 +10,16 @@ class MensajesTableSeeder extends Seeder {
 		DB::table('mensajes')->delete();
 
 		Mensaje::create([
-			'titulo' => 'Texto decente, aquí',
-			'emisor_id' => 2,
-			'receptor_id' => 3,
+			'titulo' => 'Hola, gracias por comprar <3',
+			'emisor_id' => 3,
+			'receptor_id' => 2,
+			'fecha' => "2015-04-15 22:13:35",
 		]);
 		Mensaje::create([
-			'titulo' => 'Texto decente, aquí 2',
-			'emisor_id' => 1,
-			'receptor_id' => 2,
+			'titulo' => 'Cuando quieras (y)',
+			'emisor_id' => 2,
+			'receptor_id' => 3,
+			'fecha' => "2015-04-16 12:54:51",
 		]);
 	}
 }

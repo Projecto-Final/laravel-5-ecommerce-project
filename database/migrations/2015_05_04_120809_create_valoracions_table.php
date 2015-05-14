@@ -22,7 +22,7 @@ class CreateValoracionsTable extends Migration {
             $table->foreign('validante_id')->references('id')->on('usuarios');
             $table->integer('puntuacion')->unsigned();
             $table->foreign('puntuacion')->references('id')->on('escalas');
-            $table->date('fecha');
+            $table->dateTime('fecha');
             $table->rememberToken();
             $table->timestamps();
 		});
