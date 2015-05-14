@@ -13,7 +13,7 @@
 @section('info_extra')
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
 
-
+{{ $imagenes }}
 
 <div id="single-bid-view">
 <div class="container">

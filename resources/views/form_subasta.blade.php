@@ -98,7 +98,7 @@
                           $("#masImagenes").click(function() {
                             if($(".cnt").length < 6){
                               var addto = "#imgart_"+$(".cnt").length;
-                              $(addto).after('<input type="file" class="cnt" id="imgart_'+($(".cnt").length+1)+'" name="img'+$(".cnt").length+'">');
+                              $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="img_'+$(".cnt").length+'">');
                             }
                           });
                         </script>
