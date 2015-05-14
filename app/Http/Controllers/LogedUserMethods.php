@@ -99,7 +99,7 @@ class LogedUserMethods extends Controller {
 	 */
 	public function add_subasta(Request $request)
 	{
-		//try {
+		try {
 			$submitedArray = $request->all();
 
 			$userId = Auth::id();
@@ -188,11 +188,11 @@ class LogedUserMethods extends Controller {
 			}
 
 			
-			//return view("index");
+			return view("index");
 
-		//} catch(\Illuminate\Database\QueryException $e) {
-		//	return view("home");
-		//}
+		} catch(\Illuminate\Database\QueryException $e) {
+			return view('index', ['notificacion_aviso' => 'La subasta contiene un error, por favor, comprueba que los']);
+		}
 		
 	}
 
