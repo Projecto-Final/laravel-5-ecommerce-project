@@ -25,20 +25,21 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 1,
 			'comprador_id' => -1,
-		]);
+			]);
+		$fecha = new DateTime('NOW');
+		$fecha->modify('-1 day');
+		$fecha2 = new DateTime('NOW');
+		$fecha2->modify('+6 day');
 
 		Articulo::create([
-			$fecha = new DateTime('Y-m-d H:i:s');
-			$fecha->modify('-1 day');
 			'nombre_producto' => 'maroto',
 			'modelo' => 'hombre',
 			'estado' => 'peinado',
 			'descripcion' => 'flequillo op',
 			'localizacion' => 'La Llagosta',
 			'precio_venta' => -1,
-			'fecha_inicio' => $fecha,
-			$fecha->modify('+7 day');
-			'fecha_final' => $fecha,
+			'fecha_inicio' => $fecha->format('Y-m-d H:i:s'),
+			'fecha_final' => $fecha2->format('Y-m-d H:i:s'),
 			'fecha_venda' => "0000-00-00 00:00:00",
 			'precio_inicial' => 200,
 			'incremento_precio' => 20,
@@ -47,7 +48,7 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 18,
 			'comprador_id' => -1,
-		]);
+			]);
 
 		Articulo::create([
 			'nombre_producto' => 'Silla de Oficina Neo',
@@ -64,6 +65,6 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 3,
 			'subcategoria_id' => 11,
 			'comprador_id' => 2,
-		]);
+			]);
 	}
 }
