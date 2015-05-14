@@ -1,61 +1,67 @@
+	  #contenedor-notificaciones {
+	  	position: fixed;
+	  	bottom: 5;
+	  	right: 5;
+	  	z-index: 999;
+	  }
 	  .notification-box {
-		  min-width: 280px;
-		  max-width: 500px;
-		  height: auto;
-		  padding: 0px;
-		  margin: 0px;
-		  color: rgba(0, 0, 0, 0.4);
-		  margin-bottom: 10px;
-		  position: relative;
-		  transition: all 1s;
-		  opacity:0;
+	  	min-width: 280px;
+	  	max-width: 500px;
+	  	height: auto;
+	  	padding: 0px;
+	  	margin: 0px;
+	  	color: rgba(0, 0, 0, 0.4);
+	  	margin-bottom: 10px;
+	  	position: relative;
+	  	transition: all 1s;
+	  	opacity:0;
 	  }
 	  .error {
-		/* border: 1px rgba(192, 0, 0, 0.75) solid; */
-		background-color: rgba(205, 91, 91, 0.75);
+	  	/* border: 1px rgba(192, 0, 0, 0.75) solid; */
+	  	background-color: rgba(205, 91, 91, 0.95);
 	  }
 	  .warning {
-		/* border: 1px rgba(192, 58, 0, 0.75) solid; */
-		background-color: rgba(205, 97, 58, 0.75);
+	  	/* border: 1px rgba(192, 58, 0, 0.75) solid; */
+	  	background-color: rgba(205, 97, 58, 0.95);
 	  }
 	  .advice {
-		/* border: 1px rgba(0, 156, 192, 0.75) solid; */
-		background-color: rgba(91, 192, 205, 0.75);
+	  	/* border: 1px rgba(0, 156, 192, 0.75) solid; */
+	  	background-color: rgba(91, 192, 205, 0.95);
 	  }
 	  .notice {
-		/* border: 1px rgba(150, 150, 150, 0.75) solid; */
-		background-color: rgba(181, 181, 181, 0.75);
+	  	/* border: 1px rgba(150, 150, 150, 0.75) solid; */
+	  	background-color: rgba(181, 181, 181, 0.95);
 	  }
 	  .alert {
-		/* border: 1px rgba(187, 192, 0, 0.75) solid; */
-		background-color: rgba(224, 223, 88, 0.75);
-		border: 0px solid transparent;
-		border-radius: 0px;
+	  	/* border: 1px rgba(187, 192, 0, 0.75) solid; */
+	  	background-color: rgba(224, 223, 88, 0.95);
+	  	border: 0px solid transparent;
+	  	border-radius: 0px;
 	  }
 	  
 	  .error > p , .warning > p , .advice > p , .notice > p , .alert > p {
-		padding: 0px;
-		margin: 0px;
-		margin-left: 40px;
-		margin-right: 25px;
-		padding-top: 5px;
-		padding-bottom: 5px;
+	  	padding: 0px;
+	  	margin: 0px;
+	  	margin-left: 40px;
+	  	margin-right: 25px;
+	  	padding-top: 5px;
+	  	padding-bottom: 5px;
 	  }
 	  .error > p > b , .warning > p > b , .advice > p > b , .notice > p > b , .alert > p > b {
-		  padding:0px;
-		  margin: 0px;
+	  	padding:0px;
+	  	margin: 0px;
 	  }
 	  .error > i , .warning > i , .advice > i , .notice > i , .alert  > i {
-		padding: 9px 10px;
-		background-color: rgba(0, 0, 0, 0.15);
-		position: absolute;
-		bottom: 0;
-		top: 0;
+	  	padding: 9px 10px;
+	  	background-color: rgba(0, 0, 0, 0.15);
+	  	position: absolute;
+	  	bottom: 0;
+	  	top: 0;
 	  }
 	  .error > div , .warning > div , .advice > div , .notice > div , .alert  > div {
-		position: absolute;
-		right: 5px;
-		top: 5px;
-		color: rgba(0, 0, 0, 0.26);
-		cursor:pointer;
+	  	position: absolute;
+	  	right: 5px;
+	  	top: 5px;
+	  	color: rgba(0, 0, 0, 0.26);
+	  	cursor:pointer;
 	  }

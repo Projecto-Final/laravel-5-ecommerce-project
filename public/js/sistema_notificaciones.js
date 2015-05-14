@@ -43,7 +43,7 @@
 				setTimeout(function(){
 				var height = $('.notification-box'+boxID+'').height();
 				$('.notification-box'+boxID+'').css("height",""+height+"px");
-				$('.notification-box'+boxID+'').css("margin-left","100px");
+				$('.notification-box'+boxID+'').css("margin-left","-100px");
 				}, 100);
 				setTimeout(function(){
 				$('.notification-box'+boxID+'').css("height","0px");

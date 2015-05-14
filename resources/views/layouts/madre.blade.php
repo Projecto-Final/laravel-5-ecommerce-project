@@ -34,7 +34,7 @@
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div class="col-md-offset-3">
+		<div id="contenedor-notificaciones">
 			<div class="notification-box error"><p><b>error: </b> text</p><i class=""></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box warning"><p><b>warning: </b>text</p><i class="glyphicon glyphicon-warning-sign"></i><div onClick="closeNotificationBox('.warning')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box advice"><p><b>advice: </b>text</p><i class="glyphicon glyphicon-bell"></i><div onClick="closeNotificationBox('.advice')" class="glyphicon glyphicon-remove-sign"></div></div>
