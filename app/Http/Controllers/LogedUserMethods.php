@@ -275,6 +275,14 @@ class LogedUserMethods extends Controller {
 		return $ventas;
 	}
 
+	/*Obtener compras del usuario */
+
+	public function get_compras(){
+		$id = Auth::user()->id;
+		$compras = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('comprador_id','=',$id)->get();// ventas
+		return $compras;
+	}
+
 	// /*Obtener subastas del usuario */
 
 	public function get_subastas(){
@@ -292,7 +300,7 @@ class LogedUserMethods extends Controller {
 		$user = Usuario::find($id);
 		$val[0] = $user->valVenta;
 		for ($i=0; $i < count($val[0]); $i++) { 
-			$val[1][$i] = $val[0][$i]->validante->nombre;
+			$val[1][$i] = $val[0][$i]->validante->username;
 		}
 		return $val;
 	}
