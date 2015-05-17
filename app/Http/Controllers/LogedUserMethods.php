@@ -288,9 +288,16 @@ class LogedUserMethods extends Controller {
 	public function get_subastas(){
 		$id = Auth::user()->id;
 		$subastas[0] = DB::table('articulos')->where('precio_venta', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
-		$subastas[1] = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
+		//$subastas[1] = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
 		return $subastas;
 	}
+	//Obtener subastas inactivas
+	public function get_subastasI(){
+		$id = Auth::user()->id;
+		$subastas = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
+		return $subastas;
+	}
+
 
 	// /*Obtener pujas automaticas del usuario */
 
@@ -303,6 +310,18 @@ class LogedUserMethods extends Controller {
 			$val[1][$i] = $val[0][$i]->validante->username;
 		}
 		return $val;
+	}
+
+	public function get_confPuj()
+	{			
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		$con[0] =$user->confPujas;
+		for ($i=0; $i < count($con[0]); $i++) { 
+			$con[1][$i] = $con[0][$i]->articulo;
+			$con[2][$i] = $con[0][$i]->articulo->imagenes;
+		}
+		return $con;
 	}
 
 	// public function get_pujasAuto(){

@@ -39,4 +39,8 @@ class Articulo extends Model {
 	{
 		return $this->hasMany('App\Puja', 'id', 'articulo_id');
 	}
+	public function Confpujas()
+	{
+		return $this->hasMany('App\ConfiguracionPuja', 'id', 'articulo_id');
+	}
 }

@@ -44,7 +44,7 @@
          <button class="bb" onclick="perfil();" >Perfil</button>
          <button class="bb" onclick="subastas();" >Mis Subastas</button>
          <button class="bb" onclick="pujas();" >Mis Pujas</button>  
-         <button class="bb" onclick="" >Pujas automaticas</button>
+         <button class="bb" onclick="confPuj()" >Configuraciones Pujas</button>
          <button class="bb" onclick="compras();" >Mis Compras</button>
          <button class="bb" onclick="ventas();" >Mis Ventas</button>
          <button class="bb" onclick="valoraciones();" >Mis valoraciones</button>         

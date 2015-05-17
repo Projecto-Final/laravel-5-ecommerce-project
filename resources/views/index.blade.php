@@ -89,7 +89,7 @@
 $articulos = Articulo::all();
 
 // como funcionan
-$img = Articulo::find(4)->imagenes;
+$img = Articulo::find(3)->imagenes;
 ?>
 @forelse($articulos as $articulo)
 <!-- MUESTRA -->

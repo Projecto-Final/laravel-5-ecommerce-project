@@ -21,4 +21,8 @@ class ConfiguracionPuja extends Model {
 	{
 		return $this->hasMany('App\Puja', 'confpuja_id', 'id');
 	}
+	public function articulo()
+	{
+		return $this->belongsTo('App\Articulo', 'articulo_id', 'id');
+	}
 }
