@@ -288,6 +288,7 @@ function subastasI(){
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha finalizacion</th>";
+	txt +="<th>Precio Venta</th>";
 	txt +="<th>Precio inicial</th></tr></thead>";
 	$.get(url,function(data,status){
 		if(data==""){
@@ -300,6 +301,11 @@ function subastasI(){
 			txt +="<td>"+data[i].nombre_producto+"</td>";
 			txt +="<td>"+data[i].fecha_inicio+"</td>";
 			txt +="<td>"+data[i].fecha_final+"</td>";
+			if(data[i].precio_venta==0){
+				txt +="<td>No Vendido</td>";
+			}else{
+			txt +="<td>"+data[i].precio_venta+"</td>";
+		}
 			txt +="<td>"+data[i].precio_inicial+"</td>";
 			txt +="</tr>";
 		};

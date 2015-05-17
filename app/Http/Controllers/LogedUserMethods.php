@@ -294,7 +294,7 @@ class LogedUserMethods extends Controller {
 	//Obtener subastas inactivas
 	public function get_subastasI(){
 		$id = Auth::user()->id;
-		$subastas = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
+		$subastas = DB::table('articulos')->where('precio_venta', '!=', -1)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
 		return $subastas;
 	}
 
