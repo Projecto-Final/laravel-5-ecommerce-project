@@ -252,6 +252,7 @@ class LogedUserMethods extends Controller {
 		$user = Usuario::find($id);
 		return $user;
 	}
+
 	// /*Obtener pujas del usuario */
 
 	public function get_pujas(){
@@ -324,9 +325,34 @@ class LogedUserMethods extends Controller {
 		return $con;
 	}
 
-	// public function get_pujasAuto(){
-	// 	$id = Auth::user()->id;
-	// 	$pujas = Usuario::find($id)->pujas;
-	// 	return $pujas;
-	// }
+	public function guardarCambios()
+	{	
+		//var_dump($_GET);
+		//$dato=$_GET['apellidos'];
+		//echo("hi");
+		//echo($apellidos);	
+		$id = Auth::user()->id;
+
+		$user = Usuario::find($id);
+
+		//Apodo 
+//		$user->username = $submitedArray['username'];
+//		//Nombre
+//		$user->nombre =$submitedArray['nombre'];
+//		//Apellidos
+//		$user->apellidos =$submitedArray['apellidos'];
+//		//direccion
+//		$user->direccion =$submitedArray['direccion'];
+//		//email
+//		$user->email = $submitedArray['email'];
+		//contraseña
+		//$user->password =$submitedArray['password'];
+
+		//guardar
+//		$user->save;
+
+		//redirect...
+		return redirect('usuario');
+	}
+
 }

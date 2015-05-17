@@ -71,10 +71,23 @@
 .contact-info > p{
 	font-size: 20px;
 	border-bottom: 10px solid #e5e5e5;
-    font-weight: bold;
-    margin-bottom: 10px;
-    }
+	font-weight: bold;
+	margin-bottom: 10px;
+}
 .contact-info > span{
 	text-align: inline;
 }
 
+.conf_perfil > p{
+	border-bottom: 10px solid #CDCDCD;
+	margin-bottom: 10px;
+}
+
+#espaciodor{
+	border-bottom: 7px solid #CDCDCD;
+	margin-bottom: 7px;
+}
+.espaciodor2{
+	border-bottom: 7px solid #e5e5e5;
+	margin-bottom: 7px;
+}

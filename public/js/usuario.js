@@ -17,6 +17,41 @@ function perfil(){
 	});
 }	
 
+function formEditar(){
+	var url = "get_perfil";
+	$.get(url,function(data,status){
+		var txt = "<form  method='post' enctype='multipart/form-data' id='form-validate'>"//action='{{ url('editarP') }}'
+		txt += "<h3>Editar Perfil</h3>"
+		+"Apodo :  <input type='text' id='username' name='username' value='"+data.username+"' title='username' maxlength='255'>"// class='input-text required-entry'
+		+"<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span>"
+		+"</br><p class='espaciodor2'></p>"
+		+"Nombre :  <input type='text' id='nombre' name='nombre' value='"+data.nombre+"' title='nombre' maxlength='255' >"//class='input-text required-entry'
+		+"<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span>"
+		+"</br>"
+		+"Apellidos :   <input type='text' id='apellidos' name='apellidos' value='"+data.apellido+"' title='apellidos' maxlength='255' >"//class='input-text required-entry'
+		+"<span class='errorJS' id='apellidos_error'>&nbsp;Campo obligatorio</span>"
+		+"</br><p class='espaciodor2'></p>"
+		+"Direccion :   <input type='text' id='direccion' name='direccion' value='"+data.direccion+"' title='direccion' maxlength='255' >"//class='input-text required-entry'
+		+"<span class='errorJS' id='direccion_error'>&nbsp;Campo obligatorio</span>"
+		+"</br><p class='espaciodor2'></p>"
+		+"Email :  <input type='text' id='email' name='email' value='"+data.email+"' title='email' maxlength='255' >"//class='input-text required-entry'
+		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
+		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
+		+"</br>"
+		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
+		//+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
+		//+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
+		//+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+		//+"</br>"
+		//+"Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
+		//+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
+		//+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
+		//+"</br>"
+		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
+		$(".contact-info").html(txt);
+	});
+}
+
 
 function compras(){
 	var url = "get_compras";
@@ -304,8 +339,8 @@ function subastasI(){
 			if(data[i].precio_venta==0){
 				txt +="<td>No Vendido</td>";
 			}else{
-			txt +="<td>"+data[i].precio_venta+"</td>";
-		}
+				txt +="<td>"+data[i].precio_venta+"</td>";
+			}
 			txt +="<td>"+data[i].precio_inicial+"</td>";
 			txt +="</tr>";
 		};
@@ -341,4 +376,196 @@ function valoraciones(){
 		txt+="</table>"
 		$(".contact-info").html(txt);
 	});
+}
+
+
+function editarP(){
+	var url = "get_perfil";
+	$.get(url,function(data,status){
+		var txt = "<h3>Información básica</h3>"
+		+"<p>Apodo :</p>"+data.username
+		+"<p>Nombre :</p>"+data.nombre
+		+"<p>Apellidos :</p>"+data.apellido
+		+"<p>Direccion :</p>"+data.direccion
+		+"<p>Email :</p>"+data.email
+		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at;
+		$(".contact-info").html(txt);
+	});
+}	
+
+
+
+
+function ValidarCambios(){;
+
+	error=false; 	
+	var formulario = document.getElementById('form-validate');
+	var porTagName = formulario.getElementsByTagName("input");
+	var current;
+	var val;
+	var aux;
+
+ /*	for (var i = 0; i < porTagName.length; i++) {
+ 		if(porTagName[i].type!="hidden"){
+ 			alert(porTagName[i].value);
+ 		}
+ 	}*/
+
+ 	for (i=0;i<porTagName.length;i++)
+ 	{
+ 		current = porTagName[i];
+ 		//alert(current.name);
+ 		if(current.type!="hidden"){
+ 			if(current.type!="button"){
+ 				if(current.type=="checkbox"){
+ 					//alert(current.name);
+ 					//alert(current.value);
+ 					//alert(current.checked);
+
+ 					if(current.checked==false){
+ 						alert("Debe aceptar las condiciones de uso y politica de privacidad");
+ 						getIdMsg(current,true,false);
+ 						//error=true;
+ 					}
+ 				}
+ 				val = current.value;
+
+ 				if(val!=""){
+	//el no campo esta vacio
+	getIdMsg(current,false,false);
+	if(current.name=="email"){
+		if(validarEmail(val)==false){
+			getIdMsg(current,true,true);
+		}
+	}
+
+	if(current.name=="password"){
+
+
+		if(val.length<6){
+			// alert("value.leng"+val.length);
+			getIdMsg(current,true,true);
+		}else{
+			getIdMsg(current,false,true);
+		}
+	}
+	if(current.name=="password_confirmation"){
+		comprovarPass(current);
+		//var aux = comprovarPass(current);
+		//if(aux==false){
+			//error=true;	
+	//	}
+
+}
+
+}else{
+					//el campo esta vacio
+					getIdMsg(current,true,false);
+					//error=true;	
+				}
+
+			}
+		}
+	}
+	if(error==false){
+		//alert("submit");
+		if(confirm("Guardar cambios?")){
+			guardarCambios();
+		}
+	}else{
+		//alert("no submit")
+		return false;
+	}
+
+}
+
+
+function comprovarPass(element){
+	var pass1 = document.getElementById('password').value;
+	var pass2 = element.value;
+	if(pass1==pass2){
+		//si son iguales devuelve true
+		getIdMsg(element, false,true);
+		return true;
+	}else{
+		//al ser diferentes devuelve false
+		getIdMsg(element, true,true);
+		return false;
+	}
+}
+
+function getIdMsg(elem, si,especial){
+	var ele = elem.getAttribute("id");
+
+	if (ele == undefined) {
+		ele = elem.getAttribute("name")
+	};
+	// ERROR ESPECIAL O NO
+	if(especial==true){
+		ele += "_error2";
+	}else if(especial==false){
+		ele += "_error";
+	}
+
+	//  MOSTRAR O OCULTAR
+	if(si==true){
+		mostraError(ele);
+		
+	}else if(si==false){
+		ocultaError(ele);
+		
+	}
+		//return ele;
+	}
+
+	function validarEmail( email ) {
+		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if ( !expr.test(email) ){
+       // alert("Error: La dirección de correo " + email + " es incorrecta.");
+       return false;
+   }
+}
+
+function mostraError(idElem) {
+	error=true;
+	//alert(idElem);
+	document.getElementById(idElem).style.display="inline";
+}
+
+function ocultaError(idElem) {
+	//alert(idElem);
+	document.getElementById(idElem).style.display="none";
+}
+
+function guardarCambios(){
+	alert("guardando...");
+	var username = document.getElementById('username').value;
+	var nombre = document.getElementById('nombre').value;
+	var apellidos = document.getElementById('apellidos').value;
+	var direccion = document.getElementById('direccion').value;
+	var email = document.getElementById('email').value;
+	//var password = document.getElementById('password').value;
+
+	var url = "guardarCambios";
+	var txt="";
+	txt += "<h3>Mis Valoraciones</h3>"
+	txt+='<table class="table table-striped">';
+	txt+= '<thead><tr class="success">';
+	txt +="<th>Valorante</th>";
+	txt +="<th>Puntuacion</th>";
+	txt +="<th>Mensaje</th>";
+	txt +="<th>Fecha</th>";
+	txt +="</tr></thead>";
+	$.get(url,{
+		username: "username",
+		nombre: "nombre",
+		apellidos: "apellidos",
+		direccion: "direccion",
+		email: "email"
+		//password: "password",
+	})
+	.done(function( data ) {
+
+	});
+
 }

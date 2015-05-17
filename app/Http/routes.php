@@ -87,3 +87,7 @@ Route::get('get_subastasI', 'LogedUserMethods@get_subastasI');
 Route::get('get_confPuj', 'LogedUserMethods@get_confPuj');
 /* Obtener  compras del usuario */
 Route::get('get_compras', 'LogedUserMethods@get_compras');
+//form editar perfil 
+//Route::get('formEditar', 'LogedUserMethods@formEditar');
+//editar perfil  editarP()  
+Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');

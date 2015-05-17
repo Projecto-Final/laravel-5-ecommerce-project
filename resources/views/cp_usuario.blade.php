@@ -43,11 +43,16 @@
       <div id="sns_mainmidle background_user">
         <div class="col-md-3 conf_perfil">
          <button class="bb" onclick="perfil();" >Perfil</button>
-         <button class="bb" onclick="subastas();" >Mis Subastas</button>
+         <button class="bb" onclick="formEditar();" >Editar Perfil</button>
+
+         <p></p>
          <button class="bb" onclick="pujas();" >Mis Pujas</button>  
          <button class="bb" onclick="confPuj()" >Configuraciones Pujas</button>
+        <p></p>
+         <button class="bb" onclick="subastas();" >Mis Subastas</button>
          <button class="bb" onclick="compras();" >Mis Compras</button>
          <button class="bb" onclick="ventas();" >Mis Ventas</button>
+         <p></p>
          <button class="bb" onclick="valoraciones();" >Mis valoraciones</button>         
        </div>
        <div class="col-md-9 contact-info"></div>
