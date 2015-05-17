@@ -14,14 +14,12 @@
 <div id="sns_content" class="wrap layout-m">
 
   <div class="container-fluid header_perfil" >
-    <div class="row back_img" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_background) }});">
+    <div class="row back_img" style="background-image: url({{ url('images/profiles/'.$imagBack) }});">
       <div id="" class="col-md-12 col-main col-xs-12" >
         <div id="">
           <div class="stadistic_info_user col-xs-12 col-md-12">
            <div class="container">
-            <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_perfil) }}) ;"></div>
-
-           <?php $id = auth::id();$user = Usuario::find($id);?> 
+            <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.$imagPerf) }}) ;"></div>
  
 
             <div class="col-md-8 info_active col-xs-12">
@@ -30,7 +28,7 @@
 
             </br>
             Reputacion
-            <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$user->reputacion}}"></input>
+            <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$reputacion}}"></input>
           </div> 
         </div>
       </div>

@@ -58,7 +58,10 @@ class HomeController extends Controller {
 		$imagBack=$user->imagen_background;
 		$imagPerf=$user->imagen_perfil;
 
-		return view('cp_usuario',["ncompras" => $ncompras, "nventas" => $nventas, "npujas" => $npujas, "imagBack"=>$imagBack, "imagPerf"=>$imagPerf]);
+		//
+		$reputacion=$user->reputacion;
+
+		return view('cp_usuario',["ncompras" => $ncompras, "nventas" => $nventas, "npujas" => $npujas, "imagBack"=>$imagBack, "imagPerf"=>$imagPerf,"reputacion"=>$reputacion]);
 //return view('cp_usuario');	
 
 
