@@ -21,10 +21,13 @@
            <div class="container">
             <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.Auth::user()->imagen_perfil) }}) ;"></div>
 
-            <?php $id = auth::id();$user = Usuario::find($id);?>
+           <?php $id = auth::id();$user = Usuario::find($id);?> 
+ 
+
             <div class="col-md-8 info_active col-xs-12">
-              Compras {{$user->valCompra->count()}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$user->valVenta->count()}} <i class="fa fa-money"></i>
-              || Pujas {{$user->pujas->count()}} <i class="fa fa-fire"></i>
+              Compras {{$ncompras}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$nventas}} <i class="fa fa-money"></i>
+              || Pujas {{$npujas}} <i class="fa fa-fire"></i>
+
             </br>
             Reputacion
             <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$user->reputacion}}"></input>

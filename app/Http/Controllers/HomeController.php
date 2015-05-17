@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
-
+use App\Usuario;
+use App\Articulo;
+use Auth;
+use DB;
 class HomeController extends Controller {
 
 	/*
@@ -40,7 +43,31 @@ class HomeController extends Controller {
 	 */
 	public function cp_usuario()
 	{
-		return view('cp_usuario');
+
+		$id = Auth::id();
+		$user = Usuario::find($id);
+		//num compras del usuario
+		$subastas = DB::table('articulos')->where('precio_venta', '!=', 0)->where('precio_venta', '!=', -1)->where ('comprador_id','=',$id)->get();
+		$ncompras = count($subastas);
+		 //num ventas del usuario
+		$subastas = DB::table('articulos')->where('precio_venta', '!=', 0)->where('precio_venta', '!=', -1)->where ('subastador_id','=',$id)->get();
+		$nventas = count($subastas);
+         //num pujas
+		$npujas=$user->pujas->count();
+
+		$imagBack=$user->imagen_background;
+		$imagPerf=$user->imagen_perfil;
+
+		return view('cp_usuario',["ncompras" => $ncompras, "nventas" => $nventas, "npujas" => $npujas, "imagBack"=>$imagBack, "imagPerf"=>$imagPerf]);
+//return view('cp_usuario');	
+
+
+/*
+  <!--  
+             <div class="col-md-8 info_active col-xs-12">
+              Compras {{$ncompras}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$nventas}} <i class="fa fa-money"></i>
+              || Pujas {{$npujas}} <i class="fa fa-fire"></i>
+ -->*/
 	}
 
 	public function puja_usuario()
