@@ -74,9 +74,9 @@
 							</div>
 							<div class="col-md-9 col-sm-12 col-xs-12">
 								<div class="acceso_rapido">
-									<div class="formulario-busqueda">
+									<form action="buscar" method="get" class="formulario-busqueda">
 										<div class="select-input">
-											<select>
+											<select name="categoria">
 											</select>
 											<script>
 											// Script pro rellenar dropdown!
@@ -89,12 +89,12 @@
 											});
 
 										</script>
-										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas...">
+										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
 									</div>
 									<div class="boton-submit">
-										<button type="button" name="realizar-busqueda" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
+										<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>
