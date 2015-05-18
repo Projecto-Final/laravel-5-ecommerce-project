@@ -39,16 +39,17 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
-		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
-		// +"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
-		// +"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
-		// +"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
-		// +"</br>"
-		// +"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
-		// +"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
-		// +"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
-		// +"</br></br>"
-		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
+		+"</br><button onclick='mostraInputContrasena();'>Cambiala</button>"
+		+"<div id='spass'><p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
+		+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
+		+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
+		+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+		+"</br>"
+		+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
+		+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
+		+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
+		+"</div></br></br>"
+		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>";
 		$(".contact-info").html(txt);
 	});
 }
@@ -528,6 +529,11 @@ function ocultaError(idElem) {
 	document.getElementById(idElem).style.display="none";
 }
 
+
+function mostraInputContrasena(){
+	document.getElementById("spass").style.display = "visible";
+}
+
 function guardarCambios(){
 	var username = document.getElementById('username').value;
 	var nombre = document.getElementById('nombre').value;
@@ -542,11 +548,12 @@ function guardarCambios(){
 		nombre: nombre,
 		apellidos: apellidos,
 		direccion: direccion,
-		email: email
-		//password: "password",
+		email: email,
+		password: password
 	})
-	.done(function( data ) {
-
+	.done(function(data) {
+		perfil();
 	});
-
 }
+
+

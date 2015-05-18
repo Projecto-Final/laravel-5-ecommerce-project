@@ -338,14 +338,9 @@ class LogedUserMethods extends Controller {
 
 		DB::table('usuarios')
 		->where('id', $id)
-		->update(array('nombre' => $nombre))
-		->update(array('apellido' => $apellidos))
-		->update(array('username' => $username))
-		->update(array('direccion' => $direccion))
-		->update(array('email' => $email));
+		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email, 'password' => $password));
 
 		 //redirect...
-		return redirect('usuario');
 	}
 
 }
