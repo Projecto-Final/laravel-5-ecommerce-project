@@ -31,8 +31,12 @@ class GlobalController extends Controller {
     public function get_selectedSubasta($idArticulo)
     {
         $articulo = Articulo::find($idArticulo);
+        $pujas[0] = $articulo->pujas;
+        for ($i=0; $i < count($pujas[0]); $i++) {
+            $pujas[1][$i] = $pujas[$i]->usuario;
+        }
         $subastador = Usuario::find($articulo['subastador_id']);
         $imagenes = $articulo->imagenes;
-        return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
+        return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas] );
     }
 }
