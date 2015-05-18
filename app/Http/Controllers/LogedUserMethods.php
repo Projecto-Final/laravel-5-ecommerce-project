@@ -327,31 +327,24 @@ class LogedUserMethods extends Controller {
 
 	public function guardarCambios()
 	{	
-		//var_dump($_GET);
-		//$dato=$_GET['apellidos'];
-		//echo("hi");
-		//echo($apellidos);	
-		$id = Auth::user()->id;
 
+		$nombre=$_GET["nombre"];	
+		$apellidos=$_GET["apellidos"];	
+		$username=$_GET["username"];	
+		$direccion= $_GET["direccion"];	
+		$email=$_GET["email"];	
+		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 
-		//Apodo 
-//		$user->username = $submitedArray['username'];
-//		//Nombre
-//		$user->nombre =$submitedArray['nombre'];
-//		//Apellidos
-//		$user->apellidos =$submitedArray['apellidos'];
-//		//direccion
-//		$user->direccion =$submitedArray['direccion'];
-//		//email
-//		$user->email = $submitedArray['email'];
-		//contraseña
-		//$user->password =$submitedArray['password'];
+		DB::table('usuarios')
+		->where('id', $id)
+		->update(array('nombre' => $nombre))
+		->update(array('apellido' => $apellidos))
+		->update(array('username' => $username))
+		->update(array('direccion' => $direccion))
+		->update(array('email' => $email));
 
-		//guardar
-//		$user->save;
-
-		//redirect...
+		 //redirect...
 		return redirect('usuario');
 	}
 

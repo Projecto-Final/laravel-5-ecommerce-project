@@ -7,12 +7,13 @@ function perfil(){
 	var url = "get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<h3>Información básica</h3>"
-		+"<p>Apodo :</p>"+data.username
+		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
 		+"<p>Nombre :</p>"+data.nombre
 		+"<p>Apellidos :</p>"+data.apellido
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
-		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at;
+		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
+		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>";
 		$(".contact-info").html(txt);
 	});
 }	
@@ -21,7 +22,7 @@ function formEditar(){
 	var url = "get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<form  method='post' enctype='multipart/form-data' id='form-validate'>"//action='{{ url('editarP') }}'
-		txt += "<h3>Editar Perfil</h3>"
+		txt += "<h3>Editar Perfil</h3>"		
 		+"Apodo :  <input type='text' id='username' name='username' value='"+data.username+"' title='username' maxlength='255'>"// class='input-text required-entry'
 		+"<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span>"
 		+"</br><p class='espaciodor2'></p>"
@@ -39,14 +40,14 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
 		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
-		//+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
-		//+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
-		//+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
-		//+"</br>"
-		//+"Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
-		//+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
-		//+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
-		//+"</br>"
+		// +"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
+		// +"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
+		// +"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+		// +"</br>"
+		// +"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
+		// +"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
+		// +"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
+		// +"</br></br>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
 		$(".contact-info").html(txt);
 	});
@@ -405,12 +406,6 @@ function ValidarCambios(){;
 	var val;
 	var aux;
 
- /*	for (var i = 0; i < porTagName.length; i++) {
- 		if(porTagName[i].type!="hidden"){
- 			alert(porTagName[i].value);
- 		}
- 	}*/
-
  	for (i=0;i<porTagName.length;i++)
  	{
  		current = porTagName[i];
@@ -418,10 +413,6 @@ function ValidarCambios(){;
  		if(current.type!="hidden"){
  			if(current.type!="button"){
  				if(current.type=="checkbox"){
- 					//alert(current.name);
- 					//alert(current.value);
- 					//alert(current.checked);
-
  					if(current.checked==false){
  						alert("Debe aceptar las condiciones de uso y politica de privacidad");
  						getIdMsg(current,true,false);
@@ -538,7 +529,6 @@ function ocultaError(idElem) {
 }
 
 function guardarCambios(){
-	alert("guardando...");
 	var username = document.getElementById('username').value;
 	var nombre = document.getElementById('nombre').value;
 	var apellidos = document.getElementById('apellidos').value;
@@ -547,21 +537,12 @@ function guardarCambios(){
 	//var password = document.getElementById('password').value;
 
 	var url = "guardarCambios";
-	var txt="";
-	txt += "<h3>Mis Valoraciones</h3>"
-	txt+='<table class="table table-striped">';
-	txt+= '<thead><tr class="success">';
-	txt +="<th>Valorante</th>";
-	txt +="<th>Puntuacion</th>";
-	txt +="<th>Mensaje</th>";
-	txt +="<th>Fecha</th>";
-	txt +="</tr></thead>";
 	$.get(url,{
-		username: "username",
-		nombre: "nombre",
-		apellidos: "apellidos",
-		direccion: "direccion",
-		email: "email"
+		username: username,
+		nombre: nombre,
+		apellidos: apellidos,
+		direccion: direccion,
+		email: email
 		//password: "password",
 	})
 	.done(function( data ) {

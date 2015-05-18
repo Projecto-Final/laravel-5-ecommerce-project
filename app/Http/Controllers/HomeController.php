@@ -62,20 +62,7 @@ class HomeController extends Controller {
 		$reputacion=$user->reputacion;
 
 		return view('cp_usuario',["ncompras" => $ncompras, "nventas" => $nventas, "npujas" => $npujas, "imagBack"=>$imagBack, "imagPerf"=>$imagPerf,"reputacion"=>$reputacion]);
-//return view('cp_usuario');	
-
-
-/*
-  <!--  
-             <div class="col-md-8 info_active col-xs-12">
-              Compras {{$ncompras}} <i class="fa fa-shopping-cart"></i>  || Ventas {{$nventas}} <i class="fa fa-money"></i>
-              || Pujas {{$npujas}} <i class="fa fa-fire"></i>
- -->*/
 	}
 
-	public function puja_usuario()
-	{
-		return view('puja_usuario');
-	}
 
 }

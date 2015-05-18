@@ -47,7 +47,7 @@
 	text-decoration: none;
 	color:white;
 }
-.conf_perfil > .bb {
+.bb {
 	font-size: 18px;
 	margin-bottom: 10px;
 	text-align: center;
@@ -58,23 +58,23 @@
 	width:100%;
 	background-color: rgba(6, 154, 236, 0.43);
 }
-.conf_perfil > .bb:hover{
+.bb:hover{
 	width: 100%;
 	background-color: #B2B0B0;
 }
 .contact-info{
 	font-size: 15px;
-	height: 62%;
+	height: 70%;
 	overflow: auto;
 }
 
-.contact-info > p{
+.contact-info > div >  p{
 	font-size: 20px;
 	border-bottom: 10px solid #e5e5e5;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
-.contact-info > span{
+.contact-info > div > span{
 	text-align: inline;
 }
 

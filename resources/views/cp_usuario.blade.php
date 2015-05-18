@@ -43,8 +43,6 @@
       <div id="sns_mainmidle background_user">
         <div class="col-md-3 conf_perfil">
          <button class="bb" onclick="perfil();" >Perfil</button>
-         <button class="bb" onclick="formEditar();" >Editar Perfil</button>
-
          <p></p>
          <button class="bb" onclick="pujas();" >Mis Pujas</button>  
          <button class="bb" onclick="confPuj()" >Configuraciones Pujas</button>
