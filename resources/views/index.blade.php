@@ -86,24 +86,22 @@
 <?php
 // $p = new Articulo;
 // Esperando implementacion de articulos.
-$articulos = Articulo::all();
-
 // como funcionan
 // $img = Articulo::find(3)->imagenes;
 ?>
-@forelse($articulos as $articulo)
+@forelse($subastas as $subasta)
 <!-- MUESTRA -->
 
                         <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                           <div class="item-inner clearfix">
                             <div class="badges"> </div>
-                            <div class="item-img"> <a class="product-image" href="{{ url('subasta/'.$articulo['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/subastas/'.Imagen::where('articulo_id', '=', $articulo['id'])->firstOrFail()->imagen) }}" alt=" Retis lapen casen "> </span> </a> </div>
+                            <div class="item-img"> <a class="product-image" href="{{ url('subasta/'.$subasta['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/subastas/') }}" alt=" Retis lapen casen "> </span> </a> </div>
                             <div class="item-info">
                               <div class="info-inner">
-                                <div class="item-title"> <a href="" onclick="javascript: return true" title=" Retis lapen casen ">{{ $articulo['nombre_producto'] }} </a> </div>
+                                <div class="item-title"> <a href="" onclick="javascript: return true" title=" Retis lapen casen ">{{ $subasta['nombre_producto'] }} </a> </div>
                                 <div class="item-content clearfix">
                                   <div class="item-price">
-                                    <div class="price-box"> <span class="price">{{ $articulo['puja_mayor'] }} <i class="fa fa-eur"></i></span> </div>
+                                    <div class="price-box"> <span class="price">{{ $subasta['puja_mayor'] }} <i class="fa fa-eur"></i></span> </div>
                                   </div>
                                 </div>
                                 <div class="rating">
