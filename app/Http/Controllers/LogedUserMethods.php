@@ -384,5 +384,3 @@ class LogedUserMethods extends Controller {
 		return redirect('subasta/'. $articulo->id);
 	}
 }
-
-}
