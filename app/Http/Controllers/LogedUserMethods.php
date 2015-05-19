@@ -10,6 +10,8 @@ use Auth;
 use Illuminate\Http\Request;
 use DB;
 use Input;
+use Cache;
+
 class LogedUserMethods extends Controller {
 
 	/*
@@ -127,12 +129,14 @@ class LogedUserMethods extends Controller {
 
 				]);
 			echo "<pre>";
+
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
 				$img_extension = $imagenASubir->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
+				$img_name = $posicion."_".$articulo->id."_".md5($userId).".".$img_extension;
 				echo $imagenASubir;
 				$imagenASubir->move(public_path("images/subastas"),$img_name);
 				print_r($imagenASubir);
+
 				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
@@ -140,10 +144,11 @@ class LogedUserMethods extends Controller {
 					'descripcion' => "blabla",
 					]);
 			}
+
 			echo "</pre>";
 				
 			
-			//return redirect('subasta/'.$articulo->id);
+			return redirect('subasta/'.$articulo->id)->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
 
 
