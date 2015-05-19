@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use DB;
 use Cache;
 
-
 class LogedUserMethods extends Controller {
 
 	/*
@@ -152,12 +151,10 @@ class LogedUserMethods extends Controller {
 
 				]);
 
-			Cache::flush();
 			if(isset($submitedArray['img_0'])){
-				echo $submitedArray['img_0'];
+				echo $submitedArray['img_0']."<br>";
 				$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				echo $img_name."<br>".$submitedArray['img_0'];
 				$submitedArray['img_0']->move(public_path()."/images/subastas",$img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
@@ -166,9 +163,10 @@ class LogedUserMethods extends Controller {
 					]);
 			}
 			if(isset($submitedArray['img_1'])){
+				echo $submitedArray['img_1']."<br>";
 				$img_extension = $submitedArray['img_1']->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_1']->move(public_path("images/subastas"),$img_name);
+				$submitedArray['img_1']->move(public_path()."/images/subastas",$img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
@@ -216,7 +214,7 @@ class LogedUserMethods extends Controller {
 					]);
 			}
 			
-			return redirect('subasta/'.$articulo->id);
+			//return redirect('subasta/'.$articulo->id);
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
 
 
