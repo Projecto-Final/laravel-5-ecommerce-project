@@ -9,8 +9,7 @@ use Session;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
-use Cache;
-
+use Input;
 class LogedUserMethods extends Controller {
 
 	/*
@@ -102,29 +101,6 @@ class LogedUserMethods extends Controller {
 	 */
 	public function add_subasta(Request $request)
 	{
-		//try {
-		$submitedArray = $request->all();
-
-		$userId = Auth::id();
-
-		$fecha_inicio = date('Y-m-d');
-
-		$articulo = Articulo::create([
-			'nombre_producto' => $submitedArray['nombre_producto'],
-			'modelo' => $submitedArray['modelo'],
-			'estado' => $submitedArray['estado'],
-			'localizacion' => $submitedArray['localizacion'],
-			'fecha_inicio' => $fecha_inicio,
-			'fecha_final' => $submitedArray['fecha_final'],
-			'precio_inicial' => $submitedArray['precio_inicial'],
-			'subastador_id' => $userId,
-			'comprador_id' => null,
-			'subcategoria_id' => $submitedArray['subcategoria'],
-			'incremento_precio' => $submitedArray['incremento_precio'],
-			'puja_mayor' => $submitedArray['precio_inicial'],
-			'comprador_id' => null,
-
-			]);
 
 		try {
 
@@ -150,69 +126,22 @@ class LogedUserMethods extends Controller {
 				'comprador_id' => null,
 
 				]);
-
-			if(isset($submitedArray['img_0'])){
-				echo $submitedArray['img_0']."<br>";
-				$img_extension = $submitedArray['img_0']->getClientOriginalExtension();
+			echo "<pre>";
+			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
+				$img_extension = $imagenASubir->getClientOriginalExtension();
 				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_0']->move(public_path()."/images/subastas",$img_name);
+				echo $imagenASubir;
+				$imagenASubir->move(public_path("images/subastas"),$img_name);
+				print_r($imagenASubir);
+				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
 					]);
 			}
-			if(isset($submitedArray['img_1'])){
-				echo $submitedArray['img_1']."<br>";
-				$img_extension = $submitedArray['img_1']->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_1']->move(public_path()."/images/subastas",$img_name);
-				$img = Imagen::create([
-					'articulo_id' => $articulo->id,
-					'imagen' => $img_name,
-					'descripcion' => "blabla",
-					]);
-			}
-			if(isset($submitedArray['img_2'])){
-				$img_extension = $submitedArray['img_2']->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_2']->move(public_path("images/subastas"),$img_name);
-				$img = Imagen::create([
-					'articulo_id' => $articulo->id,
-					'imagen' => $img_name,
-					'descripcion' => "blabla",
-					]);
-			}
-			if(isset($submitedArray['img_3'])){
-				$img_extension = $submitedArray['img_3']->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_3']->move(public_path("images/subastas"),$img_name);
-				$img = Imagen::create([
-					'articulo_id' => $articulo->id,
-					'imagen' => $img_name,
-					'descripcion' => "blabla",
-					]);
-			}
-			if(isset($submitedArray['img_4'])){
-				$img_extension = $submitedArray['img_4']->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_4']->move(public_path("images/subastas"),$img_name);
-				$img = Imagen::create([
-					'articulo_id' => $articulo->id,
-					'imagen' => $img_name,
-					'descripcion' => "blabla",
-					]);
-			}
-			if(isset($submitedArray['img_5'])){
-				$img_extension = $submitedArray['img_5']->getClientOriginalExtension();
-				$img_name = date("y-m-d-H-i-s")."_".$articulo->id."_".$userId.".".$img_extension;
-				$submitedArray['img_5']->move(public_path("images/subastas"),$img_name);
-				$img = Imagen::create([
-					'articulo_id' => $articulo->id,
-					'imagen' => $img_name,
-					'descripcion' => "blabla",
-					]);
-			}
+			echo "</pre>";
+				
 			
 			//return redirect('subasta/'.$articulo->id);
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
@@ -366,7 +295,7 @@ class LogedUserMethods extends Controller {
 			'articulo_id' => $articulo->id,
 			'pujador_id' => Auth::user()->id,
 			'fecha_puja' => Carbon::now()
-			]);
+		]);
 		return redirect('subasta/'. $articulo->id);
 	}
 }
