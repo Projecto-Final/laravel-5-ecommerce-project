@@ -89,7 +89,7 @@
                       <div class="field ">
                         <label for="email" class="control-label">IMAGENES</label>
                         <div id="img_container">
-                          <input type="file" id="imgart_1" class="cnt" name="img_0"> <BR>
+                          <input type="file" id="imgart_1" class="cnt" name="images[0]"> <BR>
                         </div>
                         
                         <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
@@ -98,7 +98,7 @@
                           $("#masImagenes").click(function() {
                             if($(".cnt").length < 6){
                               var addto = "#imgart_"+$(".cnt").length;
-                              $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="img_'+$(".cnt").length+'">');
+                              $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">');
                             }
                           });
                         </script>
