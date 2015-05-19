@@ -32,7 +32,10 @@
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
             <h5>PRECIO ACTUAL DEL ARTICULO - FECHA CIERRE PUJA {{ $subasta['fecha_final'] }}</h5>
-            <form class="form-inline">
+            <form action="{{ url('add_puja') }}" class="form-inline">
+              <input type="hidden" name="_method" value="PUT">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="articulo_id" value="{{ $subasta['id'] }}">
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">€</div>
@@ -40,7 +43,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-primary"> PUJAR {{ $subasta['incremento_precio'] }}€</button>
-            </form>         
+            </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
           <h5>Informació Básica</h5>
