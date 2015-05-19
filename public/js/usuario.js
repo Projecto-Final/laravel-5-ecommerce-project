@@ -21,8 +21,10 @@ function perfil(){
 function formEditar(){
 	var url = "get_perfil";
 	$.get(url,function(data,status){
-		var txt = "<form  method='post' enctype='multipart/form-data' id='form-validate'>"//action='{{ url('editarP') }}'
-		txt += "<h3>Editar Perfil</h3>"		
+		var txt = "<form  method='post' enctype='multipart/form-data' id='form-validate'>"
+		txt += "<h3>Editar Perfil</h3>"	
+		+"<input type='hidden' name='_token' value='{{ csrf_token() }}'>"
+		+"<input name='form_key' type='hidden' value='YI43JcRMPlZ5bHvi'>"	
 		+"Apodo :  <input type='text' id='username' name='username' value='"+data.username+"' title='username' maxlength='255'>"// class='input-text required-entry'
 		+"<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span>"
 		+"</br><p class='espaciodor2'></p>"
@@ -39,16 +41,10 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
-		+"</br><button onclick='mostraInputContrasena();'>Cambiala</button>"
-		+"<div id='spass'><p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
-		+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
-		+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
-		+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
 		+"</br>"
-		+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
-		+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
-		+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>"
-		+"</div></br></br>"
+		+"<input type='button' title='Submit' class='button' onclick='showPass();' value='Cambiar Contraseña'>"
+		+"<div id='spass'></div>"
+		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>";
 		$(".contact-info").html(txt);
 	});
@@ -407,9 +403,9 @@ function ValidarCambios(){;
 	var val;
 	var aux;
 
- 	for (i=0;i<porTagName.length;i++)
- 	{
- 		current = porTagName[i];
+	for (i=0;i<porTagName.length;i++)
+	{
+		current = porTagName[i];
  		//alert(current.name);
  		if(current.type!="hidden"){
  			if(current.type!="button"){
@@ -488,7 +484,6 @@ function comprovarPass(element){
 
 function getIdMsg(elem, si,especial){
 	var ele = elem.getAttribute("id");
-
 	if (ele == undefined) {
 		ele = elem.getAttribute("name")
 	};
@@ -498,21 +493,16 @@ function getIdMsg(elem, si,especial){
 	}else if(especial==false){
 		ele += "_error";
 	}
-
 	//  MOSTRAR O OCULTAR
 	if(si==true){
 		mostraError(ele);
-		
 	}else if(si==false){
-		ocultaError(ele);
-		
+		ocultaError(ele);	
 	}
-		//return ele;
-	}
-
-	function validarEmail( email ) {
-		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		if ( !expr.test(email) ){
+}
+function validarEmail( email ) {
+	expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	if ( !expr.test(email) ){
        // alert("Error: La dirección de correo " + email + " es incorrecta.");
        return false;
    }
@@ -534,15 +524,24 @@ function mostraInputContrasena(){
 	document.getElementById("spass").style.display = "visible";
 }
 
-function guardarCambios(){
-	var username = document.getElementById('username').value;
-	var nombre = document.getElementById('nombre').value;
-	var apellidos = document.getElementById('apellidos').value;
-	var direccion = document.getElementById('direccion').value;
-	var email = document.getElementById('email').value;
-	//var password = document.getElementById('password').value;
 
+function perfilGuardar(username,nombre,apellidos,direccion,email){
 	var url = "guardarCambios";
+	alert("1");
+	$.get(url,{
+		username: username,
+		nombre: nombre,
+		apellidos: apellidos,
+		direccion: direccion,
+		email: email
+	})
+	.done(function(data) {
+		perfil();
+	});	
+}
+
+function perfilGuardarPass(username,nombre,apellidos,direccion,email,password){
+	var url = "guardarCambiosPass";
 	$.get(url,{
 		username: username,
 		nombre: nombre,
@@ -553,7 +552,39 @@ function guardarCambios(){
 	})
 	.done(function(data) {
 		perfil();
-	});
+	});	
 }
 
+function guardarCambios(){
+	var username = document.getElementById('username').value;
+	var nombre = document.getElementById('nombre').value;
+	var apellidos = document.getElementById('apellidos').value;
+	var direccion = document.getElementById('direccion').value;
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('password').value;
 
+	
+
+	if($.trim($("#spass").html())==''){
+		perfilGuardar(username,nombre,apellidos,direccion,email);
+	}else{
+		alert("aqui");
+		alert(password);
+		perfilGuardarPass(username,nombre,apellidos,direccion,email,password);
+	}
+}
+
+function showPass(){
+	if($.trim($("#spass").html())==''){
+		$("#spass").html("<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
+			+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
+			+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
+			+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+			+"</br>"
+			+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
+			+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
+			+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>");		
+	}else{
+		$("#spass").html(" ");
+	}
+}
