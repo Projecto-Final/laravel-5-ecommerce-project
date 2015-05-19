@@ -80,7 +80,7 @@
 										<div class="boton-submit">
 											<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
 										</div>
-										<button class="parametros-button" type="button" onClick="mostrar_filtros();">+Opciones</button>
+										<button class="parametros-button" type="button" onClick="mostrar_filtros();">mostrar opciones <i class='fa fa-eye'></i></button>
 										<div class="parametros-filtrado">
 										<ul>
 										<li>
