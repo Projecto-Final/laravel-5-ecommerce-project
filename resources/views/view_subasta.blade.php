@@ -27,7 +27,7 @@
             @endif
             <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$imagenes[$i]->imagen) }}');"></div>
           </a>
-        @endfor
+          @endfor
         </div>
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
@@ -40,42 +40,79 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-primary"> PUJAR {{ $subasta['incremento_precio'] }}€</button>
-            </form>
+            </form>         
+            <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
-          <h5>Informació</h5>
+          <h5>Informació Básica</h5>
           <table class="table table-bordered">
             <tbody><tr>
-              <td>Enviament:</td>
-              <td colspan="3">
-                45,50 EUR<br>
-                Ubicacio de l'article: {{ $subasta['localizacion']}}<br>
-                Envia a: tot el mon.
+              <td>Artículo:</td>
+              <td colspan="3">                
+                {{ $subasta['nombre_producto']}}
               </td>
-            </tr>
-            <tr>
-              <td>Entrega:</td>
-              <td colspan="3">20 al 35 de juny del 2015</td>
-            </tr>
-            <tr>
-              <td>Pagaments:</td>
-              <td colspan="3">Tarjeta de credit/debit, contra reembolso</td>
-            </tr>
-            <tr>
-              <td>Devolucions:</td>
-              <td colspan="3">7 Dies despres de la entrega</td>
-            </tr>
-          </tbody></table>
-        </div>
-      </section>
-    </div>
+              <tr>
+                <td>Modelo:</td>
+                <td colspan="3"> 
+                  {{ $subasta['modelo']}}
+                </td>
+              </tr>
+              <tr>
+                <td>Descripción:</td>
+                <td colspan="3"> 
+                  {{ $subasta['descripcion']}}
+                </td>
+              </tr>
+              <tr>
+                <td>Estado:</td>
+                <td colspan="3"> 
+                  {{ $subasta['estado']}}
+                </td>
+              </tr>            
+            </tbody></table>
+            <h5>Mas Información</h5>
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>Fecha Finalizacion Subasta:</td>
+                  <td colspan="3">{{ $subasta['fecha_final']}}</td>
+
+
+                  <td>Fecha Inicio Subasta:</td>
+                  <td colspan="3">{{ $subasta['fecha_inicio']}}</td>
+
+                  <tr>
+                    <td>Precio Actual:</td>
+                    <td colspan="3">{{ $subasta['puja_mayor']}}</td>
+
+
+                    <td>Precio Inicial:</td>
+                    <td colspan="3">{{ $subasta['precio_inicial']}}</td>
+                  </tr>               
+
+                  <tr>
+                    <td>Metodo de Pago:</td>
+                    <td colspan="3">Tarjeta de credito/debito, contra reembolso</td>                    
+
+                    <td>Devoluciones:</td>
+                    <td colspan="3">7 Dias despues de la entrega</td>
+                  </tr>
+                  <tr>
+                    <td>Ubicación:</td>
+                    <td colspan="3">                
+                      Ubicacio de l'article: {{ $subasta['localizacion']}}
+                    </td>
+                  </tbody></table>
+                </div>
+              </section>
+            </div>
 
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="js/bootstrap.min.js"></script>
 
-  </div>
-  @stop
+          </div>
+          @stop

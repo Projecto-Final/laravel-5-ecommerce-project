@@ -16,6 +16,12 @@ class ImagenesTableSeeder extends Seeder {
 		]);
 
 		Imagen::create([
+			'descripcion' => "el pobre thomas",
+			'articulo_id' => 1,
+			'imagen' => "thomas.jpg",
+		]);
+
+		Imagen::create([
 			'descripcion' => "yare-yare",
 			'articulo_id' => 2,
 			'imagen' => "maroto.jpg",
