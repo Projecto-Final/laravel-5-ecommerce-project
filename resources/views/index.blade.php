@@ -89,8 +89,7 @@
 // como funcionan
 // $img = Articulo::find(3)->imagenes;
                       ?>
-                      @forelse($subastas as $subasta)
-
+                      @forelse($subastas as $contador => $subasta)
                       <!-- MUESTRA -->
                       <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                         <div class="item-inner clearfix">
@@ -101,7 +100,7 @@
                               <div class="item-title"> <a href="" onclick="javascript: return true" title=" Retis lapen casen ">{{ $subasta[0]['nombre_producto'] }} </a> </div>
                               <div class="item-content clearfix">
                                 <div class="item-price">
-                                <div class="price-box"> <span class="price">{{ $subasta[0]['puja_mayor'] }} <i class="fa fa-eur"></i></span> </div>
+                                  <div class="price-box"> <span class="price">{{ $subasta[0]['puja_mayor'] }} <i class="fa fa-eur"></i></span> </div>
                                 </div>
                               </div>
                               <div class="rating">
@@ -112,9 +111,13 @@
                           </div>
                         </div>
                       </div>
+                      @if($contador < 5)
+                        <?php break;?>
+                      @endif
                       <!-- FIN MUESTRA -->
                       @empty
                       <p>No hay registros en la base de datos... a la espera...</p>
+
                       @endforelse
 
                       <!-- ARTICULOS -->
