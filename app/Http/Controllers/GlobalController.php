@@ -43,7 +43,14 @@ class GlobalController extends Controller {
 
     public function buscar_subastas()
     {
-        print_r(Input::all());
-
+        $urlParams=Input::all();
+        $categoria = $urlParams['categoria'];
+        $users = Articulo::where('subcategoria_id', '=', $categoria);
+        $subcat = Categoria::find($categoria)->subcategorias;
+        $subsub = Subcategoria::find(2);
+        echo $subsub->articulos;
+        foreach ($subcat as $key => $scategoria) {
+            echo $scategoria['id'];
+        }
     }
 }
