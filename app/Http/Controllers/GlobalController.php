@@ -39,4 +39,9 @@ class GlobalController extends Controller {
         $imagenes = $articulo->imagenes;
         return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas] );
     }
+
+    public function GlobalController(Request $data)
+    {
+        echo "test";
+    }
 }
