@@ -3,6 +3,7 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
+use Request;
 
 class GlobalController extends Controller {
 
@@ -40,7 +41,7 @@ class GlobalController extends Controller {
         return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas] );
     }
 
-    public function GlobalController(Request $data)
+    public function buscar_subastas(Request $data)
     {
         echo "test";
     }
