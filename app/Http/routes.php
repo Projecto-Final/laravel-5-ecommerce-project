@@ -51,8 +51,12 @@ Route::get('buscar', 'GlobalController@buscar_subastas');
 Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
 Route::put('add_subasta', 'LogedUserMethods@add_subasta');
 
+
 /* Llama al metodo para pujar por un articulo */
-Route::post('add_puja', 'LogedUserMethods@add_puja');    // esto no se cumple siempre se va al subasta algo
+Route::get('add_puja', 'LogedUserMethods@add_puja');   
+//RECARGA los datos de precio de la subasta
+Route::get('cargar_precio', 'LogedUserMethods@cargar_precio'); 
+
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');

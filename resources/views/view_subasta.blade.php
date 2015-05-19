@@ -36,9 +36,8 @@
           <div class="bid">
             <h5>PRECIO ACTUAL DEL ARTICULO - FECHA CIERRE PUJA {{ $subasta['fecha_final'] }}</h5>
             <form  class="form-inline">
-              <input type="hidden" name="_method" value="PUT">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="articulo_id" value="{{ $subasta['id'] }}">
+              <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
+              <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">€</div>
@@ -46,7 +45,7 @@
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-            <input type="button" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})" value="PUJAR {{ $subasta['incremento_precio'] }}€">  
+            <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">  
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
@@ -89,7 +88,7 @@
 
                   <tr>
                     <td>Precio Actual:</td>
-                    <td colspan="3">{{ $subasta['puja_mayor']}}</td>
+                    <td colspan="3" id="tdPrecio">{{ $subasta['puja_mayor']}}</td>
 
 
                     <td>Precio Inicial:</td>
@@ -106,7 +105,7 @@
                   <tr>
                     <td>Ubicación:</td>
                     <td colspan="3">                
-                      Ubicacio de l'article: {{ $subasta['localizacion']}}
+                      {{ $subasta['localizacion']}}
                     </td>
                   </tbody></table>
                 </div>

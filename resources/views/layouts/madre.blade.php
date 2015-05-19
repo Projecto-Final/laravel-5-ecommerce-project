@@ -53,7 +53,7 @@
 							<p class="welcome-msg">Bienvenido, {{ Auth::user()->username }}</p>
 						</div>
 						<ul class="enlaces">
-							<li> <a href="usuario"><i class="fa fa-user"></i> Mis cosas</a> </li>
+							<li> <a href="{{ url('usuario') }}"><i class="fa fa-user"></i> Mis cosas</a> </li>
 							<li> <a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a> </li>
 						</ul>
 						@else

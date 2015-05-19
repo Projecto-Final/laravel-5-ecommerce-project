@@ -148,7 +148,7 @@ class LogedUserMethods extends Controller {
 			}
 
 			echo "</pre>";
-				
+
 			
 			return redirect('subasta/'.$articulo->id)->withInput()->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
@@ -309,7 +309,7 @@ class LogedUserMethods extends Controller {
 	public function add_puja(Request $request)
 	{
 		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['articulo_id']);
+		$articulo = Articulo::find($submitedArray['id_puja']);
 		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
 		$articulo->save();
 		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
@@ -320,7 +320,14 @@ class LogedUserMethods extends Controller {
 			'articulo_id' => $articulo->id,
 			'pujador_id' => Auth::user()->id,
 			'fecha_puja' => Carbon::now()
-		]);
-		return redirect('subasta/'. $articulo->id);
+			]);
+
+		return $articulo;
+	}
+
+	public function	cargar_precio(Request $request){
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_puja']);
+		return $articulo;
 	}
 }
