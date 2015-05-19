@@ -355,13 +355,13 @@ class LogedUserMethods extends Controller {
 		$pass= $_GET["password"];
 		$password = Hash::make($pass);
 
-		echo $password;
+		//echo $password;
 
 		$id = Auth::user()->id;
 
 		DB::table('usuarios')
 		->where('id', $id)
-		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email,'password' => $password));
+		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'password' => $password,'direccion' => $direccion,'direccion' => $direccion,'email' => $email));
 
 		 //redirect...
 	}

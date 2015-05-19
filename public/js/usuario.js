@@ -183,7 +183,6 @@ function pujas(){
 	txt += "<h3>Mis Pujas Activas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th>Imagen</th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Pujada</th>";
 	txt +="<th>Tipo</th>";
@@ -200,11 +199,6 @@ function pujas(){
 if(data[1][i].precio_venta == -1){
 	vac=false;
 	txt+= '<tr class="info">';
-	if(data[2][i][0]!=null){
-		txt +="<td>"+data[2][i][0].imagen+"</td>";
-	}else{
-		txt +="<td>NO</td>";
-	}
 
 	txt +="<td>"+data[1][i].nombre_producto+"</td>";
 	txt +="<td>"+data[0][i].cantidad+"</td>";			
@@ -239,7 +233,6 @@ function pujasI(){
 	txt += "<h3>Mis Pujas Inactivas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th>Imagen</th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Pujada</th>";
 	txt +="<th>Tipo</th>";
@@ -251,11 +244,7 @@ function pujasI(){
 			if(data[1][i].precio_venta != -1){
 				vac=false;
 				txt+= '<tr class="info">';
-				if(data[2][i][0]!=null){
-					txt +="<td>"+data[2][i][0].imagen+"</td>";
-				}else{
-					txt +="<td>NO</td>";
-				}
+
 
 				txt +="<td>"+data[1][i].nombre_producto+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
@@ -527,7 +516,6 @@ function mostraInputContrasena(){
 
 function perfilGuardar(username,nombre,apellidos,direccion,email){
 	var url = "guardarCambios";
-	alert("1");
 	$.get(url,{
 		username: username,
 		nombre: nombre,
@@ -542,6 +530,7 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 
 function perfilGuardarPass(username,nombre,apellidos,direccion,email,password){
 	var url = "guardarCambiosPass";
+	alert("perfil function : : " + password);
 	$.get(url,{
 		username: username,
 		nombre: nombre,
@@ -551,7 +540,8 @@ function perfilGuardarPass(username,nombre,apellidos,direccion,email,password){
 		password: password
 	})
 	.done(function(data) {
-		perfil();
+		alert(data);
+		//perfil();
 	});	
 }
 
@@ -561,14 +551,15 @@ function guardarCambios(){
 	var apellidos = document.getElementById('apellidos').value;
 	var direccion = document.getElementById('direccion').value;
 	var email = document.getElementById('email').value;
-	var password = document.getElementById('password').value;
-
 	
 
+
 	if($.trim($("#spass").html())==''){
+		alert("Sin pass");
 		perfilGuardar(username,nombre,apellidos,direccion,email);
 	}else{
-		alert("aqui");
+		alert("Con pass");
+		var password = document.getElementById('password').value;
 		alert(password);
 		perfilGuardarPass(username,nombre,apellidos,direccion,email,password);
 	}
