@@ -44,13 +44,21 @@ class GlobalController extends Controller {
     public function buscar_subastas()
     {
         $urlParams=Input::all();
+        $buscar = $urlParams['buscar'];
+        echo "<h1>".$buscar."</h1>";
         $categoria = $urlParams['categoria'];
-        $users = Articulo::where('subcategoria_id', '=', $categoria);
+        echo "<pre>";
         $subcat = Categoria::find($categoria)->subcategorias;
-        $subsub = Subcategoria::find(2);
-        echo $subsub->articulos;
         foreach ($subcat as $key => $scategoria) {
-            echo $scategoria['id'];
+            //echo $scategoria['id'];
+            $arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+            ->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+            ->get();
+             echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+            foreach ($arts as $key => $art) {
+                echo $art["nombre_producto"];
+            }
+            echo "</pre>";
         }
     }
 }
