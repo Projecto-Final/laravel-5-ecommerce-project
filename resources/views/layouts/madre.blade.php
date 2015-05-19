@@ -95,7 +95,7 @@
 									<div class="boton-submit">
 										<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
 									</div>
-
+<button class="parametros-button" type="button" onClick="mostrar_filtros();">+Opciones</button>
 									<div class="parametros-filtrado">
 										<label for="localitat">Localitat: </label>
 										<select name="localitat">
@@ -110,7 +110,7 @@
 										<input type="text" name="pmax" value="" placeholder="999 €">
 									</div>
 								</form>
-								<button onClick="mostrar_filtros();">+Opciones</button>
+								
 							</div>
 						</div>
 					</div>

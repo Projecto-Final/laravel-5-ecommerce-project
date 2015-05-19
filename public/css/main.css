@@ -63,9 +63,9 @@ ELEMENTOS CON TRANSICIONES
 
 .m-usuario ul.enlaces > li > a {
 	-webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 /*
@@ -131,7 +131,7 @@ CSS PERSONALIZADO
   padding: 0px 0;
 }
 .contenedor-header {
-background-color: #fff;
+  background-color: #fff;
 }
 .contenedor-header a.logo {
   margin: 0;
@@ -157,7 +157,7 @@ background-color: #fff;
   position: static;
   margin: 0;
   padding: 0;
-    width: 100%;
+  width: 100%;
 }
 
 .contenedor-header .formulario-busqueda {
@@ -173,7 +173,7 @@ background-color: #fff;
 }
 
 .formulario-busqueda > .select-input > select {
-border: 0px;
+  border: 0px;
   border-right: 2px solid #E1E1E1;
   font-size: 13px;
   font-weight: normal;
@@ -208,7 +208,7 @@ border: 0px;
   color: #fff;
 }
 .boton-submit > .buscar {
-padding: 0;
+  padding: 0;
   border: 0;
   background: #26acce;
   width: 50px;
@@ -231,7 +231,7 @@ MENU NAVEGACIÓN
 INFORMACION CLIENTES
 */
 .contenedor-informacion-clientes .item {
-background: #fff;
+  background: #fff;
   position: relative;
   padding: 8px 13px;
   cursor: pointer;
@@ -334,7 +334,7 @@ BANNERS PUBLICITARIOS
 	margin: 20px 0px;
 }
 .banner.t1 {
-border: 1px #EAEAEA solid;
+  border: 1px #EAEAEA solid;
 }
 
 /* 
@@ -462,7 +462,7 @@ SUBASTAS POR CATEGORIAS
   border-bottom: 1px solid #eaeaea;
 }
 .mas {
-border: 1px solid #eaeaea;
+  border: 1px solid #eaeaea;
   border-top: 0px;
   display: inline-block;
   cursor: pointer;
@@ -771,10 +771,10 @@ Iniciar session usuario
   float: left;
 }
 @media (max-width: 641px){
-.col2-set .col-1 {
-  width: 100%;
-  margin-bottom: 10px;
-}
+  .col2-set .col-1 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 .col2-set .content {
@@ -791,10 +791,10 @@ Iniciar session usuario
   float: right;
 }
 @media (max-width: 641px){
-.col2-set .col-2 {
-  width: 100%;
-  margin-bottom: 10px;
-}
+  .col2-set .col-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 #sns_content #login-form h2 {
@@ -831,6 +831,14 @@ ul.form-list, ul.tags-list {
 }
 
 .parametros-filtrado {
-  width: 100%;
  display:none;
+ float: left;
+ width: 100%;
+}
+
+.parametros-button {
+  float: left;
+  width: 100%;
+  background-color: rgb(38, 172, 206);
+  color: #fff;
 }
