@@ -148,7 +148,7 @@ class LogedUserMethods extends Controller {
 			echo "</pre>";
 				
 			
-			return redirect('subasta/'.$articulo->id)->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
+			return redirect('subasta/'.$articulo->id)->withInput()->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );
 
 

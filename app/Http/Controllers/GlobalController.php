@@ -5,6 +5,8 @@ use App\Categoria;
 use App\Articulo;
 use Input;
 use App\Imagen;
+use Request;
+use Session;
 
 class GlobalController extends Controller {
 
@@ -68,8 +70,9 @@ class GlobalController extends Controller {
 
 		$subastador = Usuario::find($articulo['subastador_id']);
 		$imagenes = $articulo->imagenes;
-
-		return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas] );
+		
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
+		->withInput()->with('message', Session::get('message'));
 	}
 
 	public function buscar_subastas()

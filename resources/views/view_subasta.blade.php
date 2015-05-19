@@ -12,7 +12,12 @@
 
 @section('info_extra')
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
-
+{{ Session::get('message') }}
+@if ($alert = Session::get('message'))
+    <div class="alert alert-warning">
+        {{ $alert }}
+    </div>
+@endif
 <div id="single-bid-view">
   <div class="container">
     <section class="row">
