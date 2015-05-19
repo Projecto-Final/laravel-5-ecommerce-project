@@ -7,6 +7,8 @@ use App\Imagen;
 use App\Valoracion;
 use Session;
 use Auth;
+use Carbon\Carbon;
+use App\Puja;
 use Illuminate\Http\Request;
 use DB;
 use Input;
@@ -285,6 +287,24 @@ class LogedUserMethods extends Controller {
 
 		 //redirect...
 	}
+
+/*	public function add_puja(Request $request)
+	{
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['articulo_id']);
+		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
+		$articulo->save();
+		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
+		$puja = Puja::create([
+			'cantidad' => $articulo->puja_mayor,
+			'superada' => 0,
+			'confpuja_id' => null,
+			'articulo_id' => $articulo->id,
+			'pujador_id' => Auth::user()->id,
+			'fecha_puja' => Carbon::now()
+		]);
+		return redirect('subasta/'. $articulo->id);
+	}*/
 
 	public function add_puja(Request $request)
 	{

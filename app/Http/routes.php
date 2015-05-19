@@ -52,7 +52,7 @@ Route::get('crear_subasta', 'LogedUserMethods@form_subasta');
 Route::put('add_subasta', 'LogedUserMethods@add_subasta');
 
 /* Llama al metodo para pujar por un articulo */
-Route::get('add_puja', 'LogedUserMethods@add_puja');
+Route::post('add_puja', 'LogedUserMethods@add_puja');    // esto no se cumple siempre se va al subasta algo
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
