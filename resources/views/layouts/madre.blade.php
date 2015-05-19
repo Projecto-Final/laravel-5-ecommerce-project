@@ -76,9 +76,32 @@
 							<div class="col-md-9 col-sm-12 col-xs-12">
 								<div class="acceso_rapido">
 									<form action="buscar" method="get" class="formulario-busqueda">
-										<div class="select-input">
-											<select name="categoria">
+										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
+										<div class="boton-submit">
+											<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
+										</div>
+										<button class="parametros-button" type="button" onClick="mostrar_filtros();">+Opciones</button>
+										<div class="parametros-filtrado">
+										<ul>
+										<li>
+										<label for="categoria-art">Categoria: </label>
+											<select id="categoria-art" name="categoria">
+												<option>Barcelona</option>
+												<option>Etece</option>
+												<option>tata</option>
 											</select>
+											<label for="subcategoria-art">Subcategoria: </label>
+											<select id="subcategoria-art" name="subcategoria">
+												<option>Barcelona</option>
+												<option>Etece</option>
+												<option>tata</option>
+											</select>
+											<label for="ubicacion">Ubicación: </label>
+											<select id="ubicacion" name="ubicacion">
+												<option>Barcelona</option>
+												<option>Etece</option>
+												<option>tata</option>
+											</select></li>
 											<script>
 											// Script pro rellenar dropdown!
 											$.getJSON("{{ url('get_allCategories') }}", function(result){
@@ -86,31 +109,20 @@
 												$.each(result, function(i, field){
 													scatm += "<option value="+field.id+">"+field.nombre+"</option>";
 												});
-												$(".formulario-busqueda > .select-input > select").html(scatm);
+												$("#categoria-art").html(scatm);
 											});
-
 										</script>
-										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
-									</div>
-									<div class="boton-submit">
-										<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
-									</div>
-<button class="parametros-button" type="button" onClick="mostrar_filtros();">+Opciones</button>
-									<div class="parametros-filtrado">
-										<label for="localitat">Localitat: </label>
-										<select name="localitat">
-											<option>Barcelona</option>
-											<option>Etece</option>
-											<option>tata</option>
-										</select>
-										Filtrar por precio:
+										<li>
+										Filtrar por precio:</li>
+										<li>
 										<label for="pmin">Minimo: </label>
 										<input type="text" name="pmin" value="" placeholder="00 €">
 										<label for="pmax">Maximo: </label>
 										<input type="text" name="pmax" value="" placeholder="999 €">
+										</li>
 									</div>
 								</form>
-								
+
 							</div>
 						</div>
 					</div>
