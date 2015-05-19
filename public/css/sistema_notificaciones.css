@@ -5,6 +5,7 @@
 	  	z-index: 999;
 	  }
 	  .notification-box {
+	  	display:none;
 	  	min-width: 280px;
 	  	max-width: 500px;
 	  	height: auto;

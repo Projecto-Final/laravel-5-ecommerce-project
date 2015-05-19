@@ -12,11 +12,8 @@
 
 @section('info_extra')
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
-{{ Session::get('message') }}
-@if ($alert = Session::get('message'))
-    <div class="alert alert-warning">
-        {{ $alert }}
-    </div>
+@if ($aviso = Session::get('message'))
+   <!-- Mensaje o no. -->
 @endif
 <div id="single-bid-view">
   <div class="container">

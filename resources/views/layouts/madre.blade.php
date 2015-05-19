@@ -282,6 +282,6 @@
 			</div>
 		</footer>
 	</div>
-	<script src="http://127.0.0.1/proyecto/public/js/bootstrap.min.js"></script>
+	<script src="{{url('js/bootstrap.min.js')}}"></script>
 </body>
 </html>
