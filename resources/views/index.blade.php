@@ -111,9 +111,7 @@
                           </div>
                         </div>
                       </div>
-                      @if($contador < 5)
-                        <?php break;?>
-                      @endif
+                     
                       <!-- FIN MUESTRA -->
                       @empty
                       <p>No hay registros en la base de datos... a la espera...</p>

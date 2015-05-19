@@ -36,15 +36,13 @@ class GlobalController extends Controller {
 		// Buscamos todos los Articulos  que tenemos ( si tenemos )
 	 	$arrayArtImg = [];
 	 	$Articulos = Articulo::all();
-	 	echo "<pre>";
 	 	foreach ($Articulos as $key => $Articulo) {
 	 		$imagenes =  $Articulo->imagenes;
-	 		foreach ($imagenes as $key => $imagen) {
-	 			if($key==0){
+	 		foreach ($imagenes as $key2 => $imagen) {
+	 			if($key2==0){
 	 				$arrayArtImg[$key] = [$Articulo, $imagen['imagen']];
 	 			}
 	 		}
-	 		echo "</pre>";
 	 	}
 	 	return view("index", ["subastas" =>$arrayArtImg] );
 	 }
