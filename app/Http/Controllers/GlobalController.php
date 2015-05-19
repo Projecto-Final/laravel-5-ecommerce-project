@@ -4,6 +4,7 @@ use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
 use Input;
+use App\Imagen;
 
 class GlobalController extends Controller {
 
@@ -24,6 +25,20 @@ class GlobalController extends Controller {
     {
         return $data = Categoria::all();
     }
+
+     /**
+     * Envia la info al index, y lo muestra.
+     *
+     * @return Response
+     */
+        public function index()
+        {
+            // Buscamos todos los Articulos  que tenemos ( si tenemos )
+            $Articulos = Articulo::all();
+             return view("index", ["subastas" => $Articulos] );
+        }
+
+
 
     /**
     * 
@@ -61,7 +76,7 @@ class GlobalController extends Controller {
             $arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
             ->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
             ->get();
-             echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+            echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
             foreach ($arts as $key => $art) {
                 echo $art["nombre_producto"];
             }

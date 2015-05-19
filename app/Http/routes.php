@@ -12,10 +12,7 @@
 */
 
 // Route::get('/', 'WelcomeController@index');
-Route::get('/', function()
-{
-	return view('index');
-});
+Route::get('/', 'GlobalController@index');
 
 Route::get('home', 'HomeController@index');
 
