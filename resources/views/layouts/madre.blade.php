@@ -103,10 +103,11 @@
 											<option>Etece</option>
 											<option>tata</option>
 										</select>
-
+										Filtrar por precio:
+										<label for="pmin">Minimo: </label>
 										<input type="text" name="pmin" value="" placeholder="00 €">
-										<label for="precio-min">Localitat: </label><label for="precio-min">Localitat: </label>
-										<input type="text" name="pmin" value="" placeholder="00 €">
+										<label for="pmax">Maximo: </label>
+										<input type="text" name="pmax" value="" placeholder="999 €">
 									</div>
 								</form>
 								<button onClick="mostrar_filtros();">+Opciones</button>

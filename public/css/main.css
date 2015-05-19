@@ -831,5 +831,6 @@ ul.form-list, ul.tags-list {
 }
 
 .parametros-filtrado {
+  width: 100%;
  display:none;
 }
