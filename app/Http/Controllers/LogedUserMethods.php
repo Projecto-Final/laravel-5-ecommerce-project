@@ -338,7 +338,30 @@ class LogedUserMethods extends Controller {
 
 		DB::table('usuarios')
 		->where('id', $id)
-		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email, 'password' => $password));
+		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email));
+
+		 //redirect...
+	}
+
+
+	public function guardarCambiosPass()
+	{	
+
+		$nombre=$_GET["nombre"];	
+		$apellidos=$_GET["apellidos"];	
+		$username=$_GET["username"];	
+		$direccion= $_GET["direccion"];	
+		$email=$_GET["email"];	
+		$pass= $_GET["password"];
+		$password = Hash::make($pass);
+
+		echo $password;
+
+		$id = Auth::user()->id;
+
+		DB::table('usuarios')
+		->where('id', $id)
+		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email,'password' => $password));
 
 		 //redirect...
 	}
