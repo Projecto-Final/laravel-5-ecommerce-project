@@ -829,3 +829,7 @@ ul.form-list, ul.tags-list {
   color: red;
   display:none;
 }
+
+.parametros-filtrado {
+ display:none;
+}

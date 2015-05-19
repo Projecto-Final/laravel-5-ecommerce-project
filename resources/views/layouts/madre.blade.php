@@ -14,6 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<link href="{{url('../vendor/kartik-v/bootstrap-star-rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
 	<script src="{{url('../vendor/kartik-v/bootstrap-star-rating/js/star-rating.min.js')}}" type="text/javascript"></script>
+	<script src="{{url('js/funciones_globales.js')}}" type="text/javascript"></script>
 	<script src="{{url('js/sistema_notificaciones.js')}}" type="text/javascript"></script>
 	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url('css/main.css') }}" rel="stylesheet">
@@ -94,7 +95,21 @@
 									<div class="boton-submit">
 										<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
 									</div>
+
+									<div class="parametros-filtrado">
+										<label for="localitat">Localitat: </label>
+										<select name="localitat">
+											<option>Barcelona</option>
+											<option>Etece</option>
+											<option>tata</option>
+										</select>
+
+										<input type="text" name="pmin" value="" placeholder="00 €">
+										<label for="precio-min">Localitat: </label><label for="precio-min">Localitat: </label>
+										<input type="text" name="pmin" value="" placeholder="00 €">
+									</div>
 								</form>
+								<button onClick="mostrar_filtros();">+Opciones</button>
 							</div>
 						</div>
 					</div>
