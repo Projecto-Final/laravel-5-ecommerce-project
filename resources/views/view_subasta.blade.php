@@ -32,6 +32,7 @@
           </a>
           @endfor
         </div>
+
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
             <h5>PRECIO ACTUAL DEL ARTICULO </h5>
@@ -76,7 +77,20 @@
                   </td>
                 </tr>            
               </tbody></table>
-            </div>
+            </div>                   
+            <table class="table table-bordered">
+              <tbody><tr>
+                <td>Categoria:</td>
+                <td colspan="3">                
+                  {{ $categoria['nombre']}}
+                </td>
+                
+                  <td>Subcategoria:</td>
+                  <td colspan="3"> 
+                    {{ $subcategoria['nombre']}}
+                  </td>
+                </tr>           
+              </tbody></table>
             <div id="datosSubastador">
               <h5>Usuario Subastador</h5></br>
 
