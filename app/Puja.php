@@ -14,8 +14,9 @@ class Puja extends Model {
 
 	public function usuario()
 	{
-		return $this->belongsTo('App\Usuario');
+		return $this->belongsTo('App\Usuario', 'pujador_id', 'id');
 	}
+	
 
 	public function autoPuja()
 	{
