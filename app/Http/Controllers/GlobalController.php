@@ -165,8 +165,8 @@ if (Auth::check())//hay que añadir el ACTIVO
 			$ultimasPujas[0][$nume] = $aux[$i];
 			$ultimasPujas[1][$nume] = $aux[$i]->usuario;
 		}
-	return response()->view("view_subasta", ["subasta" => $articulo , "imagenes" => $imagenes, "pujas"=> $pujas])
-	->withInput()->with('message', Session::get('message'));
+	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
+		->withInput()->with('message', Session::get('message'));
 }
 
 
