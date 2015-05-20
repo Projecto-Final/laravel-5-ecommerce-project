@@ -32,6 +32,11 @@ Route::get('test', function()
 	return view('testing');
 });
 
+Route::get('dashboard', function()
+{
+	return view('dashboard');
+});
+
 Route::get('iniciar_sesion', function()
 {
 	return view('iniciar_sesion');
@@ -102,5 +107,3 @@ Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambios');
 // Admin methods
 
 Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
-//Route::get('get_allCategories', 'LogedAdminMethods@get_allCategories');
-//Route::get('get_allSubCategories', 'LogedAdminMethods@get_allSubCategories');

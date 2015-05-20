@@ -127,8 +127,8 @@ class LogedUserMethods extends Controller {
 				'subcategoria_id' => $submitedArray['subcategoria'],
 				'incremento_precio' => $submitedArray['incremento_precio'],
 				'puja_mayor' => $submitedArray['precio_inicial'],
+				'porrogado' => 0,
 				'comprador_id' => null,
-
 				]);
 			echo "<pre>";
 
@@ -291,7 +291,6 @@ class LogedUserMethods extends Controller {
 	//usa array para devolver tambien el numero de pujas de este articulo
 	public function add_puja(Request $request)
 	{
-
 
 		$submitedArray = $request->all();
 		$articulo[0] = Articulo::find($submitedArray['id_puja']);

@@ -22,10 +22,10 @@ class ArticulosTableSeeder extends Seeder {
 			'precio_inicial' => 20,
 			'incremento_precio' => 60,
 			'puja_mayor' => 20,
-			'porrogado'=>0,
+			'porrogado'=> 0,
 			'subastador_id' => 1,
 			'subcategoria_id' => 1,
-			'comprador_id' => -1,
+			'comprador_id' => -1
 			]);
 		$fecha = new DateTime('NOW');
 		$fecha->modify('-1 day');
@@ -45,10 +45,10 @@ class ArticulosTableSeeder extends Seeder {
 			'precio_inicial' => 200,
 			'incremento_precio' => 20,			
 			'puja_mayor' => 300,
-			'porrogado'=>1,
+			'porrogado'=> 1,
 			'subastador_id' => 1,
 			'subcategoria_id' => 18,
-			'comprador_id' => -1,
+			'comprador_id' => -1
 			]);
 
 		Articulo::create([
@@ -63,11 +63,11 @@ class ArticulosTableSeeder extends Seeder {
 			'fecha_venda' => "2015-04-14 23:55:00",
 			'precio_inicial' => 100,
 			'puja_mayor' => 120,
-			'porrogado'=>0,
+			'porrogado'=> 0,
 			'incremento_precio' => 100,
 			'subastador_id' => 3,
 			'subcategoria_id' => 11,
-			'comprador_id' => 2,
+			'comprador_id' => 2
 			]);
 	}
 }
