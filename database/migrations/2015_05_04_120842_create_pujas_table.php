@@ -17,7 +17,7 @@ class CreatePujasTable extends Migration {
             $table->increments('id');
             $table->float('cantidad');
             $table->boolean('superada');
-            $table->integer('confpuja_id')->unsigned();
+            $table->integer('confpuja_id')->unsigned()->nullable();
             $table->foreign('confpuja_id')->references('id')->on('configuracion_pujas');
             $table->integer('articulo_id')->unsigned();
             $table->foreign('articulo_id')->references('id')->on('articulos');
