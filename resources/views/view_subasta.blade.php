@@ -132,7 +132,7 @@
 
 
                       <td>Precio Inicial:</td>
-                      <td colspan="3">{{ $subasta['precio_inicial']}}</td>
+                      <td colspan="3">{{ $subasta['precio_inicial']}}€</td>
                     </tr>  
                   </tbody></table>
                 </div>
