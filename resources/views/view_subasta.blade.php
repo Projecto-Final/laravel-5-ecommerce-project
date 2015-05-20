@@ -45,74 +45,90 @@
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-              <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">  
+              <!--  <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">   -->
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
-          <h5>Informació Básica</h5>
-          <table class="table table-bordered">
-            <tbody><tr>
-              <td>Artículo:</td>
-              <td colspan="3">                
-                {{ $subasta['nombre_producto']}}
-              </td>
-              <tr>
-                <td>Modelo:</td>
-                <td colspan="3"> 
-                  {{ $subasta['modelo']}}
-                </td>
-              </tr>
-              <tr>
-                <td>Descripción:</td>
-                <td colspan="3"> 
-                  {{ $subasta['descripcion']}}
-                </td>
-              </tr>
-              <tr>
-                <td>Estado:</td>
-                <td colspan="3"> 
-                  {{ $subasta['estado']}}
-                </td>
-              </tr>            
-            </tbody></table>
-            <h5>Mas Información</h5>
+          <div>
+            <h5>Informació Básica</h5>
             <table class="table table-bordered">
-              <tbody>
-               <tr>
-                <td>Pujas Por Este Articulo:</td>
-                <td colspan="3" id="numPujas">{{ $pujas}}</td>
-                <td>Ubicación:</td>
+              <tbody><tr>
+                <td>Artículo:</td>
                 <td colspan="3">                
-                  {{ $subasta['localizacion']}}
+                  {{ $subasta['nombre_producto']}}
                 </td>
                 <tr>
-                  <td>Fecha Finalizacion Subasta:</td>
-                  <td colspan="3">{{ $subasta['fecha_final']}}</td>
+                  <td>Modelo:</td>
+                  <td colspan="3"> 
+                    {{ $subasta['modelo']}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Descripción:</td>
+                  <td colspan="3"> 
+                    {{ $subasta['descripcion']}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Estado:</td>
+                  <td colspan="3"> 
+                    {{ $subasta['estado']}}
+                  </td>
+                </tr>            
+              </tbody></table>
+            </div>
+            <div id="datosSubastador">
+              <h5>Usuario Subastador</h5></br>
 
-
-                  <td>Fecha Inicio Subasta:</td>
-                  <td colspan="3">{{ $subasta['fecha_inicio']}}</td>
-
-                  <tr>
-                    <td>Precio Actual:</td>
-                    <td colspan="3" id="tdPrecio">{{ $subasta['puja_mayor']}}€</td>
-
-
-                    <td>Precio Inicial:</td>
-                    <td colspan="3">{{ $subasta['precio_inicial']}}</td>
-                  </tr>  
-                </tbody></table>
+               <img id="fotoSubastador" src="{{ url('images/profiles/'.$subastador['imagen_perfil']) }}">
+               
+                <!--  <div id="fotoSubastador" style="background-image: url({{ url('images/profiles/'.$subastador['imagen_perfil']) }}) ;"></div>   -->
+              <div>
+                <h1>{{$subastador['username']}}</h1>
+                <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$subastador['reputacion']}}"></input>
               </div>
-            </section>
+            </div>
+
+
+            <div id="masinfoS">
+              <h5>Mas Información</h5>
+              <table class="table table-bordered">
+                <tbody>
+                 <tr>
+                  <td>Pujas Por Este Articulo:</td>
+                  <td colspan="3" id="numPujas">{{ $pujas}}</td>
+                  <td>Ubicación:</td>
+                  <td colspan="3">                
+                    {{ $subasta['localizacion']}}
+                  </td>
+                  <tr>
+                    <td>Fecha Finalizacion Subasta:</td>
+                    <td colspan="3">{{ $subasta['fecha_final']}}</td>
+
+
+                    <td>Fecha Inicio Subasta:</td>
+                    <td colspan="3">{{ $subasta['fecha_inicio']}}</td>
+
+                    <tr>
+                      <td>Precio Actual:</td>
+                      <td colspan="3" id="tdPrecio">{{ $subasta['puja_mayor']}}€</td>
+
+
+                      <td>Precio Inicial:</td>
+                      <td colspan="3">{{ $subasta['precio_inicial']}}</td>
+                    </tr>  
+                  </tbody></table>
+                </div>
+              </section>
+            </div>
+
+
+
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="js/bootstrap.min.js"></script>
+
           </div>
-
-
-
-
-          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-          <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-          <!-- Include all compiled plugins (below), or include individual files as needed -->
-          <script src="js/bootstrap.min.js"></script>
-
-        </div>
-        @stop
+          @stop

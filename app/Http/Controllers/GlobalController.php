@@ -8,6 +8,7 @@ use App\Imagen;
 use Request;
 use Session;
 use DB;
+use Auth;
 
 class GlobalController extends Controller {
 
@@ -60,24 +61,44 @@ class GlobalController extends Controller {
 	{
 		$articulo = Articulo::find($idArticulo);
 
+//DEFINIR AQUI DIVERSOS CAMINOS  
+		// USUARIO SIN LOGUEAR
+		//LOGUEADO
+		//PROPIETARIO Y ADMIN 
 
+//si esta logueado
+if (Auth::check())//hay que añadir el ACTIVO
+{
+  
+			$id = Auth::user()->id;
+
+			$aux = $articulo->pujas;
+
+			$pujas = count($aux);
+			$subastador = Usuario::find($articulo['subastador_id']);
+			$imagenes = $articulo->imagenes; 
+
+			return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
+			->withInput()->with('message', Session::get('message'));
+}else{
+	
+}
+
+	
+
+
+		}
 		
-		$aux = $articulo->pujas;
-
-		$pujas = count($aux);
 
    /*     for ($i=0; $i < count($pujas[0]); $i++) {
 			$pujas[1][$i] = $pujas[$i]->usuario;
 		}*/
 		//mostrar las 3 ultimas pujas por el articulo
 
+			
 
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$imagenes = $articulo->imagenes;
 		
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
-		->withInput()->with('message', Session::get('message'));
-	}
+	
 
 	public function buscar_subastas()
 	{

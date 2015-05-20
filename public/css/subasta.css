@@ -572,6 +572,32 @@ opacity: 0.8;
 	
 }
 
+
+#fotoSubastador{
+	border-radius: 200px 200px 200px 200px;
+	-moz-border-radius: 200px 200px 200px 200px;
+	-webkit-border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;
+	background-size: cover;
+	background-position: center;
+	/*margin-bottom: 5px;
+	margin-top: -120px;*/
+	border:solid black 2px;
+	width: 200px;
+	height: 200px;
+}
+#datosSubastador{
+/*	float: left;
+	clear: both;
+	margin: auto;
+	width: 50%;*/
+	text-align: center;
+	margin-bottom: 4%;
+}
+#masinfoS{
+	/*clear: both;*/
+}
+
 /* ###################################################### */
 /* -------------------- CSS SPLITTER -------------------- */
 /* ###################################################### */

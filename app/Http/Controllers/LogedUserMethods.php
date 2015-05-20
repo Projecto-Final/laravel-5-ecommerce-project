@@ -295,7 +295,6 @@ class LogedUserMethods extends Controller {
 	public function add_puja(Request $request)
 	{
 
-
 		$submitedArray = $request->all();
 		$articulo[0] = Articulo::find($submitedArray['id_puja']);
 		$articulo[0]->puja_mayor = $articulo[0]->puja_mayor + $articulo[0]->incremento_precio;
