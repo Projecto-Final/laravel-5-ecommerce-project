@@ -20,6 +20,7 @@
   <div class="container">
     <section class="row">
       <div class="col-lg-5 col-md-6 col-xs-4">
+        <div id="fotosArt">
         @for ($i = 0; $i < count($imagenes); $i++)
         @if ($i  == 0)
         <a class="image-gallery col-md-12" href="#">
@@ -31,6 +32,8 @@
             <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$imagenes[$i]->imagen) }}');"></div>
           </a>
           @endfor
+</div>
+          <div id="ultimasPujas"></div>
         </div>
 
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
