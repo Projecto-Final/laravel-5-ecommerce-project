@@ -84,11 +84,11 @@
 												<li>
 													<label for="categoria-art">Categoria: </label>
 													<select id="categoria-art" name="categoria">
-														<option>Cualquiera</option>
+														<option value="*">Cualquiera</option>
 													</select>
 													<label for="subcategoria-art">Subcategoria: </label>
 													<select id="subcategoria-art" name="subcategoria">
-														<option>Cualquiera</option>
+														<option value="*">Cualquiera</option>
 													</select>
 													<label for="ubicacion">Ubicación: </label>
 													<select id="ubicacion" name="ubicacion">
