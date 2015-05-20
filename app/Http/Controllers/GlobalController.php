@@ -102,85 +102,96 @@ class GlobalController extends Controller {
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {
-  
-			$id = Auth::user()->id;
+	$user_id = Auth::user()->id;
+	$user = Usuario::find($user_id);
+//si el usuario es el propietario o el admin
+	if($user_id==$articulo['subastador_id']||$user['permisos']==1){
 
-			$aux = $articulo->pujas;
+$aux = $articulo->pujas;
+		$subastador = Usuario::find($articulo['subastador_id']);
+		$pujas = count($aux);
+		$imagenes = $articulo->imagenes; 
+return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
+		->withInput()->with('message', Session::get('message'));
 
-			$pujas = count($aux);
-			$subastador = Usuario::find($articulo['subastador_id']);
-			$imagenes = $articulo->imagenes; 
+	}else{
+		$aux = $articulo->pujas;
+		$subastador = Usuario::find($articulo['subastador_id']);
+		$pujas = count($aux);
+		$imagenes = $articulo->imagenes; 
 
-			return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
-			->withInput()->with('message', Session::get('message'));
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas])
+		->withInput()->with('message', Session::get('message'));
+	}
 }else{
-	
+	return response()->view("view_subasta", ["subasta" => $articulo , "imagenes" => $imagenes, "pujas"=> $pujas])
+		->withInput()->with('message', Session::get('message'));
 }
 
-	
 
 
-		}
-		
+
+}
+
 
    /*     for ($i=0; $i < count($pujas[0]); $i++) {
 			$pujas[1][$i] = $pujas[$i]->usuario;
 		}*/
 		//mostrar las 3 ultimas pujas por el articulo
 
-			
+
 
 		
-	
 
-	public function buscar_subastas()
-	{
 
-		$urlParams=Input::all();
+		public function buscar_subastas()
+		{
+
+			$urlParams=Input::all();
 		// Buscar por todo
-		echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
-		$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
+			echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
+			$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
 
 		// Buscamos articulo con X nombre.
-		$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
+			$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
 
 
 		// Si indica categoria, busca por categoria
-		if (isset($urlParams['categoria'])) {
-			echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-			$query = $query->where('categoria', '=', $urlParams['categoria']);
+			if (isset($urlParams['categoria'])) {
+				echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+				$query = $query->where('categoria', '=', $urlParams['categoria']);
 
-			foreach ($query as $key => $scategoria) {
-			$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-			->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-			->get();
-			echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
-			foreach ($arts as $key => $art) {
-				echo $art["nombre_producto"];
+				foreach ($query as $key => $scategoria) {
+					$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+					->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+					->get();
+					echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+					foreach ($arts as $key => $art) {
+						echo $art["nombre_producto"];
+					}
+					echo "</pre>";
+				}
 			}
+
+			if(isset($urlParams['subcategoria'])){
+				echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
+			}
+
+			$article = $query->first();
+
+			echo "<pre>";
+			echo "<h1>".count($articulosBusqueda)."</h1>";
+			print_r($articulosBusqueda);
+			foreach ($articulosBusqueda as $key => $article) {
+				echo  $article[0]['nombre_producto'];
+			}
+
+
 			echo "</pre>";
-		}
-		}
-
-		if(isset($urlParams['subcategoria'])){
-			echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-		}
-
-		$article = $query->first();
-
-		echo "<pre>";
-		echo "<h1>".count($articulosBusqueda)."</h1>";
-		print_r($articulosBusqueda);
-		foreach ($articulosBusqueda as $key => $article) {
-			echo  $article[0]['nombre_producto'];
-		}
 
 
-		echo "</pre>";
 
-		
 
-		
 		//$urlParams=Input::all();
 		//$buscar = $urlParams['buscar'];
 		//echo "<h1>".$buscar."</h1>";
@@ -202,5 +213,5 @@ if (Auth::check())//hay que añadir el ACTIVO
 		// 	echo "</pre>";
 		// }
 		// echo "</pre>";
+		}
 	}
-}

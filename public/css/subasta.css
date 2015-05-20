@@ -563,6 +563,7 @@ opacity: 0.8;
 }
 
 .article-content > .bid {
+	margin-bottom: 2%;
 	height: auto;
 	padding: 9px 10px;
 	/* background-color: white; */
@@ -579,23 +580,20 @@ opacity: 0.8;
 	-webkit-border-radius: 200px 200px 200px 200px;
 	border: 0px solid #000000;
 	background-size: cover;
-	background-position: center;
-	/*margin-bottom: 5px;
-	margin-top: -120px;*/
+	background-position: center;	
 	border:solid black 2px;
 	width: 200px;
 	height: 200px;
 }
 #datosSubastador{
-/*	float: left;
-	clear: both;
-	margin: auto;
-	width: 50%;*/
+	
 	text-align: center;
 	margin-bottom: 4%;
 }
-#masinfoS{
-	/*clear: both;*/
+#botonPuja{
+	background-color: rgb(38, 172, 206);
+	color: white;
+	border-color: black;
 }
 
 /* ###################################################### */
