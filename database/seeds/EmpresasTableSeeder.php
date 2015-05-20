@@ -12,6 +12,10 @@ class EmpresasTableSeeder extends Seeder {
 		Empresa::create([
 			'nombre' => '3F&M',
 			'direccion' => 'C/ Stand, La Llagosta',
+			'tiempoArticulo' => '4',
+			'tiempoPorrogaArticulo' => '4',
+			'inactividad'=>'4',
+			'precioPorroga'=>'4.4',
 		]);
 	}
 }

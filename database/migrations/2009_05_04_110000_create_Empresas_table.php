@@ -16,7 +16,11 @@ class CreateEmpresasTable extends Migration {
 		{
             $table->increments('id');
             $table->string('nombre');
-            $table->string('direccion');
+            $table->integer('direccion');
+            $table->integer('tiempoArticulo');
+            $table->integer('tiempoPorrogaArticulo');
+            $table->integer('inactividad');
+            $table->double('precioPorroga');
             $table->rememberToken();
             $table->timestamps();
 		});

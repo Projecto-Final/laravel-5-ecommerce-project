@@ -97,3 +97,10 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 //editar perfil  editarP()  
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
 Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambios');
+
+
+// Admin methods
+
+Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
+Route::get('get_allCategories', 'LogedAdminMethods@get_allCategories');
+Route::get('get_allSubCategories', 'LogedAdminMethods@get_allSubCategories');

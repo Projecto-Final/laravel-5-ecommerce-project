@@ -27,6 +27,7 @@ class CreateArticulosTable extends Migration {
             $table->double('precio_inicial');
             $table->double('incremento_precio');
             $table->double('puja_mayor');
+            $table->integer('porrogado');
             $table->integer('subastador_id')->unsigned();
             $table->foreign('subastador_id')->references('id')->on('usuarios');
             $table->integer('subcategoria_id')->unsigned();
