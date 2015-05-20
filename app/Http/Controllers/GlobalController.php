@@ -81,15 +81,45 @@ class GlobalController extends Controller {
 
 	public function buscar_subastas()
 	{
+
 		$urlParams=Input::all();
-		$buscar = $urlParams['buscar'];
-		echo "<h1>".$buscar."</h1>";
-		$categoria = $urlParams['categoria'];
+		// Buscar por todo
+		echo "<h1>".$urlParams['buscar']."</h1>";
+		$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
+
+		// Buscamos articulo con X nombre.
+		$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
+
+
+		// Si indica categoria, busca por categoria
+		if ($hidden == 1) {
+			$query = $query->where('hide', '=', 1);
+		}
+
+		$article = $query->first();
+
 		echo "<pre>";
-		$subcat = Categoria::find(4)->subcategorias;
+		echo "<h1>".count($articulosBusqueda)."</h1>";
+		print_r($articulosBusqueda);
+		foreach ($articulosBusqueda as $key => $article) {
+			echo  $article[0]['nombre_producto'];
+		}
+
+
+		echo "</pre>";
+
+		
+
+		
+		//$urlParams=Input::all();
+		//$buscar = $urlParams['buscar'];
+		//echo "<h1>".$buscar."</h1>";
+		//$categoria = $urlParams['categoria'];
+		//echo "<pre>";
+		//$subcat = Categoria::find(4)->subcategorias;
 		//$subcat[0]->articulos(); 
 
-		var_dump($subcat[1]->articulos[0]['nombre_producto']);
+		//var_dump($subcat[1]->articulos[0]['nombre_producto']);
 		// foreach ($subcat as $key => $scategoria) {
 		// 	//echo $scategoria['id'];
 		// 	$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
@@ -101,6 +131,6 @@ class GlobalController extends Controller {
 		// 	}
 		// 	echo "</pre>";
 		// }
-		echo "</pre>";
+		// echo "</pre>";
 	}
 }
