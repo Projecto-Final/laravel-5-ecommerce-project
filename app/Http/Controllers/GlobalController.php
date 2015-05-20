@@ -84,7 +84,7 @@ class GlobalController extends Controller {
 
 		$urlParams=Input::all();
 		// Buscar por todo
-		echo "<h1>".$urlParams['buscar']."</h1>";
+		echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
 		$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
 
 		// Buscamos articulo con X nombre.
@@ -92,8 +92,24 @@ class GlobalController extends Controller {
 
 
 		// Si indica categoria, busca por categoria
-		if ($hidden == 1) {
-			$query = $query->where('hide', '=', 1);
+		if (isset($urlParams['categoria'])) {
+			echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+			$query = $query->where('categoria', '=', $urlParams['categoria']);
+
+			foreach ($query as $key => $scategoria) {
+			$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+			->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+			->get();
+			echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+			foreach ($arts as $key => $art) {
+				echo $art["nombre_producto"];
+			}
+			echo "</pre>";
+		}
+		}
+
+		if(isset($urlParams['subcategoria'])){
+			echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
 		}
 
 		$article = $query->first();
