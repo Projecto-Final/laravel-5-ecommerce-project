@@ -37,10 +37,10 @@ class Articulo extends Model {
 	}
 	public function pujas()
 	{
-		return $this->hasMany('App\Puja', 'id', 'articulo_id');
+		return $this->hasMany('App\Puja', 'articulo_id', 'id');
 	}
 	public function Confpujas()
 	{
-		return $this->hasMany('App\ConfiguracionPuja', 'id', 'articulo_id');
+		return $this->hasMany('App\ConfiguracionPuja', 'articulo_id', 'id');
 	}
 }

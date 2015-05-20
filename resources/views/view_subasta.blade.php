@@ -1,4 +1,4 @@
-<?php use App\Articulo; ?>
+<?php use App\Articulo; use App\Puja;?>
 @extends('layouts.madre')
 
 @section('extclases')
@@ -14,7 +14,7 @@
 <script src="{{ url('js/subasta.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
 @if ($aviso = Session::get('message'))
-   <!-- Mensaje o no. -->
+<!-- Mensaje o no. -->
 @endif
 <div id="single-bid-view">
   <div class="container">
@@ -45,7 +45,7 @@
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-            <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">  
+              <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">  
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
@@ -78,6 +78,16 @@
             <h5>Mas Información</h5>
             <table class="table table-bordered">
               <tbody>
+               <tr>
+                <td>Pujas Por Este Articulo:</td>
+                <td colspan="3">{{ count($pujas)}}</td>
+                <td>Ubicación:</td>
+                <td>Provando:</td>
+                <td colspan="3">{{ var_dump($subasta->Confpujas) }}</td>
+                <td>Ubicación:</td>
+                <td colspan="3">                
+                  {{ $subasta['localizacion']}}
+                </td>
                 <tr>
                   <td>Fecha Finalizacion Subasta:</td>
                   <td colspan="3">{{ $subasta['fecha_final']}}</td>
@@ -93,32 +103,19 @@
 
                     <td>Precio Inicial:</td>
                     <td colspan="3">{{ $subasta['precio_inicial']}}</td>
-                  </tr>               
-
-                  <tr>
-                    <td>Metodo de Pago:</td>
-                    <td colspan="3">Tarjeta de credito/debito, contra reembolso</td>                    
-
-                    <td>Devoluciones:</td>
-                    <td colspan="3">Hasta 7 Dias despues de la entrega</td>
-                  </tr>
-                  <tr>
-                    <td>Ubicación:</td>
-                    <td colspan="3">                
-                      {{ $subasta['localizacion']}}
-                    </td>
-                  </tbody></table>
-                </div>
-              </section>
-            </div>
-
-
-
-
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="js/bootstrap.min.js"></script>
-
+                  </tr>  
+                </tbody></table>
+              </div>
+            </section>
           </div>
-          @stop
+
+
+
+
+          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+          <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+          <!-- Include all compiled plugins (below), or include individual files as needed -->
+          <script src="js/bootstrap.min.js"></script>
+
+        </div>
+        @stop

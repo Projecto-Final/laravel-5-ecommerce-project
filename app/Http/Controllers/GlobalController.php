@@ -7,6 +7,7 @@ use Input;
 use App\Imagen;
 use Request;
 use Session;
+use DB;
 
 class GlobalController extends Controller {
 
@@ -59,8 +60,10 @@ class GlobalController extends Controller {
 	{
 		$articulo = Articulo::find($idArticulo);
 
-		$aux = $articulo->pujas;
-		$pujas=count($aux);
+
+		$pujas = DB::table('pujas')->where('articulo_id', '=', $idArticulo)->get();
+
+		//$pujas = $articulo->pujas;
 
    /*     for ($i=0; $i < count($pujas[0]); $i++) {
 			$pujas[1][$i] = $pujas[$i]->usuario;
