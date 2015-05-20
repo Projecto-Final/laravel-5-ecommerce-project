@@ -86,17 +86,21 @@ class GlobalController extends Controller {
 		echo "<h1>".$buscar."</h1>";
 		$categoria = $urlParams['categoria'];
 		echo "<pre>";
-		$subcat = Categoria::find($categoria)->subcategorias;
-		foreach ($subcat as $key => $scategoria) {
-			//echo $scategoria['id'];
-			$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-			->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-			->get();
-			echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
-			foreach ($arts as $key => $art) {
-				echo $art["nombre_producto"];
-			}
-			echo "</pre>";
-		}
+		$subcat = Categoria::find(4)->subcategorias;
+		//$subcat[0]->articulos(); 
+
+		var_dump($subcat[1]->articulos[0]['nombre_producto']);
+		// foreach ($subcat as $key => $scategoria) {
+		// 	//echo $scategoria['id'];
+		// 	$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+		// 	->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+		// 	->get();
+		// 	echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+		// 	foreach ($arts as $key => $art) {
+		// 		echo $art["nombre_producto"];
+		// 	}
+		// 	echo "</pre>";
+		// }
+		echo "</pre>";
 	}
 }
