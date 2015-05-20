@@ -164,7 +164,7 @@ CSS PERSONALIZADO
   position: relative;
   margin: auto;
   float: right;
-  border: 2px solid #bebebe;
+  border: 1px solid #EEEEEE;
 }
 
 .formulario-busqueda > .select-input {
@@ -830,10 +830,13 @@ ul.form-list, ul.tags-list {
   display:none;
 }
 
+/* ESTILO DE BUSCADOR Y OPCIONES FILTRADO */
 .parametros-filtrado {
- display:none;
- float: left;
- width: 100%;
+  display: none;
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+  background-color: aliceblue;
 }
 
 .parametros-button {
@@ -841,4 +844,5 @@ ul.form-list, ul.tags-list {
   width: 100%;
   background-color: rgb(38, 172, 206);
   color: #fff;
+  border:0px;
 }
