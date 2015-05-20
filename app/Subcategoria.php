@@ -18,6 +18,6 @@ class Subcategoria extends Model {
 	}
 	public function articulos()
 	{
-		return $this->belongsTo('App\Articulo');
+		return $this->hasMany('App\Articulo');
 	}
 }

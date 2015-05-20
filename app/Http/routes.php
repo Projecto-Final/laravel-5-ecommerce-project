@@ -65,10 +65,10 @@ Route::get('cargar_precio', 'LogedUserMethods@cargar_precio');
 Route::get('get_allSubCategories', 'LogedUserMethods@get_allSubCategories');
 
 /* Obtener Todas las Subcategorías en una categorías. */
-Route::get('get_allSubCategoriesOnCategory/{idCategoria}', 'LogedUserMethods@get_allSubCategoriesOnCategory');
+Route::get('get_allSubCategoriesOnCategory/{idCategoria}', 'GlobalController@get_allSubCategoriesOnCategory');
 
 /* Obtener Todas las Subcategorías en una categorías. */
-Route::get('get_subCategoryDescription/{idSubCategoria}', 'LogedUserMethods@get_subCategoryDescription');
+Route::get('get_subCategoryDescription/{idSubCategoria}', 'GlobalController@get_subCategoryDescription');
 
 
 
@@ -97,3 +97,10 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 //editar perfil  editarP()  
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
 Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambios');
+
+
+// Admin methods
+
+Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
+//Route::get('get_allCategories', 'LogedAdminMethods@get_allCategories');
+//Route::get('get_allSubCategories', 'LogedAdminMethods@get_allSubCategories');

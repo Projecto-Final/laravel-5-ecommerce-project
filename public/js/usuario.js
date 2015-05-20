@@ -528,7 +528,7 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 	});	
 }
 
-function perfilGuardarPass(username,nombre,apellidos,direccion,email,password){
+function perfilGuardarPass(username,nombre,apellidos,direccion,email,password,password_confirmation){
 	var url = "guardarCambiosPass";
 	alert("perfil function : : " + password);
 	$.get(url,{
@@ -537,7 +537,8 @@ function perfilGuardarPass(username,nombre,apellidos,direccion,email,password){
 		apellidos: apellidos,
 		direccion: direccion,
 		email: email,
-		password: password
+		password: password,
+		password_confirmation: password_confirmation
 	})
 	.done(function(data) {
 		alert(data);
@@ -560,8 +561,8 @@ function guardarCambios(){
 	}else{
 		alert("Con pass");
 		var password = document.getElementById('password').value;
-		alert(password);
-		perfilGuardarPass(username,nombre,apellidos,direccion,email,password);
+		var password_confirmation = document.getElementById('password_confirmation').value;
+		perfilGuardarPass(username,nombre,apellidos,direccion,email,password,password_confirmation);
 	}
 }
 

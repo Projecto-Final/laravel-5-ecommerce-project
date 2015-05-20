@@ -90,7 +90,7 @@
 // $img = Articulo::find(3)->imagenes;
                       ?>
                       @forelse($subastas as $contador => $subasta)
-                       @if($contador >= 12)
+                       @if($contador == 12)
                         <?php break;?>
                       @endif
                       <!-- MUESTRA -->

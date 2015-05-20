@@ -247,46 +247,43 @@ class LogedUserMethods extends Controller {
 		return $con;
 	}
 
-	public function guardarCambios()
-	{	
-
-		$nombre=$_GET["nombre"];	
-		$apellidos=$_GET["apellidos"];	
-		$username=$_GET["username"];	
-		$direccion= $_GET["direccion"];	
-		$email=$_GET["email"];	
+	public function guardarCambios(Request $request)
+	{
+		$submitedArray = $request->all();
+		$nombre=$submitedArray["nombre"];	
+		$apellido=$submitedArray["apellidos"];	
+		$username=$submitedArray["username"];	
+		$direccion= $submitedArray["direccion"];	
+		$email=$submitedArray["email"];	
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
-
-		DB::table('usuarios')
-		->where('id', $id)
-		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'direccion' => $direccion,'direccion' => $direccion,'email' => $email));
-
-		 //redirect...
+		$user->nombre = $nombre;
+		$user->apellido = $apellido;
+		$user->username = $username;
+		$user->direccion = $direccion;
+		$user->email = $email;
+		$user->save();
 	}
 
-
-	public function guardarCambiosPass()
-	{	
-
-		$nombre=$_GET["nombre"];	
-		$apellidos=$_GET["apellidos"];	
-		$username=$_GET["username"];	
-		$direccion= $_GET["direccion"];	
-		$email=$_GET["email"];	
-		$pass= $_GET["password"];
-		$password = Hash::make($pass);
-
-		//echo $password;
-
+	public function guardarCambiosPass(Request $request)
+	{
+		$submitedArray = $request->all();
 		$id = Auth::user()->id;
-
-		DB::table('usuarios')
-		->where('id', $id)
-		->update(array('nombre' => $nombre,'apellido' => $apellidos,'username' => $username,'password' => $password,'direccion' => $direccion,'direccion' => $direccion,'email' => $email));
-
-		 //redirect...
+		$user = Usuario::find($id);
+		$user->nombre = $submitedArray["nombre"];
+		$user->apellido = $submitedArray["apellidos"];
+		$user->username = $submitedArray["username"];
+		if (!empty($submitedArray["password"])) {
+			if ($submitedArray["password_confirmation"] == $submitedArray["password"]) {
+				$user->password = bcrypt($submitedArray["password"]);
+			}
+		}
+		$user->direccion = $submitedArray["direccion"];
+		$user->email = $submitedArray["email"];
+		$user->save();
+		return var_dump($user);
 	}
+
 
 
 
@@ -321,4 +318,6 @@ class LogedUserMethods extends Controller {
 		$articulo[1] = count($aux);
 		return $articulo;
 	}
+
+	
 }

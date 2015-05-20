@@ -30,10 +30,9 @@ class Articulo extends Model {
 	{
 		return $this->hasOne('App\Usuario', 'subastador_id', 'id');
 	}
-
 	public function subcategoria()
 	{
-		return $this->hasOne('App\Subcategoria', 'subcategoria_id', 'id');
+		return $this->belongsTo('App\Subcategoria');
 	}
 	public function pujas()
 	{
