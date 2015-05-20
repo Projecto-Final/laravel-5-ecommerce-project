@@ -23,11 +23,17 @@ function pujar(id_puja,url){
 			$("#tdPrecio").html(data[0]['puja_mayor']+"€");
 
 //por motivos que desconozco sin el aux no va
-			var aux = data[1]
-			$("#numPujas").html(aux);
-			
+var aux = data[1]
+$("#numPujas").html(aux);
 
-		});
+
+if(data[2]['pujador_id']==data[3]){
+	$( "#botonPuja" ).prop( "disabled", true );
+}else{
+	$( "#botonPuja" ).prop( "disabled", false );
+}
+
+});
 	}
 }
 
@@ -52,7 +58,13 @@ function recargarPrecios(){
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
-			
+
+		if(data[2]['pujador_id']==data[3]){
+			$( "#botonPuja" ).prop( "disabled", true );
+		}else{
+			$( "#botonPuja" ).prop( "disabled", false );
+		}
+		
 
 	});
 

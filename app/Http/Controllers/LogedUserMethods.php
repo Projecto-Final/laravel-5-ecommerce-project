@@ -308,14 +308,32 @@ class LogedUserMethods extends Controller {
 		$aux = $articulo[0]->pujas;
 		$articulo[1] = count($aux);
 
+		for ($i=0; $i < $articulo[1]; $i++) {
+		 
+			if($pujas[$i]['superada']==0){
+				$articulo[2]=$pujas[$i];
+			}
+		}
+		$articulo[3] = Auth::user()->id;
+
 		return $articulo;
 	}
 
 	public function	cargar_precio(Request $request){
 		$submitedArray = $request->all();
 		$articulo[0] = Articulo::find($submitedArray['id_puja']);
-		$aux = $articulo[0]->pujas;
-		$articulo[1] = count($aux);
+		$pujas = $articulo[0]->pujas;
+		$articulo[1] = count($pujas);
+		//sacar la puja maxima
+		for ($i=0; $i < $articulo[1]; $i++) {
+
+			if($pujas[$i]['superada']==0){
+				$articulo[2]=$pujas[$i];
+			}
+		}
+		$articulo[3] = Auth::user()->id;
+		
+
 		return $articulo;
 	}
 
