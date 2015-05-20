@@ -106,7 +106,7 @@ if (Auth::check())//hay que añadir el ACTIVO
 	$user = Usuario::find($user_id);
 
 //si el usuario es el propietario o el admin
-	if($user_id==$articulo['subastador_id']||$user['permisos']==1){
+	if($user_id==$articulo['subastador_id'] || $user['permisos']==1){
 
 
 		$aux = $articulo->pujas;
@@ -160,15 +160,6 @@ if (Auth::check())//hay que añadir el ACTIVO
 }
 
 
-   /*     for ($i=0; $i < count($pujas[0]); $i++) {
-			$pujas[1][$i] = $pujas[$i]->usuario;
-		}*/
-		//mostrar las 3 ultimas pujas por el articulo
-
-
-
-		
-
 
 		public function buscar_subastas()
 		{
@@ -189,38 +180,38 @@ if (Auth::check())//hay que añadir el ACTIVO
 
 
 
-echo "subcat es = ".$urlParams['subcategoria'];
+			echo "subcat es = ".$urlParams['subcategoria'];
 		// Si indica categoria, busca por categoria
 
-		if (isset($urlParams['categoria'])) {
+			if (isset($urlParams['categoria'])) {
 
-			if(isset($urlParams['subcategoria'])){
+				if(isset($urlParams['subcategoria'])){
 
 				//$subcategorias = Categoria::find($urlParams['categoria'])->subcategorias;
-				
-				$subcategorias = Subcategoria::whereRaw("categoria_id = ? and id = ?", [$urlParams['categoria'],$urlParams['subcategoria']])->get();
+
+					$subcategorias = Subcategoria::whereRaw("categoria_id = ? and id = ?", [$urlParams['categoria'],$urlParams['subcategoria']])->get();
 				//var_dump($subcategorias[0]);
-				foreach ($subcategorias as $key => $scategoria) {
+					foreach ($subcategorias as $key => $scategoria) {
 					//$query = Articulo::whereRaw('subcategoria_id = '.$scategoria['id'].' and nombre_producto LIKE "%'.$urlParams['buscar'].'%" and puja_mayor > 0')->get();
-					$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$urlParams['buscar']."%'", array($scategoria['id']))->get();
+						$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$urlParams['buscar']."%'", array($scategoria['id']))->get();
 					//$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
 					//->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
 					//->get();
 					// echo count($query);
-					 foreach ($query as $key => $art) {
-					 	echo $art["nombre_producto"];
-					 }
+						foreach ($query as $key => $art) {
+							echo $art["nombre_producto"];
+						}
+					}
 				}
+
 			}
 
-		}
-
-		if(isset($urlParams['categoria'])){
-			echo "<h2> CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-		}
-		if(isset($urlParams['subcategoria'])){
-			echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-		}
+			if(isset($urlParams['categoria'])){
+				echo "<h2> CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+			}
+			if(isset($urlParams['subcategoria'])){
+				echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
+			}
 
 		//$article = $query->first();
 
