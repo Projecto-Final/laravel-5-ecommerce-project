@@ -288,46 +288,38 @@ class LogedUserMethods extends Controller {
 		 //redirect...
 	}
 
-/*	public function add_puja(Request $request)
-	{
-		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['articulo_id']);
-		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
-		$articulo->save();
-		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
-		$puja = Puja::create([
-			'cantidad' => $articulo->puja_mayor,
-			'superada' => 0,
-			'confpuja_id' => null,
-			'articulo_id' => $articulo->id,
-			'pujador_id' => Auth::user()->id,
-			'fecha_puja' => Carbon::now()
-		]);
-		return redirect('subasta/'. $articulo->id);
-	}*/
 
+
+//Esta funcion añade la puja en la BD pasandole la id de la subasta 
+	//usa array para devolver tambien el numero de pujas de este articulo
 	public function add_puja(Request $request)
 	{
+
+
 		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_puja']);
-		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
-		$articulo->save();
-		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
+		$articulo[0] = Articulo::find($submitedArray['id_puja']);
+		$articulo[0]->puja_mayor = $articulo[0]->puja_mayor + $articulo[0]->incremento_precio;
+		$articulo[0]->save();
+		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo[0]->id])->update(['superada' => true]);
 		$puja = Puja::create([
-			'cantidad' => $articulo->puja_mayor,
+			'cantidad' => $articulo[0]->puja_mayor,
 			'superada' => 0,
 			'confpuja_id' => null,
-			'articulo_id' => $articulo->id,
+			'articulo_id' => $articulo[0]->id,
 			'pujador_id' => Auth::user()->id,
 			'fecha_puja' => Carbon::now()
 			]);
+		$aux = $articulo[0]->pujas;
+		$articulo[1] = count($aux);
 
 		return $articulo;
 	}
 
 	public function	cargar_precio(Request $request){
 		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_puja']);
+		$articulo[0] = Articulo::find($submitedArray['id_puja']);
+		$aux = $articulo[0]->pujas;
+		$articulo[1] = count($aux);
 		return $articulo;
 	}
 }

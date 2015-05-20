@@ -34,7 +34,7 @@
         </div>
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
-            <h5>PRECIO ACTUAL DEL ARTICULO - FECHA CIERRE PUJA {{ $subasta['fecha_final'] }}</h5>
+            <h5>PRECIO ACTUAL DEL ARTICULO </h5>
             <form  class="form-inline">
               <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
               <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
@@ -80,10 +80,7 @@
               <tbody>
                <tr>
                 <td>Pujas Por Este Articulo:</td>
-                <td colspan="3">{{ count($pujas)}}</td>
-                <td>Ubicación:</td>
-                <td>Provando:</td>
-                <td colspan="3">{{ var_dump($subasta->Confpujas) }}</td>
+                <td colspan="3" id="numPujas">{{ $pujas}}</td>
                 <td>Ubicación:</td>
                 <td colspan="3">                
                   {{ $subasta['localizacion']}}
@@ -98,7 +95,7 @@
 
                   <tr>
                     <td>Precio Actual:</td>
-                    <td colspan="3" id="tdPrecio">{{ $subasta['puja_mayor']}}</td>
+                    <td colspan="3" id="tdPrecio">{{ $subasta['puja_mayor']}}€</td>
 
 
                     <td>Precio Inicial:</td>

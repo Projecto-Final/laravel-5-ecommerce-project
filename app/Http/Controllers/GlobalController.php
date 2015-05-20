@@ -61,9 +61,10 @@ class GlobalController extends Controller {
 		$articulo = Articulo::find($idArticulo);
 
 
-		$pujas = DB::table('pujas')->where('articulo_id', '=', $idArticulo)->get();
+		
+		$aux = $articulo->pujas;
 
-		//$pujas = $articulo->pujas;
+		$pujas = count($aux);
 
    /*     for ($i=0; $i < count($pujas[0]); $i++) {
 			$pujas[1][$i] = $pujas[$i]->usuario;

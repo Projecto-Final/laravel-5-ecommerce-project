@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	setInterval(recargarPrecios, 4000);
+	setInterval(recargarPrecios, 7000);
 });
 
 
@@ -14,13 +14,18 @@ function pujar(id_puja,url){
 		.done(function(data) {
 
 
-			var precio = data['incremento_precio']+data['puja_mayor'];
+			var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
 
 			$("#botonPuja").val("PUJAR "+ precio +"€");
 
-			$("#exampleInputAmount").val(data['puja_mayor']) ;
+			$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
 
-			$("#tdPrecio").html(data['puja_mayor']);
+			$("#tdPrecio").html(data[0]['puja_mayor']+"€");
+
+//por motivos que desconozco sin el aux no va
+			var aux = data[1]
+			$("#numPujas").html(aux);
+			
 
 		});
 	}
@@ -36,13 +41,18 @@ function recargarPrecios(){
 	.done(function(data) {
 
 
-		var precio = data['incremento_precio']+data['puja_mayor'];
+		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
 
 		$("#botonPuja").val("PUJAR "+ precio +"€");
 
-		$("#exampleInputAmount").val(data['puja_mayor']) ;
+		$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
 
-		$("#tdPrecio").html(data['puja_mayor']);
+		$("#tdPrecio").html(data[0]['puja_mayor']+"€");
+
+		//por motivos que desconozco sin el aux no va
+		var aux = data[1]
+		$("#numPujas").html(aux);
+			
 
 	});
 
