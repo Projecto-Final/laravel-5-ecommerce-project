@@ -235,11 +235,11 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="block-business">
-											<h3>Business Hours</h3>
+											<h3>Horas atención cliente</h3>
 											<ul class="list-unstyle">
-												<li><a href="#">Mon-Fri: ------------------- <span>8am-5pm</span></a></li>
-												<li><a href="#">Sat: ---------------------- <span>8am-11pm</span></a></li>
-												<li><a href="#">Sun: ---------------------- <span>Closed</span></a></li>
+												<li><a href="#">Lu-Vi: ---------------- <span>08:00 a 20:00</span></a></li>
+												<li><a href="#">Sa: --------------------- <span>08:00 a 11:30</span></a></li>
+												<li><a href="#">Do: ---------------------- <span>N/a</span></a></li>
 											</ul>
 										</div>
 									</div>
@@ -284,15 +284,15 @@
 								</div>
 								<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column4">
 									<div class="about">
-										<h3>SUPPREME</h3>
+										<h3>Contacto</h3>
 										<ul class="list-unstyle">
-											<li><a class="address" href="#">Address: 1234 Street Name, City Name</a></li>
-											<li><a class="phone" href="#">Phone: 56445675467</a></li>
+											<li><a class="address" href="#">Dirección: 1234 Street Name, City Name</a></li>
+											<li><a class="phone" href="#">Telf: 56445675467</a></li>
 											<li><a class="mail" href="#"> <span>Email: </span>suppor@3f&m.com</a></li>
 										</ul>
 									</div>
 									<div class="sns-social">
-										<h3>Follow Us On</h3>
+										<h3>Síguenos en</h3>
 										<ul>
 											<li><a class="fa fa-facebook-square" title="" href="#" target="_self">&nbsp;</a></li>
 											<li><a class="fa fa-twitter-square" title="" href="#" target="_self">&nbsp;</a></li>
