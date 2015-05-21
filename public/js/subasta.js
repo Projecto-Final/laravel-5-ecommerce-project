@@ -71,11 +71,11 @@ function recargarPrecios(){
 }
 
 
-function mostrar_filtros(){
-	interruptor_visibilidad($(".formConfPuja").css("display"));
+function mostrar_cp(){
+	interruptor_visible($(".formConfPuja").css("display"));
 }
 
-function interruptor_visibilidad(estado){
+function interruptor_visible(estado){
 	if(estado=="none"){
 		$(".formConfPuja").show(800);
 		$(".formConfPuja-button").html("Mejor No <i class='fa fa-ban'></i>");

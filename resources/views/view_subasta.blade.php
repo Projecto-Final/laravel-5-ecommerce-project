@@ -54,7 +54,7 @@
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
           <div>
-            <button class="formConfPuja-button" type="button" onClick="mostrar_filtros();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
+            <button class="formConfPuja-button" type="button" onClick="mostrar_cp();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
               <div class="formConfPuja">
                      <div id="formConf">
               <form  class="form-inline" id="form-validate">
