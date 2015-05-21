@@ -1,4 +1,15 @@
 @extends('layouts.admin')
-@section('content')
+
+@section('titulo', 'Escritorio')
+@stop
+
+@section('nombre_pagina', 'Administración')
+
+@section('descripcion_pagina', 'Estadisticas basicas de la página.')
+
+
+
+@section('contenido')
+
 
 @stop
