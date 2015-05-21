@@ -64,7 +64,7 @@ Route::get('cargar_precio', 'LogedUserMethods@cargar_precio');
 
 Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
 
-
+Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
 
 
 
@@ -107,7 +107,7 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 //Route::get('formEditar', 'LogedUserMethods@formEditar');
 //editar perfil  editarP()  
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
-Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambios');
+Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
 
 // Admin methods

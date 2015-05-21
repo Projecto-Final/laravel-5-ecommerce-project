@@ -40,7 +40,7 @@ class FinalizarVentas extends Command {
 		$articulos = Articulo::where('precio_venta', '=', -1)->get();
 		foreach ($articulos as $articulo) {
 			$fecha = Carbon::now();
-			if (Carbon::parse($articulo->fecha_final) >= $fecha) {
+			if (Carbon::parse($articulo->fecha_final) <= $fecha) {
 				$puja = Puja::where('articulo_id', '=', $articulo->id)->orderBy('created_at', 'desc')->take(1)->get();
 				if (count($puja)!=0) {
 					$articulo->precio_venta = $articulo->puja_mayor;
