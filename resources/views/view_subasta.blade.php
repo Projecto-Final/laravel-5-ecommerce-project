@@ -1,4 +1,8 @@
-<?php use App\Articulo; use App\Puja; use App\Usuario?>
+<?php 
+use App\Articulo;
+use App\Puja;
+use App\Usuario;
+?>
 @extends('layouts.madre')
 
 @section('extclases')

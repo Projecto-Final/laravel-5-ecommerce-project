@@ -347,9 +347,16 @@ class LogedUserMethods extends Controller {
 
 		for ($i=0; $i < count($confPujas); $i++) { 
 
+
 			$ulPuja=$articulo->ultimaPuja($articuloId);
 
-			if($ulPuja->pujador_id != $confPujas[$i]->usuario_id && $confPujas[$i]['puja_maxima'] >= ($articulo['puja_mayor']+$articulo['incremento_precio'])){
+			if($ulPuja == false){
+				$idPujador = $confPujas[$i]->usuario_id;
+				$pujaAutId = $confPujas[$i]->id;
+
+				$this->engendrar_puja($articulo,$pujaAutId,$idPujador);
+
+			}else if($ulPuja->pujador_id != $confPujas[$i]->usuario_id && $confPujas[$i]['puja_maxima'] >= ($articulo['puja_mayor']+$articulo['incremento_precio'])){
 
 				$idPujador = $confPujas[$i]->usuario_id;
 				$pujaAutId = $confPujas[$i]->id;

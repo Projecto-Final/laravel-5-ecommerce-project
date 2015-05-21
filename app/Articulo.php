@@ -46,7 +46,13 @@ class Articulo extends Model {
 	public function ultimaPuja($articulo_id){
 
 		$puja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('superada','=', 0)->get();
+
+		if($puja==null){
+			return false;
+		}else{
+			return $puja[0];
+		}
 		
-		return $puja[0];
+		
 	}
 }
