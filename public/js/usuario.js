@@ -14,6 +14,7 @@ function perfil(){
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
 		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
+		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Aparencia</button></div>"
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
