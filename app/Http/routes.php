@@ -49,7 +49,7 @@ Route::get('get_allCategories', 'GlobalController@get_allCategories');
 Route::get('subasta/{idSubasta}', 'GlobalController@get_selectedSubasta');
 
 /* BUSCAR MEDIANTE FILTRO */
-Route::get('buscar', 'GlobalController@buscar_subastas');
+Route::put('buscar', 'GlobalController@buscar_subastas');
 
 // RUTAS USUARIOS AUTENTIFICADOS ( AUTH )
 

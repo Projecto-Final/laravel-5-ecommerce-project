@@ -5,10 +5,10 @@ use App\Categoria;
 use App\Articulo;
 use Input;
 use App\Imagen;
-use Request;
 use Session;
 use DB;
 use Auth;
+use Illuminate\Http\Request;
 
 class GlobalController extends Controller {
 
@@ -167,11 +167,11 @@ if (Auth::check())//hay que añadir el ACTIVO
 
 
 
-public function buscar_subastas()
+public function buscar_subastas(Request $request)
 {
 
 	// Declaramos variables
-	$urlParams=Input::all(); /* INPUT DATA */
+	$urlParams=$request->all(); /* INPUT DATA */
 	$consulta = ""; /* QUERY STRING */
 	$buscar = ""; /* NOMBRE ARTICULO */
 	$pminquery = ""; /* Query PrecioMIN */
