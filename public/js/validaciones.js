@@ -50,6 +50,8 @@ function formValidator(){
  					}
  				}
  				val = current.value;
+ 				
+if(val==""){getIdMsg(current,false,true);}
 
  				if(val!=""){
 	//el no campo esta vacio
@@ -57,8 +59,6 @@ function formValidator(){
 	if(current.name=="email"){
 		if(validarEmail(val)==false){
 			getIdMsg(current,true,true);
-		}else{
-			getIdMsg(current,false,true);
 		}
 	}
 	if(current.name=="cantidadMax"){
