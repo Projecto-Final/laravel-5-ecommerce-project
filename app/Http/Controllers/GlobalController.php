@@ -119,8 +119,8 @@ if (Auth::check())//hay que añadir el ACTIVO
 		$nume=0;
 
 
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria])
-		->withInput()->with('message', Session::get('message'));
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria]);
+		//->withInput()->with('message', Session::get('message'));
 //si eres un usuario logueado
 	}else{
 		$aux = $articulo->pujas;
