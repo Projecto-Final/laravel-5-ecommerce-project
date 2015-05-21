@@ -135,13 +135,10 @@
 												<li>
 													Filtrar por precio:</li>
 													<li>
-														<!-- Se pasan los valores de escondidas como putas -->
-														<input type="hidden" id="pmin" name="pmin" value="" placeholder="00 €">
-														<input type="hidden" id="pmax" name="pmax" value="" placeholder="999 €">
-														<p>
-															<label for="amount">Filtrar por precio: </label>
-															<input type="text" id="amount" readonly style="border:0; color: #1B9BFF; font-weight:bold;  background-color: transparent;">
-														</p>
+														<label for="pmin">Minimo: </label>
+														<input type="text" id="pmin" name="pmin" value="" placeholder="0 €">
+														<label for="pmax">Maximo: </label>
+														<input type="text" id="pmax" name="pmax" value="" placeholder="500 €">
 
 														<div id="slider-range"></div>
 														<script>
