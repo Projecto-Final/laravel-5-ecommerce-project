@@ -107,7 +107,7 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 //Route::get('formEditar', 'LogedUserMethods@formEditar');
 //editar perfil  editarP()  
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
-Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambios');
+Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
 
 // Admin methods

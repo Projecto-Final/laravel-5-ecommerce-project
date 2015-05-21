@@ -421,8 +421,7 @@ function perfilGuardarPass(username,nombre,apellidos,direccion,email,password,pa
 		password_confirmation: password_confirmation
 	})
 	.done(function(data) {
-		alert(data);
-		//perfil();
+		perfil();
 	});	
 }
 
@@ -436,10 +435,8 @@ function guardarCambios(){
 
 
 	if($.trim($("#spass").html())==''){
-		alert("Sin pass");
 		perfilGuardar(username,nombre,apellidos,direccion,email);
 	}else{
-		alert("Con pass");
 		var password = document.getElementById('password').value;
 		var password_confirmation = document.getElementById('password_confirmation').value;
 		perfilGuardarPass(username,nombre,apellidos,direccion,email,password,password_confirmation);
