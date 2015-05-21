@@ -178,40 +178,35 @@ if (Auth::check())//hay que añadir el ACTIVO
 public function buscar_subastas()
 {
 
-	$urlParams=Input::all();
-		// Buscar por todo
+	// Declaramos variables
+	$urlParams=Input::all(); /* INPUT DATA */
+	$consulta = ""; /* QUERY STRING */
 
-		//$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
-
-		// Buscamos articulo con X nombre.
-		//$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
-
-	echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
-	$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
-
-		// Buscamos articulo con X nombre.
-	$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
-
-
-
-	echo "subcat es = ".$urlParams['subcategoria'];
-		// Si indica categoria, busca por categoria
-
+	
+	//
 	if (isset($urlParams['categoria'])) {
+
+		if($urlParams['categoria']!="*" && is_numeric($urlParams['categoria'])){
+			$consulta .= "categoria_id = ".$urlParams['categoria']." ";
+		}
+		
 
 		if(isset($urlParams['subcategoria'])){
 
-				//$subcategorias = Categoria::find($urlParams['categoria'])->subcategorias;
+			
+			if($urlParams['subcategoria']!="*" && is_numeric($urlParams['subcategoria'])){
+				$consulta .= "and id = ".$urlParams['subcategoria'];
+			}
+			if($consulta==""){
+				$consulta = "1";
+			}
 
-			$subcategorias = Subcategoria::whereRaw("categoria_id = ? and id = ?", [$urlParams['categoria'],$urlParams['subcategoria']])->get();
-				//var_dump($subcategorias[0]);
+			$subcategorias = Subcategoria::whereRaw($consulta)->get();
+
 			foreach ($subcategorias as $key => $scategoria) {
 					//$query = Articulo::whereRaw('subcategoria_id = '.$scategoria['id'].' and nombre_producto LIKE "%'.$urlParams['buscar'].'%" and puja_mayor > 0')->get();
 				$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$urlParams['buscar']."%'", array($scategoria['id']))->get();
-					//$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-					//->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-					//->get();
-					// echo count($query);
+
 				foreach ($query as $key => $art) {
 					echo $art["nombre_producto"];
 				}
@@ -220,46 +215,41 @@ public function buscar_subastas()
 
 	}
 
-	if(isset($urlParams['categoria'])){
-		echo "<h2> CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-	}
-	if(isset($urlParams['subcategoria'])){
-		echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-	}
+	
 
 		//$article = $query->first();
 
-	if (isset($urlParams['categoria'])) {
-		echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-		$query = $query->where('categoria', '=', $urlParams['categoria']);
+	// if (isset($urlParams['categoria'])) {
+	// 	echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+	// 	$query = $query->where('categoria', '=', $urlParams['categoria']);
 
-		foreach ($query as $key => $scategoria) {
-			$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-			->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-			->get();
-			echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
-			foreach ($arts as $key => $art) {
-				echo $art["nombre_producto"];
-			}
-			echo "</pre>";
-		}
-	}
+	// 	foreach ($query as $key => $scategoria) {
+	// 		$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+	// 		->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+	// 		->get();
+	// 		echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+	// 		foreach ($arts as $key => $art) {
+	// 			echo $art["nombre_producto"];
+	// 		}
+	// 		echo "</pre>";
+	// 	}
+	// }
 
-	if(isset($urlParams['subcategoria'])){
-		echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-	}
+	// if(isset($urlParams['subcategoria'])){
+	// 	echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
+	// }
 
-	$article = $query->first();
+	// $article = $query->first();
 
-	echo "<pre>";
-	echo "<h1>".count($articulosBusqueda)."</h1>";
-	print_r($articulosBusqueda);
-	foreach ($articulosBusqueda as $key => $article) {
-		echo  $article[0]['nombre_producto'];
-	}
+	// echo "<pre>";
+	// echo "<h1>".count($articulosBusqueda)."</h1>";
+	// print_r($articulosBusqueda);
+	// foreach ($articulosBusqueda as $key => $article) {
+	// 	echo  $article[0]['nombre_producto'];
+	// }
 
 
-	echo "</pre>";
+	// echo "</pre>";
 
 
 
@@ -275,15 +265,15 @@ public function buscar_subastas()
 
 		//var_dump($subcat[1]->articulos[0]['nombre_producto']);
 		// foreach ($subcat as $key => $scategoria) {
-		// 	//echo $scategoria['id'];
-		// 	$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-		// 	->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-		// 	->get();
-		// 	echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
-		// 	foreach ($arts as $key => $art) {
-		// 		echo $art["nombre_producto"];
-		// 	}
-		// 	echo "</pre>";
+		//  //echo $scategoria['id'];
+		//  $arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+		//  ->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+		//  ->get();
+		//  echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+		//  foreach ($arts as $key => $art) {
+		//      echo $art["nombre_producto"];
+		//  }
+		//  echo "</pre>";
 		// }
 		// echo "</pre>";
 }
