@@ -82,6 +82,7 @@
 										</div>
 										<button class="parametros-button" type="button" onClick="mostrar_filtros();">mostrar opciones <i class='fa fa-eye'></i></button>
 										<div class="parametros-filtrado">
+										<ul><p>NOTA: Si no especificas parametros de busqueda, buscara todas las subastas.</p></ul>
 											<ul>
 												<li>
 													<label for="categoria-art">Categoria: </label>

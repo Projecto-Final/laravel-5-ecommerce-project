@@ -38,7 +38,7 @@
 		/*border-bottom: 3px rgb(27, 155, 255) solid;*/
 	}
 	.navbar-default .navbar-nav > li > a:hover {
-		color: #F7A556;
+		color: rgb(27, 155, 255);
 	}
 	.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
 		color: #FFFDFA;

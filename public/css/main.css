@@ -843,7 +843,10 @@ ul.form-list, ul.tags-list {
   padding-top: 10px;
   background-color: aliceblue;
 }
-
+.parametros-filtrado > ul {
+  padding-right: 30px;
+  padding-left: 30px;
+}
 .parametros-button {
   float: left;
   width: 100%;
