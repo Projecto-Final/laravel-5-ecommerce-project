@@ -56,6 +56,9 @@ input.input-text {
   transition: all 0.2s ease-out;
   color: #aaa;
 }
+
+/* Eliminar la puta roña de outline */
+:focus { outline: none; }
 /*
 ELEMENTOS CON TRANSICIONES
 
