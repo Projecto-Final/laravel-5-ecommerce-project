@@ -333,6 +333,7 @@ class LogedUserMethods extends Controller {
 			'fecha_config' => Carbon::now()
 			]);
 
+
 		$this->comprovarCF($articuloId);
 	}
 
@@ -386,6 +387,34 @@ class LogedUserMethods extends Controller {
 
 		return $articulo;
 	}
+
+		$this->comprovarCF($articulo);
+	}
+
+
+	public function comprovarCF($articulo){
+		$confPujas=$articulo->Confpujas;
+
+		for ($i=0; $i < count($confPujas); $i++) { 
+			if($confPujas[$i]['superada'] == 1 && $confPujas[$i]['superada']){
+				
+			}
+
+		}
+
+
+	$puja = Puja::create([
+		'cantidad' => $articulo->puja_mayor,
+		'superada' => 0,
+		'confpuja_id' => null,
+		'articulo_id' => $articulo->id,
+		'pujador_id' => Auth::user()->id,
+		'fecha_puja' => Carbon::now()
+		]);
+
+}
+
+
 
 
 }
