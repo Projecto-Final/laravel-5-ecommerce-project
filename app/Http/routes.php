@@ -116,4 +116,3 @@ Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
 Route::get('getCategorias','LogedAdminMethods@getCategorias');
 Route::get('getSubcategorias', 'LogedAdminMethods@getSubcategoriasCat');
-Route::get('usuarios_zona','LogedAdminMethods@');
