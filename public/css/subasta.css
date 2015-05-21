@@ -18,6 +18,7 @@
 	border-right: 0px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
+	border-bottom: 4px #1B9BFF solid;
 	}
 	nav {
 		font-family: 'Open Sans Condensed', sans-serif;
@@ -34,7 +35,7 @@
 	}
 	.navbar-default .navbar-nav > li > a {
 		color: #999;
-				border-bottom: 3px rgb(27, 155, 255) solid;
+		/*border-bottom: 3px rgb(27, 155, 255) solid;*/
 	}
 	.navbar-default .navbar-nav > li > a:hover {
 		color: #F7A556;

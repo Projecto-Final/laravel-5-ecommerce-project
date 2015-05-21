@@ -163,7 +163,8 @@ CSS PERSONALIZADO
 .contenedor-header .formulario-busqueda {
   position: relative;
   margin: auto;
-  float: right;
+  float: left;
+  width: 100%;
   border: 1px solid #EEEEEE;
 }
 
@@ -190,7 +191,7 @@ CSS PERSONALIZADO
 
 .formulario-busqueda input.entrada-texto {
   border: 0;
-  width: 450px;
+  width: 100%;
   padding: 10px;
   background: none;
   height: 46px;
@@ -200,7 +201,8 @@ CSS PERSONALIZADO
   font-weight: 500;
 }
 .boton-submit {
-	float:left;
+  position: absolute;
+  right: 5px;
 }
 .boton-submit > .buscar {
   display: block;
