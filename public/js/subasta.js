@@ -105,7 +105,8 @@ function cargarPujaAut(){
 		id_subasta: id_subasta
 	})
 	.done(function(data) {
-
+$("#pruevas").html(data);
+//alert(data);
 
 /*		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
 

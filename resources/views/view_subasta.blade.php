@@ -44,6 +44,7 @@ use App\Usuario;
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
             <h5>PRECIO ACTUAL DEL ARTICULO</h5>
+            <h1 id="pruevas"></h1>
             <form  class="form-inline">
               <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
               <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">

@@ -404,7 +404,7 @@ class LogedUserMethods extends Controller {
 		if($configuracion==false){
 			return false;
 		}else{
-			
+			return $configuracion;
 		}
 
 	}

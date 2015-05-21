@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use DB;
 
 class Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -63,12 +64,13 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 
 	public function confPujasSubasta($articulo_id,$user_id){
 
-		$confPujasSubasta = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $user_id)->get();
+		$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $user_id)->get();
 
-		if($confPujasSubasta==null){
+		if($ConfiguracionPuja==null){
 			return false;
 		}else{
-			return $confPujasSubasta;
+			$conf=$ConfiguracionPuja[0];
+			return $conf;
 		}
 		
 		
