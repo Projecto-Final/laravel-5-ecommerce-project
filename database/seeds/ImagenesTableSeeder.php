@@ -12,13 +12,13 @@ class ImagenesTableSeeder extends Seeder {
 		Imagen::create([
 			'descripcion' => "caratula-juego-jojo",
 			'articulo_id' => 1,
-			'imagen' => "JoJos-Bizarre-Adventure-All-Star-Battle.jpg",
+			'imagen' => "1_52_c4ca4238a0b923820dcc509a6f75849b.jpeg",
 		]);
 
 		Imagen::create([
 			'descripcion' => "el pobre thomas",
 			'articulo_id' => 1,
-			'imagen' => "thomas.jpg",
+			'imagen' => "0_52_c4ca4238a0b923820dcc509a6f75849b.png",
 		]);
 
 		Imagen::create([
