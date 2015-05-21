@@ -68,10 +68,10 @@ function mostrar_cp(){
 
 function interruptor_visible(estado){
 	if(estado=="none"){
-		$(".formConfPuja").show(800);
+		$(".formConfPuja").slideDown(800);
 		$(".formConfPuja-button").html("Mejor No <i class='fa fa-ban'></i>");
 	} else {
-		$(".formConfPuja").hide(800);
+		$(".formConfPuja").slideUp(800);
 		$(".formConfPuja-button").html("Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i>");
 	}
 }

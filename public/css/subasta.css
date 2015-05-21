@@ -612,11 +612,11 @@ opacity: 0.8;
 }
 
 .formConfPuja-button {
-  float: left;
+	float: left;
   width: 100%;
-  background-color: rgb(38, 172, 206);
+  background-color: rgb(218, 132, 47);
   color: #fff;
-  border:0px;
+  border: 0px;
   margin-bottom: 2%;
 }
 
