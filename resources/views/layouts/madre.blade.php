@@ -133,15 +133,16 @@
 
 												</script>
 												<li>
-													Filtrar por precio:</li>
-													<li>
-														<label for="pmin">Minimo: </label>
-														<input type="text" id="pmin" name="pmin" value="" placeholder="0 €">
-														<label for="pmax">Maximo: </label>
-														<input type="text" id="pmax" name="pmax" value="" placeholder="500 €">
+													Filtrar por precio:
+												</li>
+												<li>
+													<label for="pmin">Minimo: </label>
+													<input type="text" id="pmin" name="pmin" value="" placeholder="0 €">
+													<label for="pmax">Maximo: </label>
+													<input type="text" id="pmax" name="pmax" value="" placeholder="500 €">
 
-														<div id="slider-range"></div>
-														<script>
+													<div id="slider-range"></div>
+													<script>
 														// SLIDER DE PRECIO MAX - MIN
 														$(function() {
 															$( "#slider-range" ).slider({

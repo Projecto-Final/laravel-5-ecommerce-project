@@ -38,7 +38,7 @@
                         <li>
                           <label for="password" class="required"><em>*</em>Contraseña</label>
                           <div class="input-box">
-                            <input type="contrasena" name="password" class="input-text required-entry validate-password" id="password" title="Contraseña">
+                            <input type="password" name="password" class="input-text required-entry validate-password" id="password" title="Contraseña">
                           </div>
                         </li>
                         <li>
