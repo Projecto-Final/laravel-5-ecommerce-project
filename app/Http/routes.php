@@ -85,6 +85,7 @@ Route::get('get_subCategoryDescription/{idSubCategoria}', 'GlobalController@get_
 
 
 
+
 /*Routes perfil usuario*/
 
 /* Obtener la informacion del usuario */
