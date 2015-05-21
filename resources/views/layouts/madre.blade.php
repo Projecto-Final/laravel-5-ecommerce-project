@@ -114,7 +114,7 @@
 												 		$.each(result, function(i, field){
 												 			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
 												 		});
-												 		$("#subcategoria-art").html($("#subcategoria-art").html()+scatm);
+												 		$("#subcategoria-art").html("<option value='*''>Cualquiera</option>"+scatm);
 												 	});
 												 });
 
