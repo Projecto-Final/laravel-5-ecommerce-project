@@ -148,38 +148,18 @@ if (Auth::check())//hay que añadir el ACTIVO
 		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
 		->withInput()->with('message', Session::get('message'));
 	}
-	//si no estas logueado
-}else{
-	$aux = $articulo->pujas;
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$pujas = count($aux);
-		$imagenes = $articulo->imagenes;
-		$subcategoria = $articulo->subcategoria; 
-		$categoria = $subcategoria->categoria;
 
-		$nume=0;
-		//ultimas pujas y su usuario
 
-		for ($i=$pujas-3; $i < $pujas; $i++) { 
-			$nume++;
-			$ultimasPujas[0][$nume] = $aux[$i];
-			$ultimasPujas[1][$nume] = $aux[$i]->usuario;
-		}
-	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
-		->withInput()->with('message', Session::get('message'));
 }
-
-
-
 
 }
 
 
 
-		public function buscar_subastas()
-		{
+public function buscar_subastas()
+{
 
-			$urlParams=Input::all();
+	$urlParams=Input::all();
 		// Buscar por todo
 
 		//$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
@@ -187,80 +167,80 @@ if (Auth::check())//hay que añadir el ACTIVO
 		// Buscamos articulo con X nombre.
 		//$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
 
-			echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
-			$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
+	echo "<h1>Buscar = { ".$urlParams['buscar']." }</h1>";
+	$articulosBusqueda = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%')->get();
 
 		// Buscamos articulo con X nombre.
-			$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
+	$query = Articulo::where('nombre_producto', 'LIKE', '%'.$urlParams['buscar'].'%');
 
 
 
-			echo "subcat es = ".$urlParams['subcategoria'];
+	echo "subcat es = ".$urlParams['subcategoria'];
 		// Si indica categoria, busca por categoria
 
-			if (isset($urlParams['categoria'])) {
+	if (isset($urlParams['categoria'])) {
 
-				if(isset($urlParams['subcategoria'])){
+		if(isset($urlParams['subcategoria'])){
 
 				//$subcategorias = Categoria::find($urlParams['categoria'])->subcategorias;
 
-					$subcategorias = Subcategoria::whereRaw("categoria_id = ? and id = ?", [$urlParams['categoria'],$urlParams['subcategoria']])->get();
+			$subcategorias = Subcategoria::whereRaw("categoria_id = ? and id = ?", [$urlParams['categoria'],$urlParams['subcategoria']])->get();
 				//var_dump($subcategorias[0]);
-					foreach ($subcategorias as $key => $scategoria) {
+			foreach ($subcategorias as $key => $scategoria) {
 					//$query = Articulo::whereRaw('subcategoria_id = '.$scategoria['id'].' and nombre_producto LIKE "%'.$urlParams['buscar'].'%" and puja_mayor > 0')->get();
-						$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$urlParams['buscar']."%'", array($scategoria['id']))->get();
+				$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$urlParams['buscar']."%'", array($scategoria['id']))->get();
 					//$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
 					//->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
 					//->get();
 					// echo count($query);
-						foreach ($query as $key => $art) {
-							echo $art["nombre_producto"];
-						}
-					}
+				foreach ($query as $key => $art) {
+					echo $art["nombre_producto"];
 				}
+			}
+		}
 
-			}
+	}
 
-			if(isset($urlParams['categoria'])){
-				echo "<h2> CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-			}
-			if(isset($urlParams['subcategoria'])){
-				echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-			}
+	if(isset($urlParams['categoria'])){
+		echo "<h2> CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+	}
+	if(isset($urlParams['subcategoria'])){
+		echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
+	}
 
 		//$article = $query->first();
 
-			if (isset($urlParams['categoria'])) {
-				echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
-				$query = $query->where('categoria', '=', $urlParams['categoria']);
+	if (isset($urlParams['categoria'])) {
+		echo "<h2>CATEGORIA = { ".$urlParams['categoria']." } </h2>";
+		$query = $query->where('categoria', '=', $urlParams['categoria']);
 
-				foreach ($query as $key => $scategoria) {
-					$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
-					->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
-					->get();
-					echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
-					foreach ($arts as $key => $art) {
-						echo $art["nombre_producto"];
-					}
-					echo "</pre>";
-				}
+		foreach ($query as $key => $scategoria) {
+			$arts = Articulo::where('subcategoria_id', '=', $scategoria['id'])
+			->where('nombre_producto', 'LIKE', '%'.$buscar.'%')
+			->get();
+			echo "<h1>RESULTADO BUSQUEDA - ".count($arts)."</h1>";
+			foreach ($arts as $key => $art) {
+				echo $art["nombre_producto"];
 			}
-
-			if(isset($urlParams['subcategoria'])){
-				echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
-			}
-
-			$article = $query->first();
-
-			echo "<pre>";
-			echo "<h1>".count($articulosBusqueda)."</h1>";
-			print_r($articulosBusqueda);
-			foreach ($articulosBusqueda as $key => $article) {
-				echo  $article[0]['nombre_producto'];
-			}
-
-
 			echo "</pre>";
+		}
+	}
+
+	if(isset($urlParams['subcategoria'])){
+		echo "<h2> SUBCATEGORIA = { ".$urlParams['subcategoria']." } </h2>";
+	}
+
+	$article = $query->first();
+
+	echo "<pre>";
+	echo "<h1>".count($articulosBusqueda)."</h1>";
+	print_r($articulosBusqueda);
+	foreach ($articulosBusqueda as $key => $article) {
+		echo  $article[0]['nombre_producto'];
+	}
+
+
+	echo "</pre>";
 
 
 
@@ -287,5 +267,5 @@ if (Auth::check())//hay que añadir el ACTIVO
 		// 	echo "</pre>";
 		// }
 		// echo "</pre>";
-		}
-	}
+}
+}

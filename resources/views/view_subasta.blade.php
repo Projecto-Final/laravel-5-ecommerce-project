@@ -38,7 +38,7 @@
 
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
-            <h5>PRECIO ACTUAL DEL ARTICULO </h5>
+            <h5>PRECIO ACTUAL DEL ARTICULO</h5>
             <form  class="form-inline">
               <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
               <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
@@ -49,11 +49,25 @@
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-               <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">   
+               <!--  <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">     -->
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
           <div>
+            <button class="formConfPuja-button" type="button" onClick="mostrar_filtros();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
+              <div class="formConfPuja">
+                     <div id="formConf">
+              <form  class="form-inline" id="form-validate">
+              <h2>Cantidad Maxima Que Pujara</h2>
+              <input trype="text" id="cantidadMax">
+              <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span></td>
+            </br>
+
+              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€"> 
+                   <i class='fa fa-flag-o'></i>
+                   </div>       
+                           
+                        </div>
             <h5>Informació Básica</h5>
             <table class="table table-bordered">
               <tbody><tr>

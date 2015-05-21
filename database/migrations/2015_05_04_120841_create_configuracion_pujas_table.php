@@ -21,6 +21,7 @@ class CreateConfiguracionPujasTable extends Migration {
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->boolean('superada');
+            $table->boolean('cancelada');
             $table->dateTime('fecha_config');
             $table->rememberToken();
             $table->timestamps();

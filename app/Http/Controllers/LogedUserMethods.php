@@ -315,6 +315,7 @@ class LogedUserMethods extends Controller {
 			}
 		}
 		$articulo[3] = Auth::user()->id;
+		//AQUI HAY K MIRAR SI HAY ALGUNA CONF PUJAS DE LA SUBASTA
 
 		return $articulo;
 	}
@@ -335,6 +336,21 @@ class LogedUserMethods extends Controller {
 		
 
 		return $articulo;
+	}
+
+	public function crearConfPuja(Request $request){
+
+		$submitedArray = $request->all();
+
+		$puja = Puja::create([
+			'cantidad' => $articulo[0]->puja_mayor,
+			'superada' => 0,
+			'confpuja_id' => null,
+			'articulo_id' => $articulo[0]->id,
+			'pujador_id' => Auth::user()->id,
+			'fecha_puja' => Carbon::now()
+			]);
+
 	}
 
 	

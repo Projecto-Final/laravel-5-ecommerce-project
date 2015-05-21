@@ -62,6 +62,12 @@ Route::get('add_puja', 'LogedUserMethods@add_puja');
 //RECARGA los datos de precio de la subasta
 Route::get('cargar_precio', 'LogedUserMethods@cargar_precio'); 
 
+Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
+
+
+
+
+
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');

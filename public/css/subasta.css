@@ -563,7 +563,7 @@ opacity: 0.8;
 }
 
 .article-content > .bid {
-	margin-bottom: 2%;
+/*	margin-bottom: 2%;*/
 	height: auto;
 	padding: 9px 10px;
 	/* background-color: white; */
@@ -598,6 +598,33 @@ opacity: 0.8;
 
 #ultimasPujas{
 	float: left;
+}
+
+/*FORM CONFIGURACION PUJA*/
+
+.formConfPuja {
+  display: none;
+ /* float: left;*/
+  width: 100%;
+  padding-top: 10px;
+  background-color: aliceblue;
+  margin-bottom: 2%;
+}
+
+.formConfPuja-button {
+  float: left;
+  width: 100%;
+  background-color: rgb(38, 172, 206);
+  color: #fff;
+  border:0px;
+  margin-bottom: 2%;
+}
+
+#formConfPuja{
+	text-align: center;
+}
+#formConf{
+	text-align: center;
 }
 
 /* ###################################################### */

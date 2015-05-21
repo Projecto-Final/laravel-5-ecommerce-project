@@ -8,7 +8,7 @@
 @stop
 
 @section('opciones_usuario')
-
+<script src="{{ url('js/validaciones.js') }}"></script>
 <script src="{{ url('js/usuario.js') }}"></script>
 
 <div id="sns_content" class="wrap layout-m">

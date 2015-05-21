@@ -8,8 +8,16 @@
 
  }
  */
+function formValidator(){
+	var formulario = document.getElementById('form-validate');
+	var confirm = validator();
+	if(confirm==true){
+		formulario.submit();
+	}
+}
+
  var error = false;
- function formValidator(){
+ function validator(){
 
  	error=false; 	
  	var formulario = document.getElementById('form-validate');
@@ -82,7 +90,8 @@
 	}
 	if(error==false){
 		//alert("submit");
-		formulario.submit();
+		//formulario.submit();
+		return true;
 	}else{
 		//alert("no submit")
 		return false;
