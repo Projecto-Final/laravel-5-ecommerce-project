@@ -60,4 +60,17 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	{
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
+
+	public function confPujasSubasta($articulo_id,$user_id){
+
+		$confPujasSubasta = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $user_id)->get();
+
+		if($confPujasSubasta==null){
+			return false;
+		}else{
+			return $confPujasSubasta;
+		}
+		
+		
+	}
 }

@@ -66,6 +66,7 @@ Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja');
 
 Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
 
+Route::get('cargarPujaAut', 'LogedUserMethods@cargarPujaAut');
 
 
 
