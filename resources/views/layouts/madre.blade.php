@@ -147,12 +147,13 @@
 										<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 											<ul class="nav navbar-nav">
 												<li class="active"><a href="{{ url('') }}">INICIO<span class="sr-only">(current)</span></a></li>
-												<li class="active"><a href="{{ url('crear_subasta') }}">CREAR SUBASTA<span class="sr-only">(current)</span></a></li>
+												<li class=""><a href="{{ url('crear_subasta') }}">CREAR SUBASTA<span class="sr-only">(current)</span></a></li>
+												<li class=""><a href="{{ url('') }}">NOSOTROS<span class="sr-only">(current)</span></a></li>
+												<li class=""><a href="{{ url('') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
+												<li class=""><a href="{{ url('') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
 											</ul>
 											<ul class="nav navbar-nav navbar-right">
-												<li class="active"><a href="{{ url('') }}">NOSOTROS<span class="sr-only">(current)</span></a></li>
-												<li class="active"><a href="{{ url('') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
-												<li class="active"><a href="{{ url('') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
+												
 											</ul>
 										</div>
 										<!-- /.navbar-collapse --> 

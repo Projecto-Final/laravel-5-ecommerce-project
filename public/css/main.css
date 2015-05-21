@@ -210,12 +210,14 @@ CSS PERSONALIZADO
 .boton-submit > .buscar {
   padding: 0;
   border: 0;
-  background: #26acce;
-  width: 50px;
-  height: 50px;
+  background: #A9A9A9;
+  width: 40px;
+  height: 40px;
   margin: -2px -2px -2px 0;
   text-align: center;
   line-height: 50px;
+  border-radius: 4px;
+  margin-top: 3px;
 }
 
 /*
@@ -842,7 +844,7 @@ ul.form-list, ul.tags-list {
 .parametros-button {
   float: left;
   width: 100%;
-  background-color: rgb(38, 172, 206);
+  background-color: rgb(27, 155, 255);
   color: #fff;
   border:0px;
 }

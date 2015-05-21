@@ -4,10 +4,10 @@ function mostrar_filtros(){
 
 function interruptor_visibilidad(estado){
 	if(estado=="none"){
-		$(".parametros-filtrado").show(800);
+		$(".parametros-filtrado").slideDown(500);
 		$(".parametros-button").html("ocultar opciones <i class='fa fa-eye-slash'></i>");
 	} else {
-		$(".parametros-filtrado").hide(800);
+		$(".parametros-filtrado").slideUp(800);
 		$(".parametros-button").html("mostrar opciones <i class='fa fa-eye'></i>");
 	}
 }
