@@ -113,7 +113,7 @@ Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
 
 // ADMIN CP ACCESS
-Route::get('administración', 'LogedAdminMethods@index');
+Route::get('administracion', 'LogedAdminMethods@index');
 
 // Admin methods
 
