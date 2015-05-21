@@ -51,7 +51,7 @@
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-              <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">     
+              <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].','.url("add_puja") }} )"' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">     
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
@@ -67,7 +67,7 @@
               <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero</span>
             </br>
 
-            <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="GUARDAR"> 
+            <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].','.url('crearConfPuja') }}")' value="GUARDAR"> 
             <i class='fa fa-flag-o'></i>
           </div>       
 
