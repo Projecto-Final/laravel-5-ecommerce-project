@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	cargarPujaAut();
+	setInterval(cargarPujaAut,7000);
 	setInterval(recargarPrecios, 7000);
 });
 
@@ -92,4 +94,40 @@ function crear_confPuja(id_subasta,url){
 		});
 
 	}
+}
+
+
+function cargarPujaAut(){
+	var url = $("#cargarPujaAut").val();
+	var id_subasta = $("#subastaId").val();
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+$("#pruevas").html(data);
+//alert(data);
+
+/*		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
+
+		$("#botonPuja").val("PUJAR "+ precio +"€");
+
+		$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
+
+		$("#tdPrecio").html(data[0]['puja_mayor']+"€");
+
+		//por motivos que desconozco sin el aux no va
+		var aux = data[1]
+		$("#numPujas").html(aux);
+		if(data[2]!=null){
+			if(data[2]['pujador_id']==data[3]){
+				$( "#botonPuja" ).prop( "disabled", true );
+			}else{
+				$( "#botonPuja" ).prop( "disabled", false );
+			}
+		}
+
+*/
+	});
+
 }

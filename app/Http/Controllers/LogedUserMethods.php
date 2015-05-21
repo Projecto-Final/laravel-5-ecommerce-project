@@ -336,7 +336,7 @@ class LogedUserMethods extends Controller {
 		$this->comprovarCF($articuloId);
 	}
 
-
+//compreva las COnf Pujas de esa subasta y las ejecuta si es preciso en orden de creacion
 	public function comprovarCF($articuloId){
 
 		$articulo = Articulo::find($articuloId);
@@ -381,6 +381,7 @@ class LogedUserMethods extends Controller {
 		$articulo[0] = Articulo::find($submitedArray['id_subasta']);
 		$pujas = $articulo[0]->pujas;
 		$articulo[1] = count($pujas);
+
 		//sacar la puja maxima
 		for ($i=0; $i < $articulo[1]; $i++) {
 
@@ -392,6 +393,20 @@ class LogedUserMethods extends Controller {
 		
 
 		return $articulo;
+	}
+
+	public function cargarPujaAut(Request $request){
+		$submitedArray = $request->all();
+		$articuloId = $submitedArray['id_subasta'];
+		$userId = Auth::user()->id;
+		$usuario = Usuario::find($userId);
+		$configuracion = $usuario->confPujasSubasta($articuloId,$userId);
+		if($configuracion==false){
+			return false;
+		}else{
+			return $configuracion;
+		}
+
 	}
 
 

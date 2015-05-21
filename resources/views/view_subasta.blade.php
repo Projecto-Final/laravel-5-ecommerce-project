@@ -44,9 +44,11 @@ use App\Usuario;
         <div class="col-lg-7 col-md-6 col-xs-8 article-content">
           <div class="bid">
             <h5>PRECIO ACTUAL DEL ARTICULO</h5>
+            <h1 id="pruevas"></h1>
             <form  class="form-inline">
               <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
               <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
+              <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">€</div>
@@ -54,7 +56,7 @@ use App\Usuario;
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
-               <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">     
+              <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar({{ $subasta['id'].',"'.url('add_puja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">     
             </form>
             <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
           </div>
