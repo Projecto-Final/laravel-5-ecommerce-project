@@ -150,7 +150,6 @@ if (Auth::check())//hay que añadir el ACTIVO
 	$nume=0;
 		//ultimas pujas y su usuario
 
-<<<<<<< HEAD
 	for ($i=$pujas-3; $i < $pujas; $i++) { 
 		$nume++;
 		$ultimasPujas[0][$nume] = $aux[$i];
@@ -159,10 +158,9 @@ if (Auth::check())//hay que añadir el ACTIVO
 
 	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
 	->withInput()->with('message', Session::get('message'));
-=======
 		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria])
 		->withInput()->with('message', Session::get('message'));
->>>>>>> origin/master
+
 }
 
 }
