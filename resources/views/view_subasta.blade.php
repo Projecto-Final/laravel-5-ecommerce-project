@@ -66,9 +66,10 @@ use App\Usuario;
              <div id="formConf">
               <form  class="form-inline" id="form-validate">
                 <h2>Cantidad Maxima Que Pujara</h2>
-                <input trype="text" id="cantidadMax">
+                <input trype="text" id="cantidadMax" name="cantidadMax">
               </br>
               <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>
+              <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero</span>
             </br>
 
             <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="GUARDAR"> 

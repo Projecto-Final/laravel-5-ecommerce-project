@@ -57,6 +57,17 @@ function formValidator(){
 	if(current.name=="email"){
 		if(validarEmail(val)==false){
 			getIdMsg(current,true,true);
+		}else{
+			getIdMsg(current,false,true);
+		}
+	}
+	if(current.name=="cantidadMax"){
+
+
+			if( isNaN(val)){
+			getIdMsg(current,true,true);
+		}else{
+			getIdMsg(current,false,true);
 		}
 	}
 
