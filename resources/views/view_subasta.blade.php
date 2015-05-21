@@ -63,7 +63,7 @@
               <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span></td>
             </br>
 
-              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€"> 
+              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="GUARDAR"> 
                    <i class='fa fa-flag-o'></i>
                    </div>       
                            

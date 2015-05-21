@@ -93,5 +93,10 @@ class SubcategoriasTableSeeder extends Seeder {
 			'descripcion' => 'Te gusta restaurar viejos utensilios, o objetos del pasado, encuentra lo que buscas aquí.',
 			'categoria_id' => 6,
 		]);
+		Subcategoria::create([
+			'nombre' => 'Indefinibles',
+			'descripcion' => 'No sabes definir el Articulo, este es su sitio.',
+			'categoria_id' => 6,
+		]);
 	}
 }

@@ -104,7 +104,7 @@ function crear_confPuja(id_puja,url){
 
 
 
-function ValidarCambios(){;
+function ValidarForm(){;
 
 	error=false; 	
 	var formulario = document.getElementById('form-validate');
@@ -168,7 +168,7 @@ function ValidarCambios(){;
 	if(error==false){
 		
 		return true;
-		
+
 	}else{
 		return false;
 	}
