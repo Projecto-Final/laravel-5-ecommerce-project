@@ -274,6 +274,7 @@ SUB-HEADER
 }
 #contenedor-sub-header .m-interno {
   background: #444;
+  margin-bottom: 20px;
 }
 .m-interno-sub .block-title {
   background: #333;
