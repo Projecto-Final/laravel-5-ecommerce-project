@@ -150,6 +150,25 @@ if (Auth::check())//hay que añadir el ACTIVO
 	}
 
 
+}else{
+	$aux = $articulo->pujas;
+		$subastador = Usuario::find($articulo['subastador_id']);
+		$pujas = count($aux);
+		$imagenes = $articulo->imagenes;
+		$subcategoria = $articulo->subcategoria; 
+		$categoria = $subcategoria->categoria;
+
+		$nume=0;
+		//ultimas pujas y su usuario
+
+		for ($i=$pujas-3; $i < $pujas; $i++) { 
+			$nume++;
+			$ultimasPujas[0][$nume] = $aux[$i];
+			$ultimasPujas[1][$nume] = $aux[$i]->usuario;
+		}
+
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
+		->withInput()->with('message', Session::get('message'));
 }
 
 }
