@@ -11,7 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 class GlobalController extends Controller {
-
+/*klawaii*/
 	/*
 	* GLOBAL
 	*/
