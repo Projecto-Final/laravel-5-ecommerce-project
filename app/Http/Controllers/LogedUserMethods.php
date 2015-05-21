@@ -250,26 +250,19 @@ class LogedUserMethods extends Controller {
 	public function guardarCambios(Request $request)
 	{
 		$submitedArray = $request->all();
-		$nombre=$submitedArray["nombre"];	
-		$apellido=$submitedArray["apellidos"];	
-		$username=$submitedArray["username"];	
-		$direccion= $submitedArray["direccion"];	
-		$email=$submitedArray["email"];	
-		$id = Auth::user()->id;
-		$user = Usuario::find($id);
-		$user->nombre = $nombre;
-		$user->apellido = $apellido;
-		$user->username = $username;
-		$user->direccion = $direccion;
-		$user->email = $email;
+		$user = Auth::user();
+		$user->nombre = $submitedArray["nombre"];
+		$user->apellido = $submitedArray["apellidos"];
+		$user->username = $submitedArray["username"];
+		$user->direccion = $submitedArray["direccion"];
+		$user->email = $submitedArray["email"];
 		$user->save();
 	}
 
 	public function guardarCambiosPass(Request $request)
 	{
 		$submitedArray = $request->all();
-		$id = Auth::user()->id;
-		$user = Usuario::find($id);
+		$user = Auth::user();
 		$user->nombre = $submitedArray["nombre"];
 		$user->apellido = $submitedArray["apellidos"];
 		$user->username = $submitedArray["username"];
@@ -281,11 +274,7 @@ class LogedUserMethods extends Controller {
 		$user->direccion = $submitedArray["direccion"];
 		$user->email = $submitedArray["email"];
 		$user->save();
-		return var_dump($user);
 	}
-
-
-
 
 //Esta funcion añade la puja en la BD pasandole la id de la subasta 
 	//usa array para devolver tambien el numero de pujas de este articulo

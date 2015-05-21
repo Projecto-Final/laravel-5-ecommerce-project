@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration {
             $table->float('reputacion');
             $table->integer('permisos');
             $table->string('email')->unique();
-            $table->string('password', 60);
+            $table->String('password', 60);
             $table->string('username')->unique();
             $table->rememberToken();
             $table->timestamps();
