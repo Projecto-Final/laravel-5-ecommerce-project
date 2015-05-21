@@ -1,2 +1,2 @@
 cd C:\xampp\htdocs\proyecto\
-php artisan schedule:run
+php artisan FinalizarVentas:update
