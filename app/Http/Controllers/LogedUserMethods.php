@@ -397,7 +397,9 @@ class LogedUserMethods extends Controller {
 		if($configuracion==false){
 			return false;
 		}else{
-			return $configuracion;
+			var_dump($configuracion[0]->articulo_id) ;
+			//$var = $configuracion[0];
+			//return $var;
 		}
 
 	}

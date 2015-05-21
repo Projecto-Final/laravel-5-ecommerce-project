@@ -69,8 +69,8 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		if($ConfiguracionPuja==null){
 			return false;
 		}else{
-			$conf=$ConfiguracionPuja[0];
-			return $conf;
+			
+			return $ConfiguracionPuja;
 		}
 		
 		
