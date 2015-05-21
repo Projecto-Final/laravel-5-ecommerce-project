@@ -32,10 +32,10 @@ Route::get('test', function()
 	return view('testing');
 });
 
-Route::get('dashboard', function()
-{
-	return view('dashboard');
-});
+// Route::get('dashboard', function()
+// {
+// 	return view('dashboard');
+// });
 
 Route::get('iniciar_sesion', function()
 {
@@ -110,6 +110,9 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
 Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
+
+// ADMIN CP ACCESS
+Route::get('administración', 'LogedAdminMethods@index');
 
 // Admin methods
 

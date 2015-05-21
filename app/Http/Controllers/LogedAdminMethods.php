@@ -48,6 +48,17 @@ class LogedAdminMethods extends Controller {
 		}
 	}
 
+	public function index()
+	{
+		/*
+		consulta sql
+		SELECT * FROM `articulos` 
+		WHERE MONTH(`fecha_inicio`) = 5  
+		GROUP BY MONTH(`fecha_inicio`)
+		*/
+		return view('dashboard');
+	}
+
 	public function getCategorias()
 	{
 		$data = Categoria::all();
