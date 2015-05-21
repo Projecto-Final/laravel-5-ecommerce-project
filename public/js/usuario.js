@@ -13,9 +13,25 @@ function perfil(){
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
-		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>";
+		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
+		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
+}	
+
+
+function mostraCambioContrasena(){
+	$(".contact-info").html("<form  method='post' enctype='multipart/form-data' id='form-validate'>"
+		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
+		+"Contraseña vieja: <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'></br></br>"
+		+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
+		+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
+		+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+		+"</br>"
+		+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
+		+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
+		+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td></br></br>"
+		+"<input type='button' title='Submit' class='button' onclick='ValidarCambiosContrasena()' value='Guardar Cambios'>");
 }	
 
 function formEditar(){
@@ -41,9 +57,6 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
-		+"</br>"
-		+"<input type='button' title='Submit' class='button' onclick='showPass();' value='Cambiar Contraseña'>"
-		+"<div id='spass'></div>"
 		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>";
 		$(".contact-info").html(txt);
@@ -380,18 +393,20 @@ function editarP(){
 	});
 }	
 
-function ValidarCambios(){
+function ValidarCambiosContrasena(){
+	var confirm = validator();
+	if(confirm==true){
+		guardarCambiosPass();
+	}
+}
 
-	
+function ValidarCambios(){
 	var confirm = validator();
 	if(confirm==true){
 		guardarCambios();
 	}
 }
 
-function mostraInputContrasena(){
-	document.getElementById("spass").style.display = "visible";
-}
 
 
 function perfilGuardar(username,nombre,apellidos,direccion,email){
@@ -408,15 +423,16 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 	});	
 }
 
-function perfilGuardarPass(username,nombre,apellidos,direccion,email,password,password_confirmation){
+function guardarCambiosPass(){
+	var password = document.getElementById('password').value;
+	var password_confirmation = document.getElementById('password_confirmation').value;
+	perfilGuardarPass(password,password_confirmation);
+}
+
+function perfilGuardarPass(password,password_confirmation){
 	var url = "guardarCambiosPass";
 	alert("perfil function : : " + password);
 	$.get(url,{
-		username: username,
-		nombre: nombre,
-		apellidos: apellidos,
-		direccion: direccion,
-		email: email,
 		password: password,
 		password_confirmation: password_confirmation
 	})
@@ -431,29 +447,6 @@ function guardarCambios(){
 	var apellidos = document.getElementById('apellidos').value;
 	var direccion = document.getElementById('direccion').value;
 	var email = document.getElementById('email').value;
-	
 
-
-	if($.trim($("#spass").html())==''){
-		perfilGuardar(username,nombre,apellidos,direccion,email);
-	}else{
-		var password = document.getElementById('password').value;
-		var password_confirmation = document.getElementById('password_confirmation').value;
-		perfilGuardarPass(username,nombre,apellidos,direccion,email,password,password_confirmation);
-	}
-}
-
-function showPass(){
-	if($.trim($("#spass").html())==''){
-		$("#spass").html("<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
-			+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
-			+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
-			+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
-			+"</br>"
-			+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
-			+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
-			+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td>");		
-	}else{
-		$("#spass").html(" ");
-	}
+	perfilGuardar(username,nombre,apellidos,direccion,email);
 }
