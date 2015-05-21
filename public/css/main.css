@@ -349,7 +349,7 @@ SUBASTAS POR CATEGORIAS
 #sns_content {
   margin: 0 0 30px;
   position: relative;
-  min-height: 500px;
+  /* min-height: 500px; */
 }
 #sns_content .sns-producttabs {
   padding: 0px !important;
@@ -853,4 +853,12 @@ ul.form-list, ul.tags-list {
   background-color: rgb(27, 155, 255);
   color: #fff;
   border:0px;
+}
+
+/* DISEÑO CONTENEDOR SUBASTAS */
+.contenedor-subastas {
+
+}
+.contenedor-subastas > .vacio {
+  padding: 30px;
 }

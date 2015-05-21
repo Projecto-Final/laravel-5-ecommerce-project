@@ -80,7 +80,7 @@
               <div class="sns-pdt-content wide-4 normal-4 tabletlandscape-3 tabletportrait-3 mobilelandscape-2 mobileportrait-1">
                 <div class="pdt-content tab-content-actived is-loaded pdt_39">
                   <div class="pdt-list products-grid zoomOut play">
-                    <div class="inner-3267714721430404908"> 
+                    <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
 
                       <?php
