@@ -140,7 +140,7 @@
 														<input type="hidden" id="pmax" name="pmax" value="" placeholder="999 €">
 														<p>
 															<label for="amount">Filtrar por precio: </label>
-															<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+															<input type="text" id="amount" readonly style="border:0; color: #1B9BFF; font-weight:bold;  background-color: transparent;">
 														</p>
 
 														<div id="slider-range"></div>
