@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 
 
-function pujar(id_subasta,url,puja_mayor){
+function pujar(id_subasta,url){
 
 	//alert(url);
 	if(confirm("Seguro Que Desea Pujar?")){
