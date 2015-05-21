@@ -5,6 +5,7 @@ use App\Categoria;
 use App\Articulo;
 use App\Imagen;
 use App\Valoracion;
+use App\ConfiguracionPuja;
 use Session;
 use Auth;
 use Carbon\Carbon;
@@ -282,36 +283,29 @@ class LogedUserMethods extends Controller {
 	{
 
 		$submitedArray = $request->all();
-		$articulo[0] = Articulo::find($submitedArray['id_puja']);
-		$articulo[0]->puja_mayor = $articulo[0]->puja_mayor + $articulo[0]->incremento_precio;
-		$articulo[0]->save();
-		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo[0]->id])->update(['superada' => true]);
+		$articulo = Articulo::find($submitedArray['id_puja']);
+		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
+		$articulo->save();
+		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
 		$puja = Puja::create([
-			'cantidad' => $articulo[0]->puja_mayor,
+			'cantidad' => $articulo->puja_mayor,
 			'superada' => 0,
 			'confpuja_id' => null,
-			'articulo_id' => $articulo[0]->id,
+			'articulo_id' => $articulo->id,
 			'pujador_id' => Auth::user()->id,
 			'fecha_puja' => Carbon::now()
 			]);
-		$aux = $articulo[0]->pujas;
-		$articulo[1] = count($aux);
-
-		for ($i=0; $i < $articulo[1]; $i++) {
-		 
-			if($pujas[$i]['superada']==0){
-				$articulo[2]=$pujas[$i];
-			}
-		}
-		$articulo[3] = Auth::user()->id;
+		
 		//AQUI HAY K MIRAR SI HAY ALGUNA CONF PUJAS DE LA SUBASTA
+		comprovarCF($articulo);
 
 		return $articulo;
 	}
 
+//sirve para recargar los valores de precios de la subasta
 	public function	cargar_precio(Request $request){
 		$submitedArray = $request->all();
-		$articulo[0] = Articulo::find($submitedArray['id_puja']);
+		$articulo[0] = Articulo::find($submitedArray['id_subasta']);
 		$pujas = $articulo[0]->pujas;
 		$articulo[1] = count($pujas);
 		//sacar la puja maxima
@@ -328,19 +322,45 @@ class LogedUserMethods extends Controller {
 	}
 
 	public function crearConfPuja(Request $request){
-
 		$submitedArray = $request->all();
 
+		$articuloId = $submitedArray['id_subasta'];
+		$articulo = Articulo::find($articuloId);		
+		
+		$pujaMax = $submitedArray['puja_max'];
+
+		$confPuja = ConfiguracionPuja::create([
+			'puja_maxima' => $pujaMax,
+			'articulo_id' => $articuloId,
+			'usuario_id' => Auth::user()->id,
+			'superada' => 0,
+			'fecha_config' => Carbon::now()
+			]);
+
+			$this->comprovarCF($articulo);
+	}
+
+
+		public function comprovarCF($articulo){
+$confPujas=$articulo->Confpujas;
+
+for ($i=0; $i < count($confPujas); $i++) { 
+	if($confPujas[$i]['superada'] == 1 && $confPujas[$i]['superada'])
+
+}
+
+
 		$puja = Puja::create([
-			'cantidad' => $articulo[0]->puja_mayor,
+			'cantidad' => $articulo->puja_mayor,
 			'superada' => 0,
 			'confpuja_id' => null,
-			'articulo_id' => $articulo[0]->id,
+			'articulo_id' => $articulo->id,
 			'pujador_id' => Auth::user()->id,
 			'fecha_puja' => Carbon::now()
 			]);
 
 	}
+
 
 	
 }

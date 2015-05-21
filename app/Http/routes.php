@@ -64,7 +64,7 @@ Route::get('cargar_precio', 'LogedUserMethods@cargar_precio');
 
 Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
 
-
+Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
 
 
 
