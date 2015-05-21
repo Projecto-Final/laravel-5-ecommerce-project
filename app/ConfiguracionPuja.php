@@ -14,7 +14,7 @@ class ConfiguracionPuja extends Model {
 	
 	public function usuario()
 	{
-		return $this->belongsTo('App\Usuario');
+		return $this->belongsTo('App\Usuario', 'usuario_id', 'id');
 	}
 	
 	public function pujas()

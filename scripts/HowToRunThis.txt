@@ -1,0 +1,25 @@
+Launch the task scheduler Windows Key + R then paste in Taskschd.msc and hit enter.
+
+Then click Create Basic Task on the right in the Actions pane.
+
+Name your task something so you will know what it is for if you need to modify it or are running multiple projects then click Next.
+
+Leave this page set to Daily for now and click Next.
+
+Leave this page as defaults as well and click Next.
+
+Make sure Start a Program is selected and click Next.
+
+Browse to the batch file we just created and then click Next then click Finish.
+
+Now, select Task Scheduler Library on the left, and find your task in the middle pane and right-click and click Properties
+
+Go to the Triggers tab, click Daily in the list and click Edit.
+
+The drop-down at the top next to Begin the task change to At Log on for Any user
+
+Check the box that says Repeat Task Every and choose 5 Minutes from the drop-down. The drop-down after for a duration: on the same line choose Indefinitely.
+
+Click OK. Done.
+
+Then right-click on your task in the middle pane and click Run to initiate it.

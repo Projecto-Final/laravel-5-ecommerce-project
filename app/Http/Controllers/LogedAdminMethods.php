@@ -48,4 +48,17 @@ class LogedAdminMethods extends Controller {
 		}
 	}
 
+	public function getCategorias()
+	{
+		$data = Categoria::all();
+		return view('admin/categorias',['categorias' => $data]);
+	}
+
+	public function getSubcategoriasCat($idCategoria)
+	{
+		$data = Categoria::find($idCategoria)->subcategorias;
+		return view('admin/subcategorias',['subcategorias' => $data]);
+	}
+
+
 }

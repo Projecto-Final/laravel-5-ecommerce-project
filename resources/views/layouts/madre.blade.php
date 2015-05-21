@@ -73,7 +73,9 @@
 							</div>
 							<div class="col-md-9 col-sm-12 col-xs-12">
 								<div class="acceso_rapido">
-									<form action="buscar" method="get" class="formulario-busqueda">
+									<form action="buscar" method="post" class="formulario-busqueda">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="hidden" name="_method" value="PUT">
 										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
 										<div class="boton-submit">
 											<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
@@ -114,7 +116,7 @@
 												 		$.each(result, function(i, field){
 												 			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
 												 		});
-												 		$("#subcategoria-art").html($("#categoria-art").html()+scatm);
+												 		$("#subcategoria-art").html("<option value='*''>Cualquiera</option>"+scatm);
 												 	});
 												 });
 

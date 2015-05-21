@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Articulo extends Model {
 
@@ -41,5 +42,11 @@ class Articulo extends Model {
 	public function Confpujas()
 	{
 		return $this->hasMany('App\ConfiguracionPuja', 'articulo_id', 'id');
+	}
+	public function ultimaPuja($articulo_id){
+
+		$puja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('superada','=', 0)->get();
+		
+		return $puja[0];
 	}
 }

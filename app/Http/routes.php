@@ -49,7 +49,7 @@ Route::get('get_allCategories', 'GlobalController@get_allCategories');
 Route::get('subasta/{idSubasta}', 'GlobalController@get_selectedSubasta');
 
 /* BUSCAR MEDIANTE FILTRO */
-Route::get('buscar', 'GlobalController@buscar_subastas');
+Route::put('buscar', 'GlobalController@buscar_subastas');
 
 // RUTAS USUARIOS AUTENTIFICADOS ( AUTH )
 
@@ -85,6 +85,7 @@ Route::get('get_subCategoryDescription/{idSubCategoria}', 'GlobalController@get_
 
 
 
+
 /*Routes perfil usuario*/
 
 /* Obtener la informacion del usuario */
@@ -113,3 +114,5 @@ Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 // Admin methods
 
 Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
+Route::get('getCategorias','LogedAdminMethods@getCategorias');
+Route::get('getSubcategorias', 'LogedAdminMethods@getSubcategoriasCat');

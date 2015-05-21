@@ -4,16 +4,22 @@ $(document).ready(function(){
 
 
 
-function pujar(id_subasta,url){
+function pujar(id_subasta,url,puja_mayor){
 
 	//alert(url);
 	if(confirm("Seguro Que Desea Pujar?")){
+		var puja_mayor = $("#exampleInputAmount").val();
 		$.get(url,{
-			id_subasta: id_subasta
+			id_subasta: id_subasta,
+			puja_mayor : puja_mayor
 		})
 		.done(function(data) {
-
-			recargarPrecios();
+			if(data=="Error"){
+				alert("El precio mostrado ha cambiado");
+			}else{
+				recargarPrecios();
+			}
+			
 
 		});
 	}
@@ -40,11 +46,12 @@ function recargarPrecios(){
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
-
-		if(data[2]['pujador_id']==data[3]){
-			$( "#botonPuja" ).prop( "disabled", true );
-		}else{
-			$( "#botonPuja" ).prop( "disabled", false );
+		if(data[2]!=null){
+			if(data[2]['pujador_id']==data[3]){
+				$( "#botonPuja" ).prop( "disabled", true );
+			}else{
+				$( "#botonPuja" ).prop( "disabled", false );
+			}
 		}
 
 

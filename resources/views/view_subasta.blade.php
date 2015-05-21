@@ -1,4 +1,4 @@
-<?php use App\Articulo; use App\Puja;?>
+<?php use App\Articulo; use App\Puja; use App\Usuario?>
 @extends('layouts.madre')
 
 @section('extclases')
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">€</div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="{{ $subasta['puja_mayor'] }}" disabled="true">
+                  <input type="text" class="form-control" id="exampleInputAmount" value="{{ $subasta['puja_mayor'] }}" disabled="true">
                 </div>
               </div>
               <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
