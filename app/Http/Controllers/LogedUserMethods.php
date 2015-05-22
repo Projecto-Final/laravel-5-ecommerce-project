@@ -270,6 +270,38 @@ class LogedUserMethods extends Controller {
 		$user->save();
 	}
 
+
+	public function save_photo_perfil(Request $request){
+
+		$submitedArray = $request->all();
+		$user = Auth::user();
+
+		$imgName = $submitedArray['img_perfil'];
+		$img_extension = $submitedArray['img_perfil']->getClientOriginalExtension();
+		$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
+		$imgName->move(public_path("images/profiles"),$img_name);
+		$user->imagen_perfil=$img_name;
+		$user->save();
+
+		return redirect('usuario');
+	}
+
+	public function save_photo_portada(Request $request){
+
+		$submitedArray = $request->all();
+		$user = Auth::user();
+
+		$imgName = $submitedArray['img_portada'];
+		$img_extension = $submitedArray['img_portada']->getClientOriginalExtension();
+		$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
+		$imgName->move(public_path("images/profiles_wallpapers"),$img_name);
+		$user->imagen_background=$img_name;
+		$user->save();
+
+		return redirect('usuario');
+	}
+
+
 //Esta funcion añade la puja en la BD pasandole la id de la subasta 
 	//usa array para devolver tambien el numero de pujas de este articulo
 	public function add_puja(Request $request)
@@ -278,8 +310,8 @@ class LogedUserMethods extends Controller {
 
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
-		$ultimaP = $articulo->ultimaPuja;
-		if($ultimaP->pujador_id = Auth::user()->id){
+		$ultimaP = $articulo->ultimaPuja($submitedArray['id_subasta']);
+		if($ultimaP->pujador_id == Auth::user()->id){
 			return "Ya Pujaste";
 		}
 		$precioMostrado = $submitedArray['puja_mayor'];
@@ -319,9 +351,14 @@ class LogedUserMethods extends Controller {
 
 	public function crearConfPuja(Request $request){
 		$submitedArray = $request->all();
-
+		$userId = Auth::user()->id;
+		$usuario = Usuario::find($userId);
 		$articuloId = $submitedArray['id_subasta'];
-		$articulo = Articulo::find($articuloId);		
+		$articulo = Articulo::find($articuloId);
+		$confPuj = $usuario->confPujasSubasta($articuloId,$userId);
+		if($confPuj!=false){
+			return "false";
+		}	
 		
 		$pujaMax = $submitedArray['puja_max'];
 
@@ -402,11 +439,13 @@ class LogedUserMethods extends Controller {
 		$usuario = Usuario::find($userId);
 		$configuracion = $usuario->confPujasSubasta($articuloId,$userId);
 		if($configuracion==false){
-			return false;
+			return "false";
 		}else{
-			var_dump($configuracion[0]->articulo_id) ;
-			//$var = $configuracion[0];
-			//return $var;
+			$data[0] = $configuracion[0];
+			$data[1] = $usuario->ultimaPujaSubasta($articuloId,$userId);
+			$data[2] = $configuracion->pujasDeArticulo($articulo_id,$conf_id);
+			
+			return $data;
 		}
 
 	}

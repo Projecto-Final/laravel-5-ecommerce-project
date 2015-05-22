@@ -9,11 +9,33 @@
 <script src="{{ url('js/usuario.js') }}"></script>
 
 <div id="sns_content" class="wrap layout-m">
-
   <div class="container-fluid header_perfil" >
+    <span id="editarFportada" class=" glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    <span id="editarFP" class=" glyphicon glyphicon-pencil" aria-hidden="true"></span>
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$imagBack) }});">
       <div class="stadistic_info_user col-xs-12 col-md-12">
-       <div class="container">
+       <div id="confPerfil" class="col-md-9 pop_up" style="display:none;" >
+        <form action="{{ url('fotoPerfil') }}" method="post" enctype="multipart/form-data">
+          <h2>Foto de perfil</h2>
+          <span id="close_pop_perfil" class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <h4>Imagen</h4><div id="img_perfil"><input type="file" id="imgart_1" class="cnt" name="img_perfil"><BR></div>
+          <input type='submit' title='Submit' class='button' value='Guardar Cambios'></form>
+        </form>
+      </div>
+
+      <div id="confPortada" class="col-md-9 pop_up" style="display:none;" >
+        <form action="{{ url('fotoPortada') }}" method="post" enctype="multipart/form-data">
+          <h2>Foto de portada</h2>
+          <span id="close_pop_portada" class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <h4>Imagen</h4><div id="img_portada"><input type="file" id="imgart_1" class="cnt" name="img_portada"><BR></div>
+          <input type='submit' title='Submit' class='button' value='Guardar Cambios'></form>
+        </form>
+      </div>
+      <div class="container">
         <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.$imagPerf) }}) ;"></div>
 
 

@@ -46,7 +46,7 @@
                 <input type="text" class="form-control" id="exampleInputAmount" value="{{ $subasta['puja_mayor'] }}" disabled="true">
               </div>
             </div>
-            <!-- <button type="submit" class="btn btn-primary" onclick="pujar({{ $subasta['id'] }})"> PUJAR {{ $subasta['incremento_precio'] }}€</button> -->
+            
 
            @if ($logueado == true) 
             <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
@@ -60,16 +60,24 @@
 
 
         <div>
-          <button class="formConfPuja-button" type="button" onClick="mostrar_cp();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
+
+           @if ($logueado == true) 
+            <button class="formConfPuja-button" type="button" onClick="mostrar_cp();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
+          @elseif($logueado == false)
+            <button class="formConfPuja-button" type="button" onClick="avisoLog();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
+            @endif
+          
           <div class="formConfPuja">
             <div id="formConf">
               <form class="form-inline" id="form-validate">
                 <h2>Cantidad Maxima Que Pujara</h2>
-                <input trype="text" id="cantidadMax" name="cantidadMax"/>
+                <input trype="text" id="cantidadMax" name="cantidadMax"/>€
+                <br>
                 <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>
-                <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero</span>
+                <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
               </form>
-              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta[' id '].', '.url('crearConfPuja ') }}")' value="GUARDAR" />
+              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="GUARDAR">
+    
               <i class='fa fa-flag-o'></i>
             </div>
           </div>

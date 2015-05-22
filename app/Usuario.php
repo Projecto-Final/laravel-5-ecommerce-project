@@ -75,4 +75,10 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		
 		
 	}
+	public function ultimaPujaSubasta($articulo_id,$user_id){
+
+		$numeroPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $user_id)->max('id');
+		$lPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $user_id)->where ('id','=', $numeroPuja)->get();
+		return $lPuja;
+	}
 }
