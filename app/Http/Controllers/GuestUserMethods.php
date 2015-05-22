@@ -2,6 +2,8 @@
 use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
+use Illuminate\Http\Request;
+use App\Articulo;
 
 class GuestUserMethods extends Controller {
 
@@ -32,6 +34,25 @@ class GuestUserMethods extends Controller {
 	public function get_allCategories()
 	{
 		return $data = Categoria::all();
+	}
+
+		public function	cargar_precioGuest(Request $request){
+		$submitedArray = $request->all();
+		$articulo[0] = Articulo::find($submitedArray['id_subasta']);
+		$pujas = $articulo[0]->pujas;
+		$articulo[1] = count($pujas);
+
+		//sacar la puja maxima
+		for ($i=0; $i < $articulo[1]; $i++) {
+
+			if($pujas[$i]['superada']==0){
+				$articulo[2]=$pujas[$i];
+			}
+		}
+		
+		
+
+		return $articulo;
 	}
 
 

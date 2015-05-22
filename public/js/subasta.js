@@ -1,6 +1,15 @@
 $(document).ready(function(){
-	cargarPujaAut();
-	setInterval(cargarPujaAut,7000);
+
+	var cargarPrcio = $("#cargarPrecio").val();
+	if(cargarPrcio!="no"){
+		cargarPujaAut();
+		setInterval(cargarPujaAut,7000);
+
+
+	}
+	
+
+	
 	setInterval(recargarPrecios, 7000);
 });
 
@@ -21,8 +30,8 @@ function pujar(id_subasta,url){
 		.done(function(data) {
 			if(data=="Error"){
 				alert("El precio mostrado ha cambiado");
-			}else{
-				
+			}else if(data=="Ya Pujaste"){
+				alert(data);
 			}
 			recargarPrecios();
 
@@ -108,7 +117,7 @@ function cargarPujaAut(){
 		id_subasta: id_subasta
 	})
 	.done(function(data) {
-$("#pruevas").html(data);
+		$("#pruevas").html(data);
 //alert(data);
 
 /*		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
@@ -130,7 +139,7 @@ $("#pruevas").html(data);
 			}
 		}
 
-*/
+		*/
 	});
 
 }

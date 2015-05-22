@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use DB;
 use Input;
 use Cache;
-use Hash;
 
 class LogedUserMethods extends Controller {
 
@@ -89,8 +88,6 @@ class LogedUserMethods extends Controller {
 		$descr = Subcategoria::find($idSubCategoria)->descripcion;
 		return $descr;
 	}
-
-
 
 	/**
 	 * 
@@ -267,26 +264,25 @@ class LogedUserMethods extends Controller {
 	{
 		$submitedArray = $request->all();
 		$user = Auth::user();
-		$pass_old = $submitedArray["password_old"];
-		$credentials = ['password'=> $pass_old];
-		if(Auth::validate($credentials)){
-			if ($submitedArray["password_confirmation"] == $submitedArray["password"]) {
-				$user->password = bcrypt($submitedArray["password"]);
-				$user->save();
-			}
-		}else{
-			return view('index');
+		if ($submitedArray["password_confirmation"] == $submitedArray["password"]) {
+			$user->password = bcrypt($submitedArray["password"]);
 		}
+		$user->save();
 	}
 
 //Esta funcion añade la puja en la BD pasandole la id de la subasta 
 	//usa array para devolver tambien el numero de pujas de este articulo
-	public function add_puja($id_subasta,$precioMostrado)
+	public function add_puja(Request $request)
 	{
 
 
 		$submitedArray = $request->all();
-		$articulo = Articulo::find($id_subasta);
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$ultimaP = $articulo->ultimaPuja;
+		if($ultimaP->pujador_id = Auth::user()->id){
+			return "Ya Pujaste";
+		}
+		$precioMostrado = $submitedArray['puja_mayor'];
 		if($precioMostrado==$articulo->puja_mayor){
 			$pujaAut = null;
 			$idPujador = Auth::user()->id;
@@ -294,7 +290,7 @@ class LogedUserMethods extends Controller {
 		}else{
 			return "Error";
 		}
-
+		
 	}
 
 	public function engendrar_puja($articulo,$pujaAut,$idPujador){
@@ -309,8 +305,10 @@ class LogedUserMethods extends Controller {
 			'articulo_id' => $articulo->id,
 			'pujador_id' => $idPujador,
 			'fecha_puja' => Carbon::now()
-			]);		
-
+			]);	
+		$user = Usuario::find($idPujador);	
+		$user->touch();
+		
 		//AQUI HAY K MIRAR SI HAY ALGUNA CONF PUJAS DE LA SUBASTA
 		$this->comprovarCF($articulo->id);
 
@@ -324,7 +322,7 @@ class LogedUserMethods extends Controller {
 
 		$articuloId = $submitedArray['id_subasta'];
 		$articulo = Articulo::find($articuloId);		
-
+		
 		$pujaMax = $submitedArray['puja_max'];
 
 		$confPuja = ConfiguracionPuja::create([
@@ -392,7 +390,7 @@ class LogedUserMethods extends Controller {
 			}
 		}
 		$articulo[3] = Auth::user()->id;
-
+		
 
 		return $articulo;
 	}
