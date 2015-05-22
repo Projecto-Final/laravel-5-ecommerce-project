@@ -48,6 +48,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// ADMIN CP ACCESS
 	Route::get('administracion', 'LogedAdminMethods@index');
 
+	// Admin views
+	Route::get('administracion/estadisticas', 'LogedAdminMethods@estadisticas');
+	Route::get('administracion/subastas', 'LogedAdminMethods@subastas');
+	Route::get('administracion/media', 'LogedAdminMethods@media');
+	Route::get('administracion/usuarios', 'LogedAdminMethods@usuarios');
+	Route::get('administracion/categorias', 'LogedAdminMethods@categorias');
+	Route::get('administracion/subcategorias', 'LogedAdminMethods@subcategorias');
+
 	// Admin methods
 	Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
 	Route::get('getCategorias','LogedAdminMethods@getCategorias');

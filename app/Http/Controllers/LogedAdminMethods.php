@@ -50,13 +50,7 @@ class LogedAdminMethods extends Controller {
 
 	public function index()
 	{
-		if($this->checkPermisos()==1){
-		/*
-		consulta sql
-		SELECT * FROM `articulos` 
-		WHERE MONTH(`fecha_inicio`) = 5  
-		GROUP BY MONTH(`fecha_inicio`)
-		*/
+
 		$id=Auth::id();
 		$Adm = Usuario::find($id);
 
@@ -71,26 +65,39 @@ class LogedAdminMethods extends Controller {
 		$nImagenes = count(Imagen::all());
 		$Categorias = Categoria::all();
 		$SubCategorias = Subcategoria::all();
+		$usuarios = Usuario::orderBy('id','desc')->take(8)->get();
 
 
-		return view('dashboard', ['administrador' => $Adm ,'nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
-	} else {
-		return view('404');
+		return view('admin.dashboard', ['usuarios' => $usuarios,'administrador' => $Adm ,'nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
+
 	}
 
-}
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function estadisticas(){
+		/*
+		consulta sql
+		SELECT * FROM `articulos` 
+		WHERE MONTH(`fecha_inicio`) = 5  
+		GROUP BY MONTH(`fecha_inicio`)
+		*/
+		return view("admin.estadisticas");
+	}
 
-public function getCategorias()
-{
-	$data = Categoria::all();
-	return view('admin/categorias',['categorias' => $data]);
-}
+	public function getCategorias()
+	{
+		$data = Categoria::all();
+		return view('admin/categorias',['categorias' => $data]);
+	}
 
-public function getSubcategoriasCat($idCategoria)
-{
-	$data = Categoria::find($idCategoria)->subcategorias;
-	return view('admin/subcategorias',['subcategorias' => $data]);
-}
+	public function getSubcategoriasCat($idCategoria)
+	{
+		$data = Categoria::find($idCategoria)->subcategorias;
+		return view('admin/subcategorias',['subcategorias' => $data]);
+	}
 
 
 }

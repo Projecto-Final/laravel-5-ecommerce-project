@@ -222,10 +222,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
           <li class="treeview">
-            <a href="#"><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href=""><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu" style="display: block;">
               <li><a href="{{ url('administracion') }}">Inicio</a></li>
-              <li><a href="#">Estadísticas</a></li>
+              <li><a href="{{ url('administracion/estadisticas') }}">Estadísticas</a></li>
             </ul>
           </li>
           <li class="treeview">
