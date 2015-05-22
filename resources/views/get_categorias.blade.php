@@ -22,7 +22,7 @@ $categorias =  Categoria::all(); ?>
         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
           <div id="sns_slideshow">
            <div class="sns-revolutionslider-wrap">
-             <div class="tp-bgimg defaultimg" src="http://127.0.0.1/proyecto/public/images/oferta999.jpg" style="width: 100%; height: 450px; opacity: 1; background-image: url(http://127.0.0.1/proyecto/public/images/oferta999.jpg); background-color: rgba(0, 0, 0, 0); /* background-position: 50% 50%; */ background-repeat: no-repeat;background-size: contain;"></div>
+             <div class="tp-bgimg defaultimg" style="width: 100%; height: 450px; opacity: 1; background-image: url('{{ url('images/oferta999.jpg') }}'); background-color: rgba(0, 0, 0, 0); /* background-position: 50% 50%; */ background-repeat: no-repeat;background-size: contain;"></div>
             </div>
           </div>
         </div>
