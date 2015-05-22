@@ -8,13 +8,15 @@
 
  }
  */
-function formValidator(){
-	var formulario = document.getElementById('form-validate');
-	var confirm = validator();
-	if(confirm==true){
-		formulario.submit();
-	}
-}
+ var ndecimal = 2;
+
+ function formValidator(){
+ 	var formulario = document.getElementById('form-validate');
+ 	var confirm = validator();
+ 	if(confirm==true){
+ 		formulario.submit();
+ 	}
+ }
 
  var error = false;
  function validator(){
@@ -51,7 +53,7 @@ function formValidator(){
  				}
  				val = current.value;
  				
-if(val==""){getIdMsg(current,false,true);}
+ 				if(val==""){getIdMsg(current,false,true);}
 
  				if(val!=""){
 	//el no campo esta vacio
@@ -61,15 +63,34 @@ if(val==""){getIdMsg(current,false,true);}
 			getIdMsg(current,true,true);
 		}
 	}
+
+	//cantidad maxima de puja automatica
 	if(current.name=="cantidadMax"){
 
 
-			if( isNaN(val)){
+		if( isNaN(val)){
 			getIdMsg(current,true,true);
+		}else{
+			if(val<0){
+				getIdMsg(current,true,true);
+			}else{
+				getIdMsg(current,false,true);
+			}
+		}
+		var posicComa = val.indexOf(',');
+		var dectext = val.substring(val.indexOf(',')+1, val.length);
+		
+		if(posicComa!=-1){
+			if (dectext.length > ndecimal)
+			{
+				getIdMsg(current,true,true);
+			}
 		}else{
 			getIdMsg(current,false,true);
 		}
 	}
+
+
 
 	if(current.name=="password"){
 

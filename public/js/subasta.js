@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-	var cargarPrcio = $("#cargarPrecio").val();
-	if(cargarPrcio!="no"){
+	var cargarP = $("#cargarPujaAut").val();
+	if(cargarP!="no"){
 		cargarPujaAut();
 		setInterval(cargarPujaAut,7000);
 
@@ -40,6 +40,7 @@ function pujar(id_subasta,url){
 }
 
 function recargarPrecios(){
+	
 	var url = $("#cargarPrecio").val();
 	var id_subasta = $("#subastaId").val();
 
@@ -91,7 +92,6 @@ function interruptor_visible(estado){
 
 function crear_confPuja(id_subasta,url){
 	var puja_max = $("#cantidadMax").val();
-	
 	if(validator()==true){
 		
 		$.get(url,{
@@ -99,8 +99,12 @@ function crear_confPuja(id_subasta,url){
 			puja_max : puja_max
 		})
 		.done(function(data) {
-
-			alert("Configuracion de Puja Guardada");
+if(data=="false"){
+	alert("Solo puedes tener una configuracion");
+}else{
+	alert("Configuracion de Puja Guardada");
+}
+			
 
 
 		});
