@@ -14,17 +14,18 @@ class CreateValoracionsTable extends Migration {
 	{
 		Schema::create('valoracions', function(Blueprint $table)
 		{
-            $table->increments('id');
-            $table->longText('texto');
-            $table->integer('valorado_id')->unsigned();
-            $table->foreign('valorado_id')->references('id')->on('usuarios');
-            $table->integer('validante_id')->unsigned();
-            $table->foreign('validante_id')->references('id')->on('usuarios');
-            $table->integer('puntuacion')->unsigned();
-            $table->foreign('puntuacion')->references('id')->on('escalas');
-            $table->dateTime('fecha');
-            $table->rememberToken();
-            $table->timestamps();
+			$table->increments('id');
+			$table->longText('texto');
+			$table->integer('valorado_id')->unsigned();
+			$table->foreign('valorado_id')->references('id')->on('usuarios');
+			$table->integer('validante_id')->unsigned();
+			$table->foreign('validante_id')->references('id')->on('usuarios');
+			$table->integer('puntuacion')->unsigned();
+			$table->foreign('puntuacion')->references('id')->on('escalas');
+			$table->dateTime('fecha');
+			$table->boolean('completada')->default(false);
+			$table->rememberToken();
+			$table->timestamps();
 		});
 	}
 
@@ -37,5 +38,4 @@ class CreateValoracionsTable extends Migration {
 	{
 		Schema::drop('valoracions');
 	}
-
 }

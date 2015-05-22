@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use App\Articulo;
 use App\Puja;
 use App\Usuario;
+use App\Valoracion;
 use Carbon\Carbon;
 use Mail;
 
@@ -59,6 +60,13 @@ class FinalizarVentas extends Command {
 						$message->from("3fym.info@gmail.com", "info");
 						$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
 					});
+					Valoracion::Create([
+						'texto' => '',
+						'valorado_id' => $vendedor->id,
+						'validante_id' => $comprador->id,
+						'puntuacion' => 1,
+						'fecha' => Carbon::now(),
+					]);
 				} else {
 					$articulo->precio_venta = 0;
 					$articulo->save();

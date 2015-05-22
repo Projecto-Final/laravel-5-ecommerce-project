@@ -20,6 +20,4 @@ class Valoracion extends Model {
 	{
 		return $this->belongsTo('App\Usuario', 'valorado_id', 'id');
 	}
-
-
 }

@@ -26,7 +26,7 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 1,
 			'comprador_id' => -1
-			]);
+		]);
 		$fecha = new DateTime('NOW');
 		$fecha->modify('-1 day');
 		$fecha2 = new DateTime('NOW');
@@ -49,7 +49,7 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 1,
 			'subcategoria_id' => 18,
 			'comprador_id' => -1
-			]);
+		]);
 
 		Articulo::create([
 			'nombre_producto' => 'Silla de Oficina Neo',
@@ -68,6 +68,6 @@ class ArticulosTableSeeder extends Seeder {
 			'subastador_id' => 3,
 			'subcategoria_id' => 11,
 			'comprador_id' => 2
-			]);
+		]);
 	}
 }
