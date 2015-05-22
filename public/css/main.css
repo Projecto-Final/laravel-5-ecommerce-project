@@ -224,6 +224,10 @@ CSS PERSONALIZADO
   border-radius: 4px;
   margin-top: 3px;
 }
+.boton-submit > .buscar:hover {
+  background: #F468DC;
+  width:60px;
+}
 
 /*
 MENU NAVEGACIÓN
