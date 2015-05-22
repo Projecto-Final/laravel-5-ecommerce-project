@@ -1,5 +1,17 @@
 $(document).ready(function() {
 	perfil();
+	$("#close_pop_perfil").click(function(){
+		$("#confPerfil").fadeOut(500);
+	});
+	$("#close_pop_portada").click(function(){
+		$("#confPortada").fadeOut(500);
+	});
+	$("#editarFP").click(function(){
+		$("#confPerfil").fadeIn(500);
+	});
+	$("#editarFportada").click(function(){
+		$("#confPortada").fadeIn(500);
+	});
 });
 
 
@@ -14,7 +26,6 @@ function perfil(){
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
 		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
-		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Aparencia</button></div>"
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
@@ -160,14 +171,10 @@ function confPuj(){
 
 txt+= '<tr class="info">';
 if(data[2][i][0]!=null){
-
-	txt +="<td> "+data[2][i][0].imagen+"</td>";
-
+	txt +="<td><img src='url(http://localhost/public/images/subastas/"+data[2][i][0].imagen+")'/></td>";
 }else{
 	txt +="<td>NO</td>";
 }
-
-
 
 txt +="<td>"+data[1][i].nombre_producto+"</td>";
 txt +="<td>"+data[0][i].puja_maxima+"</td>";			
@@ -455,4 +462,9 @@ function guardarCambios(){
 	var email = document.getElementById('email').value;
 
 	perfilGuardar(username,nombre,apellidos,direccion,email);
+}
+
+function aparencia(){
+	$(".contact-info").hide();	
+	$(".aparencia").show();	
 }

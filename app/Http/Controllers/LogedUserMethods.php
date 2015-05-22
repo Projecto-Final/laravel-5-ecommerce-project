@@ -270,6 +270,38 @@ class LogedUserMethods extends Controller {
 		$user->save();
 	}
 
+
+	public function save_photo_perfil(Request $request){
+
+		$submitedArray = $request->all();
+		$user = Auth::user();
+
+		$imgName = $submitedArray['img_perfil'];
+		$img_extension = $submitedArray['img_perfil']->getClientOriginalExtension();
+		$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
+		$imgName->move(public_path("images/profiles"),$img_name);
+		$user->imagen_perfil=$img_name;
+		$user->save();
+
+		return redirect('usuario');
+	}
+
+	public function save_photo_portada(Request $request){
+
+		$submitedArray = $request->all();
+		$user = Auth::user();
+
+		$imgName = $submitedArray['img_portada'];
+		$img_extension = $submitedArray['img_portada']->getClientOriginalExtension();
+		$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
+		$imgName->move(public_path("images/profiles_wallpapers"),$img_name);
+		$user->imagen_background=$img_name;
+		$user->save();
+
+		return redirect('usuario');
+	}
+
+
 //Esta funcion añade la puja en la BD pasandole la id de la subasta 
 	//usa array para devolver tambien el numero de pujas de este articulo
 	public function add_puja(Request $request)

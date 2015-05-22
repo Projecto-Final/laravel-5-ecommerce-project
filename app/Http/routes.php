@@ -128,4 +128,8 @@ Route::get('get_compras', 'LogedUserMethods@get_compras');
 Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
 Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
+Route::put('fotoPerfil', 'LogedUserMethods@save_photo_perfil');
+Route::put('fotoPortada', 'LogedUserMethods@save_photo_portada');
+
+
 
