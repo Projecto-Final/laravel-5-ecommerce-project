@@ -318,9 +318,12 @@ class LogedUserMethods extends Controller {
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$ultimaP = $articulo->ultimaPuja($submitedArray['id_subasta']);
-		if($ultimaP->pujador_id == Auth::user()->id){
+		if($ultimaP!=false){
+			if($ultimaP->pujador_id == Auth::user()->id){
 			return "Ya Pujaste";
 		}
+		}
+		
 		$precioMostrado = $submitedArray['puja_mayor'];
 		if($precioMostrado==$articulo->puja_mayor){
 			$pujaAut = null;
