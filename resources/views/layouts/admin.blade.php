@@ -222,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
         <li class="treeview">
-            <a href="#"><i class="fa fa-building-o"></i> <span>Gestionar Empresa</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class="fa fa-building-o"></i> <span>CONFIGURACIÓNES</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="#">Modificar Nombre</a></li>
                <li><a href="#">Modificar Conf. Subasta</a></li>
@@ -233,6 +233,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="treeview-menu">
               <li><a href="#"><i class="fa fa-list-alt"></i> Listar</a></li>
               <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar</a></li>
+              <li class="treeview">
+            <a href="#"><i class='fa fa-link'></i> <span>Gestionar Categorías</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="#">Link in level 2</a></li>
+              <li><a href="#">Link in level 2</a></li>
+            </ul>
+          </li>
             </ul>
           </li>
           <li class="treeview">
