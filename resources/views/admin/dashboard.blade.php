@@ -31,7 +31,7 @@
           @forelse($usuarios as $usuario)
           <li>
             <img src='{{ url("/images/profiles/".$usuario["imagen_perfil"]) }}' alt="User Image">
-            <a class="users-list-name" href="#">{{ $usuario['nombre'] }}</a>
+            <a class="users-list-name" href='{{ url("ver_perfil/".$usuario["id"]) }}'>{{ $usuario['nombre'] }}</a>
             <span class="users-list-date">{{ $usuario['created_at'] }}</span>
           </li>
           @empty

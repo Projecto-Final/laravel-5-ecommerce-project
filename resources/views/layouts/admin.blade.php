@@ -169,17 +169,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="{{ url("/images/profiles/".$administrador["imagen_perfil"]) }}" class="user-image" alt="User Image"/>
+                <img src="{{ url("/images/profiles/".Auth::user()->imagen_perfil) }}" class="user-image" alt="User Image"/>
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs"> {{ $administrador['nombre'] , $administrador['apellidos'] }} <i class="fa fa-caret-down"></i></span>
+                <span class="hidden-xs"> {{ Auth::user()->nombre ,  Auth::user()->apellidos }} <i class="fa fa-caret-down"></i></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src='{{ url("/images/profiles/".$administrador["imagen_perfil"]) }}' class="img-circle" alt="User Image" />
+                  <img src='{{ url("/images/profiles/".Auth::user()->imagen_perfil) }}' class="img-circle" alt="User Image" />
                   <p>
-                    {{ $administrador['nombre'] , $administrador['apellidos'] }}
-                    <small>Administrador desde {{ $administrador['created_at'] }}</small>
+                    {{ Auth::user()->nombre ,  Auth::user()->apellidos }}
+                    <small>Administrador desde {{ Auth::user()->created_at }}</small>
                   </p>
                 </li>
                 <!-- Menu Body -->
