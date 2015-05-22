@@ -4,6 +4,9 @@ $(document).ready(function(){
 	setInterval(recargarPrecios, 7000);
 });
 
+function avisoLog(){
+	alert("Debes estar logueado para pujar");
+}
 
 
 function pujar(id_subasta,url){
@@ -19,9 +22,9 @@ function pujar(id_subasta,url){
 			if(data=="Error"){
 				alert("El precio mostrado ha cambiado");
 			}else{
-				recargarPrecios();
+				
 			}
-			
+			recargarPrecios();
 
 		});
 	}

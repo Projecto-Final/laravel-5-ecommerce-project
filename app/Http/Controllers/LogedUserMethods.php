@@ -281,12 +281,12 @@ class LogedUserMethods extends Controller {
 
 //Esta funcion añade la puja en la BD pasandole la id de la subasta 
 	//usa array para devolver tambien el numero de pujas de este articulo
-	public function add_puja(Request $request)
+	public function add_puja($id_subasta,$precioMostrado)
 	{
 
+
 		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_subasta']);
-		$precioMostrado = $submitedArray['puja_mayor'];
+		$articulo = Articulo::find($id_subasta);
 		if($precioMostrado==$articulo->puja_mayor){
 			$pujaAut = null;
 			$idPujador = Auth::user()->id;

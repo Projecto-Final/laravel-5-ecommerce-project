@@ -101,10 +101,11 @@ class GlobalController extends Controller {
 
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
-{
+{   
+	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
-
+}
 //si el usuario es el propietario o el admin
 	if($user_id==$articulo['subastador_id'] || $user['permisos']==1){
 
@@ -119,7 +120,7 @@ if (Auth::check())//hay que añadir el ACTIVO
 		$nume=0;
 
 
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria]);
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
 		//->withInput()->with('message', Session::get('message'));
 //si eres un usuario logueado
 	}else{
@@ -150,14 +151,8 @@ if (Auth::check())//hay que añadir el ACTIVO
 	$nume=0;
 		//ultimas pujas y su usuario
 
-	for ($i=$pujas-3; $i < $pujas; $i++) { 
-		$nume++;
-		$ultimasPujas[0][$nume] = $aux[$i];
-		$ultimasPujas[1][$nume] = $aux[$i]->usuario;
-	}
+	
 
-	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
-	->withInput()->with('message', Session::get('message'));
 	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria])
 	->withInput()->with('message', Session::get('message'));
 
