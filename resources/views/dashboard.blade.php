@@ -14,19 +14,90 @@
 
 
 @section('contenido')
- <div class="col-md-6">
-              <!-- LINE CHART -->
-              <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Estadisticas de la página</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-                <div class="box-body chart-responsive">
-                  <div class="chart" id="line-chart" style="height: 300px;"></div>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+<div class="col-xs-6">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nº Categorias</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">{{ count($SubCategorias) }}</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     Descripción
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
+
+<div class="col-xs-6">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nº SubCategorias</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">{{ count($SubCategorias) }}</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     Descripción
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
+
+<div class="col-xs-3">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nº Subastas (totales)</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">{{ $nSubastas }}</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     <p>La página tiene un total de <b style='color:red;'> {{ $nSubastas }} </b> subastas almacenadas.</p>
+     <button type="submit" class="btn btn-primary">Administrar Subastas</button>
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
+
+<div class="col-xs-3">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nº Imagenes almacenadas</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">{{ $nImagenes }}</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     <p>La página tiene almacenadas <b style='color:blue;'> {{ $nImagenes }} </b> imagenes.</p>
+     <p>Que ocupan un promedio de <b style='color:blue;'>{{ ($nImagenes*0.8) }} MB.</b></p>
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
+
+<div class="col-xs-3">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nº Pujas (Totales)</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">500</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     Descripción
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
+
+<div class="col-xs-3">
+  <div class="box box-default">
+    <div class="box-header with-border">
+      <h3 class="box-title">Total movimientos €</h3>
+      <div class="box-tools pull-right">
+        <span class="label label-default">500</span>
+      </div><!-- /.box-tools -->
+    </div><!-- /.box-header -->
+    <div class="box-body">
+     Descripción
+   </div><!-- /.box-body -->
+ </div><!-- /.box -->
+</div>
 
 @stop

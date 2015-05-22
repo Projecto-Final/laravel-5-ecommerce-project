@@ -56,7 +56,14 @@ class LogedAdminMethods extends Controller {
 		WHERE MONTH(`fecha_inicio`) = 5  
 		GROUP BY MONTH(`fecha_inicio`)
 		*/
-		return view('dashboard');
+
+		$nSubastas = count(Articulo::all());
+		$nImagenes = count(Imagen::all());
+		$Categorias = Categoria::all();
+		$SubCategorias = Subcategoria::all();
+
+
+		return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias,  ]);
 	}
 
 	public function getCategorias()
