@@ -101,12 +101,16 @@ class GlobalController extends Controller {
 
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
-{
+{   
+	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
+}else{
+	$logueado = false;
+}
 
 //si el usuario es el propietario o el admin
-	if($user_id==$articulo['subastador_id'] || $user['permisos']==1){
+	
 
 
 		$aux = $articulo->pujas;
@@ -116,54 +120,15 @@ if (Auth::check())//hay que añadir el ACTIVO
 		$subcategoria = $articulo->subcategoria; 
 		$categoria = $subcategoria->categoria;
 
-		$nume=0;
+	
 
 
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria]);
-		//->withInput()->with('message', Session::get('message'));
-//si eres un usuario logueado
-	}else{
-		$aux = $articulo->pujas;
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$pujas = count($aux);
-		$imagenes = $articulo->imagenes;
-		$subcategoria = $articulo->subcategoria; 
-		$categoria = $subcategoria->categoria;
-
-		$nume=0;
-		//ultimas pujas y su usuario
-
-
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria]);
-		//->withInput()->with('message', Session::get('message'));
-	}
-
-
-}else{
-	$aux = $articulo->pujas;
-	$subastador = Usuario::find($articulo['subastador_id']);
-	$pujas = count($aux);
-	$imagenes = $articulo->imagenes;
-	$subcategoria = $articulo->subcategoria; 
-	$categoria = $subcategoria->categoria;
-
-	$nume=0;
-		//ultimas pujas y su usuario
-
-	for ($i=$pujas-3; $i < $pujas; $i++) { 
-		$nume++;
-		$ultimasPujas[0][$nume] = $aux[$i];
-		$ultimasPujas[1][$nume] = $aux[$i]->usuario;
-	}
-
-	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "ultimasPujas"=>$ultimasPujas])
-	->withInput()->with('message', Session::get('message'));
-	return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria])
-	->withInput()->with('message', Session::get('message'));
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+		
 
 }
 
-}
+
 
 
 

@@ -58,13 +58,15 @@ Route::put('add_subasta', 'LogedUserMethods@add_subasta');
 
 
 /* Llama al metodo para pujar por un articulo */
-Route::get('add_puja', 'LogedUserMethods@add_puja');   
+
+Route::get('add_puja', 'LogedUserMethods@add_puja'); 
+Route::get('compSesion', 'GuestUserMethods@compSesion');  
 //RECARGA los datos de precio de la subasta
-Route::get('cargar_precio', 'LogedUserMethods@cargar_precio'); 
+Route::get('cargar_precio', 'GuestUserMethods@cargar_precio'); 
 
 Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
 
-Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
+//Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
 
 Route::get('cargarPujaAut', 'LogedUserMethods@cargarPujaAut');
 
