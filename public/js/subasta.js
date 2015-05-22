@@ -123,6 +123,8 @@ function cargarPujaAut(){
 	.done(function(data) {
 		if(data=="false"){
 			
+		}else{
+			alert("uiii");
 		}
 		$("#pruevas").html(data);
 //alert(data);
