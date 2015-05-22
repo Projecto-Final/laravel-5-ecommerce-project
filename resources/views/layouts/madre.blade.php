@@ -4,6 +4,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('titulo') - 3F&M - Subastas Online </title>
+	<!-- ICONO PAG -->
+	<link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
 	<!-- CSS/ICONOS FONT AWESOME -->
 	<link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
 	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
