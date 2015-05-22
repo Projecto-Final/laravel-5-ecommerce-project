@@ -134,8 +134,8 @@ if (Auth::check())//hay que añadir el ACTIVO
 		//ultimas pujas y su usuario
 
 
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria])
-		->withInput()->with('message', Session::get('message'));
+		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria]);
+		//->withInput()->with('message', Session::get('message'));
 	}
 
 
