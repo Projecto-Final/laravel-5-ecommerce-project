@@ -47,7 +47,7 @@ class ArticulosTableSeeder extends Seeder {
 			'puja_mayor' => 300,
 			'porrogado'=> 1,
 			'subastador_id' => 1,
-			'subcategoria_id' => 18,
+			'subcategoria_id' => 17,
 			'comprador_id' => -1
 			]);
 

@@ -121,6 +121,9 @@ function cargarPujaAut(){
 		id_subasta: id_subasta
 	})
 	.done(function(data) {
+		if(data=="false"){
+			
+		}
 		$("#pruevas").html(data);
 //alert(data);
 

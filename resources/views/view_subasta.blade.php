@@ -71,7 +71,7 @@
             <div id="formConf">
               <form class="form-inline" id="form-validate">
                 <h2>Cantidad Maxima Que Pujara</h2>
-                <input trype="text" id="cantidadMax" name="cantidadMax"/>
+                <input trype="text" id="cantidadMax" name="cantidadMax"/>€
                 <br>
                 <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>
                 <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>

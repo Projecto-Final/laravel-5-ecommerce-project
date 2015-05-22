@@ -25,4 +25,16 @@ class ConfiguracionPuja extends Model {
 	{
 		return $this->belongsTo('App\Articulo', 'articulo_id', 'id');
 	}
+
+	public function pujasDeArticulo($articulo_id,$conf_id)
+	{
+		$pujasGeneradas = DB::table('pujas')->where('confpuja_id', '=', $$conf_id)->where ('articulo_id','=', $articulo_id)->get();
+
+		if($pujasGeneradas==null){
+			return false;
+		}else{
+			return $pujasGeneradas;
+		}
+		
+	}
 }
