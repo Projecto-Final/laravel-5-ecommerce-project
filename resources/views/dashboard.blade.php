@@ -50,11 +50,11 @@
     <div class="box-header with-border">
       <h3 class="box-title">Nº Pujas (Totales)</h3>
       <div class="box-tools pull-right">
-        <span class="label label-default">500</span>
+        <span class="label label-default" >{{ $nPujas }}</span>
       </div><!-- /.box-tools -->
     </div><!-- /.box-header -->
     <div class="box-body">
-     Descripción
+     <p>Hay contabilizadas un total de <b style='color:fuchsia;'> {{ $nPujas }} pujas</b>.</p>
    </div><!-- /.box-body -->
  </div><!-- /.box -->
 </div>
@@ -64,11 +64,11 @@
     <div class="box-header with-border">
       <h3 class="box-title">Total movimientos €</h3>
       <div class="box-tools pull-right">
-        <span class="label label-default">500</span>
+        <span class="label label-default">{{ $totalMovimientos }}</span>
       </div><!-- /.box-tools -->
     </div><!-- /.box-header -->
     <div class="box-body">
-     Descripción
+     <p>La página tiene contabilizados un total de <b style='color:coral;'> {{ $totalMovimientos }} € </b> Totales.</p>
    </div><!-- /.box-body -->
  </div><!-- /.box -->
 </div>

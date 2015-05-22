@@ -50,6 +50,7 @@ class LogedAdminMethods extends Controller {
 
 	public function index()
 	{
+		
 		/*
 		consulta sql
 		SELECT * FROM `articulos` 
@@ -57,26 +58,34 @@ class LogedAdminMethods extends Controller {
 		GROUP BY MONTH(`fecha_inicio`)
 		*/
 
-		$nSubastas = count(Articulo::all());
+		$subastas = Articulo::all();
+		$nSubastas = count($subastas);
+		$nPujas = 0;
+		$totalMovimientos = 0;
+		foreach ($subastas as $key => $value) {
+			$totalMovimientos += $value['puja_mayor'];
+			$nPujas++;
+		}
 		$nImagenes = count(Imagen::all());
 		$Categorias = Categoria::all();
 		$SubCategorias = Subcategoria::all();
 
 
-		return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias ]);
-	}
+		//return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
 
-	public function getCategorias()
-	{
-		$data = Categoria::all();
-		return view('admin/categorias',['categorias' => $data]);
-	}
+}
 
-	public function getSubcategoriasCat($idCategoria)
-	{
-		$data = Categoria::find($idCategoria)->subcategorias;
-		return view('admin/subcategorias',['subcategorias' => $data]);
-	}
+public function getCategorias()
+{
+	$data = Categoria::all();
+	return view('admin/categorias',['categorias' => $data]);
+}
+
+public function getSubcategoriasCat($idCategoria)
+{
+	$data = Categoria::find($idCategoria)->subcategorias;
+	return view('admin/subcategorias',['subcategorias' => $data]);
+}
 
 
 }
