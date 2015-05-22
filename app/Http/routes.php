@@ -42,6 +42,19 @@ Route::get('iniciar_sesion', function()
 	return view('iniciar_sesion');
 });
 
+// LAS PUTAS MIERDAS DE ADMIN
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+	// ADMIN CP ACCESS
+	Route::get('administracion', 'LogedAdminMethods@index');
+
+	// Admin methods
+	Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
+	Route::get('getCategorias','LogedAdminMethods@getCategorias');
+	Route::get('getSubcategorias', 'LogedAdminMethods@getSubcategoriasCat');
+
+});
+
 
 // RUTAS GLOBALES ( AUTH/GUEST )
 Route::get('get_allCategories', 'GlobalController@get_allCategories');
@@ -116,11 +129,3 @@ Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
 Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
 
-// ADMIN CP ACCESS
-Route::get('administracion', 'LogedAdminMethods@index');
-
-// Admin methods
-
-Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
-Route::get('getCategorias','LogedAdminMethods@getCategorias');
-Route::get('getSubcategorias', 'LogedAdminMethods@getSubcategoriasCat');
