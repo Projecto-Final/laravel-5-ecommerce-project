@@ -264,10 +264,17 @@ class LogedUserMethods extends Controller {
 	{
 		$submitedArray = $request->all();
 		$user = Auth::user();
-		if ($submitedArray["password_confirmation"] == $submitedArray["password"]) {
-			$user->password = bcrypt($submitedArray["password"]);
+		$credentials = ['password' => $submitedArray["password_old"]];
+		$submitedArray["password_confirmation"];
+		if(Auth::validate($credentials)){
+			if ($submitedArray["password_confirmation"] == $submitedArray["password"]) {
+				$user->password = bcrypt($submitedArray["password"]);
+				$user->save();
+			}
+		}else{
+			return view('index');
 		}
-		$user->save();
+		
 	}
 
 

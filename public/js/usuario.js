@@ -450,7 +450,7 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 		perfil();
 	})
 	.fail(function(data){
-		alert("Introduce todos los campos correctamente");
+		alert("Mal introducida la contraseña vieja");
 	});	
 }
 
