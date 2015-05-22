@@ -451,9 +451,9 @@ class LogedUserMethods extends Controller {
 		if($configuracion==false){
 			return "false";
 		}else{
-			$data[0] = $configuracion[0];
-			$data[1] = $usuario->ultimaPujaSubasta($articuloId,$userId);
-			$data[2] = $configuracion->pujasDeArticulo($articulo_id,$conf_id);
+			$data[0] = $configuracion[0];//la configuracion de esa subasta
+			$data[1] = $usuario->ultimaPujaSubasta($articuloId,$userId);//la ultima puja de ese usuario en la subasta
+			$data[2] = $configuracion->pujasDeArticulo($articulo_id,$conf_id);//las pujas de esa conf
 			
 			return $data;
 		}
