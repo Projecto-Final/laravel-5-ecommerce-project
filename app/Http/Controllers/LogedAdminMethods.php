@@ -42,21 +42,23 @@ class LogedAdminMethods extends Controller {
 		$user = Usuario::find($id);
 		$permisos =  $user->permisos;
 		if ($permisos==0){
-			echo false;
+			return false;
 		}else{
-			echo true;
+			return true;
 		}
 	}
 
 	public function index()
 	{
-		
+		if($this->checkPermisos()==1){
 		/*
 		consulta sql
 		SELECT * FROM `articulos` 
 		WHERE MONTH(`fecha_inicio`) = 5  
 		GROUP BY MONTH(`fecha_inicio`)
 		*/
+		$id=Auth::id();
+		$Adm = Usuario::find($id);
 
 		$subastas = Articulo::all();
 		$nSubastas = count($subastas);
@@ -71,7 +73,10 @@ class LogedAdminMethods extends Controller {
 		$SubCategorias = Subcategoria::all();
 
 
-		//return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
+		return view('dashboard', ['administrador' => $Adm ,'nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
+	} else {
+		return view('404');
+	}
 
 }
 

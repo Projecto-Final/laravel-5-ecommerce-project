@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 	'App\Console\Commands\FinalizarVentas',
+	'App\Console\Commands\comprovarInactividadUsuarios',
 	];
 
 	/**
@@ -22,6 +23,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('FinalizarVentas:update')->everyFiveMinutes()->sendOutputTo(storage_path('logs/output.log'));
+		$schedule->command('FinalizarVentas')->everyFiveMinutes()->sendOutputTo(storage_path('logs/outputFinalizarVentas.log'));
+		$schedule->command('comprovarInactividadUsuarios')->daily()->sendOutputTo(storage_path('logs/outputcomprovarInactividadUsuarios.log'));
 	}
 }
