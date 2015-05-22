@@ -15,8 +15,9 @@
 	<link href="{{ url('css/jquery-ui.structure.min.css') }}" rel="stylesheet">
 	<link href="{{ url('css/jquery-ui.theme.min.css') }}" rel="stylesheet">
 	<!-- LIBRERIAS Y CSS STAR RATING -->
-	<link href="{{url('../vendor/kartik-v/bootstrap-star-rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
-	<script src="{{url('../vendor/kartik-v/bootstrap-star-rating/js/star-rating.min.js')}}" type="text/javascript"></script>
+	<link href="{{ url('bootstrap-star-rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+	<script src="{{ url('bootstrap-star-rating/js/star-rating.min.js')}} " type="text/javascript"></script>
+
 	<!-- JS PROPIO FUNCIONES PAGINA -->
 	<script src="{{url('js/funciones_globales.js')}}" type="text/javascript"></script>
 	<script src="{{url('js/sistema_notificaciones.js')}}" type="text/javascript"></script>
@@ -42,7 +43,7 @@
 		<link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css">
 	</head>
-	<body>
+	<body>{{ url('') }}
 		<div id="contenedor-notificaciones">
 			<div class="notification-box error"><p><b>error: </b> text</p><i class=""></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box warning"><p><b>warning: </b>text</p><i class="glyphicon glyphicon-warning-sign"></i><div onClick="closeNotificationBox('.warning')" class="glyphicon glyphicon-remove-sign"></div></div>
