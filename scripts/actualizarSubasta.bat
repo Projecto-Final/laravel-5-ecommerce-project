@@ -1,2 +1,2 @@
 cd C:\xampp\htdocs\proyecto\
-php artisan FinalizarVentas:update
+php artisan FinalizarVentas
