@@ -221,36 +221,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-        <li class="treeview">
-            <a href="#"><i class="fa fa-building-o"></i> <span>CONFIGURACIÓNES</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#">Modificar Nombre</a></li>
-               <li><a href="#">Modificar Conf. Subasta</a></li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu" style="display: block;">
+              <li><a href="{{ url('administracion') }}">Inicio</a></li>
+              <li><a href="#">Estadísticas</a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-users"></i> <span>Gestionar Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-list-alt"></i> Listar</a></li>
-              <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar</a></li>
-              <li class="treeview">
-            <a href="#"><i class='fa fa-link'></i> <span>Gestionar Categorías</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#">Link in level 2</a></li>
-              <li><a href="#">Link in level 2</a></li>
-            </ul>
+            <a href="#"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
           </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
+          </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+            <li><a href="#">Configuración</a></li>
+              <li><a href="#">Flush cache</a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class='fa fa-link'></i> <span>Gestionar Categorías</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#">Link in level 2</a></li>
-              <li><a href="#">Link in level 2</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class='fa fa-link'></i> <span>Gestionar Sub Categorías</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class="fa fa-wrench"></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="#">Link in level 2</a></li>
               <li><a href="#">Link in level 2</a></li>
