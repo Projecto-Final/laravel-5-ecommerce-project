@@ -63,7 +63,7 @@ class LogedAdminMethods extends Controller {
 		$SubCategorias = Subcategoria::all();
 
 
-		return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias,  ]);
+		return view('dashboard', ['nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias ]);
 	}
 
 	public function getCategorias()

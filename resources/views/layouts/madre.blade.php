@@ -16,6 +16,8 @@
 	<link href="{{ url('css/jquery-ui.min.css') }}" rel="stylesheet">
 	<link href="{{ url('css/jquery-ui.structure.min.css') }}" rel="stylesheet">
 	<link href="{{ url('css/jquery-ui.theme.min.css') }}" rel="stylesheet">
+	<!-- DATATABLES -->
+	<script src="{{ url('dataTable.min.js')}} " type="text/javascript"></script>
 	<!-- LIBRERIAS Y CSS STAR RATING -->
 	<link href="{{ url('bootstrap-star-rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
 	<script src="{{ url('bootstrap-star-rating/js/star-rating.min.js')}} " type="text/javascript"></script>
