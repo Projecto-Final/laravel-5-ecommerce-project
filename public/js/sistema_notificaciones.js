@@ -1,11 +1,11 @@
  function notifications(tipo, mensaje, enlace) { 
 
  	switch(tipo) {
-    case "notificacion":
-        break;
-    case "":
-        break;
-	}
+ 		case "notificacion":
+ 		break;
+ 		case "":
+ 		break;
+ 	}
 
  	var timeInMs = 200;
  	var extraTimePerNotification = 200;

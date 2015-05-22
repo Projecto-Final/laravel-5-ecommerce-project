@@ -24,7 +24,8 @@ function perfil(){
 function mostraCambioContrasena(){
 	$(".contact-info").html("<form  method='post' enctype='multipart/form-data' id='form-validate'>"
 		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
-		+"Contraseña vieja: <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'></br></br>"
+		+"Contraseña vieja: <input type='password' name='password_old' id='password_old' title='password' class='input-text required-entry validate-password'></br></br>"
+		+"<span class='errorJS' id='password_old_error'>&nbsp;Campo obligatorio</span></td></br></br>"
 		+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
 		+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
@@ -426,19 +427,23 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 
 function guardarCambiosPass(){
 	var password = document.getElementById('password').value;
+	var password_old = document.getElementById('password_old').value;
 	var password_confirmation = document.getElementById('password_confirmation').value;
-	perfilGuardarPass(password,password_confirmation);
+	perfilGuardarPass(password_old,password,password_confirmation);
 }
 
-function perfilGuardarPass(password,password_confirmation){
+function perfilGuardarPass(password_old,password,password_confirmation){
 	var url = "guardarCambiosPass";
-	alert("perfil function : : " + password);
 	$.get(url,{
+		password_old: password_old,
 		password: password,
 		password_confirmation: password_confirmation
 	})
 	.done(function(data) {
 		perfil();
+	})
+	.fail(function(data){
+		alert("Introduce todos los campos correctamente");
 	});	
 }
 
