@@ -396,6 +396,7 @@ function valoracionesPendientes(){
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th>Valorar</th>";
+	txt +="<th>Producto</th>";
 	txt +="</tr></thead>";
 	$.get(url,function(data,status){
 		if(data==""){
@@ -405,6 +406,7 @@ function valoracionesPendientes(){
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
 			txt +="<td>"+data[1][i]+"</td>";
+			txt +="<td>"+data[2][i]+"</td>";
 			txt +="</tr>";
 		};
 		txt+="</table></div>";

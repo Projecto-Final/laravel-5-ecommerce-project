@@ -11,6 +11,7 @@ class ValoracionsTableSeeder extends Seeder {
 
 		Valoracion::create([
 			'texto' => 'Perfecto, te doy mis dies',
+			'articulo_id' => 1,
 			'valorado_id' => 3,
 			'validante_id' => 2,
 			'puntuacion' => 5,

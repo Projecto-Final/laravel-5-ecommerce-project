@@ -20,4 +20,8 @@ class Valoracion extends Model {
 	{
 		return $this->belongsTo('App\Usuario', 'valorado_id', 'id');
 	}
+		public function articulo()
+	{
+		return $this->hasOne('App\Articulo', 'articulo_id', 'id');
+	}
 }
