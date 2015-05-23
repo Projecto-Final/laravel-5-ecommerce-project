@@ -69,6 +69,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/subastas/pujas/{idSubasta}', 'LogedAdminMethods@get_pujasEnSubasta');
 	Route::get('administracion/media', 'LogedAdminMethods@media');
 	Route::get('administracion/usuarios', 'LogedAdminMethods@usuarios');
+	Route::get('administracion/usuarios/eliminar/{idUsuario}', 'LogedAdminMethods@eliminar_usuario');
 	Route::get('administracion/categorias', 'LogedAdminMethods@categorias');
 	Route::get('administracion/subcategorias', 'LogedAdminMethods@subcategorias');
 
