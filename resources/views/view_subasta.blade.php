@@ -29,7 +29,7 @@
 
         <div class="bid">
           <h5>PRECIO ACTUAL DEL ARTICULO</h5>
-          <h1 id="pruevas"></h1>
+          <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
           <form class="form-inline">
             @if ($logueado == true) 
             <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
@@ -42,6 +42,8 @@
             <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">
             <input type="hidden" id="cancelarConf" value="{{url('cancelarConf')}}">
             <input type="hidden" id="crearConfPuja" value="{{url('crearConfPuja')}}">
+             <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
+             <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
             
             <div class="form-group">
               <div class="input-group">
@@ -81,12 +83,13 @@
               </form>
          <p>     <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja()' value="GUARDAR"> <i class='fa fa-flag-o'></i></p>
     
-              
+              <div id="pujasAutomaticastable"></div>
             </div>
           </div>
         </div>
 
         <div style="float: left;width: 100%;margin-top: 12px;">
+          <div id="UltimaPujaInfo"></div>
           <h5>Informació Básica</h5>
         </div>
 

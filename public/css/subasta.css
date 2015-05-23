@@ -625,6 +625,11 @@
 	#formConf{
 		text-align: center;
 	}
+	#contPujas{
+		float: right;
+		text-align: center;
+		margin-right: 10%;
+	}
 
 	/* ###################################################### */
 	/* -------------------- CSS SPLITTER -------------------- */

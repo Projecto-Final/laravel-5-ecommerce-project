@@ -12,7 +12,7 @@ class ConfiguracionPuja extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['puja_maxima', 'articulo_id', 'usuario_id', 'superada', 'fecha_config'];
+	protected $fillable = ['puja_maxima', 'articulo_id', 'usuario_id', 'superada', 'fecha_config','cancelada'];
 	
 	public function usuario()
 	{

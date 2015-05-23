@@ -73,21 +73,21 @@
 		}else{
 			if(val<0){
 				getIdMsg(current,true,true);
-			}else{
-				getIdMsg(current,false,true);
+			}else{	
+				var posicComa = val.indexOf(',');
+				var dectext = val.substring(val.indexOf(',')+1, val.length);
+				
+				if(posicComa!=-1){
+					if (dectext.length > ndecimal)
+					{
+						getIdMsg(current,true,true);
+					}
+				}else{
+					getIdMsg(current,false,true);
+				}
 			}
 		}
-		var posicComa = val.indexOf(',');
-		var dectext = val.substring(val.indexOf(',')+1, val.length);
 		
-		if(posicComa!=-1){
-			if (dectext.length > ndecimal)
-			{
-				getIdMsg(current,true,true);
-			}
-		}else{
-			getIdMsg(current,false,true);
-		}
 	}
 
 

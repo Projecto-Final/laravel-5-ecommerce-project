@@ -3,14 +3,14 @@ $(document).ready(function(){
 	var cargarP = $("#cargarPujaAut").val();
 	if(cargarP!="no"){
 		cargarPujaAut();
-	//	setInterval(cargarPujaAut,7000);
+		pujasAutom();
+		setInterval(pujasAutom,7000);
+		ultimaPuja();
+		setInterval(ultimaPuja,7000);
+	}
 
-
-}
-
-
-
-//setInterval(recargarPrecios, 7000);
+	recargarPrecios();
+	setInterval(recargarPrecios, 7000);
 });
 
 function avisoLog(){
@@ -61,6 +61,9 @@ function recargarPrecios(){
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
+
+$("#contPujas").html("Nº Pujas :<br>"+aux);
+
 		if(data[2]!=null){
 			if(data[2]['pujador_id']==data[3]){
 				$( "#botonPuja" ).prop( "disabled", true );
@@ -220,7 +223,6 @@ function cambiarla(procedimiento){
 function cancelConf(){
 	var id_subasta = $("#subastaId").val();
 	var url = $("#cancelarConf").val();
-	alert(url);
 
 
 	if(confirm("Seguro Que Desea Cancelarla")){
@@ -232,7 +234,6 @@ function cancelConf(){
 			if(data!=1){
 				alert(data);
 			}else{
-				alert("Configuracion Cancelada");
 
      //reconstruimos el contenido
      $( ".formConfPuja-button" ).prop( "disabled", false );
@@ -256,4 +257,92 @@ function cancelConf(){
 }
 
 
+function pujasAutom(){
+
+	var url = $("#pujasAutom").val();
+	var id_subasta = $("#subastaId").val();
+
+	
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+
+			var txt = "";
+			txt+="<h4>Pujas Generadas Por Esta Configuración</h4>";
+			txt+='<table class="table table-striped">';
+			txt+= '<thead><tr class="success">';	
+			txt +="<th>Cantidad</th>";
+			txt +="<th>Fecha Puja</th>";
+			txt +="<th>Estado</th></tr></thead>";
+
+			
+			
+
+
+			for (var i = data.length-1; i > -1; i--) {
+				txt+= '<tr class="info">';
+				txt +="<td>"+data[i].cantidad+"</td>";
+				txt +="<td>"+data[i].fecha_puja+"</td>";
+				if(data[i].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td>Superada</td></tr>";
+				}
+				
+			}
+			txt+="</table>"
+
+			$("#pujasAutomaticastable").html(txt);
+		}
+	});
+
+}
+
+function ultimaPuja(){
+
+
+	var url = $("#ultimaPuja").val();
+	var id_subasta = $("#subastaId").val();
+
+	
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+
+			var txt = "";
+			txt+="<h4>Tu Última Puja</h4>";
+			txt+='<table class="table table-striped">';
+			txt+= '<thead><tr class="success">';	
+			txt +="<th>Cantidad</th>";
+			txt +="<th>Método</th>";
+			txt +="<th>Fecha Puja</th>";
+			txt +="<th>Estado</th></tr></thead>";
+			
+				txt+= '<tr class="info">';
+				txt +="<td>"+data[0].cantidad+"</td>";
+				if(data[0].confpuja_id!=null){
+					txt +="<td> Manual </td>";
+				}else{
+					txt +="<td> Automática </td>";
+				}				
+				txt +="<td>"+data[0].fecha_puja+"</td>";
+				if(data[0].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td>Superada</td></tr>";
+				}
+				
+			
+			txt+="</table>"
+
+			$("#UltimaPujaInfo").html(txt);
+		}
+	});
+}
 

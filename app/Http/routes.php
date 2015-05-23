@@ -88,13 +88,25 @@ Route::get('cargar_precio', 'LogedUserMethods@cargar_precio');
 //RECARGA los datos de precio de la subasta Guest mode
 Route::get('cargar_precioGuest', 'GuestUserMethods@cargar_precioGuest');
 
-Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
+//crea una configuracion de pujas
+Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja');
 
+//cambia la configuracion de las pujas
 Route::get('cambiarConf', 'LogedUserMethods@cambiarConf');
 
+//cancela una configuracion
 Route::get('cancelarConf', 'LogedUserMethods@cancelarConf');
 
+//carga la  configuracion existente si la hay .... 
 Route::get('cargarPujaAut', 'LogedUserMethods@cargarPujaAut');
+
+//carga las pujas generadas por ella si las hay...
+Route::get('pujasAutom', 'LogedUserMethods@pujasAutom');
+
+//carga la ultima puja del usuario e esa subasta
+Route::get('ultimaPuja', 'LogedUserMethods@ultimaPuja');
+
+
 
 
 

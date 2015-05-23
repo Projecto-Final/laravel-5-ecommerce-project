@@ -297,17 +297,17 @@ class LogedUserMethods extends Controller {
 
 		try {
 
-		$submitedArray = $request->all();
-		$user = Auth::user();
+			$submitedArray = $request->all();
+			$user = Auth::user();
 
-		$imgName = $submitedArray['img_portada'];
-		$img_extension = $submitedArray['img_portada']->getClientOriginalExtension();
-		$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
-		$imgName->move(public_path("images/profiles_wallpapers"),$img_name);
-		$user->imagen_background=$img_name;
-		$user->save();
+			$imgName = $submitedArray['img_portada'];
+			$img_extension = $submitedArray['img_portada']->getClientOriginalExtension();
+			$img_name = md5($user->id)."_".$user->nombre.".".$img_extension;
+			$imgName->move(public_path("images/profiles_wallpapers"),$img_name);
+			$user->imagen_background=$img_name;
+			$user->save();
 
-		return redirect('usuario');
+			return redirect('usuario');
 			
 		} catch (Exception $e) {
 			return $e;
@@ -494,11 +494,6 @@ class LogedUserMethods extends Controller {
 				$config = ConfiguracionPuja::find($configuracion[0]->id); 
 
 			$data[0] = $config;//la configuracion de esa subasta
-
-			//$data[1] = $usuario->ultimaPujaSubasta($articuloId);//la ultima puja de ese usuario en la subasta
-			//$data[2] = $config->pujasArticulo($articuloId);//las pujas de esa conf
-			
-			
 			return $data;
 		}
 
@@ -532,8 +527,8 @@ public function cambiarConf(Request $request){
 
 public function cancelarConf(Request $request)
 {
-try {
-	    $submitedArray = $request->all();
+	try {
+		$submitedArray = $request->all();
 
 		$articuloId = $submitedArray['id_subasta'];
 
@@ -544,13 +539,57 @@ try {
 		$confpuja->cancelada = 1;
 		$confpuja->save();
 		return 1;
-	
-} catch (Exception $e) {
-	return $e;
+
+	} catch (Exception $e) {
+		return $e;
+	}
+
+
 }
+
+//develve las pujas generadas automaticamente
+public function pujasAutom(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articuloId = $submitedArray['id_subasta'];
+		$userId = Auth::user()->id;
+		$usuario = Usuario::find($userId);
+		$configuracion = $usuario->confPujasSubasta($articuloId);
+		if($configuracion==false){
+			return 0;
+		}else{
+
+			$config = ConfiguracionPuja::find($configuracion[0]->id); 
+			//$data[1] = $usuario->ultimaPujaSubasta($articuloId);//la ultima puja de ese usuario en la subasta
+			$data = $config->pujasArticulo($articuloId);//las pujas de esa conf
+			if($data==false){
+				return 0;
+			}
+			
+			return $data;
+		}
+	}catch (Exception $e) {
+		return $e;
+	}
+}
+
+public function ultimaPuja(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articuloId = $submitedArray['id_subasta'];
+		$userId = Auth::user()->id;
+		$usuario = Usuario::find($userId);
+		$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
+		if($ultimapuja==false){
+			return 0;
+		}else{
+			return $ultimapuja;
+		}
 		
-
+	} catch (Exception $e) {
+		
+	}
+	
 }
-
 
 }

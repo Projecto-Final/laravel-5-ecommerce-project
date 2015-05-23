@@ -79,6 +79,11 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 
 		$numeroPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $this->id)->max('id');
 		$lPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $this->id)->where ('id','=', $numeroPuja)->get();
-		return $lPuja;
+		if($lPuja==null){
+			return false;
+		}else{
+			return $lPuja;
+		}
+		
 	}
 }
