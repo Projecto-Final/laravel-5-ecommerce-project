@@ -137,6 +137,17 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function eliminar_media($idImagen)
+	{
+		$usuario = Imagen::find($idImagen);
+		$usuario->delete();
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function usuarios()
 	{
 		$usuarios = Usuario::orderBy('id','asc')->get();
