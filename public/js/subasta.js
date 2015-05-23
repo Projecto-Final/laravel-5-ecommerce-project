@@ -18,27 +18,6 @@ function avisoLog(){
 }
 
 
-function pujar(id_subasta,url){
-
-	//alert(url);
-	if(confirm("Seguro Que Desea Pujar?")){
-		var puja_mayor = $("#exampleInputAmount").val();
-		$.get(url,{
-			id_subasta: id_subasta,
-			puja_mayor : puja_mayor
-		})
-		.done(function(data) {
-			if(data=="Error"){
-				alert("El precio mostrado ha cambiado");
-			}else if(data=="Ya Pujaste"){
-				alert(data);
-			}
-			recargarPrecios();
-
-		});
-	}
-}
-
 function recargarPrecios(){
 	
 	var url = $("#cargarPrecio").val();
@@ -272,7 +251,8 @@ function pujasAutom(){
 
 			var txt = "";
 			txt+="<h4>Pujas Generadas Por Esta Configuración</h4>";
-			txt+='<table class="table table-striped">';
+			txt += "<div id='pujasGA'>";
+			txt+='<table clas="table table-striped" >';
 			txt+= '<thead><tr class="success">';	
 			txt +="<th>Cantidad</th>";
 			txt +="<th>Fecha Puja</th>";
@@ -293,7 +273,8 @@ function pujasAutom(){
 				}
 				
 			}
-			txt+="</table>"
+			txt+="</table>";
+			txt += "</div>";
 
 			$("#pujasAutomaticastable").html(txt);
 		}
@@ -346,3 +327,43 @@ function ultimaPuja(){
 	});
 }
 
+/*function perfilGuardarPass(password_old,password,password_confirmation){
+	var url = "usuario/guardarCambiosPass";
+	$.get(url,{
+		password_old: password_old,
+		password: password,
+		password_confirmation: password_confirmation
+	})
+	.done(function(data) {
+		perfil();
+	})
+	.fail(function(data){
+		alert("Mal introducida la contraseña vieja");
+	});	
+}
+*/
+
+function pujar(id_subasta,url){
+
+	//alert(url);
+	if(confirm("Seguro Que Desea Pujar?")){
+		var puja_mayor = $("#exampleInputAmount").val();
+		$.get(url,{
+			id_subasta: id_subasta,
+			puja_mayor : puja_mayor
+		})
+		.done(function(data) {
+			if(data=="Error"){
+				alert("El precio mostrado ha cambiado");
+			}else if(data=="Ya Pujaste"){
+				alert(data);
+			}
+			recargarPrecios();
+
+		}).fail(function(data){
+		alert("Debes Estar Logueado Para Pujar");
+	});	
+
+
+	}
+}

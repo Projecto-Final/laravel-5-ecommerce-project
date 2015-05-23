@@ -53,7 +53,7 @@
  				}
  				val = current.value;
  				
- 				if(val==""){getIdMsg(current,false,true);}
+ 				if(val==""){ getIdMsg(current,false,true);}
 
  				if(val!=""){
 	//el no campo esta vacio
@@ -179,10 +179,15 @@ function validarEmail( email ) {
 }
 
 function mostraError(idElem) {
+	
 	error=true;
 	document.getElementById(idElem).style.display="inline";
 }
 
 function ocultaError(idElem) {
-	document.getElementById(idElem).style.display="none";
+	var error = document.getElementById(idElem);
+	if(error!=null){
+		error.style.display="none";
+	}
+	
 }

@@ -105,10 +105,15 @@ if (Auth::check())//hay que añadir el ACTIVO
 	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
+	if($user_id==$idArticulo){
+		$propietario=true;
+	}else{
+		$propietario=false;
+	}
 }else{
 	$logueado = false;
 }
-
+$propietario=false;
 //si el usuario es el propietario o el admin
 	
 
@@ -120,10 +125,15 @@ if (Auth::check())//hay que añadir el ACTIVO
 		$subcategoria = $articulo->subcategoria; 
 		$categoria = $subcategoria->categoria;
 
-	
+//diversificacion de ruta entre usuario y propietario
+	if($propietario){
+
+	}else{
+		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+	}
 
 
-		return response()->view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+		
 		
 
 }

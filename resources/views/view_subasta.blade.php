@@ -25,9 +25,9 @@
       </div>
 
       <div class="col-lg-7 col-md-6 col-xs-8 article-content">
+@yield('sonia')
 
-
-        <div class="bid">
+       <!--  <div class="bid">
           <h5>PRECIO ACTUAL DEL ARTICULO</h5>
           <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
           <form class="form-inline">
@@ -87,7 +87,7 @@
             </div>
           </div>
         </div>
-
+ -->
         <div style="float: left;width: 100%;margin-top: 12px;">
           <div id="UltimaPujaInfo"></div>
           <h5>Informació Básica</h5>
