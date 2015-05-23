@@ -238,7 +238,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('administracion/media') }}"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
           </li>
           <li class="treeview">
-            <a href="{{ url('') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
+            <a href="{{ url('administracion/usuarios') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
           </li>
           <li class="treeview">
             <a href="{{ url('') }}"><i class="fa fa-cube"></i> <span>Categorías</span> </a>

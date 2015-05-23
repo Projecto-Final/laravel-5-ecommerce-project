@@ -52,7 +52,7 @@
             <td> 
               <a href="{{ url(''.URL::current().'/editar/'.$subcategoria['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
               <a href="{{ url(''.URL::current().'/eliminar/'.$subcategoria['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
-              <a onClick="ver_pujas_subasta({{$subcategoria['id']}});" class="btn bg-orange btn-xs"><i href="" class="fa fa-trash-o"></i> Ver Pujas</a></td>
+              <a onClick="ver_pujas_subasta({{$subcategoria['id']}});" class="btn bg-orange btn-xs"><i class="fa fa-eye"></i> Ver Pujas</a></td>
             </tr>
             @endforeach
           </tbody>
