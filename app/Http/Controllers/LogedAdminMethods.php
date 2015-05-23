@@ -114,7 +114,23 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function get_estadisticasSubastaActual(){
+	public function subastas()
+	{
+		$subastas = Articulo::all();
+		return view('admin.subastas', ['subastas' => $subastas]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function get_pujasEnSubasta($idSubasta)
+	{
+		$subastas = Puja::orderBy('id','asc')->whereRaw("articulo_id =".$idSubasta)->get();
+		return $subastas;
+		//return $subastas;
+		// return view('admin.subastas', ['subastas' => $subastas]);
 	}
 
 	public function getCategorias()

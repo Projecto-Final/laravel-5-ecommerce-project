@@ -230,32 +230,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
+          <a href="{{ url('administracion/subastas') }}"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
+            <a href="{{ url('') }}"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
+            <a href="{{ url('') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
+            <a href="{{ url('') }}"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
+            <a href="{{ url('') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="#">Configuración</a></li>
-              <li><a href="#">Flush cache</a></li>
+              <li><a href="{{ url('') }}">Configuración</a></li>
+              <li><a href="{{ url('') }}">Flush cache</a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-wrench"></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <a href=""><i class="fa fa-wrench"></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="#">Link in level 2</a></li>
-              <li><a href="#">Link in level 2</a></li>
+              <li><a href="{{ url('') }}">Link in level 2</a></li>
+              <li><a href="{{ url('') }}">Link in level 2</a></li>
             </ul>
           </li>
         </ul><!-- /.sidebar-menu -->
@@ -384,8 +384,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ url('dist/js/app.min.js') }}" type="text/javascript"></script>
     <script src="{{ url('jQuery/dataTable.min.js') }}" type="text/javascript"></script>
     <script src="{{ url('js/bootstrap.dataTables.min.js') }}" type="text/javascript"></script>
-<!-- SCRIPTS EXTRAS SEGUN VIEW -->
-@yield('scripts_extra')
+    <!-- SCRIPTS EXTRAS SEGUN VIEW -->
+    @yield('scripts_extra')
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
