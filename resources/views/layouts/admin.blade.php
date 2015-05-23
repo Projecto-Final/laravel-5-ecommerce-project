@@ -235,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('administracion/subastas') }}"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
           </li>
           <li class="treeview">
-            <a href="{{ url('') }}"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
+            <a href="{{ url('administracion/media') }}"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
           </li>
           <li class="treeview">
             <a href="{{ url('') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>

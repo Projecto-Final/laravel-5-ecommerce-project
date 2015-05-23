@@ -54,7 +54,7 @@ class LogedAdminMethods extends Controller {
 		// Info del usuario authentificado ( admin )
 			$id = Auth::id();
 			$Adm = Usuario::find($id);
-			
+
 		// Variables
 			$subastas = Articulo::all();
 			$nSubastas = count($subastas);
@@ -119,6 +119,17 @@ class LogedAdminMethods extends Controller {
 	{
 		$subastas = Articulo::all();
 		return view('admin.subastas', ['subastas' => $subastas]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function media()
+	{
+		$imagenes = Imagen::orderBy('id','asc')->get();
+		return view('admin.media', ['imagenes' => $imagenes]);
 	}
 
 	/**
