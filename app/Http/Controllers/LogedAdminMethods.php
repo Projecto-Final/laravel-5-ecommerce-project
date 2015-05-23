@@ -137,6 +137,17 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function usuarios()
+	{
+		$usuarios = Usuario::orderBy('id','asc')->get();
+		return view('admin.usuarios', ['usuarios' => $usuarios]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function get_pujasEnSubasta($idSubasta)
 	{
 		$subastas = Puja::orderBy('id','asc')->whereRaw("articulo_id =".$idSubasta)->get();
