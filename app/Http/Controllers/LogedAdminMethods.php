@@ -141,6 +141,7 @@ class LogedAdminMethods extends Controller {
 	{
 		$usuario = Imagen::find($idImagen);
 		$usuario->delete();
+		return redirect("administracion/media");
 	}
 
 	/**
