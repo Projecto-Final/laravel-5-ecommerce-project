@@ -14,7 +14,7 @@
 // Route::get('/', 'WelcomeController@index');
 Route::get('/', 'GlobalController@index');
 
-Route::get('home', 'HomeController@index');
+// Route::get('home', 'GlobalController@index');
 
 Route::get('usuario', 'HomeController@cp_usuario');
 
