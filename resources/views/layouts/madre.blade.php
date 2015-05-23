@@ -30,7 +30,8 @@
 	<!-- CSS PAGINA -->
 	<link href="{{ url('css/main.css') }}" rel="stylesheet">
 	<link href="{{ url('css/perfil_user.css') }}" rel="stylesheet">
-	<link href="{{ url('css/subasta.css') }}" rel="stylesheet">
+	<link href="{{ url('css/subasta.css') }}" rel="stylesheet">	
+	<link href="{{ url('css/contacto.css') }}" rel="stylesheet">
 	<link href="{{ url('css/sistema_notificaciones.css') }}" rel="stylesheet">
 
 
@@ -224,7 +225,8 @@
 										<div class="block-twitter">
 											<div class="block_head_left">
 												<h3>Twitter</h3>
-												<div class="navslider"> <a class="prev" href="#"><i class="fa fa-angle-left"></i></a> <a class="next" href="#"><i class="fa fa-angle-right"></i></a> </div>
+												<div class="navslider"> <a class="twitter-timeline" href="https://twitter.com/alexpixel41" data-widget-id="427722495085404160">Tweets por el @alexpixel41.</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> </div>
 											</div>
 											<div class="block-content clearfix">
 												<div id="sns_twitter" class=" no-avartar no-followlink no-interactlink">

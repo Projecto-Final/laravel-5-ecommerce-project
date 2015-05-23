@@ -6,8 +6,8 @@
 @section('opciones_usuario')
 <div class="container">
 	<div class="row">
-		<center><div class="col-xs-12 col-sm-12"><h1>Nosotros</h1></div></center>
-		<center><div class="col-xs-12 col-sm-12"><h3></h3></div></center>
+		<div class="col-md-offset-4 col-xs-12 col-sm-12"><h1>Nosotros</h1></div>
+		<div class="col-xs-12 col-sm-12"><h5>Pàgina de : </h5><img class="empresa" src="{{ url('images/empresa.png') }}"/></div>
 </div>
 </div>
 @stop
