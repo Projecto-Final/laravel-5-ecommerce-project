@@ -74,8 +74,8 @@
 						</div>
 					</div>
 					<div class="box-body">
-						<b style="padding: 3px 10px; color: #FF0808;"><i class="fa fa-stop"></i> Numero de Subastas</b>
-						<b style="padding: 3px 10px; color: green;"><i class="fa fa-stop"></i> Numero de Subastas</b>
+						<b style="padding: 3px 10px; color: #FF8800;"><i class="fa fa-stop"></i> Numero de Subastas</b>
+						<b style="padding: 3px 10px; color: #00A65A;"><i class="fa fa-stop"></i> Numero de Subastas</b>
 						<div class="chart">
 							<canvas id="barChart" height="235" width="787" style="width: 787px; height: 235px;"></canvas>
 						</div>
@@ -261,6 +261,9 @@
         var barChartCanvas = $("#barChart").get(0).getContext("2d");
         var barChart = new Chart(barChartCanvas);
         var barChartData = areaChartData;
+        barChartData.datasets[0].fillColor = "#FF8800";
+        barChartData.datasets[0].strokeColor = "#FF8800";
+        barChartData.datasets[0].pointColor = "#FF8800";
         barChartData.datasets[1].fillColor = "#00a65a";
         barChartData.datasets[1].strokeColor = "#00a65a";
         barChartData.datasets[1].pointColor = "#00a65a";
