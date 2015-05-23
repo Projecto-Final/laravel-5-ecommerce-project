@@ -186,8 +186,8 @@
 										<li class="active"><a href="{{ url('') }}">INICIO<span class="sr-only">(current)</span></a></li>
 										<li class=""><a href="{{ url('crear_subasta') }}">CREAR SUBASTA<span class="sr-only">(current)</span></a></li>
 										<li class=""><a href="{{ url('') }}">NOSOTROS<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
+										<li class=""><a href="{{ url('politica') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
+										<li class=""><a href="{{ url('contacto') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
 									</ul>
 									<ul class="nav navbar-nav navbar-right">
 
