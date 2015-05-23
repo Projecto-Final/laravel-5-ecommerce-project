@@ -27,7 +27,7 @@
         <div class="row">
           @foreach ($imagenes as $imagen)
           <div class="col-md-4">
-            <a href="#" class="thumbnail">
+            <a href="{{ url('/images/subastas/'.$imagen['imagen'])}}" class="thumbnail">
               @if(file_exists('images/subastas/'.$imagen['imagen'])) 
               {{--*/ $imagenurl = url('images/subastas/'.$imagen['imagen']) /*--}} 
               @else 
