@@ -387,7 +387,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- SCRIPTS EXTRAS SEGUN VIEW -->
 @yield('scripts_extra')
 
-
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the

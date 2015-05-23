@@ -93,12 +93,20 @@ class LogedAdminMethods extends Controller {
 		*/
 
 		$año = date('Y');
+		$aux2 = 0;
 		$EstadisticasAnuales = array();
+		$EstadisticasPujas = array();
+
 		for ($i=1; $i <= 12; $i++) { 
+			$aux2 = 0;
 			$aux = Articulo::orderBy('id','asc')->whereRaw("MONTH(`fecha_inicio`) = '".$i."' and YEAR(`fecha_inicio`) = ".$año."")->get();
+			foreach ($aux as $key => $articulo) {
+				$aux2 += count($articulo->pujas);
+			}
+			$EstadisticasPujas[$i] = $aux2;
 			$EstadisticasAnuales[$i] = count($aux);
 		}
-		return view("admin.estadisticas", ['estadisticas' => $EstadisticasAnuales]);
+		return view("admin.estadisticas", ['estadisticasSubasta' => $EstadisticasAnuales, 'estadisticasPujas' => $EstadisticasPujas]);
 	}
 
 	/**
