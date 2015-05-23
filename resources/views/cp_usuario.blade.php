@@ -15,7 +15,7 @@
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$imagBack) }});">
       <div class="stadistic_info_user col-xs-12 col-md-12">
        <div id="confPerfil" class="col-md-9 pop_up" style="display:none;" >
-        <form action="{{ url('fotoPerfil') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('usuario/fotoPerfil') }}" method="post" enctype="multipart/form-data">
           <h2>Foto de perfil</h2>
           <span id="close_pop_perfil" class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
           <input type="hidden" name="_method" value="PUT">
@@ -26,7 +26,7 @@
       </div>
 
       <div id="confPortada" class="col-md-9 pop_up" style="display:none;" >
-        <form action="{{ url('fotoPortada') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('usuario/fotoPortada') }}" method="post" enctype="multipart/form-data">
           <h2>Foto de portada</h2>
           <span id="close_pop_portada" class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
           <input type="hidden" name="_method" value="PUT">

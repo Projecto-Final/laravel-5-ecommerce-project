@@ -32,6 +32,21 @@ Route::get('test', function()
 	return view('testing');
 });
 
+Route::get('contacto', function()
+{
+	return view('contacto');
+});
+
+Route::get('politica', function()
+{
+	return view('politica');
+});
+
+Route::get('nosotros', function()
+{
+	return view('nosotros');
+});
+
 // Route::get('dashboard', function()
 // {
 // 	return view('dashboard');
@@ -130,29 +145,29 @@ Route::get('get_subCategoryDescription/{idSubCategoria}', 'GlobalController@get_
 /*Routes perfil usuario*/
 
 /* Obtener la informacion del usuario */
-Route::get('get_perfil', 'LogedUserMethods@get_perfil');
+Route::get('usuario/get_perfil', 'LogedUserMethods@get_perfil');
 /* Obtener  pujas del usuario */
-Route::get('get_pujas', 'LogedUserMethods@get_pujas');
+Route::get('usuario/get_pujas', 'LogedUserMethods@get_pujas');
 /* Obtener  ventas del usuario */
-Route::get('get_ventas', 'LogedUserMethods@get_ventas');
+Route::get('usuario/get_ventas', 'LogedUserMethods@get_ventas');
 /* Obtener  valoraciones del usuario */
-Route::get('get_valoraciones', 'LogedUserMethods@get_valoraciones');
+Route::get('usuario/get_valoraciones', 'LogedUserMethods@get_valoraciones');
 /* Obtener  subastas del usuario */
-Route::get('get_subastas', 'LogedUserMethods@get_subastas');
+Route::get('usuario/get_subastas', 'LogedUserMethods@get_subastas');
 // subastas inactivas
-Route::get('get_subastasI', 'LogedUserMethods@get_subastasI');
+Route::get('usuario/get_subastasI', 'LogedUserMethods@get_subastasI');
 /* Obtener  pujas_automatica del usuario */
-Route::get('get_confPuj', 'LogedUserMethods@get_confPuj');
+Route::get('usuario/get_confPuj', 'LogedUserMethods@get_confPuj');
 /* Obtener  compras del usuario */
-Route::get('get_compras', 'LogedUserMethods@get_compras');
+Route::get('usuario/get_compras', 'LogedUserMethods@get_compras');
 //form editar perfil 
 //Route::get('formEditar', 'LogedUserMethods@formEditar');
 //editar perfil  editarP()  
-Route::get('guardarCambios', 'LogedUserMethods@guardarCambios');
-Route::get('guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
+Route::get('usuario/guardarCambios', 'LogedUserMethods@guardarCambios');
+Route::get('usuario/guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 
-Route::put('fotoPerfil', 'LogedUserMethods@save_photo_perfil');
-Route::put('fotoPortada', 'LogedUserMethods@save_photo_portada');
+Route::put('usuario/fotoPerfil', 'LogedUserMethods@save_photo_perfil');
+Route::put('usuario/fotoPortada', 'LogedUserMethods@save_photo_portada');
 
 
 

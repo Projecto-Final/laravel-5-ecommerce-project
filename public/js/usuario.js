@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
 function perfil(){
-	var url = "get_perfil";
+	var url = "usuario/get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<h3>Información básica</h3>"
 		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
@@ -48,7 +48,7 @@ function mostraCambioContrasena(){
 }	
 
 function formEditar(){
-	var url = "get_perfil";
+	var url = "usuario/get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<form  method='post' enctype='multipart/form-data' id='form-validate'>"
 		txt += "<h3>Editar Perfil</h3>"	
@@ -78,7 +78,7 @@ function formEditar(){
 
 
 function compras(){
-	var url = "get_compras";
+	var url = "usuario/get_compras";
 	var txt="";
 	txt+="<h3>Mis Ventas</h3>"
 	txt+='<table class="table table-striped">';
@@ -113,7 +113,7 @@ function compras(){
 
 
 function ventas(){
-	var url = "get_ventas";
+	var url = "usuario/get_ventas";
 	var txt="";
 	txt+="<h3>Mis Ventas</h3>"
 	txt+='<table class="table table-striped">';
@@ -145,7 +145,7 @@ function ventas(){
 	});
 }
 function confPuj(){
-	var url = "get_confPuj";
+	var url = "usuario/get_confPuj";
 	var txt="";
 	txt += "<h3>Mis Configuracion Pujas</h3>";
 	txt+='<table class="table table-striped">';
@@ -197,7 +197,7 @@ $(".contact-info").html(txt);
 }
 
 function pujas(){
-	var url = "get_pujas";
+	var url = "usuario/get_pujas";
 	var vac = true;
 	var txt="";
 	txt += "<button class='bb' onclick='pujas();' >Pujas Activas</button>";
@@ -247,7 +247,7 @@ $(".contact-info").html(txt);
 });
 }
 function pujasI(){
-	var url = "get_pujas";
+	var url = "usuario/get_pujas";
 	var txt="";
 	var vac=true;
 	txt += "<button class='bb' onclick='pujas();' >Pujas Activas</button>";
@@ -290,7 +290,7 @@ function pujasI(){
 }
 
 function subastas(){
-	var url = "get_subastas";
+	var url = "usuario/get_subastas";
 	var txt="";
 	txt += "<button class='bb' onclick='subastas();' >Subastas Activas</button>";
 	txt += "<button class='bb' onclick='subastasI();' >Subastas Inactivas</button>";
@@ -321,7 +321,7 @@ function subastas(){
 	});
 }
 function subastasI(){
-	var url = "get_subastasI";
+	var url = "usuario/get_subastasI";
 	var txt="";
 	txt += "<button class='bb' onclick='subastas();' >Subastas Activas</button>";
 	txt += "<button class='bb' onclick='subastasI();' >Subastas Inactivas</button>";
@@ -359,7 +359,7 @@ function subastasI(){
 }
 
 function valoraciones(){
-	var url = "get_valoraciones";
+	var url = "usuario/get_valoraciones";
 	var txt="";
 	txt += "<h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
@@ -389,7 +389,7 @@ function valoraciones(){
 
 
 function editarP(){
-	var url = "get_perfil";
+	var url = "usuario/get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<h3>Información básica</h3>"
 		+"<p>Apodo :</p>"+data.username
@@ -419,7 +419,7 @@ function ValidarCambios(){
 
 
 function perfilGuardar(username,nombre,apellidos,direccion,email){
-	var url = "guardarCambios";
+	var url = "usuario/guardarCambios";
 	$.get(url,{
 		username: username,
 		nombre: nombre,
@@ -440,7 +440,7 @@ function guardarCambiosPass(){
 }
 
 function perfilGuardarPass(password_old,password,password_confirmation){
-	var url = "guardarCambiosPass";
+	var url = "usuario/guardarCambiosPass";
 	$.get(url,{
 		password_old: password_old,
 		password: password,
