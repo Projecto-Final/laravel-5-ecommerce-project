@@ -50,34 +50,35 @@ class LogedAdminMethods extends Controller {
 
 	public function index()
 	{
-		// Info del usuario authentificado ( admin )
-		$id = Auth::id();
-		$Adm = Usuario::find($id);
 
+		// Info del usuario authentificado ( admin )
+			$id = Auth::id();
+			$Adm = Usuario::find($id);
+			
 		// Variables
-		$subastas = Articulo::all();
-		$nSubastas = count($subastas);
-		$nPujas = 0;
-		$totalMovimientos = 0;
+			$subastas = Articulo::all();
+			$nSubastas = count($subastas);
+			$nPujas = 0;
+			$totalMovimientos = 0;
 
 		// La pasta que mueve la pagina. ( para que luego digan que no somos claros )
-		foreach ($subastas as $key => $value) {
-			$totalMovimientos += $value['puja_mayor'];
-			$nPujas++;
-		}
+			foreach ($subastas as $key => $value) {
+				$totalMovimientos += $value['puja_mayor'];
+				$nPujas++;
+			}
 
 		// Obtencion y calculos raros
-		$nImagenes = count(Imagen::all());
-		$Categorias = Categoria::all();
-		$SubCategorias = Subcategoria::all();
-		$fecha1Mes = Carbon\Carbon::now()->modify('-30 days');
+			$nImagenes = count(Imagen::all());
+			$Categorias = Categoria::all();
+			$SubCategorias = Subcategoria::all();
+			$fecha1Mes = Carbon\Carbon::now()->modify('-30 days');
 
-		$usuarios = Usuario::orderBy('id','asc')->whereRaw("created_at >= '".$fecha1Mes->toDateTimeString()."'")->take(8)->get();
+			$usuarios = Usuario::orderBy('id','asc')->whereRaw("created_at >= '".$fecha1Mes->toDateTimeString()."'")->take(8)->get();
 
 		// Se retornan los datos a la vista, para que esta los monte.
 		return view('admin.dashboard', ['usuarios' => $usuarios,'administrador' => $Adm ,'nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
 
-	}
+		}
 
 	/**
 	 * Envia datos de estadisticas a la VIEW

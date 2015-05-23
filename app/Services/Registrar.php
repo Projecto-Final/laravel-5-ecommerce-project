@@ -37,7 +37,8 @@ class Registrar implements RegistrarContract {
 			'password' => bcrypt($data['password']),
 			'nombre' => $data['nombre'],
 			'apellido' => $data['apellido'],
-			'imagen' => "default.jpg",
+			'imagen_perfil' => "default.jpg",
+			'imagen_background' => "default_wallpaper.jpg",
 		]);
 	}
 

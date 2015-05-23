@@ -184,7 +184,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </p>
                 </li>
                 <!-- Menu Body -->
-                <li class="user-body">
+                <!-- ya le encontraremos una utilidad -->
+               <!--  <li class="user-body">
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
                   </div>
@@ -194,14 +195,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="col-xs-4 text-center">
                     <a href="#">Friends</a>
                   </div>
-                </li>
+                </li> -->
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{  url('/usuario') }}" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">Cerrar Sessión</a>
                   </div>
                 </li>
               </ul>
@@ -225,12 +226,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="treeview">
             <a href=""><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu" style="display: block;">
-              <li><a href="{{ url('administracion') }}">Inicio</a></li>
+              <li><a href="{{ url('administracion') }}">Backend</a></li>  
+              <li><a href="{{ url('') }}">Frontend</a></li>
               <li><a href="{{ url('administracion/estadisticas') }}">Estadísticas</a></li>
             </ul>
           </li>
           <li class="treeview">
-          <a href="{{ url('administracion/subastas') }}"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
+            <a href="{{ url('administracion/subastas') }}"><i class="fa fa-cart-arrow-down"></i> <span>Subastas</span> </a>
           </li>
           <li class="treeview">
             <a href="{{ url('') }}"><i class="fa fa-picture-o"></i> <span>Media</span> </a>
@@ -272,8 +274,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <small>@yield('descripcion_pagina')</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-          <li class="active">Here</li>
+          {{--*/ $segmentos = explode('/', Request::url()) /*--}}
+          @for ($a = 3; $a <= count($segmentos); $a++)
+          @if(count($segmentos)==$a)
+          <li class="active">Actual</li>
+          @elseif($a==3)
+          <li><a href="{{ url('/').$segmentos[$a] }}"><i class="fa fa-dashboard"></i>{{ $segmentos[$a] }}</a></li>
+          @else
+          <li><a href="{{ url('/').$segmentos[$a] }}"></i>{{ $segmentos[$a] }}</a></li>
+          @endif
+
+          @endfor
         </ol>
       </section>
 
