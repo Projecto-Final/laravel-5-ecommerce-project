@@ -54,10 +54,10 @@
             {{--*/
             $fechaFinal = new DateTime($subcategoria['fecha_final']);
             $datetime2 = new DateTime('now');
-            $tiempoRestante = $fechaFinal->diff($datetime2);
+            $tiempoRestante = $datetime2->diff($fechaFinal);
             $tiempoRestante = $tiempoRestante->format('%R%a días');
             /*--}}
-            <td> @if($datetime2 < $fechaFinal) 
+            <td> @if($datetime2 > $fechaFinal) 
               <i class="badge bg-red" style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;">Caducada</i> 
               @else 
               <b class="badge bg-green" style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;">{{ $tiempoRestante }} </b> 
