@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="{{ url('dist/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ url('css/bootstrap.dataTables.css') }}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
         -->
@@ -246,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="treeview">
             <a href="#"><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-            <li><a href="#">Configuración</a></li>
+              <li><a href="#">Configuración</a></li>
               <li><a href="#">Flush cache</a></li>
             </ul>
           </li>
@@ -377,16 +378,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="{{ url('bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <!-- HTML5 Canvas CHARTS -->
+    <script src="{{ url('js/charts.min.js') }}" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/app.min.js') }}" type="text/javascript"></script>
     <script src="{{ url('jQuery/dataTable.min.js') }}" type="text/javascript"></script>
     <script src="{{ url('js/bootstrap.dataTables.min.js') }}" type="text/javascript"></script>
-    <script>
-      $(document).ready(function() {
-        $('#example').dataTable();
-        $('#example2').dataTable();
-      });
-    </script>
+<!-- SCRIPTS EXTRAS SEGUN VIEW -->
+@yield('scripts_extra')
+
+
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the

@@ -91,13 +91,22 @@ class LogedAdminMethods extends Controller {
 		WHERE MONTH(`fecha_inicio`) = 5  
 		GROUP BY MONTH(`fecha_inicio`)
 		*/
-		$EstadisticasAnuales['enero'] = 1;
-		for ($i=1; $i < 12; $i++) { 
-			$aux = Articulo::orderBy('id','asc')->whereRaw("MONTH('fecha_inicio') = '".$i."'")->get();
+
+		$año = date('Y');
+		$EstadisticasAnuales = array();
+		for ($i=1; $i <= 12; $i++) { 
+			$aux = Articulo::orderBy('id','asc')->whereRaw("MONTH(`fecha_inicio`) = '".$i."' and YEAR(`fecha_inicio`) = ".$año."")->get();
 			$EstadisticasAnuales[$i] = count($aux);
 		}
-
 		return view("admin.estadisticas", ['estadisticas' => $EstadisticasAnuales]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function get_estadisticasSubastaActual(){
 	}
 
 	public function getCategorias()

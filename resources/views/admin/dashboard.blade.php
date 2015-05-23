@@ -158,3 +158,12 @@
 </div>
 </div>
 @stop
+
+@section('scripts_extra')
+<script>
+  $(document).ready(function() {
+    $('#example').dataTable();
+    $('#example2').dataTable();
+  });
+</script>
+@stop
