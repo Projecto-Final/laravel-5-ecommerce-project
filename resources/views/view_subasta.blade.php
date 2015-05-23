@@ -39,6 +39,9 @@
             <input type="hidden" id="cargarPujaAut" value="no">
             @endif            
             <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
+            <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">
+            <input type="hidden" id="cancelarConf" value="{{url('cancelarConf')}}">
+            <input type="hidden" id="crearConfPuja" value="{{url('crearConfPuja')}}">
             
             <div class="form-group">
               <div class="input-group">
@@ -70,15 +73,15 @@
           <div class="formConfPuja">
             <div id="formConf">
               <form class="form-inline" id="form-validate">
-                <h2>Cantidad Maxima Que Pujara</h2>
-                <input trype="text" id="cantidadMax" name="cantidadMax"/>€
+                <h2>Cantidad Máxima Que Pujara</h2>
+              <p>  <input trype="text" id="cantidadMax" name="cantidadMax"/>€</p>
                 <br>
                 <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>
                 <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
               </form>
-              <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja({{ $subasta['id'].',"'.url('crearConfPuja') }}")' value="GUARDAR">
+         <p>     <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja()' value="GUARDAR"> <i class='fa fa-flag-o'></i></p>
     
-              <i class='fa fa-flag-o'></i>
+              
             </div>
           </div>
         </div>

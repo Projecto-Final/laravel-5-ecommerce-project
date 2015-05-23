@@ -295,6 +295,8 @@ class LogedUserMethods extends Controller {
 
 	public function save_photo_portada(Request $request){
 
+		try {
+
 		$submitedArray = $request->all();
 		$user = Auth::user();
 
@@ -306,6 +308,11 @@ class LogedUserMethods extends Controller {
 		$user->save();
 
 		return redirect('usuario');
+			
+		} catch (Exception $e) {
+			return $e;
+		}
+
 	}
 
 
@@ -313,110 +320,133 @@ class LogedUserMethods extends Controller {
 	//usa array para devolver tambien el numero de pujas de este articulo
 	public function add_puja(Request $request)
 	{
+		try {
 
+			$submitedArray = $request->all();
+			$articulo = Articulo::find($submitedArray['id_subasta']);
+			$ultimaP = $articulo->ultimaPuja($submitedArray['id_subasta']);
+			if($ultimaP!=false){
+				if($ultimaP->pujador_id == Auth::user()->id){
+					return "Ya Pujaste";
+				}
+			}
 
-		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_subasta']);
-		$ultimaP = $articulo->ultimaPuja($submitedArray['id_subasta']);
-		if($ultimaP!=false){
-			if($ultimaP->pujador_id == Auth::user()->id){
-			return "Ya Pujaste";
+			$precioMostrado = $submitedArray['puja_mayor'];
+			if($precioMostrado==$articulo->puja_mayor){
+				$pujaAut = null;
+				$idPujador = Auth::user()->id;
+				$this->engendrar_puja($articulo,$pujaAut,$idPujador);
+			}else{
+				return "Error";
+			}
+
+		} catch (Exception $e) {
+			return $e;
 		}
-		}
-		
-		$precioMostrado = $submitedArray['puja_mayor'];
-		if($precioMostrado==$articulo->puja_mayor){
-			$pujaAut = null;
-			$idPujador = Auth::user()->id;
-			$this->engendrar_puja($articulo,$pujaAut,$idPujador);
-		}else{
-			return "Error";
-		}
+
 		
 	}
 
 	public function engendrar_puja($articulo,$pujaAut,$idPujador){
+		try {
 
-		$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
-		$articulo->save();
-		$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
-		$puja = Puja::create([
-			'cantidad' => $articulo->puja_mayor,
-			'superada' => 0,
-			'confpuja_id' => $pujaAut,
-			'articulo_id' => $articulo->id,
-			'pujador_id' => $idPujador,
-			'fecha_puja' => Carbon::now()
-			]);	
-		$user = Usuario::find($idPujador);	
-		$user->touch();
-		
+			$articulo->puja_mayor = $articulo->puja_mayor + $articulo->incremento_precio;
+			$articulo->save();
+			$pujas = Puja::whereRaw('articulo_id = ? and superada = false', [$articulo->id])->update(['superada' => true]);
+			$puja = Puja::create([
+				'cantidad' => $articulo->puja_mayor,
+				'superada' => 0,
+				'confpuja_id' => $pujaAut,
+				'articulo_id' => $articulo->id,
+				'pujador_id' => $idPujador,
+				'fecha_puja' => Carbon::now()
+				]);	
+			$user = Usuario::find($idPujador);	
+			$user->touch();
+
 		//AQUI HAY K MIRAR SI HAY ALGUNA CONF PUJAS DE LA SUBASTA
-		$this->comprovarCF($articulo->id);
+			$this->comprovarCF($articulo->id);
 
-		return $articulo;
+			return $articulo;
+		} catch (Exception $e) {
+			return $e;
+		}
 	}
 
 
 
 	public function crearConfPuja(Request $request){
-		$submitedArray = $request->all();
-		$userId = Auth::user()->id;
-		$usuario = Usuario::find($userId);
-		$articuloId = $submitedArray['id_subasta'];
-		$articulo = Articulo::find($articuloId);
-		$confPuj = $usuario->confPujasSubasta($articuloId,$userId);
-		if($confPuj!=false){
-			return "false";
-		}	
-		
-		$pujaMax = $submitedArray['puja_max'];
+		try {
+			
 
-		$confPuja = ConfiguracionPuja::create([
-			'puja_maxima' => $pujaMax,
-			'articulo_id' => $articuloId,
-			'usuario_id' => Auth::user()->id,
-			'superada' => 0,
-			'fecha_config' => Carbon::now()
-			]);
+			$submitedArray = $request->all();
+			$userId = Auth::user()->id;
+			$usuario = Usuario::find($userId);
+			$articuloId = $submitedArray['id_subasta'];
+			$articulo = Articulo::find($articuloId);
+			$confPuj = $usuario->confPujasSubasta($articuloId);
+			if($confPuj!=false){
+				return "false";
+			}	
 
-		$this->comprovarCF($articuloId);
+			$pujaMax = $submitedArray['puja_max'];
+
+			$confPuja = ConfiguracionPuja::create([
+				'puja_maxima' => $pujaMax,
+				'articulo_id' => $articuloId,
+				'usuario_id' => Auth::user()->id,
+				'superada' => 0,
+				'fecha_config' => Carbon::now()
+				]);
+
+			$this->comprovarCF($articuloId);
+
+		} catch (Exception $e) {
+			return $e;
+		}
 	}
 
 //compreva las COnf Pujas de esa subasta y las ejecuta si es preciso en orden de creacion
 	public function comprovarCF($articuloId){
+		try {
 
-		$articulo = Articulo::find($articuloId);
-		$confPujas = $articulo->Confpujas;
-
-		$ulPuja=$articulo->ultimaPuja($articuloId);
-
-
-		for ($i=0; $i < count($confPujas); $i++) { 
+			$articulo = Articulo::find($articuloId);
+			$confPujas = $articulo->Confpujas;
 
 
-			$ulPuja=$articulo->ultimaPuja($articuloId);
 
-			if($ulPuja == false){
-				$idPujador = $confPujas[$i]->usuario_id;
-				$pujaAutId = $confPujas[$i]->id;
 
-				$this->engendrar_puja($articulo,$pujaAutId,$idPujador);
+			for ($i=0; $i < count($confPujas); $i++) { 
 
-			}else if($ulPuja->pujador_id != $confPujas[$i]->usuario_id && $confPujas[$i]['puja_maxima'] >= ($articulo['puja_mayor']+$articulo['incremento_precio'])){
 
-				$idPujador = $confPujas[$i]->usuario_id;
-				$pujaAutId = $confPujas[$i]->id;
+				$ulPuja=$articulo->ultimaPuja($articuloId);
 
-				$this->engendrar_puja($articulo,$pujaAutId,$idPujador);
+				if($ulPuja == false){
+					$idPujador = $confPujas[$i]->usuario_id;
+					$pujaAutId = $confPujas[$i]->id;
 
+					$this->engendrar_puja($articulo,$pujaAutId,$idPujador);
+
+				}else if($ulPuja->pujador_id != $confPujas[$i]->usuario_id && $confPujas[$i]['puja_maxima'] >= ($articulo['puja_mayor']+$articulo['incremento_precio'])){
+					if($confPujas[$i]['cancelada']==0){
+						$idPujador = $confPujas[$i]->usuario_id;
+						$pujaAutId = $confPujas[$i]->id;
+
+						$this->engendrar_puja($articulo,$pujaAutId,$idPujador);
+					}
+
+				}
+
+				if($confPujas[$i]['puja_maxima'] < $articulo['puja_mayor']){
+					$confPujas[$i]->superada = 1;
+					$confPujas[$i]->save();
+				}
 			}
 
-			if($confPujas[$i]['puja_maxima'] < $articulo['puja_mayor']){
-				$confPujas[$i]->superada = 1;
-				$confPujas[$i]->save();
-			}
+		} catch (Exception $e) {
+			return $e;
 		}
+		
 
 
 
@@ -424,41 +454,103 @@ class LogedUserMethods extends Controller {
 
 	//sirve para recargar los valores de precios de la subasta
 	public function	cargar_precio(Request $request){
-		$submitedArray = $request->all();
-		$articulo[0] = Articulo::find($submitedArray['id_subasta']);
-		$pujas = $articulo[0]->pujas;
-		$articulo[1] = count($pujas);
+		try {
+			$submitedArray = $request->all();
+			$articulo[0] = Articulo::find($submitedArray['id_subasta']);
+			$pujas = $articulo[0]->pujas;
+			$articulo[1] = count($pujas);
 
 		//sacar la puja maxima
-		for ($i=0; $i < $articulo[1]; $i++) {
+			for ($i=0; $i < $articulo[1]; $i++) {
 
-			if($pujas[$i]['superada']==0){
-				$articulo[2]=$pujas[$i];
+				if($pujas[$i]['superada']==0){
+					$articulo[2]=$pujas[$i];
+				}
 			}
-		}
-		$articulo[3] = Auth::user()->id;
-		
+			$articulo[3] = Auth::user()->id;
 
-		return $articulo;
+
+			return $articulo;
+			
+		} catch (Exception $e) {
+			return $e;
+		}
+		
 	}
 
 	public function cargarPujaAut(Request $request){
-		$submitedArray = $request->all();
-		$articuloId = $submitedArray['id_subasta'];
-		$userId = Auth::user()->id;
-		$usuario = Usuario::find($userId);
-		$configuracion = $usuario->confPujasSubasta($articuloId,$userId);
-		if($configuracion==false){
-			return "false";
-		}else{
-			$data[0] = $configuracion[0];//la configuracion de esa subasta
-			$data[1] = $usuario->ultimaPujaSubasta($articuloId,$userId);//la ultima puja de ese usuario en la subasta
-			$data[2] = $configuracion->pujasDeArticulo($articulo_id,$conf_id);//las pujas de esa conf
+		try {
+
+
+			$submitedArray = $request->all();
+			$articuloId = $submitedArray['id_subasta'];
+			$userId = Auth::user()->id;
+			$usuario = Usuario::find($userId);
+			$configuracion = $usuario->confPujasSubasta($articuloId);
+			if($configuracion==false){
+				return "false";
+			}else{
+
+				$config = ConfiguracionPuja::find($configuracion[0]->id); 
+
+			$data[0] = $config;//la configuracion de esa subasta
+
+			//$data[1] = $usuario->ultimaPujaSubasta($articuloId);//la ultima puja de ese usuario en la subasta
+			//$data[2] = $config->pujasArticulo($articuloId);//las pujas de esa conf
+			
 			
 			return $data;
 		}
 
+	} catch (Exception $e) {
+		return $e;
 	}
+
+}
+
+public function cambiarConf(Request $request){
+	try {
+		$submitedArray = $request->all();
+
+		$articuloId = $submitedArray['id_subasta'];
+		$pujaMax = $submitedArray['puja_max'];
+
+		$usuario = Usuario::find(Auth::user()->id);
+		$aux = $usuario->confPujasSubasta($submitedArray['id_subasta']);
+
+		$confpuja = ConfiguracionPuja::find($aux[0]->id);
+		$confpuja->puja_maxima = $pujaMax;
+		$confpuja->save();
+		return $pujaMax;
+
+	} catch (Exception $e) {
+		return $e;
+	}
+
+
+}
+
+public function cancelarConf(Request $request)
+{
+try {
+	    $submitedArray = $request->all();
+
+		$articuloId = $submitedArray['id_subasta'];
+
+		$usuario = Usuario::find(Auth::user()->id);
+		$aux = $usuario->confPujasSubasta($submitedArray['id_subasta']);
+
+		$confpuja = ConfiguracionPuja::find($aux[0]->id);
+		$confpuja->cancelada = 1;
+		$confpuja->save();
+		return 1;
+	
+} catch (Exception $e) {
+	return $e;
+}
+		
+
+}
 
 
 }

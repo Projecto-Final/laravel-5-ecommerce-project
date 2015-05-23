@@ -90,7 +90,9 @@ Route::get('cargar_precioGuest', 'GuestUserMethods@cargar_precioGuest');
 
 Route::get('crearConfPuja', 'LogedUserMethods@crearConfPuja'); 
 
-//Route::get('comprovarCF', 'LogedUserMethods@comprovarCF');
+Route::get('cambiarConf', 'LogedUserMethods@cambiarConf');
+
+Route::get('cancelarConf', 'LogedUserMethods@cancelarConf');
 
 Route::get('cargarPujaAut', 'LogedUserMethods@cargarPujaAut');
 

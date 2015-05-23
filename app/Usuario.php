@@ -62,9 +62,9 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
 
-	public function confPujasSubasta($articulo_id,$user_id){
+	public function confPujasSubasta($articulo_id){
 
-		$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $user_id)->get();
+		$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $this->id)->where ('cancelada','=', 0)->get();
 
 		if($ConfiguracionPuja==null){
 			return false;
@@ -75,10 +75,10 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		
 		
 	}
-	public function ultimaPujaSubasta($articulo_id,$user_id){
+	public function ultimaPujaSubasta($articulo_id){
 
-		$numeroPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $user_id)->max('id');
-		$lPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $user_id)->where ('id','=', $numeroPuja)->get();
+		$numeroPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $this->id)->max('id');
+		$lPuja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('pujador_id','=', $this->id)->where ('id','=', $numeroPuja)->get();
 		return $lPuja;
 	}
 }
