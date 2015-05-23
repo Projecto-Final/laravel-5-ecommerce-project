@@ -96,12 +96,13 @@
 @section('scripts_extra')
 <script>
   function ver_pujas_subasta(id_subasta){
-    
+
 
     $.getJSON('{{ URL::current()."/pujas/" }}'+id_subasta, function( data ) {
       var concat = "";
       $.each( data, function( key, val ) {
 
+       
        concat += "<tr>";
        concat += "<td>"+val.id+"</td>";
        concat += "<td>"+val.cantidad+"</td>";
@@ -109,10 +110,15 @@
        concat += "<td>"+val.pujador_id+"</td>";
        concat += "<td>"+val.fecha_puja+"</td>";
        concat += "</tr>";
+       
 
      });
-      $("#pujastble").html(concat);
-    });
+      if(concat!=""){
+        $("#pujastble").html(concat);
+      } else  {
+       $("#pujastble").html("No hay resultados");
+     }
+   });
 
   }
   $(document).ready(function() {
