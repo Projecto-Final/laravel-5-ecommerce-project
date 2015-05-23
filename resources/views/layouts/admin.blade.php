@@ -279,9 +279,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @if(count($segmentos)==$a)
           <li class="active">Actual</li>
           @elseif($a==3)
-          <li><a href="{{ url('/').$segmentos[$a] }}"><i class="fa fa-dashboard"></i>{{ $segmentos[$a] }}</a></li>
+          <li><a href="{{ url('/'.$segmentos[$a]) }}"><i class="fa fa-dashboard"></i>{{ $segmentos[$a] }}</a></li>
           @else
-          <li><a href="{{ url('/').$segmentos[$a] }}"></i>{{ $segmentos[$a] }}</a></li>
+          <li><a href="{{ url('/'.$segmentos[$a]) }}"></i>{{ $segmentos[$a] }}</a></li>
           @endif
 
           @endfor
