@@ -92,7 +92,7 @@
 							</div>
 							<div class="col-md-9 col-sm-12 col-xs-12">
 								<div class="acceso_rapido">
-									<form action="buscar" method="post" class="formulario-busqueda">
+									<form action="{{ url('buscar')}}"  method="post" class="formulario-busqueda">
 										<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 										<input type="hidden" name="_method" value="PUT">
 										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
