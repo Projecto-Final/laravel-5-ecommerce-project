@@ -35,6 +35,8 @@
             <th>Estado</th>
             <th>Localización</th>
             <th>Fecha Finalización</th>
+            <th>Tiempo Restante</th>
+            <th>Precio Inicial/Actual</th>
             <th>Opciones</th>
           </tr>
         </thead>
@@ -48,7 +50,20 @@
             <td>{{ $subcategoria['descripcion'] }}</td>
             <td>{{ $subcategoria['estado'] }}</td>
             <td>{{ $subcategoria['localizacion'] }}</td>
-            <td>{{ $subcategoria['fecha_final'] }}</td>
+            <td>{{ $subcategoria['fecha_final'] }} </td>
+            {{--*/
+            $fechaFinal = new DateTime($subcategoria['fecha_final']);
+            $datetime2 = new DateTime('now');
+            $tiempoRestante = $fechaFinal->diff($datetime2);
+            $tiempoRestante = $tiempoRestante->format('%R%a días');
+            /*--}}
+            <td> @if($datetime2 < $fechaFinal) 
+              <i class="badge bg-red" style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;">Caducada</i> 
+              @else 
+              <b class="badge bg-green" style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;">{{ $tiempoRestante }} </b> 
+              @endif 
+            </td>
+            <td><i style="color:grey;">{{ $subcategoria['precio_inicial'] }}</i> / <b style="color:red;">{{ $subcategoria['puja_mayor'] }}</b></td>
             <td> 
               <a href="{{ url(''.URL::current().'/editar/'.$subcategoria['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
               <a href="{{ url(''.URL::current().'/eliminar/'.$subcategoria['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
@@ -113,8 +128,8 @@
         $("#pujastble").html(concat);
       } else  {
         $("#pujastble").html("No hay resultados");
-     }
-   });
+      }
+    });
 
   }
   $(document).ready(function() {
