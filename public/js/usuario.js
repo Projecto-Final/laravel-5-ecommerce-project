@@ -361,7 +361,7 @@ function subastasI(){
 function valoraciones(){
 	var url = "usuario/get_valoraciones";
 	var txt="";
-	txt += "<h3>Mis Valoraciones</h3>"
+	txt += "<div class='col-md-8'><h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th>Valorante</th>";
@@ -382,7 +382,34 @@ function valoraciones(){
 			txt +="<td>"+data[0][i].fecha+"</td>";
 			txt +="</tr>";
 		};
-		txt+="</table>"
+		txt+="</table></div>";
+		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+		$(".contact-info").html(txt);
+	});
+}
+
+function valoracionesPendientes(){
+	var url = "usuario/get_valoracionesPendientes";
+	var txt="";
+	txt += "<div class='col-md-8'><h3>Valoraciones pendientes</h3>"
+	txt+='<table class="table table-striped">';
+	txt+= '<thead><tr class="success">';
+	txt +="<th>Valorar</th>";
+	txt +="</tr></thead>";
+	$.get(url,function(data,status){
+		if(data==""){
+			txt+="</table>"
+			txt+="<h3>No Hay Valoraciones pendientes</h3>";
+		}
+		for (var i = 0; i < data[0].length; i++) {
+			txt+= '<tr class="info">';
+			txt +="<td>"+data[1][i]+"</td>";
+			txt +="</tr>";
+		};
+		txt+="</table></div>";
+		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
 		$(".contact-info").html(txt);
 	});
 }

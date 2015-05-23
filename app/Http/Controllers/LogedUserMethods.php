@@ -236,6 +236,18 @@ class LogedUserMethods extends Controller {
 		return $val;
 	}
 
+	public function get_valoracionesPendientes(){	
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		$val[0] = $user->valCompra;
+		for ($i=0; $i < count($val[0]); $i++) {
+			if($val[1][$i]->completada == 0){
+				$val[1][$i] = $val[0][$i]->valorado->username;
+			}  
+		}
+		return $val;
+	}
+
 	public function get_confPuj()
 	{			
 		$id = Auth::user()->id;

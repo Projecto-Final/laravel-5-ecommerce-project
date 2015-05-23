@@ -157,6 +157,8 @@ Route::get('usuario/get_pujas', 'LogedUserMethods@get_pujas');
 Route::get('usuario/get_ventas', 'LogedUserMethods@get_ventas');
 /* Obtener  valoraciones del usuario */
 Route::get('usuario/get_valoraciones', 'LogedUserMethods@get_valoraciones');
+Route::get('usuario/get_valoracionesPendientes', 'LogedUserMethods@get_valoracionesPendientes');
+
 /* Obtener  subastas del usuario */
 Route::get('usuario/get_subastas', 'LogedUserMethods@get_subastas');
 // subastas inactivas
