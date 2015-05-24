@@ -124,7 +124,6 @@ function ventas(){
 	txt +="<th>Fecha venta</th>";
 	txt +="<th>Precio venta</th></tr></thead>";
 	$.get(url,function(data,status){
-		alert(data.length);
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Ventas Que Mostrar</h3>";
@@ -299,13 +298,13 @@ function subastas(){
 			txt+="</table>"
 			txt+="<h3>No Hay Subastas Activas</h3>";
 		}
-		for (var i = 0; i < data[0].length; i++) {
+		for (var i = 0; i < data.length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td>"+data[0][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
-			txt +="<td>"+data[0][i].fecha_final+"</td>";
-			txt +="<td>"+data[0][i].precio_inicial+"</td>";
-			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
+			txt +="<td>"+data[i].nombre_producto+"</td>";
+			txt +="<td>"+data[i].fecha_inicio+"</td>";
+			txt +="<td>"+data[i].fecha_final+"</td>";
+			txt +="<td>"+data[i].precio_inicial+"</td>";
+			txt +="<td><a href='subasta/"+data[i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
 		txt+="</table>"
