@@ -12,7 +12,7 @@ $(document).ready(function(){
 	
 	
 });
-
+var cont=0;
 function prorrogar(url){
 	
 	var id_subasta = $("#subastaId").val();
