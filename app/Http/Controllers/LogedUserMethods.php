@@ -118,7 +118,7 @@ class LogedUserMethods extends Controller {
 				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 				'subcategoria' => 'required|alpha_num',
 				'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-			]);
+				]);
 
 			if ($v !== NULL && $v->fails()) {
 				return redirect()->back()->withErrors($v->errors());
@@ -150,7 +150,7 @@ class LogedUserMethods extends Controller {
 				'puja_mayor' => $submitedArray['precio_inicial'],
 				'porrogado' => 0,
 				'comprador_id' => null,
-			]);
+				]);
 			echo "<pre>";
 
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
@@ -165,7 +165,7 @@ class LogedUserMethods extends Controller {
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
-				]);
+					]);
 			}
 
 			echo "</pre>";
@@ -219,9 +219,17 @@ class LogedUserMethods extends Controller {
 		//return $ventas;
 		$user = Auth::user();
 		$ventas = $user->ventas;
+		$j=0;
 		echo "<pre>";
-		var_dump($ventas[0]::where('precio_venta' != 0));
+		for ($i=0; $i <count($ventas) ; $i++) { 
+			if(($ventas[$i]->precio_venta) !== -1){
+				$vent[$j] = $ventas[$i];
+				$j++;
+			}
+		}
+		var_dump($vent);
 		echo "</pre>"; 
+		return $vent;
 	}
 
 	/*Obtener compras del usuario */
