@@ -608,22 +608,36 @@ public function ultimaPuja(Request $request){
 }
 
 
-	public function todasPujas(Request $request){
-		try {
-			$submitedArray = $request->all();
-			$articulo = Articulo::find($submitedArray['id_subasta']);
-			$pujas = $articulo->pujas;
+public function todasPujas(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$pujas = $articulo->pujas;
 
-			for ($i=0; $i < count($pujas); $i++) {
-				$data[0][$i] = $pujas[$i];
-				$data[1][$i] = $pujas[$i]->usuario;
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
 
-			}
-			return $data;
-			
-		}catch (Exception $e) {
-			return $e;
 		}
+		return $data;
+
+	}catch (Exception $e) {
+		return $e;
 	}
+}
+
+public function valor($id){
+	$val = Valoracion::find($id);
+	$art = Articulo::find($val->articulo_id);
+	$valorado = Usuario::find($val->valorado_id);
+	$validante = Usuario::find($val->validante_id);
+	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante);
+	return view('valoracion',$data);
+}
+
+public function updateValoracion($id,Request $request){
+	$submitedArray = $request->all();
+	var_dump($id."||||||".$request)
+}
 
 }
