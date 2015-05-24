@@ -176,7 +176,7 @@ function editarConfp(){
 
 
 
-function cambiarla(procedimiento){
+function cambiarla(){
 	var puja_max = $("#cantidadMax").val();
 	var id_subasta = $("#subastaId").val();
 	var url = $("#cambiarConf").val();
@@ -361,8 +361,13 @@ function pujar(id_subasta,url){
 
 	}
 }
-
 function mostrarTP(){
+cargarTP();
+$("#TPujas").slideDown(800);
+
+}
+
+function cargarTP(){
 	
 	var url = $("#todasPujas").val();
 	var id_subasta = $("#subastaId").val();

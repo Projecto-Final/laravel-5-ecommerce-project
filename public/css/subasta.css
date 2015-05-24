@@ -644,10 +644,12 @@
 	}
 
 	#TPujas{
+		display: none;
 		text-align: center;
 		margin-top: 5%;
 		height: 70%;
 		overflow: auto;
+		background-color: #FFB770;
 	}
 
 

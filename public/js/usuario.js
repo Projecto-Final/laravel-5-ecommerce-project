@@ -29,6 +29,7 @@ function perfil(){
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
+	get_Pendientes();
 }	
 
 
@@ -80,10 +81,9 @@ function formEditar(){
 function compras(){
 	var url = "usuario/get_compras";
 	var txt="";
-	txt+="<h3>Mis Ventas</h3>"
+	txt+="<h3>Mis Compras</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha final</th>";
@@ -98,7 +98,6 @@ function compras(){
 
 		for (var i = 0; i < data.length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><img src='http://www.imagenesparadescargar.org/wp-content/uploads/buscar-Fotos-de-skate..jpg' height='auto' width='60px'/></td>";
 			txt +="<td>"+data[i].nombre_producto+"</td>";
 			txt +="<td>"+data[i].fecha_inicio+"</td>";
 			txt +="<td>"+data[i].fecha_final+"</td>";
@@ -118,7 +117,6 @@ function ventas(){
 	txt+="<h3>Mis Ventas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha final</th>";
@@ -132,7 +130,6 @@ function ventas(){
 		}
 		for (var i = 0; i < data.length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><img src='http://www.imagenesparadescargar.org/wp-content/uploads/buscar-Fotos-de-skate..jpg' height='auto' width='60px'/></td>";
 			txt +="<td>"+data[i].nombre_producto+"</td>";
 			txt +="<td>"+data[i].fecha_inicio+"</td>";
 			txt +="<td>"+data[i].fecha_final+"</td>";
@@ -150,7 +147,6 @@ function confPuj(){
 	txt += "<h3>Mis Configuracion Pujas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";//foto
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Maxima De Puja</th>";
 	txt +="<th>Estado Puja</th>";
@@ -260,14 +256,10 @@ function pujasI(){
 	txt +="<th>Tipo</th>";
 	txt +="<th>Fecha Puja</th></tr></thead>";
 	$.get(url,function(data,status){
-
-		
 		for (var i = 0; i < data[0].length; i++) {
 			if(data[1][i].precio_venta != -1){
 				vac=false;
 				txt+= '<tr class="info">';
-
-
 				txt +="<td>"+data[1][i].nombre_producto+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
 				if(data[3][i]!=null){
@@ -297,7 +289,6 @@ function subastas(){
 	txt += "<h3>Mis Subastas Activas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha finalizacion</th>";
@@ -309,11 +300,11 @@ function subastas(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><img src='http://www.imagenesparadescargar.org/wp-content/uploads/buscar-Fotos-de-skate..jpg' height='auto' width='60px'/></td>";
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
 			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
 			txt +="<td>"+data[0][i].fecha_final+"</td>";
 			txt +="<td>"+data[0][i].precio_inicial+"</td>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
 		txt+="</table>"
@@ -328,7 +319,6 @@ function subastasI(){
 	txt += "<h3>Mis Subastas Inactivas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha finalizacion</th>";
@@ -341,16 +331,16 @@ function subastasI(){
 		}
 		for (var i = 0; i < data.length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><img src='http://www.imagenesparadescargar.org/wp-content/uploads/buscar-Fotos-de-skate..jpg' height='auto' width='60px'/></td>";
 			txt +="<td>"+data[i].nombre_producto+"</td>";
 			txt +="<td>"+data[i].fecha_inicio+"</td>";
-			txt +="<td>"+data[i].fecha_final+"</td>";
+			txt +="<td>"+data[i].fecha_final+"</td>";			
 			if(data[i].precio_venta==0){
 				txt +="<td>No Vendido</td>";
 			}else{
 				txt +="<td>"+data[i].precio_venta+"</td>";
 			}
 			txt +="<td>"+data[i].precio_inicial+"</td>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
 		txt+="</table>"
@@ -498,4 +488,14 @@ function guardarCambios(){
 function aparencia(){
 	$(".contact-info").hide();	
 	$(".aparencia").show();	
+}
+
+
+function get_Pendientes(){
+	var url = "usuario/get_Pendientes";
+	$.get(url,function(data,status){
+		if(data != 0){
+			alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pedientes y rellenalas");
+		}
+	});
 }

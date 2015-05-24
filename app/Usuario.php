@@ -62,10 +62,19 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		return $this->hasMany('App\Valoracion', 'validante_id', 'id');
 	}
 
+	public function compras (){
+		return $this->belongsTo('App\Articulo','id','comprador_id');
+	}
+
+	public function ventas (){
+		return $this->belongsTo('App\Articulo','id','subastador_id');
+	}
+
 //conf pujas activas y no superadas
 	public function confPujasSubasta($articulo_id){
 
-		$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $this->id)->where ('cancelada','=', 0)->where ('superada','=', 0)->get();
+		//$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $this->id)->where ('cancelada','=', 0)->where ('superada','=', 0)->get();
+		$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $this->id)->where ('cancelada','=', 0)->get();
 
 		if($ConfiguracionPuja==null){
 			return false;
