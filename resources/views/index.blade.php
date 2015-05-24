@@ -82,15 +82,9 @@
                   <div class="pdt-list products-grid zoomOut play">
                     <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
-
-                      <?php
-// $p = new Articulo;
-// Esperando implementacion de articulos.
-// como funcionan
-// $img = Articulo::find(3)->imagenes;
-                      ?>
                       @forelse($subastas as $contador => $subasta)
-                       @if($contador == 12)
+                      <h1>{{ $contador }}</h1>
+                       @if($contador < 12)
                         <?php break;?>
                       @endif
                       <!-- MUESTRA -->
