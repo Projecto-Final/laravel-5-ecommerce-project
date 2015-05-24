@@ -18,7 +18,7 @@ class CreateFaturasTable extends Migration {
 			$table->integer('usuario_id')->unsigned();     
 			$table->foreign('usuario_id')->references('id')->on('usuarios');
 			$table->string('nif');
-			$table->double('cantidad_pagada');
+			$table->double('cantidad_pagada', 20, 2);
 			$table->dateTime('fecha');
 			$table->timestamps();
 		});

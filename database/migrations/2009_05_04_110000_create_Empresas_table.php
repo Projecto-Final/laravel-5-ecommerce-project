@@ -20,7 +20,7 @@ class CreateEmpresasTable extends Migration {
             $table->integer('tiempoArticulo');
             $table->integer('tiempoPorrogaArticulo');
             $table->integer('inactividad');
-            $table->double('precioPorroga');
+            $table->double('precioPorroga', 20, 2);
             $table->rememberToken();
             $table->timestamps();
 		});

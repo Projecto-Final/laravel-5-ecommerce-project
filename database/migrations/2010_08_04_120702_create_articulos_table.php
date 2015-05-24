@@ -24,9 +24,9 @@ class CreateArticulosTable extends Migration {
                   $table->dateTime('fecha_inicio');
                   $table->dateTime('fecha_final');
                   $table->dateTime('fecha_venda');
-                  $table->double('precio_inicial');
-                  $table->double('incremento_precio');
-                  $table->double('puja_mayor');
+                  $table->double('precio_inicial', 20, 2);
+                  $table->double('incremento_precio', 20, 2);
+                  $table->double('puja_mayor', 20, 2);
                   $table->integer('porrogado');
                   $table->integer('subastador_id')->unsigned();
                   $table->foreign('subastador_id')->references('id')->on('usuarios');

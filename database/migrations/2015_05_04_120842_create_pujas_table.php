@@ -15,7 +15,7 @@ class CreatePujasTable extends Migration {
 		Schema::create('pujas', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->float('cantidad');
+            $table->double('cantidad', 20, 2);
             $table->boolean('superada');
             $table->integer('confpuja_id')->unsigned()->nullable();
             $table->foreign('confpuja_id')->references('id')->on('configuracion_pujas');
