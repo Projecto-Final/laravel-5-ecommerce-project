@@ -29,6 +29,7 @@ function perfil(){
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
+	get_Pendientes();
 }	
 
 
@@ -255,14 +256,10 @@ function pujasI(){
 	txt +="<th>Tipo</th>";
 	txt +="<th>Fecha Puja</th></tr></thead>";
 	$.get(url,function(data,status){
-
-		
 		for (var i = 0; i < data[0].length; i++) {
 			if(data[1][i].precio_venta != -1){
 				vac=false;
 				txt+= '<tr class="info">';
-
-
 				txt +="<td>"+data[1][i].nombre_producto+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
 				if(data[3][i]!=null){
@@ -491,4 +488,14 @@ function guardarCambios(){
 function aparencia(){
 	$(".contact-info").hide();	
 	$(".aparencia").show();	
+}
+
+
+function get_Pendientes(){
+	var url = "usuario/get_Pendientes";
+	$.get(url,function(data,status){
+		if(data != 0){
+			alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pedientes y rellenalas");
+		}
+	});
 }

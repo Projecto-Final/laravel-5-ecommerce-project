@@ -191,12 +191,20 @@ Route::get('usuario/get_compras', 'LogedUserMethods@get_compras');
 //form editar perfil 
 //Route::get('formEditar', 'LogedUserMethods@formEditar');
 //editar perfil  editarP()  
+//cambiar datos del perfil
 Route::get('usuario/guardarCambios', 'LogedUserMethods@guardarCambios');
+// cambiar contraseña
 Route::get('usuario/guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
-
+// cambiar aparencia del perfil de usuario
 Route::put('usuario/fotoPerfil', 'LogedUserMethods@save_photo_perfil');
 Route::put('usuario/fotoPortada', 'LogedUserMethods@save_photo_portada');
-
+// ir a la valoracion con la id
 Route::get('usuario/valoracion/{idValoracion}', 'LogedUserMethods@valoracion');
-
+//insert valoracion del producto
 Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');
+// pop de valoraciones pendientes
+Route::get('usuario/get_Pendientes', 'LogedUserMethods@get_Pendientes');
+
+/////Others Perfil usuario
+Route::get('usuario/{idUsuario}', 'LogedUserMethods@perfilVisitante');
+
