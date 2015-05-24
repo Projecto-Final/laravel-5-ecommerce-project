@@ -53,10 +53,11 @@ Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='pro
   <form class="form-inline">
    <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
    <input type="hidden" id="comprovarEstado" value="no">
+    <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
 
  </form>
  <div id="estadoSubasta"> </div>
- <p>Articulo Vendido  - Fecha Venta :  {{$subasta['fecha_venda']}}  Precio Venta : {{$subasta['precio_venta']}}</p>
+ <p>Articulo Vendido  - Fecha Venta :  {{$subasta['fecha_venda']}}  Precio Venta : {{$subasta['precio_venta']}} €</p>
 
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
