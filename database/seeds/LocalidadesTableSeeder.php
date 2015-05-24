@@ -1,5 +1,7 @@
 <?php
 
+// Composer: "fzaninotto/faker": "v1.4.0"
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Localidad;
 
@@ -7,22 +9,15 @@ class LocalidadesTableSeeder extends Seeder {
 
 	public function run()
 	{
+		$faker = Faker::create();
+		//$faker->addProvider(new Faker\Provider\es_ES\Company($faker));
 		DB::table('localidades')->delete();
 
 		Localidad::create([
-			'nombre' => "Llagosta",
-			'codigo_postal' => 08105,
+			'nombre' => $faker->state,
+			'codigo_postal' => $faker->postcode,
 		]);
 
-		Localidad::create([
-			'nombre' => "Mollet del Valles",
-			'codigo_postal' => 08115,
-		]);
-
-		Localidad::create([
-			'nombre' => "Tarragona",
-			'codigo_postal' => 08209,
-		]);
 
 	}
 }
