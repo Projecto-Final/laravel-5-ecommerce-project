@@ -36,25 +36,50 @@ class GuestUserMethods extends Controller {
 		return $data = Categoria::all();
 	}
 
-		public function	cargar_precioGuest(Request $request){
-		$submitedArray = $request->all();
-		$articulo[0] = Articulo::find($submitedArray['id_subasta']);
-		$pujas = $articulo[0]->pujas;
-		$articulo[1] = count($pujas);
+	public function	cargar_precioGuest(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articulo[0] = Articulo::find($submitedArray['id_subasta']);
+			$pujas = $articulo[0]->pujas;
+			$articulo[1] = count($pujas);
 
 		//sacar la puja maxima
-		for ($i=0; $i < $articulo[1]; $i++) {
+			for ($i=0; $i < $articulo[1]; $i++) {
 
-			if($pujas[$i]['superada']==0){
-				$articulo[2]=$pujas[$i];
+				if($pujas[$i]['superada']==0){
+					$articulo[2]=$pujas[$i];
+				}
 			}
+
+
+
+			return $articulo;
+		} catch (Exception $e) {
+			return $e;
 		}
 		
-		
-
-		return $articulo;
 	}
 
 
+	public function todasPujasGuest(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articulo = Articulo::find($submitedArray['id_subasta']);
+			$pujas = $articulo->pujas;
 
+			for ($i=0; $i < count($pujas); $i++) {
+				$data[0][$i] = $pujas[$i];
+				$data[1][$i] = $pujas[$i]->usuario;
+
+			}
+			return $data;
+			
+		} catch (Exception $e) {
+			return $e;
+		}
+		
+
+
+
+	}
 }

@@ -41,7 +41,7 @@ function recargarPrecios(){
 		var aux = data[1]
 		$("#numPujas").html(aux);
 
-$("#contPujas").html("Nº Pujas :<br>"+aux);
+		$("#contPujas").html("Nº Pujas :<br>"+aux);
 
 		if(data[2]!=null){
 			if(data[2]['pujador_id']==data[3]){
@@ -252,7 +252,7 @@ function pujasAutom(){
 			var txt = "";
 			txt+="<h4>Pujas Generadas Por Esta Configuración</h4>";
 			txt += "<div id='pujasGA'>";
-			txt+='<table clas="table table-striped" >';
+			txt+='<table class="table table-striped" >';
 			txt+= '<thead><tr class="success">';	
 			txt +="<th>Cantidad</th>";
 			txt +="<th>Fecha Puja</th>";
@@ -305,20 +305,20 @@ function ultimaPuja(){
 			txt +="<th>Fecha Puja</th>";
 			txt +="<th>Estado</th></tr></thead>";
 			
-				txt+= '<tr class="info">';
-				txt +="<td>"+data[0].cantidad+"</td>";
-				if(data[0].confpuja_id!=null){
-					txt +="<td> Manual </td>";
-				}else{
-					txt +="<td> Automática </td>";
-				}				
-				txt +="<td>"+data[0].fecha_puja+"</td>";
-				if(data[0].superada==0){
-					txt +="<td>En Cabeza</td></tr>";
-				}else{
-					txt +="<td>Superada</td></tr>";
-				}
-				
+			txt+= '<tr class="info">';
+			txt +="<td>"+data[0].cantidad+"</td>";
+			if(data[0].confpuja_id!=null){
+				txt +="<td> Manual </td>";
+			}else{
+				txt +="<td> Automática </td>";
+			}				
+			txt +="<td>"+data[0].fecha_puja+"</td>";
+			if(data[0].superada==0){
+				txt +="<td>En Cabeza</td></tr>";
+			}else{
+				txt +="<td>Superada</td></tr>";
+			}
+
 			
 			txt+="</table>"
 
@@ -327,21 +327,7 @@ function ultimaPuja(){
 	});
 }
 
-/*function perfilGuardarPass(password_old,password,password_confirmation){
-	var url = "usuario/guardarCambiosPass";
-	$.get(url,{
-		password_old: password_old,
-		password: password,
-		password_confirmation: password_confirmation
-	})
-	.done(function(data) {
-		perfil();
-	})
-	.fail(function(data){
-		alert("Mal introducida la contraseña vieja");
-	});	
-}
-*/
+
 
 function pujar(id_subasta,url){
 
@@ -361,9 +347,52 @@ function pujar(id_subasta,url){
 			recargarPrecios();
 
 		}).fail(function(data){
-		alert("Debes Estar Logueado Para Pujar");
-	});	
+			alert("Debes Estar Logueado Para Pujar");
+		});	
 
 
 	}
 }
+
+function mostrarTP(){
+	
+	var url = $("#todasPujas").val();
+	var id_subasta = $("#subastaId").val();
+
+
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+			var txt = "";
+			txt+="<h4>Pujas</h4>";
+			txt+='<table class="table table-striped">';
+			txt+= '<thead><tr class="success">';
+			txt +="<th>Usuario</th>";	
+			txt +="<th>Cantidad</th>";
+			txt +="<th>Fecha Puja</th>";
+			txt +="<th>Estado</th></tr></thead>";			
+		
+for (var i = data[0].length-1; i > -1; i--) {
+				txt+= '<tr class="info">';
+				txt +="<td>"+data[1][i].username+"</td>";
+				txt +="<td>"+data[0][i].cantidad+"</td>";
+				txt +="<td>"+data[0][i].fecha_puja+"</td>";
+				if(data[0][i].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td >Superada</td></tr>";
+				}
+				
+			}
+			
+			txt+="</table>"
+
+			$("#TPujas").html(txt);
+			$(".MostrarPujas-button").html("Recargar <i class='fa fa-bars'></i>");
+		}
+	});
+}
+

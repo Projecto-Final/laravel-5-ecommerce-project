@@ -139,7 +139,10 @@ Route::get('pujasAutom', 'LogedUserMethods@pujasAutom');
 //carga la ultima puja del usuario e esa subasta
 Route::get('ultimaPuja', 'LogedUserMethods@ultimaPuja');
 
-
+//carga todasPujas logued user
+Route::get('todasPujas', 'LogedUserMethods@todasPujas');
+//carga todasPujas sin login
+Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
 
 
 

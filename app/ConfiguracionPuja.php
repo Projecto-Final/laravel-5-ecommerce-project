@@ -33,8 +33,7 @@ class ConfiguracionPuja extends Model {
 //devuelve la conf puja activa y no superada del articula
 	public function pujasArticulo($articulo_id)
 	{
-	//	$pujasGeneradas = DB::table('pujas')->where('confpuja_id', '=', $this->id)->where ('articulo_id','=', $articulo_id)->get();
-$pujasGeneradas = Puja::where('confpuja_id', '=', $this->id)->where ('articulo_id','=', $articulo_id)->get();
+		$pujasGeneradas = DB::table('pujas')->where('confpuja_id', '=', $this->id)->where ('articulo_id','=', $articulo_id)->get();
 		if($pujasGeneradas==null){
 			return false;
 		}else{

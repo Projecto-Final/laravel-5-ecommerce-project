@@ -597,7 +597,7 @@
 	}
 
 	#ultimasPujas{
-		float: left;
+		clear: left;
 	}
 
 	/*FORM CONFIGURACION PUJA*/
@@ -609,6 +609,7 @@
 		padding-top: 10px;
 		background-color: aliceblue;
 		margin-bottom: 2%;
+		text-align: center;
 	}
 
 	.formConfPuja-button {
@@ -619,8 +620,14 @@
 		border: 0px;
 	}
 
-	#formConfPuja{
-		text-align: center;
+	.MostrarPujas-button{
+		text-align: center;		
+		width: 100%;
+		background-color: rgb(218, 132, 47);
+		color: #fff;
+		border: 0px;
+		clear: left;
+		margin-top: 5%;
 	}
 	#formConf{
 		text-align: center;
@@ -635,6 +642,14 @@
 		height: 20%;
 		overflow: auto;
 	}
+
+	#TPujas{
+		text-align: center;
+		margin-top: 5%;
+		height: 70%;
+		overflow: auto;
+	}
+
 
 	/* ###################################################### */
 	/* -------------------- CSS SPLITTER -------------------- */

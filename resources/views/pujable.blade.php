@@ -1,5 +1,6 @@
 @extends('view_subasta')
- @section('sonia')
+ @section('pujable')
+ <div class="col-lg-7 col-md-6 col-xs-8 article-content">
  <div class="bid">
           <h5>PRECIO ACTUAL DEL ARTICULO</h5>
           <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
@@ -7,9 +8,11 @@
             @if ($logueado == true) 
             <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
             <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">
+            <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
           @elseif($logueado == false)
             <input type="hidden" id="cargarPrecio" value="{{url('cargar_precioGuest')}}">
             <input type="hidden" id="cargarPujaAut" value="no">
+            <input type="hidden" id="todasPujasGuest" value="{{url('todasPujasGuest')}}">
             @endif            
             <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
             <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">
@@ -17,6 +20,8 @@
             <input type="hidden" id="crearConfPuja" value="{{url('crearConfPuja')}}">
              <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
              <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
+             
+             
             
             <div class="form-group">
               <div class="input-group">

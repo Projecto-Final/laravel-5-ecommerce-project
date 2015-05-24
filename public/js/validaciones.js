@@ -65,6 +65,7 @@
 	}
 
 	//cantidad maxima de puja automatica
+	//valida los dcimales
 	if(current.name=="cantidadMax"){
 
 
@@ -76,9 +77,11 @@
 			}else{	
 				var posicComa = val.indexOf(',');
 				var dectext = val.substring(val.indexOf(',')+1, val.length);
+				var posicPunt = val.indexOf('.');
+				var dectext2 = val.substring(val.indexOf('.')+1, val.length);
 				
-				if(posicComa!=-1){
-					if (dectext.length > ndecimal)
+				if(posicComa!=-1 || posicPunt!=-1){
+					if (dectext.length > ndecimal || dectext2 > ndecimal)
 					{
 						getIdMsg(current,true,true);
 					}
@@ -191,3 +194,4 @@ function ocultaError(idElem) {
 	}
 	
 }
+

@@ -605,4 +605,23 @@ public function ultimaPuja(Request $request){
 	
 }
 
+
+	public function todasPujas(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articulo = Articulo::find($submitedArray['id_subasta']);
+			$pujas = $articulo->pujas;
+
+			for ($i=0; $i < count($pujas); $i++) {
+				$data[0][$i] = $pujas[$i];
+				$data[1][$i] = $pujas[$i]->usuario;
+
+			}
+			return $data;
+			
+		}catch (Exception $e) {
+			return $e;
+		}
+	}
+
 }
