@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Valoracion extends Model {
 
-	protected $table = 'valoracions';
+	protected $table = 'valoraciones';
 	/**
 	 * The attributes that are mass assignable.
 	 *

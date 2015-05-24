@@ -3,14 +3,14 @@
 use Illuminate\Database\Seeder;
 use App\Valoracion;
 
-class ValoracionsTableSeeder extends Seeder {
+class ValoracionesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('valoracions')->delete();
+		DB::table('valoraciones')->delete();
 
 		Valoracion::create([
-			'texto' => 'Perfecto, te doy mis dies',
+			'texto' => 'Perfecto.',
 			'articulo_id' => 1,
 			'valorado_id' => 3,
 			'validante_id' => 2,

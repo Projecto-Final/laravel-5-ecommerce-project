@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateValoracionsTable extends Migration {
+class CreateValoracionesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateValoracionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('valoracions', function(Blueprint $table)
+		Schema::create('valoraciones', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->longText('texto');
@@ -38,6 +38,6 @@ class CreateValoracionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('valoracions');
+		Schema::drop('valoraciones');
 	}
 }

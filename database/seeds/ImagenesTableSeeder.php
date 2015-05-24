@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Imagen;
+use App\Localidad;
 
 class ImagenesTableSeeder extends Seeder {
 
@@ -9,25 +9,21 @@ class ImagenesTableSeeder extends Seeder {
 	{
 		DB::table('imagenes')->delete();
 
-		Imagen::create([
-			'descripcion' => "caratula-juego-jojo",
-			'articulo_id' => 1,
-			'imagen' => "1_52_c4ca4238a0b923820dcc509a6f75849b.jpeg",
-		]);
+		
 
-		Imagen::create([
+		Localidad::create([
 			'descripcion' => "el pobre thomas",
 			'articulo_id' => 1,
 			'imagen' => "0_52_c4ca4238a0b923820dcc509a6f75849b.png",
 		]);
 
-		Imagen::create([
+		Localidad::create([
 			'descripcion' => "yare-yare",
 			'articulo_id' => 2,
 			'imagen' => "maroto.jpg",
 		]);
 
-		Imagen::create([
+		Localidad::create([
 			'descripcion' => "silla-neo-roja",
 			'articulo_id' => 3,
 			'imagen' => "silla_neo.jpg",
