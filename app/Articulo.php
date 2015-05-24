@@ -22,14 +22,11 @@ class Articulo extends Model {
 	{
 		return $this->hasMany('App\Imagen');
 	}
-	public function comprador()
-	{
-		return $this->hasOne('App\Usuario', 'comprador_id', 'id');
+	public function comprador (){
+		return $this->belongsTo('App\Usuario','id','comprador_id');
 	}
-
-	public function subastador()
-	{
-		return $this->hasOne('App\Usuario', 'subastador_id', 'id');
+	public function vendedor (){
+		return $this->belongsTo('App\Usuario','id','subastador_id');
 	}
 	public function subcategoria()
 	{

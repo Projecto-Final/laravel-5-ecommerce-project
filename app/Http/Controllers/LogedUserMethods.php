@@ -214,32 +214,45 @@ class LogedUserMethods extends Controller {
 	/*Obtener ventas del usuario */
 
 	public function get_ventas(){
-		$id = Auth::user()->id;
-		$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('subastador_id','=',$id)->get();// ventas
-		return $ventas;
+		//$id = Auth::user()->id;
+		//$ventas = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('subastador_id','=',$id)->get();// ventas
+		//return $ventas;
+		$user = Auth::user();
+		$ventas = $user->ventas;
+		echo "<pre>";
+		var_dump($ventas[0]::where('precio_venta' != 0));
+		echo "</pre>"; 
 	}
 
 	/*Obtener compras del usuario */
 
 	public function get_compras(){
-		$id = Auth::user()->id;
-		$compras = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('comprador_id','=',$id)->get();// ventas
-		return $compras;
+		// $id = Auth::user()->id;
+		// $compras = DB::table('articulos')->where('comprador_id', '!=', 0)->where ('precio_venta','!=',-1)->where('comprador_id','=',$id)->get();// ventas
+		// return $compras;
+		$user = Auth::user();
+		$compras = $user->compras;
+		var_dump($compras);
 	}
 
 	// /*Obtener subastas del usuario */
 
 	public function get_subastas(){
-		$id = Auth::user()->id;
-		$subastas[0] = DB::table('articulos')->where('precio_venta', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
-		//$subastas[1] = DB::table('articulos')->where('precio_venta', '=', 0)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
-		return $subastas;
+		// $id = Auth::user()->id;
+		// $subastas[0] = DB::table('articulos')->where('precio_venta', '=', -1)->where ('subastador_id','=',$id)->get();//no ha vendido aun
+		// return $subastas;
+		$user = Auth::user();
+		$subastas = $user->articulos;
+		var_dump($subastas);
 	}
 	//Obtener subastas inactivas
 	public function get_subastasI(){
-		$id = Auth::user()->id;
-		$subastas = DB::table('articulos')->where('precio_venta', '!=', -1)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
-		return $subastas;
+		// $id = Auth::user()->id;
+		// $subastas = DB::table('articulos')->where('precio_venta', '!=', -1)->where ('subastador_id','=',$id)->get(); // puja inactiva CONFIRMED
+		// return $subastas;
+		$user = Auth::user();
+		$subastas = $user->articulos;
+		var_dump($subastas);
 	}
 
 
@@ -731,6 +744,5 @@ public function perfilVisitante($id){
 	$data = array ('user' => $user, 'subastas' => $subastas, 'valoraciones'=> $valoraciones);
 	return view('perfil',$data);
 }
-
 
 }
