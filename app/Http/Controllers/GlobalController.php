@@ -86,7 +86,6 @@ class GlobalController extends Controller {
 	 }
 
 
-
 	/**
 	* 
 	* @return Response
@@ -114,26 +113,19 @@ if (Auth::check())//hay que añadir el ACTIVO
 }
 
 //si el usuario es el propietario o el admin
+	
 
 
-
-$aux = $articulo->pujas;
-$subastador = Usuario::find($articulo['subastador_id']);
-$pujas = count($aux);
-$imagenes = $articulo->imagenes; 
-$subcategoria = $articulo->subcategoria; 
-$categoria = $subcategoria->categoria;
+		$aux = $articulo->pujas;
+		$subastador = Usuario::find($articulo['subastador_id']);
+		$pujas = count($aux);
+		$imagenes = $articulo->imagenes; 
+		$subcategoria = $articulo->subcategoria; 
+		$categoria = $subcategoria->categoria;
 
 //diversificacion de ruta entre usuario y propietario
-if($propietario){
+	if($propietario){
 
-}else{
-	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
-}
-
-
-<<<<<<< HEAD
-=======
 				$empresa = Empresa::find(1)->get();
 
 
@@ -144,9 +136,10 @@ if($propietario){
 	}else{
 		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
 	}
->>>>>>> origin/master
 
 
+		
+		
 
 }
 
