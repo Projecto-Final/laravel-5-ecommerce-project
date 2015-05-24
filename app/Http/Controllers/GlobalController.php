@@ -95,11 +95,11 @@ class GlobalController extends Controller {
 		$articulo = Articulo::find($idArticulo);
 
 
-
+$propietario=false;
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {   
-	$propietario=false;
+	
 	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
