@@ -220,15 +220,12 @@ class LogedUserMethods extends Controller {
 		$user = Auth::user();
 		$ventas = $user->ventas;
 		$j=0;
-		echo "<pre>";
 		for ($i=0; $i <count($ventas) ; $i++) { 
 			if(($ventas[$i]->precio_venta) !== -1){
 				$vent[$j] = $ventas[$i];
 				$j++;
 			}
 		}
-		var_dump($vent);
-		echo "</pre>"; 
 		return $vent;
 	}
 
