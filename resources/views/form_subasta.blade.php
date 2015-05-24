@@ -187,17 +187,6 @@
                       </div>
                     </li>
                   </ul>
-                  <ul class="form-list">
-                    <li class="fields">
-                      <div class="customer-name">
-                        <div class="field ">
-                          <label for="fecha_final" class="required"><em>*</em>Fecha de vencimiento</label>
-                          <div class="input-box">
-                            <input type="text" id="fecha_final" name="fecha_final" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
                   </div>
                   <div class="buttons-set">
                     <p class="required">* Campos requeridos</p>

@@ -5,6 +5,7 @@ use App\Categoria;
 use App\Articulo;
 use App\Imagen;
 use App\Valoracion;
+use App\Empresa;
 use App\ConfiguracionPuja;
 use Session;
 use Auth;
@@ -108,20 +109,39 @@ class LogedUserMethods extends Controller {
 	{
 
 		try {
+			$v = $this->validate($request, [
+				'nombre_producto' => 'required|alpha_num',
+				'modelo' => 'required|alpha_num',
+				'estado' => 'required|alpha',
+				'localizacion' => 'required|alpha_num',
+				'descripcion' => 'required',
+				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+				'subcategoria' => 'required|alpha_num',
+				'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+			]);
+
+			if ($v !== NULL && $v->fails()) {
+				return redirect()->back()->withErrors($v->errors());
+			}
 
 			$submitedArray = $request->all();
 
 			$userId = Auth::id();
 
-			$fecha_inicio = date('Y-m-d');
+			$empresa = Empresa::find(1)->get();
+
+			$fecha_inicio = Carbon::now();
+			$fecha_final = Carbon::now()->addDays($empresa[0]->tiempoArticulo);
+
 
 			$articulo = Articulo::create([
 				'nombre_producto' => $submitedArray['nombre_producto'],
 				'modelo' => $submitedArray['modelo'],
 				'estado' => $submitedArray['estado'],
 				'localizacion' => $submitedArray['localizacion'],
+				'descripcion' => $submitedArray['descripcion'],
 				'fecha_inicio' => $fecha_inicio,
-				'fecha_final' => $submitedArray['fecha_final'],
+				'fecha_final' => $fecha_final,
 				'precio_inicial' => $submitedArray['precio_inicial'],
 				'subastador_id' => $userId,
 				'comprador_id' => null,
@@ -130,7 +150,7 @@ class LogedUserMethods extends Controller {
 				'puja_mayor' => $submitedArray['precio_inicial'],
 				'porrogado' => 0,
 				'comprador_id' => null,
-				]);
+			]);
 			echo "<pre>";
 
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
@@ -145,7 +165,7 @@ class LogedUserMethods extends Controller {
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
-					]);
+				]);
 			}
 
 			echo "</pre>";
