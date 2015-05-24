@@ -20,6 +20,7 @@
 					<span class='errorJS' id='nombre_producto_error'>&nbsp;Campo obligatorio</span></td>
 				</div>
 				Fecha <?php echo date("Y-m-d H:i:s"); ?><br>
+				<input id="puntuacion" name="puntuacion" type="number" data-min="0" data-max="5" class="rating" data-show-caption="true" data-show-clear="false" data-disabled="false" data-size="xs" value=""></input>
 				<input type="hidden" name="id" value="{{$val->id}}">
 				<input type='submit' title="Submit" class="button" value="Valora"> 
 			</form>

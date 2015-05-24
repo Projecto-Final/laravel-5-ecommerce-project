@@ -231,7 +231,9 @@ class LogedUserMethods extends Controller {
 		$user = Usuario::find($id);
 		$val[0] = $user->valVenta;
 		for ($i=0; $i < count($val[0]); $i++) { 
-			$val[1][$i] = $val[0][$i]->validante->username;
+			if($val[0][$i]->completada == 1){
+				$val[1][$i] = $val[0][$i]->validante->username;
+			}
 		}
 		return $val;
 	}
@@ -643,30 +645,31 @@ public function todasPujas(Request $request){
 
 
 public function comprovarEstado(Request $request){
-	 try {
-	 		$submitedArray = $request->all();
-	 		$articulo = Articulo::find($submitedArray['id_subasta']);
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
 
-	 		if($articulo->precio_venta==-1){
-	 			return 0;
-	 		}else if($articulo->precio_venta==0){
-	 			if($articulo->subastador_id==Auth::user()->id){
-	 				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
-	 			}else{
-	 				return "Subasta Caducada";
-	 			}
+		if($articulo->precio_venta==-1){
+			return 0;
+		}else if($articulo->precio_venta==0){
+			if($articulo->subastador_id==Auth::user()->id){
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+			}else{
+				return "Subasta Caducada";
+			}
 
-	 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-	 		return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 
-	 		}
+		}
 
-	 	} catch (Exception $e) {
-	 		return $e;
-	 	}
+	} catch (Exception $e) {
+		return $e;
+	}
 }
+
 //merge avoided xD
-public function valor($id){
+public function valoracion($id){
 	$val = Valoracion::find($id);
 	$art = Articulo::find($val->articulo_id);
 	$valorado = Usuario::find($val->valorado_id);
@@ -677,7 +680,11 @@ public function valor($id){
 
 public function updateValoracion(Request $request){
 	$submitedArray = $request->all();
-	var_dump($request);
+	$val = Valoracion::find($submitedArray["id"]);
+	$val->completada = 1;
+	$val->texto = $submitedArray["texto"];
+	$val->puntuacion = $submitedArray['puntuacion'];
+	$val->save();
 }
 
 

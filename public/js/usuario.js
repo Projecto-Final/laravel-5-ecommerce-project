@@ -408,7 +408,7 @@ function valoracionesPendientes(){
 			txt+= '<tr class="info">';
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[2][i]+"</td>";
-			txt +="<a href'"+data[3][i]+"'><td><span class='glyphicon glyphicon-triangle-right'></span></td></a>";
+			txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
 		txt+="</table></div>";
