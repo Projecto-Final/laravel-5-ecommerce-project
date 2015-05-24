@@ -130,6 +130,18 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function eliminar_subasta($idSubasta)
+	{
+		$subasta = Articulo::find($idSubasta);
+		$subasta->delete();
+		return redirect("administracion/subastas");
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function media()
 	{
 		$imagenes = Imagen::orderBy('id','asc')->get();
