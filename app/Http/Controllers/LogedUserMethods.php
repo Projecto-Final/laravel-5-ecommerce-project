@@ -387,7 +387,9 @@ class LogedUserMethods extends Controller {
 			if($precioMostrado==$articulo->puja_mayor && $articulo->precio_venta=-1){
 				$pujaAut = null;
 				$idPujador = Auth::user()->id;
-				$this->engendrar_puja($articulo,$pujaAut,$idPujador);
+				if($idPujador!=$articulo->subastador_id){
+					$this->engendrar_puja($articulo,$pujaAut,$idPujador);
+				}
 			}else{
 				return "Error";
 			}
@@ -431,7 +433,7 @@ class LogedUserMethods extends Controller {
 		try {
 			$v = $this->validate($request, [
 				'puja_max' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-			]);
+				]);
 
 			if ($v->fails()) {
 				return redirect()->back()->withErrors($v->errors());
@@ -702,22 +704,22 @@ public function comprovarEstado(Request $request){
 				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
 				$precio_pro = $empresa[0]->precioPorroga;
 
-return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
-}else{
-	return "Subasta Caducada";
-}
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
+			}else{
+				return "Subasta Caducada";
+			}
 
-}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 
 
-	return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 //Empresa tiempoPorrogaArticulo precioPorroga
 
-}
+		}
 
-} catch (Exception $e) {
-	return $e;
-}
+	} catch (Exception $e) {
+		return $e;
+	}
 }
 
 //merge avoided xD
