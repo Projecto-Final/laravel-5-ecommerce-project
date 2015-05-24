@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fatura extends Model {
+class Factura extends Model {
 
 	//	protected $table = 'articulos';
 	/**
