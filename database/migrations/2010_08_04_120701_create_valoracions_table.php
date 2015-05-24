@@ -16,7 +16,8 @@ class CreateValoracionsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->longText('texto');
-			$table->integer('articulo_id');
+			$table->integer('articulo_id')->unsigned();
+			$table->foreign('articulo_id')->references('id')->on('articulos');
 			$table->integer('valorado_id')->unsigned();
 			$table->foreign('valorado_id')->references('id')->on('usuarios');
 			$table->integer('validante_id')->unsigned();

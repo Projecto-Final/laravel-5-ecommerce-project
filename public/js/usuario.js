@@ -397,6 +397,7 @@ function valoracionesPendientes(){
 	txt+= '<thead><tr class="success">';
 	txt +="<th>Valorar</th>";
 	txt +="<th>Producto</th>";
+	txt +="<th></th>";
 	txt +="</tr></thead>";
 	$.get(url,function(data,status){
 		if(data==""){
@@ -407,6 +408,7 @@ function valoracionesPendientes(){
 			txt+= '<tr class="info">';
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[2][i]+"</td>";
+			txt +="<a href'"+data[3][i]+"'><td><span class='glyphicon glyphicon-triangle-right'></span></td></a>";
 			txt +="</tr>";
 		};
 		txt+="</table></div>";

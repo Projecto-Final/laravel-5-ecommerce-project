@@ -10,7 +10,7 @@ class Valoracion extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['texto', 'valorado_id', 'validante_id', 'puntuacion', 'fecha'];
+	protected $fillable = ['texto', 'valorado_id', 'validante_id', 'puntuacion', 'fecha','articulo_id'];
 
 	public function validante()
 	{
@@ -19,9 +19,5 @@ class Valoracion extends Model {
 	public function valorado()
 	{
 		return $this->belongsTo('App\Usuario', 'valorado_id', 'id');
-	}
-		public function articulo()
-	{
-		return $this->hasOne('App\Articulo', 'articulo_id', 'id');
 	}
 }

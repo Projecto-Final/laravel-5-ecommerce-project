@@ -243,7 +243,9 @@ class LogedUserMethods extends Controller {
 		for ($i=0; $i < count($val[0]); $i++) {
 			if($val[0][$i]->completada == 0){
 				$val[1][$i] = $val[0][$i]->valorado->username;
-				$val[2][$i] = $val[0][$i]->articulo->nombre;
+				$art = Articulo::find($val[0][$i]->articulo_id);
+				$val[2][$i] = $art->nombre_producto;
+				$val[3][$i] = $val[0][$i]->id;
 			}  
 		}
 		return $val;

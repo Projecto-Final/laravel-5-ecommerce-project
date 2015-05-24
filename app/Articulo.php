@@ -51,8 +51,7 @@ class Articulo extends Model {
 			return false;
 		}else{
 			return $puja[0];
-		}
-		
-		
+		}	
 	}
+
 }
