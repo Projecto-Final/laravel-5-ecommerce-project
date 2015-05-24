@@ -240,6 +240,19 @@ class LogedUserMethods extends Controller {
 		return $val;
 	}
 
+	public function get_Pendientes(){	
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		$count = 0;
+		$val[0] = $user->valCompra;
+		for ($i=0; $i < count($val[0]); $i++) {
+			if(val[0].completada == 0){
+				$count++;
+			}
+		}
+		echo $count;
+	}
+
 	public function get_valoracionesPendientes(){	
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
@@ -689,6 +702,14 @@ public function updateValoracion(Request $request){
 	$val->fecha = Carbon::now();
 	$val->save();
 	return redirect('usuario');
+}
+
+public function perfilVisitante($id){
+	$user = Usuario::find($id);
+	$valoraciones = $user->valVenta;
+	$subastas = $user->articulos;
+	$data = array ('user' => $user, 'subastas' => $subastas, 'valoraciones'=> $valoraciones);
+	return view('perfil',$data);
 }
 
 
