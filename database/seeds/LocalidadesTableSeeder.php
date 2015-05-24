@@ -9,7 +9,7 @@ class LocalidadesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+		$faker = Faker::create("es_ES");
 		//$faker->addProvider(new Faker\Provider\es_ES\Company($faker));
 		DB::table('localidades')->delete();
 
