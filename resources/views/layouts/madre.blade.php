@@ -59,7 +59,7 @@
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
 		<script>
-			notifications("tiipo","texto descr","enlace");
+		notifications("tiipo","texto descr","enlace");
 		</script>
 
 		<div id="container-fluid">
@@ -142,18 +142,18 @@
 												 	});
 												 });
 
-												</script>
-												<li>
-													Filtrar por precio:
-												</li>
-												<li>
-													<label for="pmin">Minimo: </label>
-													<input type="text" id="pmin" name="pmin" value="" placeholder="0 €">
-													<label for="pmax">Maximo: </label>
-													<input type="text" id="pmax" name="pmax" value="" placeholder="500 €">
+												 </script>
+												 <li>
+												 	Filtrar por precio:
+												 </li>
+												 <li>
+												 	<label for="pmin">Minimo: </label>
+												 	<input type="text" id="pmin" name="pmin" value="" placeholder="0 €">
+												 	<label for="pmax">Maximo: </label>
+												 	<input type="text" id="pmax" name="pmax" value="" placeholder="500 €">
 
-													<div id="slider-range"></div>
-													<script>
+												 	<div id="slider-range"></div>
+												 	<script>
 														// SLIDER DE PRECIO MAX - MIN
 														$(function() {
 															$( "#slider-range" ).slider({
@@ -170,178 +170,179 @@
 															$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
 																" - $" + $( "#slider-range" ).slider( "values", 1 ) );
 														});
-													</script>
-												</li>
-											</div>
-										</form>
+														</script>
+													</li>
+												</div>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="m-navegacion">
-						<nav class="navbar navbar-default">
-							<div class="container"> 
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						<div class="m-navegacion">
+							<nav class="navbar navbar-default">
+								<div class="container"> 
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+									</div>
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav">
+											<li class="active"><a href="{{ url('/') }}">INICIO<span class="sr-only">(current)</span></a></li>
+											<li class=""><a href="{{ url('crear_subasta') }}">CREAR SUBASTA<span class="sr-only">(current)</span></a></li>
+											<li class=""><a href="{{ url('nosotros') }}">NOSOTROS<span class="sr-only">(current)</span></a></li>
+											<li class=""><a href="{{ url('politica') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
+											<li class=""><a href="{{ url('contacto') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
+										</ul>
+										<ul class="nav navbar-nav navbar-right">
+
+										</ul>
+									</div>
+									<!-- /.navbar-collapse --> 
 								</div>
-								<!-- Collect the nav links, forms, and other content for toggling -->
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav">
-										<li class="active"><a href="{{ url('/') }}">INICIO<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('crear_subasta') }}">CREAR SUBASTA<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('nosotros') }}">NOSOTROS<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('politica') }}">POLITICA DE PRIVACIDAD<span class="sr-only">(current)</span></a></li>
-										<li class=""><a href="{{ url('contacto') }}">CONTACTO<span class="sr-only">(current)</span></a></li>
-									</ul>
-									<ul class="nav navbar-nav navbar-right">
-
-									</ul>
-								</div>
-								<!-- /.navbar-collapse --> 
-							</div>
-							<!-- /.container-fluid --> 
-						</nav>
+								<!-- /.container-fluid --> 
+							</nav>
+						</div>
 					</div>
-				</div>
 
-				<!-- FIN HEADER -->
+					<!-- FIN HEADER -->
 
-				@yield('info_extra')
+					@yield('info_extra')
 
-				@yield('iniciar_sesion')
+					@yield('iniciar_sesion')
 
-				@yield('categorias_i_sponsor')
+					@yield('categorias_i_sponsor')
 
-				@yield('articulos_subastas')
+					@yield('articulos_subastas')
 
-				@yield('registro_login')
+					@yield('registro_login')
 
-				@yield('opciones_usuario')
+					@yield('opciones_usuario')
 
-				<!-- FIN CATEGORIA Y SPONSOR -->
-				<footer id="C3">
-					<div id="sns_footer_top" class="wrap footer">
-						<div class="container">
-							<div class="sns_footer-top">
-								<div class="row">
-									<div class="col-sm-9">
-										<div class="block-twitter">
-											<div class="block_head_left">
-												<h3>Twitter</h3>
-												<div class="navslider"> <a class="twitter-timeline" href="https://twitter.com/alexpixel41" data-widget-id="427722495085404160">Tweets por el @alexpixel41.</a>
-													<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> </div>
-												</div>
-												<div class="block-content clearfix">
-													<div id="sns_twitter" class=" no-avartar no-followlink no-interactlink">
-														<div class="posts owl-carousel owl-theme" style="opacity: 1; display: block;">
-															<div class="owl-wrapper-outer">
-																<div class="owl-wrapper" style="width: 5088px; left: 0px; display: block; -webkit-transition: all 0ms ease; transition: all 0ms ease;">
+					<!-- FIN CATEGORIA Y SPONSOR -->
+					<footer id="C3">
+						<div id="sns_footer_top" class="wrap footer">
+							<div class="container">
+								<div class="sns_footer-top">
+									<div class="row">
+										<div class="col-sm-9">
+											<div class="block-twitter">
+												<div class="block_head_left">
+													<h3>Twitter</h3>
+													<div class="navslider">
+														<a class="twitter-timeline" href="https://twitter.com/99Pujas" data-widget-id="602550838834368512">Tweets por el @99Pujas.</a>
+														<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+													</div>
+													<div class="block-content clearfix">
+														<div id="sns_twitter" class=" no-avartar no-followlink no-interactlink">
+															<div class="posts owl-carousel owl-theme" style="opacity: 1; display: block;">
+																<div class="owl-wrapper-outer">
+																	<div class="owl-wrapper" style="width: 5088px; left: 0px; display: block; -webkit-transition: all 0ms ease; transition: all 0ms ease;">
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="col-sm-3">
-											<div class="block-business">
-												<h3>Horas atención cliente</h3>
-												<ul class="list-unstyle">
-													<li><a href="#">Lu-Vi: ---------------- <span>08:00 a 20:00</span></a></li>
-													<li><a href="#">Sa: --------------------- <span>08:00 a 11:30</span></a></li>
-													<li><a href="#">Do: ---------------------- <span>N/a</span></a></li>
-												</ul>
+											<div class="col-sm-3">
+												<div class="block-business">
+													<h3>Horas atención cliente</h3>
+													<ul class="list-unstyle">
+														<li><a href="#">Lu-Vi: ---------------- <span>08:00 a 20:00</span></a></li>
+														<li><a href="#">Sa: --------------------- <span>08:00 a 11:30</span></a></li>
+														<li><a href="#">Do: ---------------------- <span>N/a</span></a></li>
+													</ul>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- final pre-footer ( redes sociales -->
-						<div id="sns_footer_middle" class="wrap footer">
-							<div class="container">
-								<div class="row">
-									<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column1">
-										<h3>Lenguajes Utilizados</h3>
-										<ul>
-											<li><a href="#">PHP</a></li>
-											<li><a href="#">HTML5</a></li>
-											<li><a href="#">CSS3</a></li>
-											<li><a href="#">JAVASCRIPT</a></li>
-											<li><a href="#">MYSQL</a></li>
-										</ul>
-									</div>
-									<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column2">
-										<h3>EQUIPO DESARROLLO</h3>
-										<ul>
-											<li><a href="#">Alejandro Maroto</a></li>
-											<li><a href="#">Adria Pozo</a></li>
-											<li><a href="#">Bartomeu Cot</a></li>
-											<li><a href="#">Sergio Sanchez</a></li>
-											<li><a href="#">Panchito</a></li>
-										</ul>
-									</div>
-									<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column3">
-										<h3>Utilidades</h3>
-										<ul>
-											<li><a href="#">My Account</a></li>
-											<li><a href="#">Orders and Returns</a></li>
-											<li><a href="#">Site Map</a></li>
-											<li><a href="#">Search Terms</a></li>
-											<li><a href="#">Advanced Search</a></li>
-											<li><a href="#">My order</a></li>
-										</ul>
-									</div>
-									<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column4">
-										<div class="about">
-											<h3>Contacto</h3>
-											<ul class="list-unstyle">
-												<li><a class="address" href="#">Dirección: 1234 Street Name, City Name</a></li>
-												<li><a class="phone" href="#">Telf: 56445675467</a></li>
-												<li><a class="mail" href="#"> <span>Email: </span>suppor@3f&m.com</a></li>
-											</ul>
-										</div>
-										<div class="sns-social">
-											<h3>Síguenos en</h3>
+							<!-- final pre-footer ( redes sociales -->
+							<div id="sns_footer_middle" class="wrap footer">
+								<div class="container">
+									<div class="row">
+										<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column1">
+											<h3>Lenguajes Utilizados</h3>
 											<ul>
-												<li><a class="fa fa-facebook-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-twitter-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-youtube-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-google-plus-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-vimeo-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-linkedin-square" title="" href="#" target="_self">&nbsp;</a></li>
-												<li><a class="fa fa-github-square" title="" href="#" target="_self">&nbsp;</a></li>
+												<li><a href="#">PHP</a></li>
+												<li><a href="#">HTML5</a></li>
+												<li><a href="#">CSS3</a></li>
+												<li><a href="#">JAVASCRIPT</a></li>
+												<li><a href="#">MYSQL</a></li>
 											</ul>
 										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- final pre-footer 2 enlaces -->
-						<div id="sns_footer_bottom" class="footer wrap">
-							<div class="container">
-								<div class="row">
-									<div class="sns-footer-content">
-										<div class="copy-right"> © 2015 99Pujas. Todos los derechos reservados. Tema: Clear White Theme diseñado por (<a href="" title="">3FYM</a>) Laravel  </div>
-										<div class="payment">
-											<div class="payment-method">
-												<ul class="payment list-unstyled">
-													<li><a class="fa fa-cc-visa" title="Visa" href="#"></a></li>
-													<li><a class="fa fa-paypal" title="PayPal Certificado" href="#"></a></li>
-													<li><a class="fa fa-cc-mastercard" title="MasterCard" href="#"></a></li>
-													<li><a class="fa fa-envelope-o" title="Contra-Reembolso" href="#"></a></li>
+										<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column2">
+											<h3>EQUIPO DESARROLLO</h3>
+											<ul>
+												<li><a href="#">Alejandro Maroto</a></li>
+												<li><a href="#">Adria Pozo</a></li>
+												<li><a href="#">Bartomeu Cot</a></li>
+												<li><a href="#">Sergio Sanchez</a></li>
+												<li><a href="#">Panchito</a></li>
+											</ul>
+										</div>
+										<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column3">
+											<h3>Utilidades</h3>
+											<ul>
+												<li><a href="#">My Account</a></li>
+												<li><a href="#">Orders and Returns</a></li>
+												<li><a href="#">Site Map</a></li>
+												<li><a href="#">Search Terms</a></li>
+												<li><a href="#">Advanced Search</a></li>
+												<li><a href="#">My order</a></li>
+											</ul>
+										</div>
+										<div class="col-phone-12 col-xs-6 col-sm-6 col-md-3 column column4">
+											<div class="about">
+												<h3>Contacto</h3>
+												<ul class="list-unstyle">
+													<li><a class="address" href="#">Dirección: 1234 Street Name, City Name</a></li>
+													<li><a class="phone" href="#">Telf: 56445675467</a></li>
+													<li><a class="mail" href="#"> <span>Email: </span>suppor@3f&m.com</a></li>
+												</ul>
+											</div>
+											<div class="sns-social">
+												<h3>Síguenos en</h3>
+												<ul>
+													<li><a class="fa fa-facebook-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-twitter-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-youtube-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-google-plus-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-vimeo-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-linkedin-square" title="" href="#" target="_self">&nbsp;</a></li>
+													<li><a class="fa fa-github-square" title="" href="#" target="_self">&nbsp;</a></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</footer>
-				</div>
-				<script src="{{url('js/bootstrap.min.js')}}"></script>
-				<script src="{{url('js/malign/easter/egg.js')}}"></script>
-			</body>
-			</html>
+							<!-- final pre-footer 2 enlaces -->
+							<div id="sns_footer_bottom" class="footer wrap">
+								<div class="container">
+									<div class="row">
+										<div class="sns-footer-content">
+											<div class="copy-right"> © 2015 99Pujas. Todos los derechos reservados. Tema: Clear White Theme diseñado por (<a href="" title="">3FYM</a>) Laravel  </div>
+											<div class="payment">
+												<div class="payment-method">
+													<ul class="payment list-unstyled">
+														<li><a class="fa fa-cc-visa" title="Visa" href="#"></a></li>
+														<li><a class="fa fa-paypal" title="PayPal Certificado" href="#"></a></li>
+														<li><a class="fa fa-cc-mastercard" title="MasterCard" href="#"></a></li>
+														<li><a class="fa fa-envelope-o" title="Contra-Reembolso" href="#"></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</footer>
+					</div>
+					<script src="{{url('js/bootstrap.min.js')}}"></script>
+					<script src="{{url('js/malign/easter/egg.js')}}"></script>
+				</body>
+				</html>

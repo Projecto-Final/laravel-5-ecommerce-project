@@ -84,26 +84,29 @@ function compras(){
 	txt+="<h3>Mis Compras</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha final</th>";
 	txt +="<th>Precio inicial</th>";
 	txt +="<th>Fecha venta</th>";
-	txt +="<th>Precio venta</th></tr></thead>";
+	txt +="<th>Precio venta</th><th></th></tr></thead>";
 	$.get(url,function(data,status){
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Compras Que Mostrar</h3>";
 		}
 
-		for (var i = 0; i < data.length; i++) {
+		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td>"+data[i].nombre_producto+"</td>";
-			txt +="<td>"+data[i].fecha_inicio+"</td>";
-			txt +="<td>"+data[i].fecha_final+"</td>";
-			txt +="<td>"+data[i].precio_inicial+"</td>";
-			txt +="<td>"+data[i].fecha_venda+"</td>";
-			txt +="<td>"+data[i].precio_venta+"</td></tr>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";						
+			txt +="<td>"+data[0][i].nombre_producto+"</td>";
+			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
+			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+data[0][i].precio_inicial+"</td>";
+			txt +="<td>"+data[0][i].fecha_venda+"</td>";
+			txt +="<td>"+data[0][i].precio_venta+"</td></tr>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'>Ver la compra <br></span></a></td>";			
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
@@ -117,25 +120,28 @@ function ventas(){
 	txt+="<h3>Mis Ventas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha final</th>";
 	txt +="<th>Precio inicial</th>";
 	txt +="<th>Fecha venta</th>";
-	txt +="<th>Precio venta</th></tr></thead>";
+	txt +="<th>Precio venta</th><th></th></tr></thead>";
 	$.get(url,function(data,status){
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Ventas Que Mostrar</h3>";
 		}
-		for (var i = 0; i < data.length; i++) {
+		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td>"+data[i].nombre_producto+"</td>";
-			txt +="<td>"+data[i].fecha_inicio+"</td>";
-			txt +="<td>"+data[i].fecha_final+"</td>";
-			txt +="<td>"+data[i].precio_inicial+"</td>";
-			txt +="<td>"+data[i].fecha_venda+"</td>";
-			txt +="<td>"+data[i].precio_venta+"</td></tr>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";			
+			txt +="<td>"+data[0][i].nombre_producto+"</td>";
+			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
+			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+data[0][i].precio_inicial+"</td>";
+			txt +="<td>"+data[0][i].fecha_venda+"</td>";
+			txt +="<td>"+data[0][i].precio_venta+"</td></tr>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";			
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
@@ -147,6 +153,7 @@ function confPuj(){
 	txt += "<h3>Mis Configuracion Pujas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";	
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Maxima De Puja</th>";
 	txt +="<th>Estado Puja</th>";
@@ -160,36 +167,26 @@ function confPuj(){
 
 		}
 		for (var i = 0; i < data[0].length; i++) {
-			
-// if(data[0][i].superada == 1){
-// 	color de la tabla rojo
-// }
+			txt+= '<tr class="info">';
+			txt +="<td><a href='subasta/"+data[1][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";			
+			txt +="<td>"+data[1][i].nombre_producto+"</td>";
+			txt +="<td>"+data[0][i].puja_maxima+"</td>";			
 
-txt+= '<tr class="info">';
-if(data[2][i][0]!=null){
-	txt +="<td><img src='url(http://localhost/public/images/subastas/"+data[2][i][0].imagen+")'/></td>";
-}else{
-	txt +="<td>NO</td>";
-}
-
-txt +="<td>"+data[1][i].nombre_producto+"</td>";
-txt +="<td>"+data[0][i].puja_maxima+"</td>";			
-
-if(data[0][i].superada == 1){
-	txt +="<td>Superada</td>";
-}else if(data[0][i].superada == 0){
-	txt +="<td>No Superada</td>";
-}
-txt +="<td>"+data[0][i].fecha_config+"</td>";
-if(data[1][i].precio_venta == -1){
-	txt +="<td>Activa</td></tr>";
-}else if(data[1][i].precio_venta != -1){
-	txt +="<td>Inactiva</td></tr>";
-}
-};
-txt+="</table>"
-$(".contact-info").html(txt);
-});
+			if(data[0][i].superada == 1){
+				txt +="<td>Superada</td>";
+			}else if(data[0][i].superada == 0){
+				txt +="<td>No Superada</td>";
+			}
+			txt +="<td>"+data[0][i].fecha_config+"</td>";
+			if(data[1][i].precio_venta == -1){
+				txt +="<td>Activa</td></tr>";
+			}else if(data[1][i].precio_venta != -1){
+				txt +="<td>Inactiva</td></tr>";
+			}
+		};
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});
 }
 
 function pujas(){
@@ -201,46 +198,41 @@ function pujas(){
 	txt += "<h3>Mis Pujas Activas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";		
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Pujada</th>";
 	txt +="<th>Tipo</th>";
 	txt +="<th>Estado</th>";
 	txt +="<th>Fecha Puja</th></tr></thead>";
 	$.get(url,function(data,status){
-
-		
 		for (var i = 0; i < data[0].length; i++) {
-// if(data[0][i].superada == 1){
-// 	color de la tabla rojo
-// }
-
-if(data[1][i].precio_venta == -1){
-	vac=false;
-	txt+= '<tr class="info">';
-
-	txt +="<td>"+data[1][i].nombre_producto+"</td>";
-	txt +="<td>"+data[0][i].cantidad+"</td>";			
-	if(data[3][i]!=null){
-		txt +="<td> Puja Realizada Automaticamente</td>";
-		txt +="<td>"+data[3][i].fecha_config+"</td>";
-	}else{
-		txt+="<td>Manual</td>";
-	}
-	if(data[0][i].superada == 1){
-		txt +="<td>Puja Superada</td>";
-	}else if(data[0][i].superada == 0){
-		txt +="<td>Puja En Cabeza</td>";
-	}
-	txt +="<td>"+data[0][i].fecha_puja+"</td></tr>";
-}
-};
-if(vac==true){
-	txt+="</table>"
-	txt+="<h3>No Hay Pujas Que Mostrar</h3>";
-}
-txt+="</table>"
-$(".contact-info").html(txt);
-});
+			if(data[1][i].precio_venta == -1){
+				vac=false;
+				txt+= '<tr class="info">';
+				txt +="<td><a href='subasta/"+data[1][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";			
+				txt +="<td>"+data[1][i].nombre_producto+"</td>";
+				txt +="<td>"+data[0][i].cantidad+"</td>";			
+				if(data[3][i]!=null){
+					txt +="<td> Puja Realizada Automaticamente</td>";
+					txt +="<td>"+data[3][i].fecha_config+"</td>";
+				}else{
+					txt+="<td>Manual</td>";
+				}
+				if(data[0][i].superada == 1){
+					txt +="<td>Puja Superada</td>";
+				}else if(data[0][i].superada == 0){
+					txt +="<td>Puja En Cabeza</td>";
+				}
+				txt +="<td>"+data[0][i].fecha_puja+"</td></tr>";
+			}
+		};
+		if(vac==true){
+			txt+="</table>"
+			txt+="<h3>No Hay Pujas Que Mostrar</h3>";
+		}
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});
 }
 function pujasI(){
 	var url = "usuario/get_pujas";
@@ -251,6 +243,7 @@ function pujasI(){
 	txt += "<h3>Mis Pujas Inactivas</h3>";
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";	
 	txt +="<th>Producto</th>";
 	txt +="<th>Cantidad Pujada</th>";
 	txt +="<th>Tipo</th>";
@@ -260,6 +253,7 @@ function pujasI(){
 			if(data[1][i].precio_venta != -1){
 				vac=false;
 				txt+= '<tr class="info">';
+				txt +="<td><a href='subasta/"+data[1][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";							
 				txt +="<td>"+data[1][i].nombre_producto+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
 				if(data[3][i]!=null){
@@ -289,6 +283,7 @@ function subastas(){
 	txt += "<h3>Mis Subastas Activas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";	
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha finalizacion</th>";
@@ -298,13 +293,14 @@ function subastas(){
 			txt+="</table>"
 			txt+="<h3>No Hay Subastas Activas</h3>";
 		}
-		for (var i = 0; i < data.length; i++) {
+		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td>"+data[i].nombre_producto+"</td>";
-			txt +="<td>"+data[i].fecha_inicio+"</td>";
-			txt +="<td>"+data[i].fecha_final+"</td>";
-			txt +="<td>"+data[i].precio_inicial+"</td>";
-			txt +="<td><a href='subasta/"+data[i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";						
+			txt +="<td>"+data[0][i].nombre_producto+"</td>";
+			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
+			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+data[0][i].precio_inicial+"</td>";
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
 		txt+="</table>"
@@ -319,6 +315,7 @@ function subastasI(){
 	txt += "<h3>Mis Subastas Inactivas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";	
 	txt +="<th>Producto</th>";
 	txt +="<th>Fecha inicio</th>";
 	txt +="<th>Fecha finalizacion</th>";
@@ -329,17 +326,18 @@ function subastasI(){
 			txt+="</table>"
 			txt+="<h3>No Hay Subastas Inactivas</h3>";
 		}
-		for (var i = 0; i < data.length; i++) {
+		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td>"+data[i].nombre_producto+"</td>";
-			txt +="<td>"+data[i].fecha_inicio+"</td>";
-			txt +="<td>"+data[i].fecha_final+"</td>";			
+			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";									
+			txt +="<td>"+data[0][i].nombre_producto+"</td>";
+			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
+			txt +="<td>"+data[0][i].fecha_final+"</td>";			
 			if(data[i].precio_venta==0){
 				txt +="<td>No Vendido</td>";
 			}else{
-				txt +="<td>"+data[i].precio_venta+"</td>";
+				txt +="<td>"+data[0][i].precio_venta+"</td>";
 			}
-			txt +="<td>"+data[i].precio_inicial+"</td>";
+			txt +="<td>"+data[0][i].precio_inicial+"</td>";
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
@@ -354,6 +352,7 @@ function valoraciones(){
 	txt += "<div class='col-md-8'><h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";
 	txt +="<th>Valorante</th>";
 	txt +="<th>Puntuacion</th>";
 	txt +="<th>Mensaje</th>";
@@ -366,6 +365,7 @@ function valoraciones(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
+			txt +="<td><a href='subasta/"+data[3][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
 			txt +="<td>"+data[0][i].texto+"</td>";
@@ -385,6 +385,7 @@ function valoracionesPendientes(){
 	txt += "<div class='col-md-8'><h3>Valoraciones pendientes</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
+	txt +="<th></th>";	
 	txt +="<th>Valorar</th>";
 	txt +="<th>Producto</th>";
 	txt +="<th></th>";
@@ -396,6 +397,7 @@ function valoracionesPendientes(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
+			txt +="<td><a href='subasta/"+data[3][i].id+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[2][i]+"</td>";
 			txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
@@ -405,7 +407,7 @@ function valoracionesPendientes(){
 		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
 		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
 		$(".contact-info").html(txt);
-	});
+	});	
 }
 
 
@@ -495,7 +497,7 @@ function get_Pendientes(){
 	var url = "usuario/get_Pendientes";
 	$.get(url,function(data,status){
 		if(data != 0){
-			alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pedientes y rellenalas");
+			alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
 		}
 	});
 }

@@ -115,26 +115,26 @@ if (Auth::check())//hay que añadir el ACTIVO
 }
 $propietario=false;
 //si el usuario es el propietario o el admin
-	
 
 
-		$aux = $articulo->pujas;
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$pujas = count($aux);
-		$imagenes = $articulo->imagenes; 
-		$subcategoria = $articulo->subcategoria; 
-		$categoria = $subcategoria->categoria;
+
+$aux = $articulo->pujas;
+$subastador = Usuario::find($articulo['subastador_id']);
+$pujas = count($aux);
+$imagenes = $articulo->imagenes; 
+$subcategoria = $articulo->subcategoria; 
+$categoria = $subcategoria->categoria;
 
 //diversificacion de ruta entre usuario y propietario
-	if($propietario){
+if($propietario){
 
-	}else{
-		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
-	}
+}else{
+	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+}
 
 
-		
-		
+
+
 
 }
 
@@ -207,6 +207,41 @@ public function buscar_subastas(Request $request)
 
 	}
 	return view("resultado_busqueda", ["resultadoBusqueda" =>$resultadoBusqueda] );
+}
+
+// Funciones para ver el perfil de otro usuario
+//muestra las subasta que tiene
+public function get_subastas($id){
+	$direccion = url('/images/subastas/');
+	$subastas[0] = Usuario::find($id)->articulos()->where('precio_venta','=', -1)->get();
+	for ($i=0; $i < count($subastas[0]); $i++) { 
+		$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+	}
+	return $subastas;
+}
+
+// muestra las valoraciones 
+public function get_valoraciones($id){	
+	$direccion = url('/images/subastas/');
+	$user = Usuario::find($id);
+	$val[0] = $user->valVenta;
+	$j = 0;
+	for ($i=0; $i < count($val[0]); $i++) { 
+		if($val[0][$i]->completada == 1){
+			$val[1][$j] = $val[0][$i]->validante->username;
+			$art = Articulo::find($val[0][$i]->articulo_id);
+			$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
+			$val[3][$j] = $art;
+			$j++;
+		}else{}
+	}
+	return $val;
+}
+// informacion del perfil usuario
+public function get_perfil($id)
+{			
+	$user = Usuario::find($id);
+	return $user;
 }
 
 }

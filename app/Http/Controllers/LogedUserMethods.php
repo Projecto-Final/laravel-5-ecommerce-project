@@ -25,6 +25,7 @@ class LogedUserMethods extends Controller {
 	|
 	|
 	*/
+	
 
 	/**
 	 * Create a new controller instance.
@@ -199,11 +200,12 @@ class LogedUserMethods extends Controller {
 	// /*Obtener pujas del usuario */
 
 	public function get_pujas(){
+		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$pujas[0] = Usuario::find($id)->pujas;
 		for ($i=0; $i < count($pujas[0]); $i++) { 
 			$pujas[1][$i] = $pujas[0][$i]->articulo;
-			$pujas[2][$i] = $pujas[0][$i]->articulo->imagenes;
+			$pujas[2][$i] = $direccion.'/'.$pujas[0][$i]->articulo->imagenes[0]->imagen;
 			$pujas[3][$i] = $pujas[0][$i]->autoPuja;
 		}
 		return $pujas;
@@ -214,26 +216,42 @@ class LogedUserMethods extends Controller {
 	/*Obtener ventas del usuario */
 
 	public function get_ventas(){
-		$ventas = Usuario::find(Auth::user()->id)->ventas()->where('precio_venta','>', -1)->get();
+		$direccion = url('/images/subastas/');
+		$ventas[0] = Usuario::find(Auth::user()->id)->ventas()->where('precio_venta','>', -1)->get();
+		for ($i=0; $i < count($ventas[0]); $i++) { 
+			$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
+		}
 		return $ventas;
 	}
 
 	/*Obtener compras del usuario */
 
 	public function get_compras(){
-		$compras = Usuario::find(Auth::user()->id)->compras()->where('precio_venta','>', -1)->get();
+		$direccion = url('/images/subastas/');
+		$compras[0] = Usuario::find(Auth::user()->id)->compras()->where('precio_venta','>', -1)->get();
+		for ($i=0; $i < count($compras[0]); $i++) { 
+			$compras[1][$i] = $direccion.'/'.$compras[0][$i]->imagenes[0]->imagen;
+		}
 		return $compras;
 	}
 
 	// /*Obtener subastas del usuario */
 
 	public function get_subastas(){
-		$subastas = Usuario::find(Auth::user()->id)->articulos()->where('fecha_venda','=', "0000-00-00 00:00:00")->get();
+		$direccion = url('/images/subastas/');
+		$subastas[0] = Usuario::find(Auth::user()->id)->articulos()->where('precio_venta','=', -1)->get();
+		for ($i=0; $i < count($subastas[0]); $i++) { 
+			$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+		}
 		return $subastas;
 	}
 	//Obtener subastas inactivas
 	public function get_subastasI(){
-		$subastas = Usuario::find(Auth::user()->id)->articulos()->where('fecha_venda','!=', "0000-00-00 00:00:00")->get();
+		$direccion = url('/images/subastas/');
+		$subastas[0] = Usuario::find(Auth::user()->id)->articulos()->where('precio_venta','>', -1)->get();
+		for ($i=0; $i < count($subastas[0]); $i++) { 
+			$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+		}
 		return $subastas;
 	}
 
@@ -242,26 +260,31 @@ class LogedUserMethods extends Controller {
 
 
 	public function get_valoraciones(){	
+		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$val[0] = $user->valVenta;
+		$j = 0;
 		for ($i=0; $i < count($val[0]); $i++) { 
 			if($val[0][$i]->completada == 1){
-				$val[1][$i] = $val[0][$i]->validante->username;
-			}else{
-
-			}
+				$val[1][$j] = $val[0][$i]->validante->username;
+				$art = Articulo::find($val[0][$i]->articulo_id);
+				$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
+				$val[3][$j] = $art;
+				$j++;
+			}else{}
 		}
 		return $val;
 	}
 
 	public function get_Pendientes(){	
+		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$count = 0;
 		$val[0] = $user->valCompra;
 		for ($i=0; $i < count($val[0]); $i++) {
-			if(val[0].completada == 0){
+			if($val[0]->completada == 0){
 				$count++;
 			}
 		}
@@ -269,15 +292,19 @@ class LogedUserMethods extends Controller {
 	}
 
 	public function get_valoracionesPendientes(){	
+		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$val[0] = $user->valCompra;
+		$j = 0;
 		for ($i=0; $i < count($val[0]); $i++) {
 			if($val[0][$i]->completada == 0){
-				$val[1][$i] = $val[0][$i]->valorado->username;
+				$val[1][$j] = $val[0][$i]->valorado->username;
 				$art = Articulo::find($val[0][$i]->articulo_id);
-				$val[2][$i] = $art->nombre_producto;
-				$val[3][$i] = $val[0][$i]->id;
+				$val[2][$j] = $art->nombre_producto;
+				$val[3][$j] = $val[0][$i]->id;
+				$val[4][$j] = $direccion.'/'.$art->imagenes[0]->imagen;				
+				$j++;
 			}else{}
 		}
 		return $val;
@@ -285,12 +312,13 @@ class LogedUserMethods extends Controller {
 
 	public function get_confPuj()
 	{			
+		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
-		$con[0] =$user->confPujas;
+		$con[0] =$user->confPujas;$j=0;
 		for ($i=0; $i < count($con[0]); $i++) { 
-			$con[1][$i] = $con[0][$i]->articulo;
-			$con[2][$i] = $con[0][$i]->articulo->imagenes;
+			$con[1][$j] = $con[0][$i]->articulo;
+			$con[2][$j] = $direccion.'/'.$con[0][$i]->articulo->imagenes[0]->imagen;
 		}
 		return $con;
 	}
@@ -426,7 +454,7 @@ class LogedUserMethods extends Controller {
 		try {
 			$v = $this->validate($request, [
 				'puja_max' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-			]);
+				]);
 
 			if ($v->fails()) {
 				return redirect()->back()->withErrors($v->errors());

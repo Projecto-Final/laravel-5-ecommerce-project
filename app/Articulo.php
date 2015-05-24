@@ -20,7 +20,7 @@ class Articulo extends Model {
 	}
 	public function imagenes()
 	{
-		return $this->hasMany('App\Imagen');
+		return $this->hasMany('App\Imagen','articulo_id','id');
 	}
 	public function comprador (){
 		return $this->belongsTo('App\Usuario','id','comprador_id');

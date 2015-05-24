@@ -1,0 +1,1 @@
+<?php $GLOBALS["dir"]=__DIR__; ?>
