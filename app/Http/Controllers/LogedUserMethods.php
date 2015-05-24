@@ -701,14 +701,14 @@ public function comprovarEstado(Request $request){
 			return 0;
 		}else if($articulo->precio_venta==0){
 			if($articulo->subastador_id==Auth::user()->id){
-				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> ";
 			}else{
 				return "Subasta Caducada";
 			}
 
 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
-
+//Empresa tiempoPorrogaArticulo precioPorroga
 		}
 
 	} catch (Exception $e) {
