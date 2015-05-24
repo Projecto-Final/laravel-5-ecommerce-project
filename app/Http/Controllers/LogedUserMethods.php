@@ -118,7 +118,7 @@ class LogedUserMethods extends Controller {
 				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 				'subcategoria' => 'required|alpha_num',
 				'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-			]);
+				]);
 
 			if ($v !== NULL && $v->fails()) {
 				return redirect()->back()->withErrors($v->errors());
@@ -150,7 +150,7 @@ class LogedUserMethods extends Controller {
 				'puja_mayor' => $submitedArray['precio_inicial'],
 				'porrogado' => 0,
 				'comprador_id' => null,
-			]);
+				]);
 			echo "<pre>";
 
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
@@ -165,7 +165,7 @@ class LogedUserMethods extends Controller {
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
-				]);
+					]);
 			}
 
 			echo "</pre>";
@@ -219,9 +219,14 @@ class LogedUserMethods extends Controller {
 		//return $ventas;
 		$user = Auth::user();
 		$ventas = $user->ventas;
-		echo "<pre>";
-		var_dump($ventas[0]::where('precio_venta' != 0));
-		echo "</pre>"; 
+		$j=0;
+		for ($i=0; $i <count($ventas) ; $i++) { 
+			if(($ventas[$i]->precio_venta) !== -1){
+				$vent[$j] = $ventas[$i];
+				$j++;
+			}
+		}
+		return $vent;
 	}
 
 	/*Obtener compras del usuario */
@@ -708,14 +713,14 @@ public function comprovarEstado(Request $request){
 			return 0;
 		}else if($articulo->precio_venta==0){
 			if($articulo->subastador_id==Auth::user()->id){
-				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> ";
 			}else{
 				return "Subasta Caducada";
 			}
 
 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
-
+//Empresa tiempoPorrogaArticulo precioPorroga
 		}
 
 	} catch (Exception $e) {

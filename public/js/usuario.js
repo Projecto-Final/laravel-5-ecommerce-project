@@ -124,6 +124,7 @@ function ventas(){
 	txt +="<th>Fecha venta</th>";
 	txt +="<th>Precio venta</th></tr></thead>";
 	$.get(url,function(data,status){
+		alert(data.length);
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Ventas Que Mostrar</h3>";
