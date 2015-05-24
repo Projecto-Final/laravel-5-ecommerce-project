@@ -83,8 +83,7 @@
                     <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
                       @forelse($subastas as $contador => $subasta)
-                      <h1>{{ $contador }}</h1>
-                       @if($contador < 12)
+                       @if($contador > 12)
                         <?php break;?>
                       @endif
                       <!-- MUESTRA -->
