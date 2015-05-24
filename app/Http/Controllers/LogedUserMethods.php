@@ -613,7 +613,7 @@ public function todasPujas(Request $request){
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujas = $articulo->pujas;
-<<<<<<< HEAD
+
 
 		for ($i=0; $i < count($pujas); $i++) {
 			$data[0][$i] = $pujas[$i];
@@ -624,7 +624,7 @@ public function todasPujas(Request $request){
 
 	}catch (Exception $e) {
 		return $e;
-=======
+
 		if($pujas==null){
 			return 0;
 		}
@@ -665,7 +665,6 @@ public function comprovarEstado(Request $request){
 	// 		return $e;
 	// 	}
 	return "e";
->>>>>>> origin/master
 	}
 }
 
