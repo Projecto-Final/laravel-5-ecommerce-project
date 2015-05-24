@@ -249,7 +249,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="treeview">
             <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('') }}">Configuración</a></li>
+              <li><a href="{{ url('administracion/configuracion') }}">Configuración</a></li>
               <li><a href="{{ url('administracion/limpiar_cache') }}">Limpiar cache</a></li>
             </ul>
           </li>
