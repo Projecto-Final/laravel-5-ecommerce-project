@@ -26,7 +26,7 @@
       <div class="box-body">
         <div class="row">
           @foreach ($imagenes as $imagen)
-          <div class="col-md-4">
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
             <a href="{{ url('/images/subastas/'.$imagen['imagen'])}}" class="thumbnail">
               @if(file_exists('images/subastas/'.$imagen['imagen'])) 
               {{--*/ $imagenurl = url('images/subastas/'.$imagen['imagen']) /*--}} 
@@ -35,7 +35,7 @@
               @endif
               <img src="{{ $imagenurl }}" alt="{{ $imagen['id'] }}{{ $imagen['descripcion'] }}">
             </a>
-            <a href="{{ url(''.URL::current().'/eliminar/'.$imagen['id'])}}" class="btn btn-danger btn-xs" style="position: absolute;top: 0px;right: 15px;"><i href="" class="fa fa-trash-o"></i> Eliminar Imagen Inapropiada</a> 
+            <a href="{{ url(''.URL::current().'/eliminar/'.$imagen['id'])}}" class="btn btn-danger btn-xs" style="position: absolute;top: 0px;right: 15px;"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
           </div>
           @endforeach
         </div>
