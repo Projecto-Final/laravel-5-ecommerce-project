@@ -197,5 +197,6 @@ Route::get('usuario/guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 Route::put('usuario/fotoPerfil', 'LogedUserMethods@save_photo_perfil');
 Route::put('usuario/fotoPortada', 'LogedUserMethods@save_photo_portada');
 
+Route::get('usuario/valoracion/{idValoracion}', 'LogedUserMethods@valor');
 
-
+Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');

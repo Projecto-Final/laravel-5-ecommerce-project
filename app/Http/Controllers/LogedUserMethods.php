@@ -511,12 +511,12 @@ class LogedUserMethods extends Controller {
 			$data[0] = $config;//la configuracion de esa subasta
 			return $data;
 		}
-
 	} catch (Exception $e) {
 		return $e;
 	}
-
 }
+
+
 
 public function cambiarConf(Request $request){
 	try {
@@ -613,6 +613,18 @@ public function todasPujas(Request $request){
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujas = $articulo->pujas;
+
+
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
+
+		}
+		return $data;
+
+	}catch (Exception $e) {
+		return $e;
+
 		if($pujas==null){
 			return 0;
 		}
@@ -631,28 +643,42 @@ public function todasPujas(Request $request){
 
 
 public function comprovarEstado(Request $request){
-	try {
-			$submitedArray = $request->all();
-			$articulo = Articulo::find($submitedArray['id_subasta']);
-		
-			if($articulo->precio_venta==-1){
-				return 0;
-			}else if($articulo->precio_venta==0){
-				if($articulo->subastador_id==Auth::user()->id){
-					return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
-				}else{
-					return "Subasta Caducada";
-				}
-				
-			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-			return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
+	 try {
+	 		$submitedArray = $request->all();
+	 		$articulo = Articulo::find($submitedArray['id_subasta']);
 
-			}
-			
-		} catch (Exception $e) {
-			return $e;
-		}
-	return "aaa";
-	}
+	 		if($articulo->precio_venta==-1){
+	 			return 0;
+	 		}else if($articulo->precio_venta==0){
+	 			if($articulo->subastador_id==Auth::user()->id){
+	 				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+	 			}else{
+	 				return "Subasta Caducada";
+	 			}
+
+	 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+	 		return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
+
+	 		}
+
+	 	} catch (Exception $e) {
+	 		return $e;
+	 	}
+}
+
+public function valor($id){
+	$val = Valoracion::find($id);
+	$art = Articulo::find($val->articulo_id);
+	$valorado = Usuario::find($val->valorado_id);
+	$validante = Usuario::find($val->validante_id);
+	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante);
+	return view('valoracion',$data);
+}
+
+public function updateValoracion(Request $request){
+	$submitedArray = $request->all();
+	var_dump($request);
+}
+
 
 }
