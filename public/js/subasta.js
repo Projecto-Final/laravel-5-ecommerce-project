@@ -1,18 +1,25 @@
 $(document).ready(function(){
 
 	var cargarP = $("#cargarPujaAut").val();
+
 	if(cargarP!="no"){
 		cargarPujaAut();
 		pujasAutom();
-		setInterval(pujasAutom,7000);
-		ultimaPuja();
-		setInterval(ultimaPuja,7000);
+		var pujasAutomInt =	setInterval(pujasAutom,7000);
+		
 	}
-	comprovarEstado()
-	//setInterval(comprovarEstado, 15000);
+	ultimaPuja();
+	comprovarEstado();
 	recargarPrecios();
-	setInterval(recargarPrecios, 7000);
+	
 });
+var cont = 0;
+
+var ultimaPujaInt =	setInterval(ultimaPuja,7000);
+
+setInterval(comprovarEstado, 15000);
+
+var recargarPreciosInt = setInterval(recargarPrecios, 7000);
 
 function avisoLog(){
 	alert("Debes estar logueado para pujar");
@@ -375,8 +382,8 @@ function mostrarTP(){
 			txt +="<th>Cantidad</th>";
 			txt +="<th>Fecha Puja</th>";
 			txt +="<th>Estado</th></tr></thead>";			
-		
-for (var i = data[0].length-1; i > -1; i--) {
+
+			for (var i = data[0].length-1; i > -1; i--) {
 				txt+= '<tr class="info">';
 				txt +="<td>"+data[1][i].username+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";
@@ -392,7 +399,10 @@ for (var i = data[0].length-1; i > -1; i--) {
 			txt+="</table>"
 
 			$("#TPujas").html(txt);
-			setInterval(mostrarTP,10000);
+			if(cont==0){
+				cont++;
+				var mostrarTPInt = setInterval(mostrarTP,10000);
+			}
 		}
 	});
 }
@@ -414,10 +424,21 @@ function comprovarEstado(){
 			$("#estadoSubasta").html(data);
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
-		}
-	}).fail(function(data){
-			alert(data);
-		});	
+
+//como ya esta caducada chuto intervalos
+clearInterval(recargarPreciosInt);
+if(pujasAutomInt != null){
+	clearInterval(pujasAutomInt);
 }
 
+clearInterval(ultimaPujaInt);
 
+if(mostrarTPInt != null){
+	clearInterval(mostrarTPInt);
+}
+
+}
+}).fail(function(data){
+	
+});	
+}
