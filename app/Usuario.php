@@ -69,7 +69,11 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	public function ventas()
 	{
 		return $this->hasMany('App\Articulo', 'subastador_id','id');
-	}  
+	}
+	public function Facturas()
+	{
+		return $this->hasMany('App\Factura', 'usuario_id', 'id');
+	}
 
 //conf pujas activas y no superadas
 	public function confPujasSubasta($articulo_id){
