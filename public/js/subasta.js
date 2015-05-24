@@ -409,7 +409,10 @@ function comprovarEstado(){
 	})
 	.done(function(data) {
 		if(data!=0){
-			$(".bid").html(data);
+			var h5 = document.getElementsByTagName("h5");
+			$(h5[0]).html(" ");		
+			$("#estadoSubasta").html(data);
+			$("#datosPujaConf").hide();
 		}
 	}).fail(function(data){
 			alert(data);

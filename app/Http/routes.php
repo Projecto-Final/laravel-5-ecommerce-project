@@ -147,6 +147,7 @@ Route::get('todasPujas', 'LogedUserMethods@todasPujas');
 Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
 
 Route::get('comprovarEstado', 'LogedUserMethods@comprovarEstado');
+
 Route::get('comprovarEstadoGuest', 'GuestUserMethods@comprovarEstadoGuest');
 
 

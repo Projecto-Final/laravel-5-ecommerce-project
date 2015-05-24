@@ -25,7 +25,7 @@
              <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
              
              
-            
+             <div id="estadoSubasta"> 
             <div class="form-group">
               <div class="input-group">
                 <div class="input-group-addon">€</div>
@@ -34,18 +34,14 @@
             </div>
             
 
-      <!--      @if ($logueado == true) 
-            <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
-          @elseif($logueado == false)
-            <input id="botonPuja" type="button" class="btn btn-primary" onclick='avisoLog()' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
-            @endif -->
+    
             <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
           </form>
           <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
         </div>
+</div>
 
-
-        <div>
+        <div id="datosPujaConf">
 
            @if ($logueado == true) 
             <button class="formConfPuja-button" type="button" onClick="mostrar_cp();">Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i></button>
