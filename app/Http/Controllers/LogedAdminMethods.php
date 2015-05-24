@@ -11,6 +11,7 @@ use Carbon;
 use App\Puja;
 use Illuminate\Http\Request;
 use DB;
+use Cache;
 
 class LogedAdminMethods extends Controller {
 
@@ -190,6 +191,41 @@ class LogedAdminMethods extends Controller {
 	{
 		$data = Categoria::find($idCategoria)->subcategorias;
 		return view('admin/subcategorias',['subcategorias' => $data]);
+	}
+
+
+
+	public function categorias()
+	{
+		$categorias = Categoria::all();
+		return view('admin/categorias',['categorias' => $categorias]);
+	}
+
+	public function editar_categorias($idCategoria)
+	{
+		$categorias = Categoria::find($idCategoria);
+		// EDICION DE DATOS //
+		return redirect("administracion/categorias");
+	}
+
+	public function eliminar_categorias($idCategoria)
+	{
+		$categoria = Categoria::find($idCategoria);
+		$categoria->delete();
+		return redirect("admin.categorias");
+	}
+
+
+	public function subcategorias()
+	{
+		$subCategorias = Subcategoria::all();
+		return view('administracion/subcategorias',['subCategorias' => $subCategorias]);
+	}
+
+	public function limpiar_cache()
+	{
+		Cache::flush();
+		return view('admin.limpiar_cache');
 	}
 
 

@@ -241,16 +241,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('administracion/usuarios') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
           </li>
           <li class="treeview">
-            <a href="{{ url('') }}"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
+            <a href="{{ url('administracion/categorias') }}"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
           </li>
           <li class="treeview">
-            <a href="{{ url('') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
+            <a href="{{ url('administracion/subcategorias') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
           </li>
           <li class="treeview">
             <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="{{ url('') }}">Configuración</a></li>
-              <li><a href="{{ url('') }}">Flush cache</a></li>
+              <li><a href="{{ url('administracion/limpiar_cache') }}">Limpiar cache</a></li>
             </ul>
           </li>
           <li class="treeview">

@@ -60,6 +60,7 @@ Route::get('iniciar_sesion', function()
 // LAS PUTAS MIERDAS DE ADMIN
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
+
 	// ADMIN CP ACCESS
 	Route::get('administracion', 'LogedAdminMethods@index');
 
@@ -68,15 +69,27 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/subastas', 'LogedAdminMethods@subastas');
 	Route::get('administracion/subastas/pujas/{idSubasta}', 'LogedAdminMethods@get_pujasEnSubasta');
 
+	// Media ( Imágenes)
 	Route::get('administracion/media', 'LogedAdminMethods@media');
 	Route::get('administracion/media/eliminar/{idImagen}', 'LogedAdminMethods@eliminar_media');
 
+	// Usuarios
 	Route::get('administracion/usuarios', 'LogedAdminMethods@usuarios');
 	Route::get('administracion/usuarios/eliminar/{idUsuario}', 'LogedAdminMethods@eliminar_usuario');
 
+	// Categorías
 	Route::get('administracion/categorias', 'LogedAdminMethods@categorias');
-	Route::get('administracion/subcategorias', 'LogedAdminMethods@subcategorias');
+	Route::get('administracion/categorias/editar/{idCategoria}', 'LogedAdminMethods@editar_categorias');
+	Route::get('administracion/categorias/eliminar/{idCategoria}', 'LogedAdminMethods@eliminar_categorias');
 
+	// SubCategorias
+	Route::get('administracion/subcategorias', 'LogedAdminMethods@subcategorias');
+	Route::get('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@editar_subcategorias');
+	Route::get('administracion/subcategorias/eliminar/{idSubcategoria}', 'LogedAdminMethods@eliminar_subcategorias');
+	
+	// Limpiar cache ( si hay )
+	Route::get('administracion/limpiar_cache', 'LogedAdminMethods@limpiar_cache');
+	
 	// Admin methods
 	Route::get('checkPermisos', 'LogedAdminMethods@checkPermisos');
 	Route::get('getCategorias','LogedAdminMethods@getCategorias');
