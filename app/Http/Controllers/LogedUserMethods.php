@@ -665,7 +665,7 @@ public function comprovarEstado(Request $request){
 	 		return $e;
 	 	}
 }
-
+//merge avoided xD
 public function valor($id){
 	$val = Valoracion::find($id);
 	$art = Articulo::find($val->articulo_id);
