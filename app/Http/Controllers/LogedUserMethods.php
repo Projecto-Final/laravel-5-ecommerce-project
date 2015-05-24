@@ -98,7 +98,12 @@ class LogedUserMethods extends Controller {
 	 */
 	public function form_subasta()
 	{
-		return view('form_subasta');
+		$empresa = Empresa::find(1)->get();
+
+		$fecha_inicio = Carbon::now();
+		$fecha_final = Carbon::now()->addDays($empresa[0]->tiempoArticulo);
+
+		return view('form_subasta', ["fecha_final" =>$fecha_final]);
 	}
 
 	/**
@@ -325,6 +330,16 @@ class LogedUserMethods extends Controller {
 
 	public function guardarCambios(Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|alpha_num',
+			'apellidos' => 'required|alpha_num',
+			'username' => 'required|alpha_num',
+			'direccion' => 'required|String',
+			'email' => 'required|email',
+		]);
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
 		$submitedArray = $request->all();
 		$user = Auth::user();
 		$user->nombre = $submitedArray["nombre"];
@@ -337,6 +352,14 @@ class LogedUserMethods extends Controller {
 
 	public function guardarCambiosPass(Request $request)
 	{
+		$v = $this->validate($request, [
+			'password_old' => 'required|String',
+			'password' => 'required|String',
+			'password_confirmation' => 'required|String',
+		]);
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
 		$submitedArray = $request->all();
 		$user = Auth::user();
 		$credentials = ['password' => $submitedArray["password_old"]];
@@ -410,7 +433,9 @@ class LogedUserMethods extends Controller {
 			if($precioMostrado==$articulo->puja_mayor && $articulo->precio_venta=-1){
 				$pujaAut = null;
 				$idPujador = Auth::user()->id;
-				$this->engendrar_puja($articulo,$pujaAut,$idPujador);
+				if($idPujador!=$articulo->subastador_id){
+					$this->engendrar_puja($articulo,$pujaAut,$idPujador);
+				}
 			}else{
 				return "Error";
 			}
@@ -456,7 +481,7 @@ class LogedUserMethods extends Controller {
 				'puja_max' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 				]);
 
-			if ($v->fails()) {
+			if ($v !== NULL && $v->fails()) {
 				return redirect()->back()->withErrors($v->errors());
 			}
 			
@@ -718,14 +743,24 @@ public function comprovarEstado(Request $request){
 			return 0;
 		}else if($articulo->precio_venta==0){
 			if($articulo->subastador_id==Auth::user()->id){
-				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> ";
+
+				$empresa = Empresa::find(1)->get();
+
+
+				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
+				$precio_pro = $empresa[0]->precioPorroga;
+
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
 			}else{
 				return "Subasta Caducada";
 			}
 
 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+
+
 			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 //Empresa tiempoPorrogaArticulo precioPorroga
+
 		}
 
 	} catch (Exception $e) {
@@ -760,6 +795,40 @@ public function perfilVisitante($id){
 	$subastas = $user->articulos;
 	$data = array ('user' => $user, 'subastas' => $subastas, 'valoraciones'=> $valoraciones);
 	return view('perfil',$data);
+}
+
+
+public function aceptarUltimaP(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$pujaGanadora =	$articulo->ultimaPuja($submitedArray['id_subasta']);
+
+		$articulo->comprador_id = $pujaGanadora->pujador_id;
+		$articulo->precio_venta = $pujaGanadora->cantidad;
+		$articulo->fecha_venda = Carbon::now();
+		$articulo->save();
+	} catch (Exception $e) {
+		return $e;
+	}
+
+}
+
+public function prorrogar(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+
+		$fechaModificar = new Carbon($articulo->fecha_final);
+		$empresa = Empresa::find(1)->get();
+
+		$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
+		$articulo->precio_venta = -1;
+		$articulo->fecha_final = $nuevaFecha;
+		$articulo->save();
+	} catch (Exception $e) {
+		return $e;
+	}
 }
 
 }

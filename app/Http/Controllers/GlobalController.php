@@ -9,6 +9,7 @@ use Session;
 use DB;
 use Auth;
 use Illuminate\Http\Request;
+use App\Empresa;
 
 class GlobalController extends Controller {
 
@@ -94,14 +95,12 @@ class GlobalController extends Controller {
 	{
 		$articulo = Articulo::find($idArticulo);
 
-//DEFINIR AQUI DIVERSOS CAMINOS  
-		// USUARIO SIN LOGUEAR
-		//LOGUEADO
-		//PROPIETARIO Y ADMIN 
+
 
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {   
+	$propietario=false;
 	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
@@ -113,7 +112,7 @@ if (Auth::check())//hay que añadir el ACTIVO
 }else{
 	$logueado = false;
 }
-$propietario=false;
+
 //si el usuario es el propietario o el admin
 
 
@@ -133,6 +132,19 @@ if($propietario){
 }
 
 
+<<<<<<< HEAD
+=======
+				$empresa = Empresa::find(1)->get();
+
+
+				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
+				$precio_pro = $empresa[0]->precioPorroga;
+					return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
+
+	}else{
+		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+	}
+>>>>>>> origin/master
 
 
 

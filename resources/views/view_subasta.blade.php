@@ -1,6 +1,6 @@
 @extends('layouts.madre') @section('extclases') @stop @section('titulo', 'PAGINA PRINCIPAL') @stop @section('info_extra')
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
-<script src="{{ url('js/subasta.js') }}"></script>
+<!-- <script src="{{ url('js/subasta.js') }}"></script> -->
 
 @if ($aviso = Session::get('message'))
 <!-- Mensaje o no. -->
@@ -29,7 +29,7 @@
 
      
 @yield('pujable')
-
+@yield('user_subasta')
       
         <div style="float: left;width: 100%;margin-top: 12px;">
           <div id="UltimaPujaInfo"></div>

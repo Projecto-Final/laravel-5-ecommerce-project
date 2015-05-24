@@ -6,6 +6,7 @@ use App\Articulo;
 use App\Imagen;
 use App\Valoracion;
 use App\Empresa;
+use App\Localidad;
 
 use Session;
 use Auth;
@@ -123,6 +124,21 @@ class LogedAdminMethods extends Controller {
 	{
 		$subastas = Articulo::all();
 		return view('admin.subastas', ['subastas' => $subastas]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function editar_subasta($idSubasta)
+	{
+		$subasta = Articulo::find($idSubasta);
+		$subcategorias = Subcategoria::all();
+		$usuarios = Usuario::all();
+		$localidades = Localidad::all();
+		//$subasta->delete();
+		return view('admin.editar_subasta', ['subasta' => $subasta, 'localidades' => $localidades, 'subcategorias' => $subcategorias, 'usuarios' => $usuarios]);
 	}
 
 	/**

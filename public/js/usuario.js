@@ -452,6 +452,10 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 	})
 	.done(function(data) {
 		perfil();
+	})
+	.error(function(data){
+		var errors = data.responseJSON;
+		alert(errors.puja_max);
 	});	
 }
 
@@ -474,6 +478,10 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 	})
 	.fail(function(data){
 		alert("Mal introducida la contraseña vieja");
+	})
+	.error(function(data){
+		var errors = data.responseJSON;
+		alert(errors.puja_max);
 	});	
 }
 
