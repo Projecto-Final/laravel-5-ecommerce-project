@@ -149,10 +149,15 @@ Route::get('ultimaPuja', 'LogedUserMethods@ultimaPuja');
 Route::get('todasPujas', 'LogedUserMethods@todasPujas');
 //carga todasPujas sin login
 Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
-
+//comprueva estado subasta vendido etc
 Route::get('comprovarEstado', 'LogedUserMethods@comprovarEstado');
-
+// lo mismo
 Route::get('comprovarEstadoGuest', 'GuestUserMethods@comprovarEstadoGuest');
+
+Route::get('aceptarUltimaP', 'LogedUserMethods@aceptarUltimaP');
+
+
+Route::get('prorrogar', 'LogedUserMethods@prorrogar');
 
 
 /* Obtener Todas las categorías. */

@@ -769,4 +769,38 @@ public function perfilVisitante($id){
 	return view('perfil',$data);
 }
 
+
+public function aceptarUltimaP(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$pujaGanadora =	$articulo->ultimaPuja($submitedArray['id_subasta']);
+
+		$articulo->comprador_id = $pujaGanadora->pujador_id;
+		$articulo->precio_venta = $pujaGanadora->cantidad;
+		$articulo->fecha_venda = Carbon::now();
+		$articulo->save();
+	} catch (Exception $e) {
+		return $e;
+	}
+
+}
+
+public function prorrogar(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+
+		$fechaModificar = new Carbon($articulo->fecha_final);
+		$empresa = Empresa::find(1)->get();
+
+		$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
+		$articulo->precio_venta = -1;
+		$articulo->fecha_final = $nuevaFecha;
+		$articulo->save();
+	} catch (Exception $e) {
+		return $e;
+	}
+}
+
 }
