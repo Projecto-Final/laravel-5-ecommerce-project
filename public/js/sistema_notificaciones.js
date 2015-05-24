@@ -1,48 +1,30 @@
  function notifications(tipo, mensaje, enlace) { 
+		$( document ).ready(function() {
 
- 	switch(tipo) {
- 		case "notificacion":
- 		break;
- 		case "":
- 		break;
- 	}
-
- 	var timeInMs = 200;
  	var extraTimePerNotification = 200;
- 	if (!document.getElementById(".notification-box.error")) {
- 		setTimeout(function(){
- 			$('.notification-box.error').css("opacity","1");
- 		}, timeInMs);
- 		timeInMs = timeInMs+extraTimePerNotification;
+ 	var errorType = ".notification-box";
+ 	switch(tipo) {
+ 		case "error":
+ 		errorType += ".error";
+ 		break;
+ 		case "advertencia":
+ 		errorType += ".warning";
+ 		break;
+ 		case "consejo":
+ 		errorType += ".advice";
+ 		break;
+ 		case "notificacion":
+ 		errorType += ".notice";
+ 		break;
+ 		case "alerta":
+ 		errorType += ".notice";
+ 		break;
  	}
-
- 	if (!document.getElementById(".notification-box.warning")) {
- 		setTimeout(function(){
- 			$('.notification-box.warning').css("opacity","1");
- 		}, timeInMs);
- 		timeInMs = timeInMs+extraTimePerNotification;
- 	}
-
- 	if (!document.getElementById(".notification-box.advice")) {
- 		setTimeout(function(){
- 			$('.notification-box.advice').css("opacity","1");
- 		}, timeInMs);
- 		timeInMs = timeInMs+extraTimePerNotification;
- 	}
-
- 	if (!document.getElementById(".notification-box.notice")) {
- 		setTimeout(function(){
- 			$('.notification-box.notice').css("opacity","1");
- 		}, timeInMs);
- 		timeInMs = timeInMs+extraTimePerNotification;
- 	}
-
- 	if (!document.getElementById(".notification-box.alert")) {
- 		setTimeout(function(){
- 			$('.notification-box.alert').css("opacity","1");
- 		}, timeInMs);
- 		timeInMs = timeInMs+extraTimePerNotification;
- 	}
+ 	$(errorType+"> p > b").after(mensaje);
+ 	$("#contenedor-notificaciones.active").append($(errorType));
+ 	$(errorType).fadeIn(2000);
+ 	
+ 	});
  }
  function closeNotificationBox(boxID){
  	$('.notification-box'+boxID+'').css("transition","all 1s");

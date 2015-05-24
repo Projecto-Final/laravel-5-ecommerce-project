@@ -3,9 +3,19 @@
 	  	bottom: 5;
 	  	right: 5;
 	  	z-index: 999;
+	  	display:none;
+	  	opacity:0;
+	  }
+	  #contenedor-notificaciones.active {
+	  	position: fixed;
+	  	bottom: 5;
+	  	right: 5;
+	  	z-index: 999;
+	  	opacity: 1;
+	  	display: block;
 	  }
 	  .notification-box {
-	  	display:none;
+	  	display:block;
 	  	min-width: 280px;
 	  	max-width: 500px;
 	  	height: auto;
@@ -14,8 +24,7 @@
 	  	color: rgba(0, 0, 0, 0.4);
 	  	margin-bottom: 10px;
 	  	position: relative;
-	  	transition: all 1s;
-	  	opacity:0;
+	  	display:none;
 	  }
 	  .error {
 	  	/* border: 1px rgba(192, 0, 0, 0.75) solid; */
