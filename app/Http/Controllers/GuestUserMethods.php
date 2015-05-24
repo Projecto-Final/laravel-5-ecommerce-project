@@ -85,7 +85,7 @@ class GuestUserMethods extends Controller {
 
 	}
 
-	public function comprovarEstadoGuest(Request $request)
+	public function comprovarEstadoGuest(Request $request){
 	try {
 			$submitedArray = $request->all();
 			$articulo = Articulo::find($submitedArray['id_subasta']);
@@ -94,7 +94,7 @@ class GuestUserMethods extends Controller {
 				return 0;
 			}else if($articulo->precio_venta==0){
 				return "Subasta Caducada";
-			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1)
+			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 			return "Articulo Vendido";
 
 			}
@@ -102,5 +102,6 @@ class GuestUserMethods extends Controller {
 		} catch (Exception $e) {
 			return $e;
 		}
+	}
 		
 }
