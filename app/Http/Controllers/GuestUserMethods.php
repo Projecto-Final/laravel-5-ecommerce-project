@@ -95,7 +95,7 @@ class GuestUserMethods extends Controller {
 			}else if($articulo->precio_venta==0){
 				return "Subasta Caducada";
 			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-			return "Articulo Vendido";
+			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 
 			}
 			

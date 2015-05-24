@@ -657,7 +657,7 @@ public function comprovarEstado(Request $request){
 	 			}
 
 	 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-	 		return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
+	 		return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 
 	 		}
 

@@ -392,7 +392,7 @@ for (var i = data[0].length-1; i > -1; i--) {
 			txt+="</table>"
 
 			$("#TPujas").html(txt);
-			$(".MostrarPujas-button").html("Recargar <i class='fa fa-bars'></i>");
+			setInterval(mostrarTP,10000);
 		}
 	});
 }
@@ -413,6 +413,7 @@ function comprovarEstado(){
 			$(h5[0]).html(" ");		
 			$("#estadoSubasta").html(data);
 			$("#datosPujaConf").hide();
+			$("#contPujas").hide();
 		}
 	}).fail(function(data){
 			alert(data);
