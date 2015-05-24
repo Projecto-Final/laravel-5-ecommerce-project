@@ -13,10 +13,12 @@ class LocalidadesTableSeeder extends Seeder {
 		//$faker->addProvider(new Faker\Provider\es_ES\Company($faker));
 		DB::table('localidades')->delete();
 
-		Localidad::create([
-			'nombre' => $faker->state,
-			'codigo_postal' => $faker->postcode,
-		]);
+		for ($i=0; $i < 20; $i++) { 
+			Localidad::create([
+					'nombre' => $faker->state,
+					'codigo_postal' => $faker->postcode,
+				]);
+		}
 
 
 	}
