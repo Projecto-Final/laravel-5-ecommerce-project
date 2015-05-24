@@ -2,10 +2,11 @@ $(document).ready(function() {
 	perfil();
 });
 
-
 function perfil(){
-	var url = "usuario/get_perfil";
+	var id = $("#idUsuario").val();
+	var url = "get_perfil";
 	$.get(url,function(data,status){
+		alert(data.username);
 		var txt = "<h3>Información básica</h3>"
 		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
 		+"<p>Nombre :</p>"+data.nombre
@@ -13,17 +14,15 @@ function perfil(){
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
-		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
-		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
-	get_Pendientes();
 }	
 
 function ventas(){
-	var url = "usuario/get_ventas";
+	var id = $("#idUsuario").val();
+	var url = "get_ventas";
 	var txt="";
-	txt+="<h3>Mis Ventas</h3>"
+	txt+="<h3>Ventas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";
@@ -33,7 +32,8 @@ function ventas(){
 	txt +="<th>Precio inicial</th>";
 	txt +="<th>Fecha venta</th>";
 	txt +="<th>Precio venta</th><th></th></tr></thead>";
-	$.get(url,function(data,status){
+	$.get(url,{id: id})
+	.done(function(data,status){
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Ventas Que Mostrar</h3>";
@@ -54,11 +54,10 @@ function ventas(){
 	});
 }
 function subastas(){
-	var url = "usuario/get_subastas";
+	var id = $("#idUsuario").val();
+	var url = "get_subastas";
 	var txt="";
-	txt += "<button class='bb' onclick='subastas();' >Subastas Activas</button>";
-	txt += "<button class='bb' onclick='subastasI();' >Subastas Inactivas</button>";
-	txt += "<h3>Mis Subastas Activas</h3>"
+	txt += "<h3>Subastas Activas</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";	
@@ -86,9 +85,10 @@ function subastas(){
 	});
 }
 function valoraciones(){
-	var url = "usuario/get_valoraciones";
+	var id = $("#idUsuario").val();	
+	var url = "get_valoraciones";
 	var txt="";
-	txt += "<div class='col-md-8'><h3>Mis Valoraciones</h3>"
+	txt += "<div class='col-md-8'><h3>Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";
@@ -112,8 +112,6 @@ function valoraciones(){
 			txt +="</tr>";
 		};
 		txt+="</table></div>";
-		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
 		$(".contact-info").html(txt);
 	});
 }

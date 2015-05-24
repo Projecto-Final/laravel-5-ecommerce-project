@@ -217,5 +217,8 @@ Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');
 Route::get('usuario/get_Pendientes', 'LogedUserMethods@get_Pendientes');
 
 /////Others Perfil usuario
-Route::get('usuario/{idUsuario}', 'LogedUserMethods@perfilVisitante');
 
+Route::get('perfil/{idUsuario}', 'GlobalController@get_perfil');
+Route::get('perfil/get_subastas', 'GlobalController@get_subastas');
+Route::get('perfil/get_valoraciones', 'GlobalController@get_valoraciones');
+Route::get('perfil/get_ventas', 'GlobalController@get_ventas');

@@ -113,33 +113,33 @@ if (Auth::check())//hay que añadir el ACTIVO
 }
 
 //si el usuario es el propietario o el admin
-	
 
 
-		$aux = $articulo->pujas;
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$pujas = count($aux);
-		$imagenes = $articulo->imagenes; 
-		$subcategoria = $articulo->subcategoria; 
-		$categoria = $subcategoria->categoria;
+
+$aux = $articulo->pujas;
+$subastador = Usuario::find($articulo['subastador_id']);
+$pujas = count($aux);
+$imagenes = $articulo->imagenes; 
+$subcategoria = $articulo->subcategoria; 
+$categoria = $subcategoria->categoria;
 
 //diversificacion de ruta entre usuario y propietario
-	if($propietario){
+if($propietario){
 
-				$empresa = Empresa::find(1)->get();
-
-
-				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
-				$precio_pro = $empresa[0]->precioPorroga;
-					return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
-
-	}else{
-		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
-	}
+	$empresa = Empresa::find(1)->get();
 
 
-		
-		
+	$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
+	$precio_pro = $empresa[0]->precioPorroga;
+	return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
+
+}else{
+	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+}
+
+
+
+
 
 }
 
@@ -246,7 +246,20 @@ public function get_valoraciones($id){
 public function get_perfil($id)
 {			
 	$user = Usuario::find($id);
-	return $user;
+	return view('perfil',['user' => $user]);
+}
+
+public function get_ventas(Request $request){
+	$submitedArray = $request->all();
+	var_dump($submitedArray);
+	$direccion = url('/images/subastas/');
+	$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
+	for ($i=0; $i < count($ventas[0]); $i++) { 
+		$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
+	}
+	var_dump($ventas);
+	return $ventas;
 }
 
 }
+
