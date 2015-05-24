@@ -66,6 +66,7 @@ class FinalizarVentas extends Command {
 						'validante_id' => $comprador->id,
 						'puntuacion' => 1,
 						'fecha' => Carbon::now(),
+						'articulo_id' => $articulo->id,
 					]);
 				} else {
 					$articulo->precio_venta = 0;
