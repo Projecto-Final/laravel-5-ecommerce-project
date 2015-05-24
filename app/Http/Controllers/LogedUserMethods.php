@@ -347,7 +347,7 @@ class LogedUserMethods extends Controller {
 			}
 
 			$precioMostrado = $submitedArray['puja_mayor'];
-			if($precioMostrado==$articulo->puja_mayor){
+			if($precioMostrado==$articulo->puja_mayor && $articulo->precio_venta=-1){
 				$pujaAut = null;
 				$idPujador = Auth::user()->id;
 				$this->engendrar_puja($articulo,$pujaAut,$idPujador);
@@ -613,6 +613,7 @@ public function todasPujas(Request $request){
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujas = $articulo->pujas;
+<<<<<<< HEAD
 
 		for ($i=0; $i < count($pujas); $i++) {
 			$data[0][$i] = $pujas[$i];
@@ -623,6 +624,48 @@ public function todasPujas(Request $request){
 
 	}catch (Exception $e) {
 		return $e;
+=======
+		if($pujas==null){
+			return 0;
+		}
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
+
+		}
+		return $data;
+		
+	}catch (Exception $e) {
+		return $e;
+	}
+}
+
+
+
+public function comprovarEstado(Request $request){
+	// try {
+	// 		$submitedArray = $request->all();
+	// 		$articulo = Articulo::find($submitedArray['id_subasta']);
+		
+	// 		if($articulo->precio_venta==-1){
+	// 			return 0;
+	// 		}else if($articulo->precio_venta==0){
+	// 			if($articulo->subastador_id==Auth::user()->id){
+	// 				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+	// 			}else{
+	// 				return "Subasta Caducada";
+	// 			}
+				
+	// 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+	// 		return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
+
+	// 		}
+			
+	// 	} catch (Exception $e) {
+	// 		return $e;
+	// 	}
+	return "e";
+>>>>>>> origin/master
 	}
 }
 

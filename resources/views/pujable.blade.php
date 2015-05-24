@@ -9,10 +9,13 @@
             <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
             <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">
             <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
+            <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
           @elseif($logueado == false)
             <input type="hidden" id="cargarPrecio" value="{{url('cargar_precioGuest')}}">
             <input type="hidden" id="cargarPujaAut" value="no">
-            <input type="hidden" id="todasPujasGuest" value="{{url('todasPujasGuest')}}">
+            <input type="hidden" id="todasPujas" value="{{url('todasPujasGuest')}}">
+            <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstadoGuest')}}">
+            
             @endif            
             <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
             <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">

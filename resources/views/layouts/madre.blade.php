@@ -32,6 +32,8 @@
 	<link href="{{ url('css/perfil_user.css') }}" rel="stylesheet">
 	<link href="{{ url('css/subasta.css') }}" rel="stylesheet">	
 	<link href="{{ url('css/contacto.css') }}" rel="stylesheet">
+	<!-- Visual Extras CSS -->
+	<link href="{{ url('css/shake.css') }}" rel="stylesheet">
 	<link href="{{ url('css/sistema_notificaciones.css') }}" rel="stylesheet">
 
 
@@ -95,7 +97,7 @@
 									<form action="{{ url('buscar')}}"  method="post" class="formulario-busqueda">
 										<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 										<input type="hidden" name="_method" value="PUT">
-										<input type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
+										<input id="eEGG" type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
 										<div class="boton-submit">
 											<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
 										</div>
@@ -340,5 +342,6 @@
 					</footer>
 				</div>
 				<script src="{{url('js/bootstrap.min.js')}}"></script>
+				<script src="{{url('js/malign/easter/egg.js')}}"></script>
 			</body>
 			</html>

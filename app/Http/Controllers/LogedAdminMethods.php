@@ -5,6 +5,8 @@ use App\Categoria;
 use App\Articulo;
 use App\Imagen;
 use App\Valoracion;
+use App\Empresa;
+
 use Session;
 use Auth;
 use Carbon;
@@ -12,6 +14,7 @@ use App\Puja;
 use Illuminate\Http\Request;
 use DB;
 use Cache;
+
 
 class LogedAdminMethods extends Controller {
 
@@ -219,13 +222,34 @@ class LogedAdminMethods extends Controller {
 	public function subcategorias()
 	{
 		$subCategorias = Subcategoria::all();
-		return view('administracion/subcategorias',['subCategorias' => $subCategorias]);
+		return view('admin/subcategorias',['subCategorias' => $subCategorias]);
 	}
+
+	public function editar_subcategorias($idSubcategoria)
+	{
+		$subCategorias = Subcategoria::find($idSubcategoria);
+		// EDICION DE DATOS //
+		return redirect("administracion/categorias");
+	}
+
+	public function eliminar_subcategorias($idSubcategoria)
+	{
+		$subCategoria = Subcategoria::find($idSubcategoria);
+		$subCategoria->delete();
+		return redirect("administracion/subcategorias");
+	}
+
+	public function configuracion()
+	{
+		$empresa = Empresa::all();
+		return view('admin/configuracion', ["empresa" => $empresa]);
+	}
+
 
 	public function limpiar_cache()
 	{
 		Cache::flush();
-		return view('admin.limpiar_cache');
+		return view('admin/limpiar_cache');
 	}
 
 

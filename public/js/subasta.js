@@ -8,7 +8,8 @@ $(document).ready(function(){
 		ultimaPuja();
 		setInterval(ultimaPuja,7000);
 	}
-
+	comprovarEstado()
+	//setInterval(comprovarEstado, 15000);
 	recargarPrecios();
 	setInterval(recargarPrecios, 7000);
 });
@@ -395,4 +396,24 @@ for (var i = data[0].length-1; i > -1; i--) {
 		}
 	});
 }
+
+function comprovarEstado(){
+
+	var url = $("#comprovarEstado").val();
+	var id_subasta = $("#subastaId").val();
+
+
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+			$(".bid").html(data);
+		}
+	}).fail(function(data){
+			alert(data);
+		});	
+}
+
 

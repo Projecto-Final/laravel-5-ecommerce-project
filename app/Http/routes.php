@@ -87,6 +87,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@editar_subcategorias');
 	Route::get('administracion/subcategorias/eliminar/{idSubcategoria}', 'LogedAdminMethods@eliminar_subcategorias');
 	
+	// Configuracion Empresa/Pagina
+	Route::get('administracion/configuracion', 'LogedAdminMethods@configuracion');
 	// Limpiar cache ( si hay )
 	Route::get('administracion/limpiar_cache', 'LogedAdminMethods@limpiar_cache');
 	
@@ -144,6 +146,8 @@ Route::get('todasPujas', 'LogedUserMethods@todasPujas');
 //carga todasPujas sin login
 Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
 
+Route::get('comprovarEstado', 'LogedUserMethods@comprovarEstado');
+Route::get('comprovarEstadoGuest', 'GuestUserMethods@comprovarEstadoGuest');
 
 
 /* Obtener Todas las categorías. */
