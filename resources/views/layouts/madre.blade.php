@@ -231,8 +231,8 @@
 							<div class="container">
 								<div class="sns_footer-top">
 									<div class="row">
-										<div class="col-sm-9">
-											<div class="block-twitter">
+										<div class="col-sm-12">
+											<div class="block-twitter col-sm-9">
 												<div class="block_head_left">
 													<h3>Twitter</h3>
 													<div class="navslider">
