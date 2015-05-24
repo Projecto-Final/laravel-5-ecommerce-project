@@ -233,6 +233,8 @@ class LogedUserMethods extends Controller {
 		for ($i=0; $i < count($val[0]); $i++) { 
 			if($val[0][$i]->completada == 1){
 				$val[1][$i] = $val[0][$i]->validante->username;
+			}else{
+
 			}
 		}
 		return $val;
@@ -248,7 +250,7 @@ class LogedUserMethods extends Controller {
 				$art = Articulo::find($val[0][$i]->articulo_id);
 				$val[2][$i] = $art->nombre_producto;
 				$val[3][$i] = $val[0][$i]->id;
-			}  
+			}else{}
 		}
 		return $val;
 	}
@@ -684,7 +686,9 @@ public function updateValoracion(Request $request){
 	$val->completada = 1;
 	$val->texto = $submitedArray["texto"];
 	$val->puntuacion = $submitedArray['puntuacion'];
+	$val->fecha = Carbon::now();
 	$val->save();
+	return redirect('usuario');
 }
 
 
