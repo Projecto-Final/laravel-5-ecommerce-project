@@ -198,4 +198,4 @@ Route::put('usuario/fotoPortada', 'LogedUserMethods@save_photo_portada');
 
 Route::get('usuario/valoracion/{idValoracion}', 'LogedUserMethods@valor');
 
-Route::put('add_valoracion/{idValoracion}', 'LogedUserMethods@updateValoracion');
+Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');

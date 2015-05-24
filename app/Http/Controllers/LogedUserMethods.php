@@ -511,12 +511,12 @@ class LogedUserMethods extends Controller {
 			$data[0] = $config;//la configuracion de esa subasta
 			return $data;
 		}
-
 	} catch (Exception $e) {
 		return $e;
 	}
-
 }
+
+
 
 public function cambiarConf(Request $request){
 	try {
@@ -646,7 +646,7 @@ public function comprovarEstado(Request $request){
 	// try {
 	// 		$submitedArray = $request->all();
 	// 		$articulo = Articulo::find($submitedArray['id_subasta']);
-		
+
 	// 		if($articulo->precio_venta==-1){
 	// 			return 0;
 	// 		}else if($articulo->precio_venta==0){
@@ -655,17 +655,16 @@ public function comprovarEstado(Request $request){
 	// 			}else{
 	// 				return "Subasta Caducada";
 	// 			}
-				
+
 	// 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 	// 		return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
 
 	// 		}
-			
+
 	// 	} catch (Exception $e) {
 	// 		return $e;
 	// 	}
 	return "e";
-	}
 }
 
 public function valor($id){
@@ -677,9 +676,9 @@ public function valor($id){
 	return view('valoracion',$data);
 }
 
-public function updateValoracion($id,Request $request){
+public function updateValoracion(Request $request){
 	$submitedArray = $request->all();
-	var_dump($id."||||||".$request)
+	var_dump($request);
 }
 
 }

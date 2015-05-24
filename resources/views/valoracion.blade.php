@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-md-offset-4 col-xs-12 col-sm-12"><h1>Valoracion</h1><h3>{{$art->nombre_producto}}</h3></div>
 		<div class="col-md-offset-4 col-xs-12 col-sm-12">
-			<form action="{{ url('add_valoracion/{{$val->id}}') }}" method="post" enctype="multipart/form-data" id="form-validate">
+			<form action="{{ url('update_valoracion') }}" method="post" enctype="multipart/form-data" id="form-validate">
 				<input type="hidden" name="_method" value="PUT">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">	
 				{{$valorado->nombre}} </br>
@@ -20,6 +20,7 @@
 					<span class='errorJS' id='nombre_producto_error'>&nbsp;Campo obligatorio</span></td>
 				</div>
 				Fecha <?php echo date("Y-m-d H:i:s"); ?><br>
+				<input type="hidden" name="id" value="{{$val->id}}">
 				<input type='submit' title="Submit" class="button" value="Valora"> 
 			</form>
 		</div>
