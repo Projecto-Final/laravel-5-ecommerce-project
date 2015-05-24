@@ -297,6 +297,16 @@ class LogedUserMethods extends Controller {
 
 	public function guardarCambios(Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|alpha_num',
+			'apellidos' => 'required|alpha_num',
+			'username' => 'required|alpha_num',
+			'direccion' => 'required|String',
+			'email' => 'required|email',
+		]);
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
 		$submitedArray = $request->all();
 		$user = Auth::user();
 		$user->nombre = $submitedArray["nombre"];
@@ -309,6 +319,14 @@ class LogedUserMethods extends Controller {
 
 	public function guardarCambiosPass(Request $request)
 	{
+		$v = $this->validate($request, [
+			'password_old' => 'required|String',
+			'password' => 'required|String',
+			'password_confirmation' => 'required|String',
+		]);
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
 		$submitedArray = $request->all();
 		$user = Auth::user();
 		$credentials = ['password' => $submitedArray["password_old"]];
@@ -428,7 +446,7 @@ class LogedUserMethods extends Controller {
 				'puja_max' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 			]);
 
-			if ($v->fails()) {
+			if ($v !== NULL && $v->fails()) {
 				return redirect()->back()->withErrors($v->errors());
 			}
 			
