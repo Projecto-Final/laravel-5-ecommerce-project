@@ -80,7 +80,7 @@ function formEditar(){
 function compras(){
 	var url = "usuario/get_compras";
 	var txt="";
-	txt+="<h3>Mis Ventas</h3>"
+	txt+="<h3>Mis Compras</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";
