@@ -27,9 +27,10 @@ class UsuariosTableSeeder extends Seeder {
 
 		for ($i=0; $i < 10; $i++) { 
 			$nombre = $faker->firstName;
+			$apellido = $faker->lastName;
 			Usuario::create([
 			'nombre' => $nombre,
-			'apellido' => $faker->lastName,
+			'apellido' => $apellido,
 			'direccion' => $faker->address,
 			'imagen_perfil' => 'default.jpg',
 			'imagen_background' => 'default_wallpaper.jpg',
@@ -37,7 +38,7 @@ class UsuariosTableSeeder extends Seeder {
 			'permisos' => 0,
 			'email' => $nombre."@gmail.com",
 			'password' => bcrypt('global'),
-			'username' => $nombre."".rand( 0 , 99 ),
+			'username' => $nombre."-".$apellido."-".rand( 0 , 99 ),
 		]);
 		}
 		

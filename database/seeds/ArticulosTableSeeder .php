@@ -1,5 +1,7 @@
 <?php
 
+// Composer: "fzaninotto/faker": "v1.4.0"
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Articulo;
 
@@ -7,6 +9,7 @@ class ArticulosTableSeeder extends Seeder {
 
 	public function run()
 	{
+		$faker = Faker::create("es_ES");
 		DB::table('articulos')->delete();
 
 		Articulo::create([
@@ -69,5 +72,28 @@ class ArticulosTableSeeder extends Seeder {
 			'subcategoria_id' => 11,
 			'comprador_id' => 2
 		]);
+
+		for ($i=0; $i < 10; $i++) { 
+			$precio = rand(50,5000);
+			Articulo::create([
+					'nombre_producto' => $faker->word." ".$faker->word,
+					'modelo' => $faker->word,
+					'estado' => 'Optimo',
+					'descripcion' => $faker->text($maxNbChars = 200),
+					'localizacion' => 'Canovellas',
+					'precio_venta' => $precio,
+					'fecha_inicio' => $faker->dateTimeThisYear($max = 'now'),
+					'fecha_final' => $faker->dateTimeThisYear($max = 'now'),
+					'fecha_venda' => $faker->dateTimeThisYear($max = 'now'),
+					'precio_inicial' => $precio,
+					'puja_mayor' => $precio,
+					'porrogado'=> 0,
+					'incremento_precio' => rand(5,200),
+					'subastador_id' => rand(2,10),
+					'subcategoria_id' => rand(2,5),
+					'comprador_id' => -1
+				]);
+		}
+		
 	}
 }
