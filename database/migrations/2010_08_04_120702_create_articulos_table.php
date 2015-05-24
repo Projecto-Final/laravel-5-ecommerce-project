@@ -37,7 +37,7 @@ class CreateArticulosTable extends Migration {
                   $table->rememberToken();
                   $table->timestamps();
             });
-}
+      }
 
 	/**
 	 * Reverse the migrations.
