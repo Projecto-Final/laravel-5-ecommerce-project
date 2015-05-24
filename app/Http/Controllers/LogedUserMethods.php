@@ -631,27 +631,28 @@ public function todasPujas(Request $request){
 
 
 public function comprovarEstado(Request $request){
-	try {
-			$submitedArray = $request->all();
-			$articulo = Articulo::find($submitedArray['id_subasta']);
+	// try {
+	// 		$submitedArray = $request->all();
+	// 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		
-			if($articulo->precio_venta==-1){
-				return 0;
-			}else if($articulo->precio_venta==0){
-				if($articulo->subastador_id==Auth::user()->id){
-					return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();''>Prorrogar</button> ";
-				}else{
-					return "Subasta Caducada";
-				}
+	// 		if($articulo->precio_venta==-1){
+	// 			return 0;
+	// 		}else if($articulo->precio_venta==0){
+	// 			if($articulo->subastador_id==Auth::user()->id){
+	// 				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar ''</button> ";
+	// 			}else{
+	// 				return "Subasta Caducada";
+	// 			}
 				
-			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-			return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
+	// 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+	// 		return "Articulo Vendido  Precio Venta ".$articulo->precio_venta." €";
 
-			}
+	// 		}
 			
-		} catch (Exception $e) {
-			return $e;
-		}
+	// 	} catch (Exception $e) {
+	// 		return $e;
+	// 	}
+	return "e";
 	}
 
 }

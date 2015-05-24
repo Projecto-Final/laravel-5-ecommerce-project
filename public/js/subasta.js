@@ -9,7 +9,7 @@ $(document).ready(function(){
 		setInterval(ultimaPuja,7000);
 	}
 	comprovarEstado()
-	setInterval(comprovarEstado, 15000);
+	//setInterval(comprovarEstado, 15000);
 	recargarPrecios();
 	setInterval(recargarPrecios, 7000);
 });
@@ -409,9 +409,11 @@ function comprovarEstado(){
 	})
 	.done(function(data) {
 		if(data!=0){
-			$("#TPujas").html(data);
+			$(".bid").html(data);
 		}
-	});
+	}).fail(function(data){
+			alert(data);
+		});	
 }
-}
+
 
