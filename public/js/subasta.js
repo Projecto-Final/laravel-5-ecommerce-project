@@ -429,6 +429,9 @@ function comprovarEstado(){
 	.done(function(data) {
 		if(data!=0){
 			var h5 = document.getElementsByTagName("h5");
+			var bid = document.getElementById("bid");
+			var p = bid.getElementsByTagName("p");
+			$(p).hide();
 			$(h5[0]).html(" ");		
 			$("#estadoSubasta").html(data);
 			$("#datosPujaConf").hide();
@@ -436,15 +439,11 @@ function comprovarEstado(){
 
 //como ya esta caducada chuto intervalos
 clearInterval(recargarPreciosInt);
-if(pujasAutomInt != null){
-	clearInterval(pujasAutomInt);
-}
+
 
 clearInterval(ultimaPujaInt);
 
-if(mostrarTPInt != null){
-	clearInterval(mostrarTPInt);
-}
+
 
 }
 }).fail(function(data){

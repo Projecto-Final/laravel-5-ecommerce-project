@@ -1,7 +1,8 @@
 @extends('view_subasta')
 @section('pujable')
+<script src="{{ url('js/subasta.js') }}"></script>
 <div class="col-lg-7 col-md-6 col-xs-8 article-content">
- <div class="bid">
+ <div class="bid" id="bid">
   @if ($subasta['precio_venta'] == -1)
 
   <h5>PRECIO ACTUAL DEL ARTICULO</h5>
@@ -89,6 +90,7 @@
   <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
   <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
 </form>
+<div id="estadoSubasta"> </div>
 <p>Subasta caducada </p>
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
@@ -114,6 +116,7 @@
   <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
   <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
 </form>
+<div id="estadoSubasta"> </div>
 <p>Articulo Vendido  - Fecha Venta :  {{$subasta['fecha_venda']}}  Precio Venta : {{$subasta['precio_venta']}}</p>
 
 </div>
