@@ -66,7 +66,7 @@
          <button class="bb" onclick="compras();" >Mis Compras</button>
          <button class="bb" onclick="ventas();" >Mis Ventas</button>
          <p></p>
-         <button class="bb" onclick="valoraciones();">Mis valoraciones</button>      
+         <button class="bb" onclick="valoraciones();" >Mis valoraciones</button>      
        </div>
        <div class="col-md-9 contact-info"></div>
      </div>
