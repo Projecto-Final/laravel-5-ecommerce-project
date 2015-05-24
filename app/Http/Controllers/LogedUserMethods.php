@@ -347,7 +347,7 @@ class LogedUserMethods extends Controller {
 			}
 
 			$precioMostrado = $submitedArray['puja_mayor'];
-			if($precioMostrado==$articulo->puja_mayor){
+			if($precioMostrado==$articulo->puja_mayor && $articulo->precio_venta=-1){
 				$pujaAut = null;
 				$idPujador = Auth::user()->id;
 				$this->engendrar_puja($articulo,$pujaAut,$idPujador);
@@ -608,22 +608,24 @@ public function ultimaPuja(Request $request){
 }
 
 
-	public function todasPujas(Request $request){
-		try {
-			$submitedArray = $request->all();
-			$articulo = Articulo::find($submitedArray['id_subasta']);
-			$pujas = $articulo->pujas;
-
-			for ($i=0; $i < count($pujas); $i++) {
-				$data[0][$i] = $pujas[$i];
-				$data[1][$i] = $pujas[$i]->usuario;
-
-			}
-			return $data;
-			
-		}catch (Exception $e) {
-			return $e;
+public function todasPujas(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$pujas = $articulo->pujas;
+		if($pujas==null){
+			return 0;
 		}
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
+
+		}
+		return $data;
+		
+	}catch (Exception $e) {
+		return $e;
 	}
+}
 
 }

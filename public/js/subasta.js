@@ -8,7 +8,8 @@ $(document).ready(function(){
 		ultimaPuja();
 		setInterval(ultimaPuja,7000);
 	}
-
+	comprovarEstado()
+	setInterval(comprovarEstado, 15000);
 	recargarPrecios();
 	setInterval(recargarPrecios, 7000);
 });
@@ -394,5 +395,41 @@ for (var i = data[0].length-1; i > -1; i--) {
 			$(".MostrarPujas-button").html("Recargar <i class='fa fa-bars'></i>");
 		}
 	});
+}
+
+function comprovarEstado(){
+
+	var url = $("#comprovarEstado").val();
+	var id_subasta = $("#subastaId").val();
+
+
+
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+					
+		
+for (var i = data[0].length-1; i > -1; i--) {
+				txt+= '<tr class="info">';
+				txt +="<td>"+data[1][i].username+"</td>";
+				txt +="<td>"+data[0][i].cantidad+"</td>";
+				txt +="<td>"+data[0][i].fecha_puja+"</td>";
+				if(data[0][i].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td >Superada</td></tr>";
+				}
+				
+			}
+			
+			txt+="</table>"
+
+			$("#TPujas").html(txt);
+			$(".MostrarPujas-button").html("Recargar <i class='fa fa-bars'></i>");
+		}
+	});
+}
 }
 

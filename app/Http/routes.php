@@ -146,6 +146,8 @@ Route::get('todasPujas', 'LogedUserMethods@todasPujas');
 //carga todasPujas sin login
 Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
 
+Route::get('comprovarEstado', 'LogedUserMethods@comprovarEstado');
+Route::get('comprovarEstadoGuest', 'GuestUserMethods@comprovarEstadoGuest');
 
 
 /* Obtener Todas las categorías. */
