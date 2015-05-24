@@ -1,5 +1,7 @@
 <?php
 
+// Composer: "fzaninotto/faker": "v1.4.0"
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Usuario;
 
@@ -7,6 +9,7 @@ class UsuariosTableSeeder extends Seeder {
 
 	public function run()
 	{
+		$faker = Faker::create("es_ES");
 		DB::table('usuarios')->delete();
 
 		Usuario::create([
@@ -22,30 +25,21 @@ class UsuariosTableSeeder extends Seeder {
 			'username' => 'admin',
 		]);
 
-		Usuario::create([
-			'nombre' => 'Usuario',
-			'apellido' => 'Technician',
-			'direccion' => 'C/ cadaques, La Llagosta',
+		for ($i=0; $i < 10; $i++) { 
+			$nombre = $faker->firstName;
+			Usuario::create([
+			'nombre' => $nombre,
+			'apellido' => $faker->lastName,
+			'direccion' => $faker->address,
 			'imagen_perfil' => 'default.jpg',
 			'imagen_background' => 'default_wallpaper.jpg',
-			'reputacion' => 1,
+			'reputacion' => rand( 0 , 5 ),
 			'permisos' => 0,
-			'email' => 'user@user.com',
-			'password' => bcrypt('niconiconii'),
-			'username' => 'Mr.Salami',
+			'email' => $nombre."@gmail.com",
+			'password' => bcrypt('global'),
+			'username' => $nombre."".rand( 0 , 99 ),
 		]);
-
-		Usuario::create([
-			'nombre' => 'Usuaria',
-			'apellido' => 'Tehnician',
-			'direccion' => 'C/ serrucho, Canovelles',
-			'imagen_perfil' => 'default.jpg',
-			'imagen_background' => 'default_wallpaper.jpg',
-			'reputacion' => 1,
-			'permisos' => 0,
-			'email' => 'asdf@user.com',
-			'password' => bcrypt('123456'),
-			'username' => 'Twilight',
-		]);
+		}
+		
 	}
 }
