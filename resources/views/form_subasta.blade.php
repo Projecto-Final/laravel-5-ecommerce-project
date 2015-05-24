@@ -181,7 +181,14 @@
                           <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
                           <div class="input-box">
                             <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                            <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>
+                            <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>                          </div>
+                        </div>
+                         <div class="field ">
+                          <label >Tu puja acabará :</label>
+                          <div class="input-box">
+                         
+                                                      
+                             <input type="text" id="fechafin" name="fechafin" value="{{$fecha_final}}" title="Nombre" maxlength="255" readonly>
                           </div>
                         </div>
                       </div>

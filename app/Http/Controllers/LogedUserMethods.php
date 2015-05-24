@@ -97,7 +97,12 @@ class LogedUserMethods extends Controller {
 	 */
 	public function form_subasta()
 	{
-		return view('form_subasta');
+		$empresa = Empresa::find(1)->get();
+
+		$fecha_inicio = Carbon::now();
+		$fecha_final = Carbon::now()->addDays($empresa[0]->tiempoArticulo);
+
+		return view('form_subasta', ["fecha_final" =>$fecha_final]);
 	}
 
 	/**
@@ -261,7 +266,7 @@ class LogedUserMethods extends Controller {
 		$count = 0;
 		$val[0] = $user->valCompra;
 		for ($i=0; $i < count($val[0]); $i++) {
-			if(val[0].completada == 0){
+			if($val[0]->completada == 0){
 				$count++;
 			}
 		}
@@ -690,19 +695,29 @@ public function comprovarEstado(Request $request){
 			return 0;
 		}else if($articulo->precio_venta==0){
 			if($articulo->subastador_id==Auth::user()->id){
-				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> ";
-			}else{
-				return "Subasta Caducada";
-			}
 
-		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+				$empresa = Empresa::find(1)->get();
+
+
+				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
+				$precio_pro = $empresa[0]->precioPorroga;
+
+return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
+}else{
+	return "Subasta Caducada";
+}
+
+}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
+
+
+	return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 //Empresa tiempoPorrogaArticulo precioPorroga
-		}
 
-	} catch (Exception $e) {
-		return $e;
-	}
+}
+
+} catch (Exception $e) {
+	return $e;
+}
 }
 
 //merge avoided xD
