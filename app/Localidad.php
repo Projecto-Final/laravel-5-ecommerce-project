@@ -6,6 +6,6 @@ class Localidad extends Model {
 
 	protected $table = 'localidades';
 
-	protected $fillable = ['nombre','descripcion'];
+	protected $fillable = ['nombre','codigo_postal'];
 	
 }

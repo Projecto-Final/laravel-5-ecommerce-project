@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Imagen;
+use App\Localidad;
 
 class LocalidadesTableSeeder extends Seeder {
 

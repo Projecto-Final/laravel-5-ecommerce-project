@@ -15,7 +15,7 @@ class CreateValoracionesTable extends Migration {
 		Schema::create('valoraciones', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->longText('texto');
+			$table->string('texto');
 			$table->integer('articulo_id')->unsigned();
 			$table->foreign('articulo_id')->references('id')->on('articulos');
 			$table->integer('valorado_id')->unsigned();

@@ -16,7 +16,7 @@ class CreateLocalidadesTable extends Migration {
 		{
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('codigo_postal')->unique();
+            $table->integer('codigo_postal');
             $table->rememberToken();
             $table->timestamps();
 		});
