@@ -442,6 +442,13 @@ class LogedUserMethods extends Controller {
 
 	public function crearConfPuja(Request $request){
 		try {
+			$v = $this->validate($request, [
+				'puja_max' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+			]);
+
+			if ($v->fails()) {
+				return redirect()->back()->withErrors($v->errors());
+			}
 			
 
 			$submitedArray = $request->all();

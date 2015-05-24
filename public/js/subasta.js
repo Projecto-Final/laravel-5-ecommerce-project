@@ -101,7 +101,11 @@ function crear_confPuja(){
 			
 
 
-		});
+		})
+		.error(function(data){
+			var errors = data.responseJSON;
+			$('#sistemError').html(errors.puja_max);			
+		});;
 
 	}
 }

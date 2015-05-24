@@ -60,6 +60,7 @@
       <br>
       <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>
       <span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
+      <div id="sistemError"></div>
     </form>
     <p>     <input id="crearConf" type="button" class="btn btn-primary" onclick='crear_confPuja()' value="GUARDAR"> <i class='fa fa-flag-o'></i></p>
     
