@@ -166,6 +166,8 @@ class LogedUserMethods extends Controller {
 				$imagenASubir->move(public_path("images/subastas"),$img_name);
 				print_r($imagenASubir);
 
+				echo "<h1>".public_path("images/subastas")."</h1>";
+
 				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
