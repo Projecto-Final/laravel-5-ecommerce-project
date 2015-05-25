@@ -57,7 +57,96 @@
 
 
 @section('categorias_i_sponsor')
-@include('get_categorias')
+<div id="contenedor-sub-header" class="contenedor-sub-header wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            {{--*/ $smartCount = 1; /*--}}
+            @for($i = 0; $i < count($subastas); $i++)
+            @if($smartCount==1)
+            <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}" class="active"></li>
+            @else
+            <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}"></li>
+            @endif
+            {{--*/ $smartCount++; /*--}}
+
+            @endfor
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            {{--*/ $smartCount = 1; /*--}}
+            @forelse($subastas as $contador => $subasta)
+            @if($smartCount==1)
+            <a class="item category-bids active" href="{{ url('subasta/'.$subasta[0]['id'])}}">
+              <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$subasta[1])}}');"></div>
+              <div class="description">
+                <h1>{{ $subasta[0]['nombre_producto']}} </h1>
+                <p>{{ $subasta[0]['descripcion']}} </p>
+                <span class="price">{{ $subasta[0]['puja_mayor']}} €</span>
+              </div>
+            </a>
+            @else
+            <a class="item category-bids" href="{{ url('subasta/'.$subasta[0]['id'])}}">
+              <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$subasta[1])}}');"></div>
+              <div class="description">
+                <h1>{{ $subasta[0]['nombre_producto']}} </h1>
+                <p>{{ $subasta[0]['descripcion']}} </p>
+                <span class="price">{{ $subasta[0]['puja_mayor']}} €</span>
+              </div>
+            </a>
+
+            @endif
+            {{--*/ $smartCount++; /*--}}
+            @empty
+            @endforelse
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+        <div class="block m-interno">
+          <div class="m-interno-sub">
+            <div class="block-title"> <span>Categorias</span> </div>
+            <div class="block-content clearfix" style="height: 405px;">
+              <ul id="sns_sidenav" class="navegacion">
+                @foreach($categorias as $categoria)
+                <li class="level0 nav-1">
+                  <div class="accr_header"><a href="{{ url('/categorias/'.$categoria->nombre) }}"> <span>{{ $categoria->nombre }}</span> </a></div>
+                </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+        <div id="sns_slideshow">
+         <div class="sns-revolutionslider-wrap">
+           <div class="tp-bgimg defaultimg" style="width: 100%; height: 450px; opacity: 1; background-image: url('{{ url('images/oferta999.jpg') }}'); background-color: rgba(0, 0, 0, 0); /* background-position: 50% 50%; */ background-repeat: no-repeat;background-size: contain;"></div>
+         </div>
+       </div>
+     </div>
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="banner t1"> <img src="{{ url('images/monster.jpg') }}" style="width: 100%;"> </div>
+    </div>
+  </div>
+</div>
+</div>
 @stop
 
 
@@ -83,8 +172,8 @@
                     <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
                       @forelse($subastas as $contador => $subasta)
-                       @if($contador > 12)
-                        <?php break;?>
+                      @if($contador > 12)
+                      <?php break;?>
                       @endif
                       <!-- MUESTRA -->
                       <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">

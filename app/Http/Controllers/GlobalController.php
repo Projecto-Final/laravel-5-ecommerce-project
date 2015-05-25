@@ -75,6 +75,7 @@ class GlobalController extends Controller {
 		// Buscamos todos los Articulos  que tenemos ( si tenemos )
 	 	$arrayArtImg = [];
 	 	$Articulos = Articulo::all();
+	 	$categorias = Categoria::all();
 	 	foreach ($Articulos as $key => $Articulo) {
 	 		$imagenes =  $Articulo->imagenes;
 	 		foreach ($imagenes as $key2 => $imagen) {
@@ -83,7 +84,7 @@ class GlobalController extends Controller {
 	 			}
 	 		}
 	 	}
-	 	return view("index", ["subastas" =>$arrayArtImg] );
+	 	return view("index", ["subastas" =>$arrayArtImg, "categorias" => $categorias] );
 	 }
 
 
