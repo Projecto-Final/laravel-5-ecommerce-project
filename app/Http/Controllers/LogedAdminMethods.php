@@ -359,6 +359,29 @@ class LogedAdminMethods extends Controller {
 		return view('admin/configuracion', ["empresa" => $empresa]);
 	}
 
+	public function editar_configuracion()
+	{
+		$empresa = Empresa::find(1);
+		return view('admin.editar_configuracion',['configuracion' => $empresa]);
+	}
+
+	public function guardar_configuracion(Request $request)
+	{
+		$nuevaConfiguracion = $request->all();
+		$configuracion = Empresa::find(1);
+		
+		$configuracion->nombre = $nuevaConfiguracion['nombre'];
+		$configuracion->direccion = $nuevaConfiguracion['direccion'];
+		$configuracion->tiempoArticulo = $nuevaConfiguracion['tiempoArticulo'];
+		$configuracion->tiempoPorrogaArticulo = $nuevaConfiguracion['tiempoPorrogaArticulo'];
+		$configuracion->inactividad = $nuevaConfiguracion['inactividad'];
+		$configuracion->precioPorroga = $nuevaConfiguracion['precioPorroga'];
+
+		$configuracion->save();
+
+		return redirect("administracion/configuracion/editar");
+	}
+
 
 	public function limpiar_cache()
 	{

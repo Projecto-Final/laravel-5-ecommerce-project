@@ -21,7 +21,7 @@
 				<div class="box-body">
 				  <dl class="dl-horizontal">
 					<dt>Nombre: </dt>
-					<dd>{{ $empresa[0]["nombre"] }} <a class="" href=""><i class="fa fa-fw fa-edit"></i> Editar</a></dd>
+					<dd>{{ $empresa[0]["nombre"] }}</dd>
 					<dt>Direccion: </dt>
 					<dd>{{ $empresa[0]["direccion"] }}</dd>
 					<dt>Tiempo Articulo: </dt>
@@ -33,6 +33,7 @@
 					<dt>Sobrecoste Porroga: </dt>
 					<dd>{{ $empresa[0]["precioPorroga"] }}</dd>
 				  </dl>
+				  <a href="{{ url('administracion/configuracion/editar') }}" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i> Editar Configuración </a>
 				</div><!-- /.box-body -->
 			  </div>
 	</div>
