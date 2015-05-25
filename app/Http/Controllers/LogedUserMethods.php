@@ -860,8 +860,6 @@ public function aceptarUltimaP(Request $request){
 				'fecha' => Carbon::now(),
 				'articulo_id' => $articulo->id,
 			]);
-		}else{
-			return 0;
 		}
 	} catch (Exception $e) {
 		return $e;
