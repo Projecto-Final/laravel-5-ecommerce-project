@@ -7,6 +7,7 @@ use App\Imagen;
 use App\Valoracion;
 use App\Empresa;
 use App\Localidad;
+use App\Factura;
 
 use Session;
 use Auth;
@@ -351,6 +352,32 @@ class LogedAdminMethods extends Controller {
 		$subCategoria = Subcategoria::find($idSubcategoria);
 		$subCategoria->delete();
 		return redirect("administracion/subcategorias");
+	}
+
+
+	public function facturas()
+	{
+		$facturas = Factura::all();
+		return view('admin/facturas',['facturas' => $facturas]);
+	}
+
+	public function editar_factura($idFactura)
+	{
+		$factura = Factura::find($idSubcategoria);
+		return view('admin.editar_factura',['factura' => $factura]);
+	}
+
+	public function guardar_factura($idFactura, Request $request)
+	{
+		$facturaActualizada = $request->all();
+		
+
+		$factura->save();
+
+		return redirect("administracion/facturas/editar/".$idFacturas);
+	}
+
+	{
 	}
 
 	public function configuracion()
