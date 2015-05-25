@@ -217,187 +217,181 @@ public function buscar_subastas(Request $request)
 
 				$query = Articulo::whereRaw("subcategoria_id = ? and nombre_producto LIKE '%".$buscar."%' ".$pminquery."".$pmaxquery, array($scategoria['id']))->get();
 
+				// Query de articulos no?
 				foreach ($query as $key2 => $art) {
-					$resultadoBusqueda[$key][$key2] = $art;
+					$resultadoBusqueda[$key][0] = $art;
+						$messup = $art->imagenes; // magia negra //
+						foreach ($messup as $key => $imagen) {
+							$imagen->imagen;
+							// KEY POSICION DEL BUCLE [0 O 1 POSICION DE ART E IMAGEN]
+							break; // Sale del bucle al pillar la primera imagen.
+						}
+					}
+
 				}
+
 			}
 
-			// for ($i=0; $i < count($resultadoBusqueda); $i++) { 
-			// 	for ($j=0; $j <count($resultadoBusqueda[$i]) ; $j++) { 
-			// 		$imagenes = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
-
-			// 		if($imagenes == null){
-			// 			$resultadoBusqueda[$i][$j][$j]="default.jpg";
-			// 		}else{
-			// 			$resultadoBusqueda[$i][$j][$j]=$imagenes;
-			// 		}
-			// 		var_dump($imagenes);
-			// 	}
-			// }
-
-			
 		}
-
+		return view("resultado_busqueda", ["resultadoBusqueda" =>$resultadoBusqueda] );
 	}
-	return view("resultado_busqueda", ["resultadoBusqueda" =>$resultadoBusqueda] );
-}
 
 // Funciones para ver el perfil de otro usuario
 //muestra las subasta que tiene
-public function subastas(Request $request){
-	$submitedArray = $request->all();	
-	$direccion = url('/images/subastas/');
-	$subastas[0] = Usuario::find($submitedArray['id'])->articulos()->where('precio_venta','=', -1)->get();
-	if(count($subastas) != 0){
-		for ($i=0; $i < count($subastas[0]); $i++) { 
-			if($subastas[0][$i]->imagenes[0]->imagen == ""){
-				$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+	public function subastas(Request $request){
+		$submitedArray = $request->all();	
+		$direccion = url('/images/subastas/');
+		$subastas[0] = Usuario::find($submitedArray['id'])->articulos()->where('precio_venta','=', -1)->get();
+		if(count($subastas) != 0){
+			for ($i=0; $i < count($subastas[0]); $i++) { 
+				if($subastas[0][$i]->imagenes[0]->imagen == ""){
+					$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+				}
 			}
 		}
+		return $subastas;
 	}
-	return $subastas;
-}
 
 // muestra las valoraciones 
-public function valoraciones(Request $request){	
-	$submitedArray = $request->all();
-	$direccion = url('/images/subastas/');
-	$user = Usuario::find($submitedArray['id']);
-	$val[0] = $user->valVenta;
-	$j = 0;
-	for ($i=0; $i < count($val[0]); $i++) { 
-		if($val[0][$i]->completada == 1){
-			$val[1][$j] = $val[0][$i]->validante->username;
-			$art = Articulo::find($val[0][$i]->articulo_id);
-			$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
-			$val[3][$j] = $art;
-			$j++;
-		}else{}
+	public function valoraciones(Request $request){	
+		$submitedArray = $request->all();
+		$direccion = url('/images/subastas/');
+		$user = Usuario::find($submitedArray['id']);
+		$val[0] = $user->valVenta;
+		$j = 0;
+		for ($i=0; $i < count($val[0]); $i++) { 
+			if($val[0][$i]->completada == 1){
+				$val[1][$j] = $val[0][$i]->validante->username;
+				$art = Articulo::find($val[0][$i]->articulo_id);
+				$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
+				$val[3][$j] = $art;
+				$j++;
+			}else{}
+		}
+		return $val;
 	}
-	return $val;
-}
 // informacion del perfil usuario
-public function perfil($id)
-{			
-	$user = Usuario::find($id);
-	return view('perfil',['user' => $user]);
-}
-
-public function coger_perfil(Request $request)
-{			
-	$submitedArray = $request->all();
-	$user = Usuario::find($submitedArray['id']);
-	return $user;
-}
-
-
-public function ventas(Request $request){
-	$submitedArray = $request->all();
-	$direccion = url('/images/subastas/');
-	$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
-	for ($i=0; $i < count($ventas[0]); $i++) { 
-		$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
+	public function perfil($id)
+	{			
+		$user = Usuario::find($id);
+		return view('perfil',['user' => $user]);
 	}
-	return $ventas;
-}
+
+	public function coger_perfil(Request $request)
+	{			
+		$submitedArray = $request->all();
+		$user = Usuario::find($submitedArray['id']);
+		return $user;
+	}
+
+
+	public function ventas(Request $request){
+		$submitedArray = $request->all();
+		$direccion = url('/images/subastas/');
+		$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
+		for ($i=0; $i < count($ventas[0]); $i++) { 
+			$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
+		}
+		return $ventas;
+	}
 
 
 
-public function confPujaSuperada(){
-	try {
+	public function confPujaSuperada(){
+		try {
 
-		if (Auth::check())
-		{   
+			if (Auth::check())
+			{   
 
-			$logueado = true;
-			$user_id = Auth::user()->id;
-			$user = Usuario::find($user_id);
-			$confPS = $user->configPujaSuperada($user_id);	
-			if($confPS==false){
-				return 0;
+				$logueado = true;
+				$user_id = Auth::user()->id;
+				$user = Usuario::find($user_id);
+				$confPS = $user->configPujaSuperada($user_id);	
+				if($confPS==false){
+					return 0;
 
-			}else{
+				}else{
 
-				for ($i=0; $i < count($confPS); $i++) { 
+					for ($i=0; $i < count($confPS); $i++) { 
 //peta aki
-					$currentConf = ConfiguracionPuja::find($confPS[$i]->id);
-					$articulo[$i] = Articulo::find($confPS[$i]->articulo_id);
-					$currentConf->avisado = 1;
-					$currentConf->save();	
+						$currentConf = ConfiguracionPuja::find($confPS[$i]->id);
+						$articulo[$i] = Articulo::find($confPS[$i]->articulo_id);
+						$currentConf->avisado = 1;
+						$currentConf->save();	
 
-				}	
+					}	
 
-				return $articulo;
+					return $articulo;
+				}
+			}else{
+				return 0;
 			}
-		}else{
-			return 0;
+
+		} catch (Exception $e) {
+			return $e;
 		}
 
-	} catch (Exception $e) {
-		return $e;
+
+	}
+
+	public function ultimaPuja(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articuloId = $submitedArray['id_subasta'];
+			$userId = Auth::user()->id;
+			$usuario = Usuario::find($userId);
+			$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
+			if($ultimapuja==false){
+				return 0;
+			}else{
+				return $ultimapuja;
+			}
+
+		} catch (Exception $e) {
+
+		}
+
 	}
 
 
-}
-
-public function ultimaPuja(Request $request){
-	try {
-		$submitedArray = $request->all();
-		$articuloId = $submitedArray['id_subasta'];
-		$userId = Auth::user()->id;
-		$usuario = Usuario::find($userId);
-		$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
-		if($ultimapuja==false){
-			return 0;
-		}else{
-			return $ultimapuja;
-		}
-		
-	} catch (Exception $e) {
-		
-	}
-	
-}
+	public function todasPujas(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articulo = Articulo::find($submitedArray['id_subasta']);
+			$pujas = $articulo->pujas;
 
 
-public function todasPujas(Request $request){
-	try {
-		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_subasta']);
-		$pujas = $articulo->pujas;
+			for ($i=0; $i < count($pujas); $i++) {
+				$data[0][$i] = $pujas[$i];
+				$data[1][$i] = $pujas[$i]->usuario;
+				$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
+				$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
+			}
+			if(isset($data)){
+				return $data;
+			}else{
+				return 0;
+			}
 
 
-		for ($i=0; $i < count($pujas); $i++) {
-			$data[0][$i] = $pujas[$i];
-			$data[1][$i] = $pujas[$i]->usuario;
-			$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
-			$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
-		}
-		if(isset($data)){
+		}catch (Exception $e) {
+			return $e;
+
+			if($pujas==null){
+				return 0;
+			}
+			for ($i=0; $i < count($pujas); $i++) {
+				$data[0][$i] = $pujas[$i];
+				$data[1][$i] = $pujas[$i]->usuario;
+				$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
+				$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
+			}
 			return $data;
-		}else{
-			return 0;
-		}
-		
 
-	}catch (Exception $e) {
-		return $e;
-
-		if($pujas==null){
-			return 0;
+		}catch (Exception $e) {
+			return $e;
 		}
-		for ($i=0; $i < count($pujas); $i++) {
-			$data[0][$i] = $pujas[$i];
-			$data[1][$i] = $pujas[$i]->usuario;
-			$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
-			$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
-		}
-		return $data;
-		
-	}catch (Exception $e) {
-		return $e;
 	}
-}
 
 
 }
