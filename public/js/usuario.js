@@ -383,10 +383,9 @@ function valoraciones(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='usuario/valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
-			txt +="<td><input id='puntuacion' name='puntuacion' type='number' data-min='1' step='1' data-max='5' class='rating' data-show-caption='true' data-show-clear='false' data-disabled='false' data-size='xs' value='"+data[0][i].puntuacion+"'></input></td>";
+			txt +="<td>"+data[4][i]+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
-			txt +="</tr>";
-			
+			txt +="</tr>";	
 		};
 		txt+="</table>";
 		$(".contact-info").html(txt);
