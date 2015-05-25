@@ -337,14 +337,14 @@ function pujar(id_subasta,url){
 		})
 		.done(function(data) {
 			if(data=="Error"){
-				alert("El precio mostrado ha cambiado");
+				notifications("error", "El precio mostrado ha cambiado", "");
 			}else if(data=="Ya Pujaste"){
-				alert(data);
+				notifications("error", "Ya Pujaste", "");
 			}
 			recargarPrecios();
 
 		}).fail(function(data){
-			alert("Debes Estar Logueado Para Pujar");
+			notifications("error", "Debes estar Logueado para Pujar", "");
 		});	
 	}
 }
