@@ -219,16 +219,22 @@ public function buscar_subastas(Request $request)
 
 				foreach ($query as $key2 => $art) {
 					$resultadoBusqueda[$key][$key2] = $art;
-					$imagenes[$key2] = $art;
 				}
 			}
-			
+
 			for ($i=0; $i < count($resultadoBusqueda); $i++) { 
 				for ($j=0; $j <count($resultadoBusqueda[$i]) ; $j++) { 
-					$imagen = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
-					$resultadoBusqueda[$i][$j][$j]=$imagen;
+					$imagenes = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
+
+					if($imagenes == null){
+						$resultadoBusqueda[$i][$j][$j]="default.jpg";
+					}else{
+						$resultadoBusqueda[$i][$j][$j]=$imagenes;
+					}
+					var_dump($imagenes);
 				}
 			}
+
 			
 		}
 
