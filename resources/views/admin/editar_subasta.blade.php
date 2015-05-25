@@ -57,7 +57,7 @@
 					<div class="form-group">
 						<div class="form-group">
 							<label>Subastador</label>
-							<select name="localizacion" class="form-control">
+							<select name="subastador_id" class="form-control">
 								<option value="-1">Ninguno asignado</option>
 								@forelse($usuarios as $usuario)
 								@if($usuario['id']==$subasta['subastador_id'])
@@ -73,7 +73,7 @@
 						</div>
 						<div class="form-group">
 							<label>Comprador</label>
-							<select name="localizacion" class="form-control">
+							<select name="comprador_id" class="form-control">
 								<option value="-1">No hay comprador</option>
 								@forelse($usuarios as $usuario)
 								@if($usuario['id']==$subasta['comprador_id'])
@@ -115,7 +115,7 @@
 						</div>
 						<label>Incremento</label>
 						<div class="input-group">
-							<input type="text" name="precio_inicial" class="form-control" value="{{ $subasta['incremento_precio'] }}">
+							<input type="text" name="incremento_precio" class="form-control" value="{{ $subasta['incremento_precio'] }}">
 							<span class="input-group-addon">€</span>
 						</div>
 						<label>Precio Venda</label>

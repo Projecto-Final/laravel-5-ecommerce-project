@@ -158,6 +158,10 @@ class LogedAdminMethods extends Controller {
 		$subasta->subcategoria_id = $subastaUpdate['subcategoria_id'];
 		$subasta->precio_inicial = $subastaUpdate['precio_inicial'];
 		$subasta->precio_venta = $subastaUpdate['precio_venta'];
+		$subasta->incremento_precio = $subastaUpdate['incremento_precio'];
+		$subasta->puja_mayor = $subastaUpdate['puja_mayor'];
+		$subasta->subastador_id = $subastaUpdate['subastador_id'];
+		$subasta->comprador_id = $subastaUpdate['comprador_id'];
 		$subasta->fecha_inicio = $subastaUpdate['fecha_inicio'];
 		$subasta->fecha_final = $subastaUpdate['fecha_final'];
 		$subasta->fecha_venda = $subastaUpdate['fecha_venda'];
@@ -166,7 +170,7 @@ class LogedAdminMethods extends Controller {
 		$subasta->save();
 		
 		//$subasta->delete();
-		//return view('admin.editar_subasta', ['subasta' => $subasta, 'localidades' => $localidades, 'subcategorias' => $subcategorias, 'usuarios' => $usuarios]);
+		return redirect("administracion/subastas/editar/".$idSubasta);
 	}
 
 	/**

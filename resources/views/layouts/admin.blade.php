@@ -274,14 +274,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <small>@yield('descripcion_pagina')</small>
         </h1>
         <ol class="breadcrumb">
-          {{--*/ $segmentos = explode('/', Request::url()) /*--}}
-          @for ($a = 3; $a <= count($segmentos); $a++)
+          {{--*/ 
+          $segmentos = explode('/', Request::url());
+          $url = ""; /*--}}
+          @for ($a = 3; $a < count($segmentos); $a++)
+          {{--*/ 
+          $url .= $segmentos[$a]."/";
+          /*--}}
           @if(count($segmentos)==$a)
           <li class="active">Actual</li>
           @elseif($a==3)
-          <li><a href="{{ url('/'.$segmentos[$a]) }}"><i class="fa fa-dashboard"></i>{{ $segmentos[$a] }}</a></li>
+          <li><a href="{{ url('/'.$url) }}"><i class="fa fa-dashboard"></i>{{ $segmentos[$a] }}</a></li>
           @else
-          <li><a href="{{ url('/'.$segmentos[$a]) }}"></i>{{ $segmentos[$a] }}</a></li>
+          <li><a href="{{ url('/'.$url) }}"></i>{{ $segmentos[$a] }}</a></li>
           @endif
 
           @endfor
