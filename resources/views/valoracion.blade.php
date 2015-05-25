@@ -7,8 +7,34 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-4  col-xs-6 col-sm-6">
-			<h2>Valoracion</h2><br>
+		<div class="col-md-4  col-xs-12 col-sm-6">
+			<div id="datosValorado">
+				<h5>Usuario Valorado</h5>
+				<a href="{{ url('perfil/'.$valorado['id']) }}">
+					<img id="fotoSubastador" src="{{ url('images/profiles/'.$valorado['imagen_perfil']) }}"/>
+				</a>
+				<div>
+					<a href="{{ url('perfil/'.$valorado['id']) }}">
+						<h1>{{$valorado['username']}}</h1>
+					</a>
+					<input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$valorado['reputacion']}}"></input>
+				</div>
+			</div>
+			<div id="datosValidante">
+				<h5>Usuario Validante</h5>
+				<a href="{{ url('perfil/'.$validante['id']) }}">
+					<img id="fotoSubastador" src="{{ url('images/profiles/'.$validante['imagen_perfil']) }}"/>
+				</a>
+				<div>
+					<a href="{{ url('perfil/'.$validante['id']) }}">
+						<h1>{{$validante['username']}}</h1>
+					</a>
+					<input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$validante['reputacion']}}"></input>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4  col-xs-12 col-sm-4">
 			<form action="{{ url('update_valoracion') }}" method="post" enctype="multipart/form-data" id="form-validate">
 				<input type="hidden" name="_method" value="PUT">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">	
@@ -65,37 +91,26 @@
 								</div>
 							</li>
 						</ul>
+						<input type="hidden" name="id" value="{{$val->id}}">
+						<input type='submit' title="Submit" class="button" value="Valora"> 
 					</div>
-					<input type="hidden" name="id" value="{{$val->id}}">
-					<input type='submit' title="Submit" class="button" value="Valora"> 
 				</form>
 			</div>
-			<div class="col-md-8  col-xs-6 col-sm-6">
-				<div id="datosValorado">
-					<h5>Usuario Valorado</h5>
-					<a href="{{ url('perfil/'.$valorado['id']) }}">
-						<img id="fotoSubastador" src="{{ url('images/profiles/'.$valorado['imagen_perfil']) }}"/>
+
+
+			<div class="col-md-3  col-xs-12 col-sm-3">
+				<div id="datosProducto">
+					<h5>Producto</h5>
+					<a href="{{ url('subasta/'.$art['id']) }}">
+						<img id="fotoProducto" src="{{ url('images/subastas/'.$foto['imagen']) }}"/>
 					</a>
 					<div>
-						<a href="{{ url('perfil/'.$valorado['id']) }}">
-							<h1>{{$valorado['username']}}</h1>
+						<a href="{{ url('subasta/'.$art['id']) }}">
+							<h3>{{$art['nombre_producto']}}</h3>
 						</a>
-						<input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$valorado['reputacion']}}"></input>
 					</div>
 				</div>
-				<div id="datosValidante">
-					<h5>Usuario Validante</h5>
-					<a href="{{ url('perfil/'.$validante['id']) }}">
-						<img id="fotoSubastador" src="{{ url('images/profiles/'.$validante['imagen_perfil']) }}"/>
-					</a>
-					<div>
-						<a href="{{ url('perfil/'.$validante['id']) }}">
-							<h1>{{$validante['username']}}</h1>
-						</a>
-						<input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$validante['reputacion']}}"></input>
-					</div>
-				</div>
-			</div>
+			</div><br><br><br>
 		</div>
 	</div>
 	@stop
