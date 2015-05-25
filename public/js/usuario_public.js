@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function perfil(){
 	var id = $("#idUsuario").val();
-	var url = "get_perfil";
+	var url = "perfil";
 	$.get(url,function(data,status){
 		alert(data.username);
 		var txt = "<h3>Información básica</h3>"
@@ -20,7 +20,7 @@ function perfil(){
 
 function ventas(){
 	var id = $("#idUsuario").val();
-	var url = "get_ventas";
+	var url = "../ventas";
 	var txt="";
 	txt+="<h3>Ventas</h3>"
 	txt+='<table class="table table-striped">';
@@ -39,6 +39,7 @@ function ventas(){
 			txt+="<h3>No Hay Ventas Que Mostrar</h3>";
 		}
 		for (var i = 0; i < data[0].length; i++) {
+			alert(data[0][0].nombre_producto);
 			txt+= '<tr class="info">';
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";			
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
@@ -55,7 +56,7 @@ function ventas(){
 }
 function subastas(){
 	var id = $("#idUsuario").val();
-	var url = "get_subastas";
+	var url = "subastas";
 	var txt="";
 	txt += "<h3>Subastas Activas</h3>"
 	txt+='<table class="table table-striped">';
@@ -86,7 +87,7 @@ function subastas(){
 }
 function valoraciones(){
 	var id = $("#idUsuario").val();	
-	var url = "get_valoraciones";
+	var url = "valoraciones";
 	var txt="";
 	txt += "<div class='col-md-8'><h3>Valoraciones</h3>"
 	txt+='<table class="table table-striped">';

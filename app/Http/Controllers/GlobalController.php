@@ -226,7 +226,7 @@ public function get_subastas($id){
 }
 
 // muestra las valoraciones 
-public function get_valoraciones($id){	
+public function valoraciones($id){	
 	$direccion = url('/images/subastas/');
 	$user = Usuario::find($id);
 	$val[0] = $user->valVenta;
@@ -243,13 +243,13 @@ public function get_valoraciones($id){
 	return $val;
 }
 // informacion del perfil usuario
-public function get_perfil($id)
+public function perfil($id)
 {			
 	$user = Usuario::find($id);
 	return view('perfil',['user' => $user]);
 }
 
-public function get_ventas(Request $request){
+public function ventas(Request $request){
 	$submitedArray = $request->all();
 	var_dump($submitedArray);
 	$direccion = url('/images/subastas/');
