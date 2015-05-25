@@ -10,6 +10,7 @@ use DB;
 use Auth;
 use Illuminate\Http\Request;
 use App\Empresa;
+use App\ConfiguracionPuja;
 
 class GlobalController extends Controller {
 
@@ -103,7 +104,7 @@ if (Auth::check())//hay que añadir el ACTIVO
 	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
-	if($user_id==$idArticulo){
+	if($user_id==$articulo->subastador_id){
 		$propietario=true;
 	}else{
 		$propietario=false;
@@ -131,6 +132,7 @@ if($propietario){
 
 	$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
 	$precio_pro = $empresa[0]->precioPorroga;
+	
 	return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
 
 }else{
@@ -261,5 +263,43 @@ public function get_ventas(Request $request){
 	return $ventas;
 }
 
+
+
+public function confPujaSuperada(){
+try {
+	
+	if (Auth::check())
+{   
+	
+	$logueado = true;
+	$user_id = Auth::user()->id;
+	$user = Usuario::find($user_id);
+	$confPS = $user->configPujaSuperada($user_id);	
+	if($confPS==false){
+		return 0;
+
+	}else{
+
+for ($i=0; $i < count($confPS); $i++) { 
+//peta aki
+			$currentConf = ConfiguracionPuja::find($confPS[$i]->id);
+			$articulo[$i] = Articulo::find($confPS[$i]->articulo_id);
+			$currentConf->avisado = 1;
+			$currentConf->save();	
+
+		}	
+
+		return $articulo;
+	}
+}else{
+	return 0;
 }
 
+} catch (Exception $e) {
+	return $e;
+}
+
+
+}
+
+}

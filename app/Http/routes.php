@@ -110,6 +110,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 Route::get('get_allCategories', 'GlobalController@get_allCategories');
 
 Route::get('subasta/{idSubasta}', 'GlobalController@get_selectedSubasta');
+//comprueva si tiene confpuja superadas y avisa
+Route::get('confPujaSuperada', 'GlobalController@confPujaSuperada');
+
 
 /* BUSCAR MEDIANTE FILTRO */
 Route::put('buscar', 'GlobalController@buscar_subastas');

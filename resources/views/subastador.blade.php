@@ -35,18 +35,19 @@
 </div>
 @elseif($subasta['precio_venta'] == 0)
 <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
-<form class="form-inline">
- <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
- <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
- <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
- <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-</form>
+
 <div id="estadoSubasta"> </div>
 Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar("{{url("prorrogar")}}");'>Prorrogar </button> Tiempo prorroga : {{$tiempo_pro}} Dias al Precio de {{$precio_pro}} €"
 
 
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
+  <form class="form-inline">
+ <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
+ <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
+ <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
+ <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
+</form>
 
   @elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
   <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>

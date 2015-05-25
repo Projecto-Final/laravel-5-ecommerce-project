@@ -23,8 +23,9 @@
 	<script src="{{ url('bootstrap-star-rating/js/star-rating.min.js')}} " type="text/javascript"></script>
 
 	<!-- JS PROPIO FUNCIONES PAGINA -->
-	<script src="{{url('js/funciones_globales.js')}}" type="text/javascript"></script>
 	<script src="{{url('js/sistema_notificaciones.js')}}" type="text/javascript"></script>
+	<script src="{{url('js/funciones_globales.js')}}" type="text/javascript"></script>
+	
 	<!-- CSS BOOTSTRAP -->
 	<link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 	<!-- CSS PAGINA -->
@@ -102,6 +103,7 @@
 									<form action="{{ url('buscar')}}"  method="post" class="formulario-busqueda">
 										<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 										<input type="hidden" name="_method" value="PUT">
+										<input type="hidden" id="confPujaSuperada" value="{{url('confPujaSuperada')}}">
 										<input id="eEGG" type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
 										<div class="boton-submit">
 											<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>

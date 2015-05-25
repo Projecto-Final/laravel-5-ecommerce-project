@@ -18,7 +18,7 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['username', 'email', 'password', 'nombre', 'apellido', 'imagen_perfil', 'imagen_background'];
+	protected $fillable = ['username', 'email', 'password', 'nombre', 'apellido', 'imagen_perfil', 'imagen_background','avisado'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -99,6 +99,21 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		}else{
 			return $lPuja;
 		}
+		
+	}
+//devuelve las ConfpujasQUe devan avisar al usuario
+	public function configPujaSuperada($pujador_id){
+
+		//$ConfiguracionPuja = DB::table('configuracion_pujas')->where('articulo_id', '=', $articulo_id)->where ('usuario_id','=', $this->id)->where ('cancelada','=', 0)->where ('superada','=', 0)->get();
+		$ConfiguracionPuja = DB::table('configuracion_pujas')->where ('usuario_id','=', $pujador_id)->where ('cancelada','=', 0)->where ('superada','=', 1)->where ('avisado','=', 0)->get();
+
+		if($ConfiguracionPuja==null){
+			return false;
+		}else{
+			
+			return $ConfiguracionPuja;
+		}
+		
 		
 	}
 }

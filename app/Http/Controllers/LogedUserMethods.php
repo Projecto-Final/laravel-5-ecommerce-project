@@ -336,7 +336,7 @@ class LogedUserMethods extends Controller {
 			'username' => 'required|alpha_num',
 			'direccion' => 'required|String',
 			'email' => 'required|email',
-		]);
+			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
 		}
@@ -356,7 +356,7 @@ class LogedUserMethods extends Controller {
 			'password_old' => 'required|String',
 			'password' => 'required|String',
 			'password_confirmation' => 'required|String',
-		]);
+			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
 		}
@@ -712,7 +712,12 @@ public function todasPujas(Request $request){
 			$data[1][$i] = $pujas[$i]->usuario;
 
 		}
-		return $data;
+		if(isset($data)){
+			return $data;
+		}else{
+			return 0;
+		}
+		
 
 	}catch (Exception $e) {
 		return $e;
