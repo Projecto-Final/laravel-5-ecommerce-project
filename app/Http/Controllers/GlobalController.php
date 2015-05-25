@@ -162,6 +162,16 @@ public function buscar_subastas(Request $request)
 
 	$resultadoBusqueda = []; /* SE ENVIAN LOS DATOS A LA VIEW MEDIANTE ARRAY*/
 
+	if (isset($urlParams['filtrar_usuario'])) {
+		if ($urlParams['buscar'] == ""){
+			$users = Usuario::where("permisos","=", 0)->get();
+			return view('resultado_busqueda_usuario',['usuarios' => $users]);
+		}else{
+			$users = Usuario::whereRaw("username like '".$urlParams['buscar']."%' and permisos = 0")->get();
+			return view('resultado_busqueda_usuario',['usuarios' => $users]);
+		} 
+	}
+
 
 		// Controlamos si hay algun parametro categoria.
 	if (isset($urlParams['categoria'])) {
