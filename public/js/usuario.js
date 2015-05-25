@@ -24,7 +24,7 @@ function perfil(){
 		+"<p>Apellidos :</p>"+data.apellido
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
-		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at+"</div>"
+		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at)+"</div>"
 		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
@@ -101,10 +101,10 @@ function compras(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";						
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
-			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_inicio)+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_final)+"</td>";
 			txt +="<td>"+data[0][i].precio_inicial+"</td>";
-			txt +="<td>"+data[0][i].fecha_venda+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_venda)+"</td>";
 			txt +="<td>"+data[0][i].precio_venta+"</td></tr>";
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'>Ver la compra <br></span></a></td>";			
 		};
@@ -136,10 +136,10 @@ function ventas(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";			
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
-			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_inicio)+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_final)+"</td>";
 			txt +="<td>"+data[0][i].precio_inicial+"</td>";
-			txt +="<td>"+data[0][i].fecha_venda+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_venda)+"</td>";
 			txt +="<td>"+data[0][i].precio_venta+"</td></tr>";
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";			
 		};
@@ -177,7 +177,7 @@ function confPuj(){
 			}else if(data[0][i].superada == 0){
 				txt +="<td>No Superada</td>";
 			}
-			txt +="<td>"+data[0][i].fecha_config+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_config)+"</td>";
 			if(data[1][i].precio_venta == -1){
 				txt +="<td>Activa</td></tr>";
 			}else if(data[1][i].precio_venta != -1){
@@ -214,7 +214,7 @@ function pujas(){
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
 				if(data[3][i]!=null){
 					txt +="<td> Puja Realizada Automaticamente</td>";
-					txt +="<td>"+data[3][i].fecha_config+"</td>";
+					txt +="<td>"+formatoFecha(data[3][i].fecha_config)+"</td>";
 				}else{
 					txt+="<td>Manual</td>";
 				}
@@ -223,7 +223,7 @@ function pujas(){
 				}else if(data[0][i].superada == 0){
 					txt +="<td>Puja En Cabeza</td>";
 				}
-				txt +="<td>"+data[0][i].fecha_puja+"</td></tr>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td></tr>";
 			}
 		};
 		if(vac==true){
@@ -258,11 +258,11 @@ function pujasI(){
 				txt +="<td>"+data[0][i].cantidad+"</td>";			
 				if(data[3][i]!=null){
 					txt +="<td> Puja Realizada Automaticamente</td>";
-					txt +="<td>"+data[3][i].fecha_config+"</td>";
+					txt +="<td>"+formatoFecha(data[3][i].fecha_config)+"</td>";
 				}else{
 					txt+="<td>Manual</td>";
 				}
-				txt +="<td>"+data[0][i].fecha_puja+"</td></tr>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td></tr>";
 				
 			}
 		}
@@ -297,8 +297,8 @@ function subastas(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";						
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
-			txt +="<td>"+data[0][i].fecha_final+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_inicio)+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_final)+"</td>";
 			txt +="<td>"+data[0][i].precio_inicial+"</td>";
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
@@ -330,8 +330,8 @@ function subastasI(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='subasta/"+data[0][i].id+"'><img style='width:150px;' src='"+data[1][i]+"'/></a></td>";									
 			txt +="<td>"+data[0][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].fecha_inicio+"</td>";
-			txt +="<td>"+data[0][i].fecha_final+"</td>";			
+			txt +="<td>"+formatoFecha(data[0][i].fecha_inicio)+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha_final)+"</td>";			
 			if(data[i].precio_venta==0){
 				txt +="<td>No Vendido</td>";
 			}else{
@@ -369,7 +369,7 @@ function valoraciones(){
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
 			txt +="<td>"+data[0][i].texto+"</td>";
-			txt +="<td>"+data[0][i].fecha+"</td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
 			txt +="</tr>";
 		};
 		txt+="</table></div>";
@@ -397,7 +397,7 @@ function valoracionesPendientes(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='subasta/"+data[3][i].id+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
+			txt +="<td><a href='usuario/valoracion/"+data[3][i].id+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[2][i]+"</td>";
 			txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
@@ -420,7 +420,7 @@ function editarP(){
 		+"<p>Apellidos :</p>"+data.apellido
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
-		+"<p>Fecha de creación de la cuenta :</p>"+data.created_at;
+		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at);
 		$(".contact-info").html(txt);
 	});
 }	

@@ -15,6 +15,7 @@ function interruptor_visibilidad(estado){
 	}
 }
 
+
 function confPujaSuperada(){
 	var url = $("#confPujaSuperada").val();
 
@@ -30,5 +31,11 @@ function confPujaSuperada(){
 
 	});
 
-	
+	}
+
+function formatoFecha(fecha){
+	var dateAr = fecha.split(' ');
+	var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
+	return newDate;
+
 }

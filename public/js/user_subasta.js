@@ -10,11 +10,10 @@ $(document).ready(function(){
 	}
 	//ultimaPuja();
 	
-	
 });
 var cont=0;
 function prorrogar(url){
-	
+	var url =$("#prorrogar").val();
 	var id_subasta = $("#subastaId").val();
 
 	$.get(url,{
@@ -25,9 +24,7 @@ function prorrogar(url){
 		comprovarEstado();
 
 	});
-
 }
-
 
 function aceptarPuja(url){
 	
@@ -54,6 +51,7 @@ function cargarTP(){
 	
 	var url = $("#todasPujas").val();
 	var id_subasta = $("#subastaId").val();
+
 
 	var estado = $("#TPujas").css("display");
 	
@@ -85,6 +83,8 @@ function cargarTP(){
 					}
 
 				}
+				txt+="</table>"
+
 
 				txt+="</table>"
 				$("#TPujas").slideDown(800);
@@ -96,7 +96,7 @@ function cargarTP(){
 			}
 		});
 	}else{
-$("#TPujas").slideUp(800);
+		$("#TPujas").slideUp(800);
 	}
 }
 
@@ -105,8 +105,6 @@ function comprovarEstado(){
 
 	var url = $("#comprovarEstado").val();
 	var id_subasta = $("#subastaId").val();
-
-
 
 	$.get(url,{
 		id_subasta: id_subasta
@@ -122,6 +120,7 @@ function comprovarEstado(){
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
 
+
 //como ya esta caducada chuto intervalos
 
 //esto lo peta
@@ -136,36 +135,31 @@ function comprovarEstado(){
 }).fail(function(data){
 	
 });	
-}
 
-
-function recargarPrecios(){
-	
-	var url = $("#cargarPrecio").val();
-	var id_subasta = $("#subastaId").val();
-
-	$.get(url,{
-		id_subasta: id_subasta
-	})
-	.done(function(data) {
-
-
-		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
+		
+		}
 
 
 
-		$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
+		function recargarPrecios(){
 
-		$("#tdPrecio").html(data[0]['puja_mayor']+"€");
+			var url = $("#cargarPrecio").val();
+			var id_subasta = $("#subastaId").val();
 
+			$.get(url,{
+				id_subasta: id_subasta
+			})
+			.done(function(data) {
+				var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
+
+
+
+
+				$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
+				$("#tdPrecio").html(data[0]['puja_mayor']+"€");
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
-
 		$("#contPujas").html("Nº Pujas :<br>"+aux);
-
-
-
 	});
-
-}
+		}
