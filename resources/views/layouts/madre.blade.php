@@ -36,6 +36,7 @@
 	<!-- Visual Extras CSS -->
 	<link href="{{ url('css/shake.css') }}" rel="stylesheet">
 	<link href="{{ url('css/sistema_notificaciones.css') }}" rel="stylesheet">
+	<script src="{{ url('bootbox/bootbox.min.js') }}"></script>
 
 
 	@yield('extclases')

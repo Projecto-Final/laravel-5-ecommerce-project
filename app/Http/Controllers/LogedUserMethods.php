@@ -856,9 +856,14 @@ public function prorrogar(Request $request){
 		$articulo->precio_venta = -1;
 		$articulo->fecha_final = $nuevaFecha;
 		$articulo->save();
+		Factura::create([
+			'usuario_id' => $articulo->subastador_id,
+			'nif' => $submitedArray['nif'],
+			'cantidad_pagada' => $empresa->precioPorroga,
+			'fecha' => Carbon::now(),
+		]);
 	} catch (Exception $e) {
 		return $e;
 	}
 }
-
 }

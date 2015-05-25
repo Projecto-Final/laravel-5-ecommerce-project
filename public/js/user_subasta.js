@@ -16,6 +16,14 @@ function prorrogar(url){
 	var url =$("#prorrogar").val();
 	var id_subasta = $("#subastaId").val();
 
+	bootbox.prompt("What is your name?", function(result) {                
+		if (result === null) {                                             
+			Example.show("Prompt dismissed");                              
+		} else {
+			Example.show("Hi <b>"+result+"</b>");                          
+		}
+	});
+
 	$.get(url,{
 		id_subasta: id_subasta
 	})
@@ -138,30 +146,30 @@ function comprovarEstado(){
 	
 });	
 
-		
-		}
+
+}
 
 
 
-		function recargarPrecios(){
+function recargarPrecios(){
 
-			var url = $("#cargarPrecio").val();
-			var id_subasta = $("#subastaId").val();
+	var url = $("#cargarPrecio").val();
+	var id_subasta = $("#subastaId").val();
 
-			$.get(url,{
-				id_subasta: id_subasta
-			})
-			.done(function(data) {
-				var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
-
-
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
 
 
-				$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
-				$("#tdPrecio").html(data[0]['puja_mayor']+"€");
+
+
+		$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
+		$("#tdPrecio").html(data[0]['puja_mayor']+"€");
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
 		$("#contPujas").html("Nº Pujas :<br>"+aux);
 	});
-		}
+}

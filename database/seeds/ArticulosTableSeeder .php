@@ -92,8 +92,7 @@ class ArticulosTableSeeder extends Seeder {
 					'subastador_id' => rand(2,10),
 					'subcategoria_id' => rand(2,5),
 					'comprador_id' => -1
-				]);
+			]);
 		}
-		
 	}
 }
