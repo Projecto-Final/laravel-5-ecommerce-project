@@ -5,10 +5,11 @@ $(document).ready(function(){
 	if(cargarP!="no"){
 		comprovarEstado();
 		var comprovarEstadoInt =setInterval(comprovarEstado,7000);
-		recargarPrecios();
-		var recargarPreciosInt =setInterval(recargarPreciosInt,7000);
+		
 	}
 	//ultimaPuja();
+		recargarPrecios();
+		var recargarPreciosInt =setInterval(recargarPreciosInt,7000);
 	
 });
 var cont=0;
