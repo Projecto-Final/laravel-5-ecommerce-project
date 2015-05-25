@@ -777,9 +777,12 @@ public function comprovarEstado(Request $request){
 public function valoracion($id){
 	$val = Valoracion::find($id);
 	$art = Articulo::find($val->articulo_id);
+	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
-	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante);
+
+	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+
 	return view('valoracion',$data);
 }
 
