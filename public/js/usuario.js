@@ -382,7 +382,7 @@ function valoraciones(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='valoracion/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
+			txt +="<td><a href='valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
 			txt +="<td>"+data[0][i].texto+"</td>";
@@ -426,9 +426,7 @@ function valoracionesPendientes(){
 				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 				txt +="</tr>";
 			};
-			txt+="</table></div>";
-			txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-			+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+			txt+="</table>";
 			$(".contact-info").html(txt);
 		}else{
 			txt+="</table>";
