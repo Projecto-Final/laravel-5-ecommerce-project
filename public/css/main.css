@@ -251,7 +251,7 @@ INFORMACION CLIENTES
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   margin-bottom: 20px;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #B5B5B5;
 }
 .contenedor-informacion-clientes .item i, .contenedor-informacion-clientes  .item i {
   margin-right: 10px;
@@ -472,8 +472,8 @@ SUBASTAS POR CATEGORIAS
   background-color: #fff;
 }
 .products-grid {
-  border-left: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
+  border-left: 1px solid #B5B5B5;
+  border-bottom: 1px solid #B5B5B5;
 }
 .mas {
   border: 1px solid #eaeaea;
@@ -870,4 +870,20 @@ ul.form-list, ul.tags-list {
 }
 .contenedor-subastas > .vacio {
   padding: 30px;
+}
+
+/* ESTILOS CONTACTO */
+.contacto {
+  background-color: #fff;
+  padding:20px 10px;
+  padding-bottom: 40px;
+  margin-bottom:20px;
+}
+
+/* ESTILOS POLITICA PRIV */
+.pprivacidad {
+  background-color: #fff;
+  padding:20px 10px;
+  padding-bottom: 40px;
+  margin-bottom:20px;
 }
