@@ -22,7 +22,7 @@ function prorrogar(url){
 				nif: result
 			})
 			.done(function(data) {
-				notifications("notificacion", "Subasta Prorrogada", "");
+				bootbox.alert("Subasta Prorrogada");
 				var id_subasta = $("#subastaId").val();
 				var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
   textaco += '<div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>';
