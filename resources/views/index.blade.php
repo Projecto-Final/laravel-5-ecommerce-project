@@ -64,9 +64,9 @@
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
-            {{--*/ $smartCount = 1; /*--}}
+            {{--*/ $smartCount = 0; /*--}}
             @for($i = 0; $i < count($subastas); $i++)
-            @if($smartCount==1)
+            @if($smartCount==0)
             <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}" class="active"></li>
             @else
             <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}"></li>
@@ -78,9 +78,9 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-            {{--*/ $smartCount = 1; /*--}}
+            {{--*/ $smartCount = 0; /*--}}
             @forelse($subastas as $contador => $subasta)
-            @if($smartCount==1)
+            @if($smartCount==0)
             <a class="item category-bids active" href="{{ url('subasta/'.$subasta[0]['id'])}}">
               <div class="image-art" style="background-image: url('{{ url('images/subastas/'.$subasta[1])}}');"></div>
               <div class="description">
