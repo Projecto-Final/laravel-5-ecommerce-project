@@ -325,6 +325,7 @@
 			<script src="{{url('js/bootstrap.min.js')}}"></script>
 			<script src="{{url('js/malign/easter/egg.js')}}"></script>
 			<script>
+			
 											// Script pro rellenar dropdown!
 											$.getJSON("{{ url('get_allCategories') }}", function(result){
 												var scatm = "";

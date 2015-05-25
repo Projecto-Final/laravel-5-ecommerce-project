@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Empresa;
 use App\ConfiguracionPuja;
+use App\Localidad;
 
 class GlobalController extends Controller {
 
@@ -40,6 +41,17 @@ class GlobalController extends Controller {
 	public function get_allSubCategories()
 	{
 		return $data = Subcategoria::all();
+	}
+
+
+	/**
+	 * OBTENER TODAS LAS LOCALIDADES
+	 * 
+	 * @return Response
+	 */
+	public function get_localidades()
+	{
+		return $data = Localidad::all();
 	}
 
 	/**

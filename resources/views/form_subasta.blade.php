@@ -51,77 +51,88 @@
                       <div class="field ">
                         <label for="localizacion" class="required"><em>*</em>Localización</label>
                         <div class="input-box">
-                          <input type="text" id="localizacion" name="localizacion" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <select id="localizacion" value="" title="Nombre" name="localizacion" maxlength="255" class="input-text required-entry">
+                            <option value="">Cargando...</option>
+                          </select>
                           <span class='errorJS' id='localizacion_error'>&nbsp;Campo obligatorio</span></td>
                         </div>
                       </div>
-                      <div class="field ">
-                        <label for="estado" class="required"><em>*</em>Estado</label>
-                        <div class="input-box">
-                          <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                          <span class='errorJS' id='estado_error'>&nbsp;Campo obligatorio</span></td>
-                        </div>
+                      <script>
+                              // Script pro rellenar dropdown!
+                              $.getJSON("{{ url('get_localidades') }}", function(result){
+                                var scatm = "";
+                                $.each(result, function(i, field){
+                                  scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+                                });
+                                $(".field select#localizacion").html(scatm);
+                              });
+                              </script>
+                              <div class="field ">
+                                <label for="estado" class="required"><em>*</em>Estado</label>
+                                <div class="input-box">
+                                  <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                                  <span class='errorJS' id='estado_error'>&nbsp;Campo obligatorio</span></td>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="form-list">
+                          <li class="fields">
+                            <div class="customer-name">
+                              <div class="field ">
+                                <label for="descripcion" class="required"><em>*</em>Descripción</label>
+                                <div class="input-box">
+                                  <textarea id="descripcion" name="descripcion" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="descarticulo"> </textarea>
+                                  <span class='errorJS' id='descripcion_error'>&nbsp;Campo obligatorio</span></td>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="form-list">
-                  <li class="fields">
-                    <div class="customer-name">
-                      <div class="field ">
-                        <label for="descripcion" class="required"><em>*</em>Descripción</label>
-                        <div class="input-box">
-                          <textarea id="descripcion" name="descripcion" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="descarticulo"> </textarea>
-                          <span class='errorJS' id='descripcion_error'>&nbsp;Campo obligatorio</span></td>
-                        </div>
+                      <div class="fieldset">
+                        <input type="hidden" name="success_url" value="">
+                        <input type="hidden" name="error_url" value="">
+                        <h2 class="legend">Imagenes Articulo</h2>
+                        <ul class="form-list">
+                          <li class="fields">
+                            <div class="customer-name">
+                              <div class="field ">
+                                <label for="email" class="control-label">IMAGENES</label>
+                                <div id="img_container">
+                                  <input type="file" id="imgart_1" class="cnt" name="images[0]"> <BR>
+                                </div>
+
+                                <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
+                                <script>
+                                $("#masImagenes").click(function() {
+                                  if($(".cnt").length < 6){
+                                    var addto = "#imgart_"+$(".cnt").length;
+                                    $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">');
+                                  }
+                                });
+                                </script>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="fieldset">
-                <input type="hidden" name="success_url" value="">
-                <input type="hidden" name="error_url" value="">
-                <h2 class="legend">Imagenes Articulo</h2>
-                <ul class="form-list">
-                  <li class="fields">
-                    <div class="customer-name">
-                      <div class="field ">
-                        <label for="email" class="control-label">IMAGENES</label>
-                        <div id="img_container">
-                          <input type="file" id="imgart_1" class="cnt" name="images[0]"> <BR>
-                        </div>
-                        
-                        <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-cloud-upload"></i> SUBIR IMAGENES</button>
-                        <script>
-                          $("#masImagenes").click(function() {
-                            if($(".cnt").length < 6){
-                              var addto = "#imgart_"+$(".cnt").length;
-                              $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">');
-                            }
-                          });
-                        </script>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="fieldset">
-                <input type="hidden" name="success_url" value="">
-                <input type="hidden" name="error_url" value="">
-                <h2 class="legend">Configuracion</h2>
-                <ul class="form-list">
-                  <li class="fields">
-                    <div class="customer-name">
-                      <div class="field">
-                        <label for="categoria" class="required"><em>*</em>Categoria</label>
-                        <div class="input-box">
-                         <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
-                          <option value="">Cargando...</option>
-                        </select>
-                        <span class='errorJS' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
-                        <script>
+                      <div class="fieldset">
+                        <input type="hidden" name="success_url" value="">
+                        <input type="hidden" name="error_url" value="">
+                        <h2 class="legend">Configuracion</h2>
+                        <ul class="form-list">
+                          <li class="fields">
+                            <div class="customer-name">
+                              <div class="field">
+                                <label for="categoria" class="required"><em>*</em>Categoria</label>
+                                <div class="input-box">
+                                 <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
+                                  <option value="">Cargando...</option>
+                                </select>
+                                <span class='errorJS' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
+                                <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_allCategories') }}", function(result){
                                 var scatm = "";
@@ -130,18 +141,18 @@
                                 });
                                 $(".field select#categoria").html(scatm);
                               });
-                            </script>
+                              </script>
+                            </div>
                           </div>
-                        </div>
-                        <div class="field ">
-                          <label for="subcategoria" class="required"><em>*</em>Sub-Categoria</label>
-                          <div class="input-box">
-                           <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" name="sel_subcategroia" maxlength="255" class="input-text required-entry">
-                            <option value="">Seleccione una categoria.</option>
-                          </select>
-                          <span class='errorJS' id='sel_subcategroia_error'>&nbsp;Debes escojer una</span></td>
-                          <div id="descriptext" class="input-box"></div>
-                          <script>
+                          <div class="field ">
+                            <label for="subcategoria" class="required"><em>*</em>Sub-Categoria</label>
+                            <div class="input-box">
+                             <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" name="sel_subcategroia" maxlength="255" class="input-text required-entry">
+                              <option value="">Seleccione una categoria.</option>
+                            </select>
+                            <span class='errorJS' id='sel_subcategroia_error'>&nbsp;Debes escojer una</span></td>
+                            <div id="descriptext" class="input-box"></div>
+                            <script>
                               // Script pro rellenar dropdown!
                               $(".field select#categoria").change(function() {
                                 var aux = "{{ url('get_allSubCategoriesOnCategory') }}/"+$(".field select#categoria").val();
@@ -161,41 +172,41 @@
                                 });
 
                               });
-                            </script>
+                              </script>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="form-list">
-                    <li class="fields">
-                      <div class="customer-name">
-                        <div class="field ">
-                          <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
-                          <div class="input-box">
-                            <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                            <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span></td>
+                      </li>
+                    </ul>
+                    <ul class="form-list">
+                      <li class="fields">
+                        <div class="customer-name">
+                          <div class="field ">
+                            <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
+                            <div class="input-box">
+                              <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                              <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span></td>
+                            </div>
                           </div>
-                        </div>
-                        <div class="field ">
-                          <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
-                          <div class="input-box">
-                            <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                            <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>                          </div>
-                        </div>
-                         <div class="field ">
-                          <label >Tu puja acabará :</label>
-                          <div class="input-box">
-                         
-                                                      
-                             <input type="text" id="fechafin" name="fechafin" value="<?php $dateAr = explode(' ',$fecha_final);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>" title="Nombre" maxlength="255" readonly>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  </div>
-                  <div class="buttons-set">
+                          <div class="field ">
+                            <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
+                            <div class="input-box">
+                              <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                              <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>                          </div>
+                            </div>
+                            <div class="field ">
+                              <label >Tu puja acabará :</label>
+                              <div class="input-box">
+
+
+                               <input type="text" id="fechafin" name="fechafin" value="<?php $dateAr = explode(' ',$fecha_final);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>" title="Nombre" maxlength="255" readonly>
+                             </div>
+                           </div>
+                         </div>
+                       </li>
+                     </ul>
+                   </div>
+                   <div class="buttons-set">
                     <p class="required">* Campos requeridos</p>
                     <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
                     <!--     <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button> -->
