@@ -50,7 +50,7 @@ function aceptarPuja(url){
 			id_subasta: id_subasta
 		})
 		.done(function(data) {
-			notifications("notificacion", "Felicidades por tu venta!", "");
+			bootbox.alert("Felicidades por tu venta!");
 			comprovarEstado();
 		});
 	}
