@@ -225,7 +225,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="sidebar-menu">
           <li class="treeview">
             <a href=""><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu" style="display: block;">
+            <ul class="treeview-menu"  style='display: block;'>
               <li><a href="{{ url('administracion') }}">Backend</a></li>  
               <li><a href="{{ url('') }}">Frontend</a></li>
               <li><a href="{{ url('administracion/estadisticas') }}">Estadísticas</a></li>
@@ -245,6 +245,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="treeview">
             <a href="{{ url('administracion/subcategorias') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
+          </li>
+          <li class="treeview">
+            <a href="{{ url('administracion/facturas') }}"><i class="fa fa-credit-card"></i> <span>Facturas</span> </a>
           </li>
           <li class="treeview">
             <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>

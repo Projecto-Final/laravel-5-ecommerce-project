@@ -95,6 +95,12 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@editar_subcategoria');
 	Route::put('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@guardar_subcategoria');
 	Route::get('administracion/subcategorias/eliminar/{idSubcategoria}', 'LogedAdminMethods@eliminar_subcategoria');
+
+	// Facturas
+	Route::get('administracion/facturas', 'LogedAdminMethods@subcategorias');
+	Route::get('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@editar_factura');
+	Route::put('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@guardar_factura');
+	Route::get('administracion/facturas/eliminar/{idFactura}', 'LogedAdminMethods@eliminar_factura');
 	
 	// Configuracion Empresa/Pagina
 	Route::get('administracion/configuracion', 'LogedAdminMethods@configuracion');
