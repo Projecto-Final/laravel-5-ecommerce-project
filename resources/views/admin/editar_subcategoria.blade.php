@@ -13,6 +13,7 @@
 
 
 @section('contenido')
+
 <div class="row">
 	<div class="col-md-6">
 		<!-- general form elements disabled -->

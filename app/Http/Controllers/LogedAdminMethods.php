@@ -304,7 +304,6 @@ class LogedAdminMethods extends Controller {
 	{
 		$categoriaActualizada = $request->all();
 		$categoria = Categoria::find($idCategoria);
-		
 		$categoria->nombre = $categoriaActualizada['nombre'];
 		$categoria->descripcion = $categoriaActualizada['descripcion'];
 		$categoria->save();
