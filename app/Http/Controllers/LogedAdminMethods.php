@@ -309,7 +309,6 @@ class LogedAdminMethods extends Controller {
 		$categoria->descripcion = $categoriaActualizada['descripcion'];
 		$categoria->save();
 
-
 		return redirect("administracion/categorias/editar/".$idCategoria);
 	}
 
