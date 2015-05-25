@@ -865,7 +865,7 @@ public function aceptarUltimaP(Request $request){
 			$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
 			$articulo->precio_venta = -1;
 			$articulo->fecha_final = $nuevaFecha;
-			//$articulo->save();
+			$articulo->save();
 			Factura::create([
 				'usuario_id' => $articulo->subastador_id,
 				'nif' => $submitedArray['nif'],
