@@ -334,4 +334,45 @@ public function ultimaPuja(Request $request){
 	
 }
 
+
+public function todasPujas(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+		$pujas = $articulo->pujas;
+
+
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
+			$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
+			$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
+		}
+		if(isset($data)){
+			return $data;
+		}else{
+			return 0;
+		}
+		
+
+	}catch (Exception $e) {
+		return $e;
+
+		if($pujas==null){
+			return 0;
+		}
+		for ($i=0; $i < count($pujas); $i++) {
+			$data[0][$i] = $pujas[$i];
+			$data[1][$i] = $pujas[$i]->usuario;
+			$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
+			$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
+		}
+		return $data;
+		
+	}catch (Exception $e) {
+		return $e;
+	}
+}
+
+
 }

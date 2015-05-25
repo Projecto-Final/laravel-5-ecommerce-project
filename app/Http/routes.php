@@ -154,9 +154,8 @@ Route::get('pujasAutom', 'LogedUserMethods@pujasAutom');
 Route::get('ultimaPuja', 'LogedUserMethods@ultimaPuja');
 
 //carga todasPujas logued user
-Route::get('todasPujas', 'LogedUserMethods@todasPujas');
-//carga todasPujas sin login
-Route::get('todasPujasGuest', 'GuestUserMethods@todasPujasGuest');
+Route::get('todasPujas', 'GlobalController@todasPujas');
+
 //comprueva estado subasta vendido etc
 Route::get('comprovarEstado', 'LogedUserMethods@comprovarEstado');
 // lo mismo
