@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	perfil();
+
 	$("#close_pop_perfil").click(function(){
 		$("#confPerfil").fadeOut(500);
 	});
@@ -29,7 +30,6 @@ function perfil(){
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
 	});
-	get_Pendientes();
 }	
 
 
@@ -515,7 +515,7 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 		perfil();
 	})
 	.fail(function(data){
-		notifications("advertencia", "Mal introducida la contraseña vieja ", "");
+		notifications("error", "Mal introducida la contraseña vieja ", "");
 		//alert("Mal introducida la contraseña vieja");
 	})
 	.error(function(data){
@@ -536,14 +536,4 @@ function guardarCambios(){
 function aparencia(){
 	$(".contact-info").hide();	
 	$(".aparencia").show();	
-}
-
-
-function get_Pendientes(){
-	var url = "usuario/get_Pendientes";
-	$.get(url,function(data,status){
-		if(data != 0){
-			alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
-		}
-	});
 }
