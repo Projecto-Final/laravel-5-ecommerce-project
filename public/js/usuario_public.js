@@ -94,11 +94,14 @@ function subastas(){
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
-	});
-
-
-
+	}).error(function(data){
+		txt+="</table>"
+		txt+="<h3>No Hay Subastas Activas</h3>";
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});	
 }
+
 function valoraciones(){
 	var id = $("#idUsuario").val();	
 	var url = "../valoraciones";

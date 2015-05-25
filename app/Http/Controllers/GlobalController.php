@@ -97,7 +97,7 @@ class GlobalController extends Controller {
 		$articulo = Articulo::find($idArticulo);
 
 
-$propietario=false;
+		$propietario=false;
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {   
@@ -219,19 +219,25 @@ public function buscar_subastas(Request $request)
 
 // Funciones para ver el perfil de otro usuario
 //muestra las subasta que tiene
-public function get_subastas($id){
+public function subastas(Request $request){
+	$submitedArray = $request->all();	
 	$direccion = url('/images/subastas/');
-	$subastas[0] = Usuario::find($id)->articulos()->where('precio_venta','=', -1)->get();
-	for ($i=0; $i < count($subastas[0]); $i++) { 
-		$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+	$subastas[0] = Usuario::find($submitedArray['id'])->articulos()->where('precio_venta','=', -1)->get();
+	if(count($subastas) != 0){
+		for ($i=0; $i < count($subastas[0]); $i++) { 
+			if($subastas[0][$i]->imagenes[0]->imagen == ""){
+				$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
+			}
+		}
 	}
 	return $subastas;
 }
 
 // muestra las valoraciones 
-public function get_valoraciones($id){	
+public function valoraciones(Request $request){	
+	$submitedArray = $request->all();
 	$direccion = url('/images/subastas/');
-	$user = Usuario::find($id);
+	$user = Usuario::find($submitedArray['id']);
 	$val[0] = $user->valVenta;
 	$j = 0;
 	for ($i=0; $i < count($val[0]); $i++) { 
@@ -246,59 +252,65 @@ public function get_valoraciones($id){
 	return $val;
 }
 // informacion del perfil usuario
-public function get_perfil($id)
+public function perfil($id)
 {			
 	$user = Usuario::find($id);
 	return view('perfil',['user' => $user]);
 }
 
-public function get_ventas(Request $request){
+public function coger_perfil(Request $request)
+{			
 	$submitedArray = $request->all();
-	var_dump($submitedArray);
+	$user = Usuario::find($submitedArray['id']);
+	return $user;
+}
+
+
+public function ventas(Request $request){
+	$submitedArray = $request->all();
 	$direccion = url('/images/subastas/');
 	$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
 	for ($i=0; $i < count($ventas[0]); $i++) { 
 		$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
 	}
-	var_dump($ventas);
 	return $ventas;
 }
 
 
 
 public function confPujaSuperada(){
-try {
-	
-	if (Auth::check())
-{   
-	
-	$logueado = true;
-	$user_id = Auth::user()->id;
-	$user = Usuario::find($user_id);
-	$confPS = $user->configPujaSuperada($user_id);	
-	if($confPS==false){
-		return 0;
+	try {
 
-	}else{
+		if (Auth::check())
+		{   
 
-for ($i=0; $i < count($confPS); $i++) { 
+			$logueado = true;
+			$user_id = Auth::user()->id;
+			$user = Usuario::find($user_id);
+			$confPS = $user->configPujaSuperada($user_id);	
+			if($confPS==false){
+				return 0;
+
+			}else{
+
+				for ($i=0; $i < count($confPS); $i++) { 
 //peta aki
-			$currentConf = ConfiguracionPuja::find($confPS[$i]->id);
-			$articulo[$i] = Articulo::find($confPS[$i]->articulo_id);
-			$currentConf->avisado = 1;
-			$currentConf->save();	
+					$currentConf = ConfiguracionPuja::find($confPS[$i]->id);
+					$articulo[$i] = Articulo::find($confPS[$i]->articulo_id);
+					$currentConf->avisado = 1;
+					$currentConf->save();	
 
-		}	
+				}	
 
-		return $articulo;
+				return $articulo;
+			}
+		}else{
+			return 0;
+		}
+
+	} catch (Exception $e) {
+		return $e;
 	}
-}else{
-	return 0;
-}
-
-} catch (Exception $e) {
-	return $e;
-}
 
 
 }

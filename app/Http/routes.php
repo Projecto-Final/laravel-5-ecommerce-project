@@ -221,7 +221,8 @@ Route::get('usuario/get_Pendientes', 'LogedUserMethods@get_Pendientes');
 
 /////Others Perfil usuario
 
-Route::get('perfil/{idUsuario}', 'GlobalController@get_perfil');
-Route::get('perfil/get_subastas', 'GlobalController@get_subastas');
-Route::get('perfil/get_valoraciones', 'GlobalController@get_valoraciones');
-Route::get('perfil/get_ventas', 'GlobalController@get_ventas');
+Route::get('perfil/{idUsuario}', 'GlobalController@perfil');
+Route::get('subastas', 'GlobalController@subastas');
+Route::get('valoraciones', 'GlobalController@valoraciones');
+Route::get('ventas', 'GlobalController@ventas');
+Route::get('coger_perfil', 'GlobalController@coger_perfil');

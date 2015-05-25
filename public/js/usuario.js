@@ -160,33 +160,38 @@ function confPuj(){
 	txt +="<th>Fecha Configuracion</th>";
 	txt +="<th>Estado Subasta</th></tr></thead>";
 	$.get(url,function(data,status){
-		
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Configuradas Que Mostrar</h3>";
 
-		}
-		for (var i = 0; i < data[0].length; i++) {
-			txt+= '<tr class="info">';
-			txt +="<td><a href='subasta/"+data[1][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";			
-			txt +="<td>"+data[1][i].nombre_producto+"</td>";
-			txt +="<td>"+data[0][i].puja_maxima+"</td>";			
+		}else{
+			for (var i = 0; i < data[0].length; i++) {
+				txt+= '<tr class="info">';
+				txt +="<td><a href='subasta/"+data[1][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";			
+				txt +="<td>"+data[1][i].nombre_producto+"</td>";
+				txt +="<td>"+data[0][i].puja_maxima+"</td>";			
 
-			if(data[0][i].superada == 1){
-				txt +="<td>Superada</td>";
-			}else if(data[0][i].superada == 0){
-				txt +="<td>No Superada</td>";
-			}
-			txt +="<td>"+formatoFecha(data[0][i].fecha_config)+"</td>";
-			if(data[1][i].precio_venta == -1){
-				txt +="<td>Activa</td></tr>";
-			}else if(data[1][i].precio_venta != -1){
-				txt +="<td>Inactiva</td></tr>";
-			}
-		};
+				if(data[0][i].superada == 1){
+					txt +="<td>Superada</td>";
+				}else if(data[0][i].superada == 0){
+					txt +="<td>No Superada</td>";
+				}
+				txt +="<td>"+formatoFecha(data[0][i].fecha_config)+"</td>";
+				if(data[1][i].precio_venta == -1){
+					txt +="<td>Activa</td></tr>";
+				}else if(data[1][i].precio_venta != -1){
+					txt +="<td>Inactiva</td></tr>";
+				}
+			};
+		}
 		txt+="</table>"
 		$(".contact-info").html(txt);
-	});
+	})	.error(function(data){
+		txt+="</table>"
+		txt+="<h3>No Hay Configuradas Que Mostrar</h3>";
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});	
 }
 
 function pujas(){
@@ -305,7 +310,12 @@ function subastas(){
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
-	});
+	}).error(function(data){
+		txt+="</table>"
+		txt+="<h3>No Hay Subastas Activas</h3>";
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});	
 }
 function subastasI(){
 	var url = "usuario/get_subastasI";
@@ -343,7 +353,12 @@ function subastasI(){
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
-	});
+	})	.error(function(data){
+		txt+="</table>"
+		txt+="<h3>No Hay Subastas Inactivas</h3>";
+		txt+="</table>"
+		$(".contact-info").html(txt);
+	});	
 }
 
 function valoraciones(){
@@ -390,7 +405,8 @@ function valoracionesPendientes(){
 	txt +="<th>Producto</th>";
 	txt +="<th></th>";
 	txt +="</tr></thead>";
-	$.get(url,function(data,status){
+	$.get(url,function(data,status){})
+	.done(function(data) {
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Valoraciones pendientes</h3>";
@@ -406,7 +422,10 @@ function valoracionesPendientes(){
 		txt+="</table></div>";
 		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
 		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
-		$(".contact-info").html(txt);
+		$(".contact-info").html(txt);	
+	})
+	.error(function(data){
+		alert("Error en el servidor vuelve a probar mas tarde");
 	});	
 }
 
@@ -422,7 +441,14 @@ function editarP(){
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at);
 		$(".contact-info").html(txt);
-	});
+	})
+	.done(function(data) {
+		perfil();
+	})
+	.error(function(data){
+		alert("Error en el servidor vuelve a probar mas tarde");
+	});	
+
 }	
 
 function ValidarCambiosContrasena(){
@@ -454,8 +480,7 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 		perfil();
 	})
 	.error(function(data){
-		var errors = data.responseJSON;
-		alert(errors.puja_max);
+		alert("Error en el servidor vuelve a probar mas tarde");
 	});	
 }
 
