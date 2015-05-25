@@ -222,3 +222,4 @@ Route::get('perfil/{idUsuario}', 'GlobalController@perfil');
 Route::get('subastas', 'GlobalController@subastas');
 Route::get('valoraciones', 'GlobalController@valoraciones');
 Route::get('ventas', 'GlobalController@ventas');
+Route::get('coger_perfil', 'GlobalController@coger_perfil');
