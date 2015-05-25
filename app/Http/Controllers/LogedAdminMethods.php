@@ -328,18 +328,18 @@ class LogedAdminMethods extends Controller {
 	public function editar_subcategoria($idSubcategoria)
 	{
 		$subcategoria = Subcategoria::find($idSubcategoria);
-		// EDICION DE DATOS //
-		return view('admin.editar_subcategoria',['subCategoria' => $subcategoria]);
+		$categoria = Categoria::find($idCategoria);
+		return view('admin.editar_subcategoria',['subCategoria' => $subcategoria, "categorias" => $categoria]);
 	}
 
 	public function guardar_subcategoria($idSubcategoria, Request $request)
 	{
 		$subCategoriaActualizada = $request->all();
-		$categoria = Subcategoria::find($idSubcategoria);
+		$subcategoria = Subcategoria::find($idSubcategoria);
 		
-		$categoria->nombre = $subCategoriaActualizada['nombre'];
-		$categoria->descripcion = $subCategoriaActualizada['descripcion'];
-		$categoria->save();
+		$subcategoria->nombre = $subCategoriaActualizada['nombre'];
+		$subcategoria->descripcion = $subCategoriaActualizada['descripcion'];
+		$subcategoria->save();
 
 		return redirect("administracion/subcategorias/editar/".$idSubcategoria);
 	}
