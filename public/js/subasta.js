@@ -8,13 +8,13 @@ $(document).ready(function(){
 		var pujasAutomInt =	setInterval(pujasAutom,7000);
 		
 	}
-	ultimaPuja();
+	
 	comprovarEstado();
 	recargarPrecios();
 	
 });
 var cont = 0;
-
+ultimaPuja();
 var ultimaPujaInt =	setInterval(ultimaPuja,7000);
 
 setInterval(comprovarEstado, 15000);

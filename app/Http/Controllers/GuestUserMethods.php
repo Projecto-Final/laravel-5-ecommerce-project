@@ -75,7 +75,10 @@ class GuestUserMethods extends Controller {
 				$data[2][$i] = url('images/profiles/'.$pujas[$i]->usuario->imagen_perfil);
 				$data[3][$i] = url('perfil/'.$pujas[$i]->usuario->id);
 			}
-			return $data;
+			if(isset($data)){
+				return $data;
+			}
+			
 			
 		} catch (Exception $e) {
 			return $e;
@@ -87,16 +90,16 @@ class GuestUserMethods extends Controller {
 	}
 
 	public function comprovarEstadoGuest(Request $request){
-	try {
+		try {
 			$submitedArray = $request->all();
 			$articulo = Articulo::find($submitedArray['id_subasta']);
-		
+			
 			if($articulo->precio_venta==-1){
 				return 0;
 			}else if($articulo->precio_venta==0){
 				return "Subasta Caducada";
 			}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
-			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+				return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
 
 			}
 			
@@ -104,5 +107,5 @@ class GuestUserMethods extends Controller {
 			return $e;
 		}
 	}
-		
+	
 }
