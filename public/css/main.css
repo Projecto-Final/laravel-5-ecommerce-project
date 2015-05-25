@@ -826,6 +826,9 @@ Iniciar session usuario
 .buttons-set .button {
   float: right;
   margin: 0 0 0 5px;
+  border-color: #5598dd;
+  color: #fff;
+  background: #5598dd;
 }
 .buttons-set {
   border: none !important;
