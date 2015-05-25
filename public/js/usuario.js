@@ -369,7 +369,7 @@ function valoraciones(){
 	txt += "<h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th></th>";
+	txt +="<th><asasd</th>";
 	txt +="<th>Valorante</th>";
 	txt +="<th>Puntuacion</th>";
 	txt +="<th>Mensaje</th>";
