@@ -432,7 +432,7 @@ function valoracionesPendientes(){
 			$(".contact-info").html(txt);
 		}	
 	}).error(function(data){
-		notifications("error", "Error en el servidor vuelve a probar mas tarde ", "");
+		bootbox.alert("Error en el servidor vuelve a probar mas tarde ");
 	});	
 }
 
@@ -453,7 +453,7 @@ function editarP(){
 		perfil();
 	})
 	.error(function(data){
-		notifications("error", "Error en el servidor vuelve a probar mas tarde ", "");
+		bootbox.alert("Error en el servidor vuelve a probar mas tarde");
 	});	
 
 }	
@@ -484,11 +484,11 @@ function perfilGuardar(username,nombre,apellidos,direccion,email){
 		email: email
 	})
 	.done(function(data) {
-		notifications("notificacion", "Datos cambiados correctamente ", "");
+		bootbox.alert("Datos cambiados correctamente");
 		perfil();
 	})
 	.error(function(data){
-		notifications("error", "Error en el servidor vuelve a probar mas tarde ", "");
+		bootbox.alert("Error en el servidor vuelve a probar mas tarde");
 	});	
 }
 
@@ -507,11 +507,11 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 		password_confirmation: password_confirmation
 	})
 	.done(function(data) {
-		notifications("notificacion", "Contraseña cambiada correctamente ", "");
+		bootbox.alert("Contraseña cambiada correctamente");
 		perfil();
 	})
 	.fail(function(data){
-		notifications("error", "Mal introducida la contraseña vieja ", "");
+		bootbox.alert("Mal introducida la contraseña vieja");
 		//alert("Mal introducida la contraseña vieja");
 	})
 	.error(function(data){

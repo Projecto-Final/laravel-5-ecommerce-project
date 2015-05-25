@@ -23,14 +23,10 @@ function confPujaSuperada(){
 		if(data!=0){
 			for (var i = 0; i < data.length; i++) {
 				var mensaje = "Tu Configuracion de Pujas por el Artiuclo "+data[i].nombre_producto+" ha sido Superada";
-				var enlace = "subasta/"+data[i].id;
-				notifications("advertencia", mensaje, enlace);
+				bootbox.alert(mensaje);
 			};
 		}
-
-
 	});
-
 }
 
 function formatoFecha(fecha){
@@ -45,7 +41,7 @@ function get_Pendientes(){
 	var url = "usuario/get_Pendientes";
 	$.get(url,function(data,status){
 		if(data != 0){
-			notifications("alerta", "Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas", "");
+			bootbox.alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
 		}
 	});
 }

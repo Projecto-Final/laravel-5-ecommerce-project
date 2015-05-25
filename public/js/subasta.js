@@ -23,7 +23,7 @@ setInterval(comprovarEstado, 15000);
 var recargarPreciosInt = setInterval(recargarPrecios, 7000);
 
 function avisoLog(){
-	notifications("error", "Debes estar logueado para pujar", "");
+	bootbox.alert("Debes estar logueado para pujar");
 }
 
 
@@ -95,11 +95,9 @@ function crear_confPuja(){
 		.done(function(data) {
 			if(data=="false"){
 				//alert("Solo puedes tener una configuracion");
-				notifications("error", "Solo puedes tener una configuracion", "");
+				bootbox.alert("Solo puedes tener una configuracion");
 			}else{
-				
-				notifications("notificacion", "Configuracion de Puja Guardada", "");
-
+				bootbox.alert("Configuracion de Puja Guardada");
 				cargarPujaAut();
 			}
 			
@@ -199,10 +197,10 @@ function cambiarla(){
 		})
 		.done(function(data) {
 			if(data=="false"){
-				notifications("Error", "Error", "");
+				bootbox.alert("Error");
 			}else{
 				
-				notifications("notificacion", "Cambios Guardados", "");
+				bootbox.alert("Cambios Guardados");
 				var elDiv = document.getElementById("formConf");
 				var h2 = elDiv.getElementsByTagName("h2");
 				$(h2[1]).html(data+" €");
@@ -227,7 +225,7 @@ function cancelConf(){
 		})
 		.done(function(data) {
 			if(data!=1){
-				notifications("error", data, "");
+				bootbox.alert(data);
 			}else{
 				
 			    //reconstruimos el contenido
@@ -342,14 +340,14 @@ function pujar(id_subasta,url){
 		})
 		.done(function(data) {
 			if(data=="Error"){
-				notifications("error", "El precio mostrado ha cambiado", "");
+				bootbox.alert("El precio mostrado ha cambiado");
 			}else if(data=="Ya Pujaste"){
-				notifications("error", "Ya Pujaste", "");
+				bootbox.alert("Ya Pujaste");
 			}
 			recargarPrecios();
 
 		}).fail(function(data){
-			notifications("error", "Debes estar Logueado para Pujar", "");
+			bootbox.alert("Debes estar Logueado para Pujar");
 		});	
 	}
 }

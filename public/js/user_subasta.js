@@ -50,8 +50,17 @@ function aceptarPuja(url){
 			id_subasta: id_subasta
 		})
 		.done(function(data) {
-			notifications("notificacion", "Felicidades por tu venta!", "");
+
+			if(data!=0){
+				
+
+			bootbox.alert("Felicidades por tu venta!");
+
 			comprovarEstado();
+		}else{
+			bootbox.alert("No Hay Pujas");
+		}
+			
 		});
 	}
 }
