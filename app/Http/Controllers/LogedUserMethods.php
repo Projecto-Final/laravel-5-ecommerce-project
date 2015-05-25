@@ -710,7 +710,8 @@ public function todasPujas(Request $request){
 		for ($i=0; $i < count($pujas); $i++) {
 			$data[0][$i] = $pujas[$i];
 			$data[1][$i] = $pujas[$i]->usuario;
-
+			$data[2][$i] = url("images/profiles/".$pujas[$i]->usuario->imagen_perfil);
+			$data[3][$i] = url("perfil/".$pujas[$i]->usuario->id);
 		}
 		return $data;
 
@@ -723,7 +724,8 @@ public function todasPujas(Request $request){
 		for ($i=0; $i < count($pujas); $i++) {
 			$data[0][$i] = $pujas[$i];
 			$data[1][$i] = $pujas[$i]->usuario;
-
+			$data[2][$i] = url($pujas[$i]->usuario->imagen_perfil);
+			$data[3][$i] = url($pujas[$i]->usuario->id);
 		}
 		return $data;
 		

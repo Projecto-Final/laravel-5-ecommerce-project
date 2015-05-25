@@ -82,10 +82,14 @@
 
       <div id="datosSubastador">
         <h5>Usuario Subastador</h5>
-        <img id="fotoSubastador" src="{{ url('images/profiles/'.$subastador['imagen_perfil']) }}" />
+        <a href="{{ url('perfil/'.$subastador['id']) }}">
+          <img id="fotoSubastador" src="{{ url('images/profiles/'.$subastador['imagen_perfil']) }}"/>
+        </a>
         <!--  <div id="fotoSubastador" style="background-image: url({{ url('images/profiles/'.$subastador['imagen_perfil']) }}) ;"></div>   -->
         <div>
-          <h1>{{$subastador['username']}}</h1>
+          <a href="{{ url('perfil/'.$subastador['id']) }}">
+            <h1>{{$subastador['username']}}</h1>
+          </a>
           <input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$subastador['reputacion']}}"></input>
         </div>
       </div>
