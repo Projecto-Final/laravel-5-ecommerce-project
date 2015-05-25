@@ -14,7 +14,7 @@
    <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
    <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
    <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-    <input type="hidden" id="todasPujas" value="{{url('prorrogar')}}">
+    <input type="hidden" id="prorrogar" value="{{url('prorrogar')}}">
 
    <div id="estadoSubasta"> 
     <div class="form-group">
@@ -48,7 +48,7 @@ Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='pro
  <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
  <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
  <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-  <input type="hidden" id="todasPujas" value="{{url('prorrogar')}}">
+  <input type="hidden" id="prorrogar" value="{{url('prorrogar')}}">
 </form>
 
   @elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
