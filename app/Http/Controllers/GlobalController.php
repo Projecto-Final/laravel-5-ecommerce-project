@@ -226,10 +226,7 @@ public function buscar_subastas(Request $request)
 			for ($i=0; $i < count($resultadoBusqueda); $i++) { 
 				for ($j=0; $j <count($resultadoBusqueda[$i]) ; $j++) { 
 					$imagen = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
-					echo "<pre>";
-					var_dump($imagen);
-					echo "</pre>";
-					//$resultadoBusqueda[$i][$j][$j]=$imagen[0];
+					$resultadoBusqueda[$i][$j][$j]=$imagen;
 				}
 			}
 			
