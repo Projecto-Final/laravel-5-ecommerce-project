@@ -12,10 +12,6 @@
   <div class="container-fluid header_perfil" >
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$user->imagen_background.'') }});">
       <div class="stadistic_info_user col-xs-12 col-md-12">
-<<<<<<< HEAD
-=======
-       <div id="confPerfil" class="col-md-9 pop_up" >
->>>>>>> origin/master
         <div class="container">
           <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.$user->imagen_perfil.'') }}) ;"></div>
           <div class="col-md-8 info_active col-xs-12">
