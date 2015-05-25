@@ -51,15 +51,20 @@
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+		<div id="contenedor-notificaciones" class="active"></div>
 		<div id="contenedor-notificaciones">
-			<div class="notification-box error"><p><b>error: </b> text</p><i class=""></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
+			<div class="notification-box error"><p><b>error: </b> text</p><i class="glyphicon glyphicon-fire"></i><div onClick="closeNotificationBox('.error')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box warning"><p><b>warning: </b>text</p><i class="glyphicon glyphicon-warning-sign"></i><div onClick="closeNotificationBox('.warning')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box advice"><p><b>advice: </b>text</p><i class="glyphicon glyphicon-bell"></i><div onClick="closeNotificationBox('.advice')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box notice"><p><b>notice: </b>text</p><i class="glyphicon glyphicon-grain"></i><div onClick="closeNotificationBox('.notice')" class="glyphicon glyphicon-remove-sign"></div></div>
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
 		<script>
-		notifications("tiipo","texto descr","enlace");
+		notifications("error","Esto es un error","enlace");
+		notifications("advertencia","Esto es una advertencia","enlace");
+		notifications("consejo","Esto es un consejo","enlace");
+		notifications("notificacion","Esto es una notificacion","enlace");
+		notifications("alerta","Esto es una alerta","enlace");
 		</script>
 
 		<div id="container-fluid">
@@ -226,8 +231,8 @@
 							<div class="container">
 								<div class="sns_footer-top">
 									<div class="row">
-										<div class="col-sm-9">
-											<div class="block-twitter">
+										<div class="col-sm-12">
+											<div class="block-twitter col-sm-9">
 												<div class="block_head_left">
 													<h3>Twitter</h3>
 													<div class="navslider">

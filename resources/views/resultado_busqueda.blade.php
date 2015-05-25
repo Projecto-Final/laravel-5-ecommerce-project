@@ -17,7 +17,7 @@
 
           <div id="sns_producttabs3375621631430404908" class="sns-producttabs">
             <div class="sns-pdt-head">
-              <h2>NUEVAS SUBASTAS</h2>
+              <h2>Resultado busqueda</h2>
             </div>
             <div class="sns-pdt-container"> 
               <!--Begin Tab Nav --> 
@@ -29,13 +29,6 @@
                   <div class="pdt-list products-grid zoomOut play">
                     <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
-
-                      <?php
-// $p = new Articulo;
-// Esperando implementacion de articulos.
-// como funcionan
-// $img = Articulo::find(3)->imagenes;
-                      ?>
 
                       @forelse($resultadoBusqueda as $contador => $subasta)
                       <!-- MUESTRA -->

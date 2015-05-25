@@ -95,11 +95,11 @@ class GlobalController extends Controller {
 		$articulo = Articulo::find($idArticulo);
 
 
-
+$propietario=false;
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {   
-	$propietario=false;
+	
 	$logueado = true;
 	$user_id = Auth::user()->id;
 	$user = Usuario::find($user_id);
@@ -113,33 +113,33 @@ if (Auth::check())//hay que añadir el ACTIVO
 }
 
 //si el usuario es el propietario o el admin
-	
 
 
-		$aux = $articulo->pujas;
-		$subastador = Usuario::find($articulo['subastador_id']);
-		$pujas = count($aux);
-		$imagenes = $articulo->imagenes; 
-		$subcategoria = $articulo->subcategoria; 
-		$categoria = $subcategoria->categoria;
+
+$aux = $articulo->pujas;
+$subastador = Usuario::find($articulo['subastador_id']);
+$pujas = count($aux);
+$imagenes = $articulo->imagenes; 
+$subcategoria = $articulo->subcategoria; 
+$categoria = $subcategoria->categoria;
 
 //diversificacion de ruta entre usuario y propietario
-	if($propietario){
+if($propietario){
 
-				$empresa = Empresa::find(1)->get();
-
-
-				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
-				$precio_pro = $empresa[0]->precioPorroga;
-					return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
-
-	}else{
-		return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
-	}
+	$empresa = Empresa::find(1)->get();
 
 
-		
-		
+	$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
+	$precio_pro = $empresa[0]->precioPorroga;
+	return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
+
+}else{
+	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+}
+
+
+
+
 
 }
 
@@ -226,7 +226,7 @@ public function get_subastas($id){
 }
 
 // muestra las valoraciones 
-public function get_valoraciones($id){	
+public function valoraciones($id){	
 	$direccion = url('/images/subastas/');
 	$user = Usuario::find($id);
 	$val[0] = $user->valVenta;
@@ -243,10 +243,23 @@ public function get_valoraciones($id){
 	return $val;
 }
 // informacion del perfil usuario
-public function get_perfil($id)
+public function perfil($id)
 {			
 	$user = Usuario::find($id);
-	return $user;
+	return view('perfil',['user' => $user]);
+}
+
+public function ventas(Request $request){
+	$submitedArray = $request->all();
+	var_dump($submitedArray);
+	$direccion = url('/images/subastas/');
+	$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
+	for ($i=0; $i < count($ventas[0]); $i++) { 
+		$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
+	}
+	var_dump($ventas);
+	return $ventas;
 }
 
 }
+

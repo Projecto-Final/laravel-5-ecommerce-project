@@ -146,6 +146,34 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function guardar_subasta(Request $request, $idSubasta)
+	{
+		$subastaUpdate = $request->all();
+		$subasta = Articulo::find($idSubasta);
+		$subasta->modelo = $subastaUpdate['modelo'];
+		$subasta->nombre_producto = $subastaUpdate['nombre_producto'];
+		$subasta->estado = $subastaUpdate['estado'];
+		$subasta->localizacion = $subastaUpdate['localizacion'];
+		$subasta->descripcion = $subastaUpdate['descripcion'];
+		$subasta->subcategoria_id = $subastaUpdate['subcategoria_id'];
+		$subasta->precio_inicial = $subastaUpdate['precio_inicial'];
+		$subasta->precio_venta = $subastaUpdate['precio_venta'];
+		$subasta->fecha_inicio = $subastaUpdate['fecha_inicio'];
+		$subasta->fecha_final = $subastaUpdate['fecha_final'];
+		$subasta->fecha_venda = $subastaUpdate['fecha_venda'];
+		$subasta->porrogado = $subastaUpdate['porrogado'];
+
+		$subasta->save();
+		
+		//$subasta->delete();
+		//return view('admin.editar_subasta', ['subasta' => $subasta, 'localidades' => $localidades, 'subcategorias' => $subcategorias, 'usuarios' => $usuarios]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function eliminar_subasta($idSubasta)
 	{
 		$subasta = Articulo::find($idSubasta);

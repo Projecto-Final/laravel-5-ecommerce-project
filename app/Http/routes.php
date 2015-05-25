@@ -70,6 +70,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// Subastas
 	Route::get('administracion/subastas', 'LogedAdminMethods@subastas');
 	Route::get('administracion/subastas/editar/{idSubasta}', 'LogedAdminMethods@editar_subasta');
+	Route::put('administracion/subastas/editar/{idSubasta}', 'LogedAdminMethods@guardar_subasta');
 	Route::get('administracion/subastas/pujas/{idSubasta}', 'LogedAdminMethods@get_pujasEnSubasta');
 	Route::get('administracion/subastas/eliminar/{idSubasta}', 'LogedAdminMethods@eliminar_subasta');
 
@@ -89,6 +90,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// SubCategorias
 	Route::get('administracion/subcategorias', 'LogedAdminMethods@subcategorias');
 	Route::get('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@editar_subcategorias');
+	Route::put('administracion/subcategorias/editar/{idSubcategoria}', 'LogedAdminMethods@editar_subcategorias');
 	Route::get('administracion/subcategorias/eliminar/{idSubcategoria}', 'LogedAdminMethods@eliminar_subcategorias');
 	
 	// Configuracion Empresa/Pagina
@@ -215,5 +217,8 @@ Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');
 Route::get('usuario/get_Pendientes', 'LogedUserMethods@get_Pendientes');
 
 /////Others Perfil usuario
-Route::get('usuario/{idUsuario}', 'LogedUserMethods@perfilVisitante');
 
+Route::get('perfil/{idUsuario}', 'GlobalController@perfil');
+Route::get('subastas', 'GlobalController@subastas');
+Route::get('valoraciones', 'GlobalController@valoraciones');
+Route::get('ventas', 'GlobalController@ventas');

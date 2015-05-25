@@ -16,6 +16,7 @@ class ConfiguracionPujasTableSeeder extends Seeder {
 			'usuario_id' => 3,
 			'superada' => false,
 			'fecha_config' => "2015-05-07",
+			'avisado' => false,
 		]);
 	}
 }
