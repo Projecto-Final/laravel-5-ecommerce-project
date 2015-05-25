@@ -883,7 +883,7 @@ public function prorrogar(Request $request){
 			'nif' => $submitedArray['nif'],
 			'cantidad_pagada' => $empresa[0]->precioPorroga,
 			'fecha' => Carbon::now(),
-			]);
+		]);
 	} catch (Exception $e) {
 		return $e;
 	}
