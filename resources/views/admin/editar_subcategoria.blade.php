@@ -35,6 +35,21 @@
 						<label>Descripción</label>
 						<textarea class="form-control"  name="descripcion" rows="3" placeholder="Introduce reputacion...">{{ $subCategoria['descripcion'] }}</textarea>
 					</div>
+					<label class="text-aqua">Configuración Categoria</label>
+					<div class="form-group">
+						<div class="form-group">
+							<select name="categoria_id" class="form-control">
+								@forelse($categorias as $categoria)
+								@if($categoria['id']==$subCategoria['categoria_id'])
+								<option value="{{ $categoria['id'] }}" selected> {{ $categoria['nombre'] }}</option>
+								@else
+								<option value="{{ $categoria['id'] }}"> {{ $categoria['nombre'] }}</option>
+								@endif
+								@empty
+								@endforelse
+							</select>
+						</div>
+					</div>
 					<button class="btn btn-block btn-success btn-flat">Guardar <i class="fa fa-save"></i></button>
 				</form>
 			</div><!-- /.box-body -->

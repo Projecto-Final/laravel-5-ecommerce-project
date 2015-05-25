@@ -328,7 +328,7 @@ class LogedAdminMethods extends Controller {
 	public function editar_subcategoria($idSubcategoria)
 	{
 		$subcategoria = Subcategoria::find($idSubcategoria);
-		$categoria = Categoria::find($idCategoria);
+		$categoria = Categoria::all();
 		return view('admin.editar_subcategoria',['subCategoria' => $subcategoria, "categorias" => $categoria]);
 	}
 
