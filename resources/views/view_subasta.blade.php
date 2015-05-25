@@ -109,11 +109,13 @@
             </tr>
             <tr>
               <td>Fecha Finalizacion Subasta:</td>
-              <td colspan="3">{{ $subasta['fecha_final']}}</td>
+              <td colspan="3">
+                <?php $dateAr = explode(' ',$subasta['fecha_final']);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?></td>
 
 
               <td>Fecha Inicio Subasta:</td>
-              <td colspan="3">{{ $subasta['fecha_inicio']}}</td>
+              <td colspan="3">
+                <?php $dateAr = explode(' ',$subasta['fecha_inicio']);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?></td>
             </tr>
             <tr>
               <td>Precio Actual:</td>
