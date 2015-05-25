@@ -33,7 +33,19 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="col-md-6  col-xs-12 col-sm-4">
+			<div id="datosProducto" >
+				<h5>Producto</h5>
+				<a href="{{ url('subasta/'.$art['id']) }}">
+					<img style="border:3px solid black;" id="fotoProducto" src="{{ url('images/subastas/'.$foto['imagen']) }}"/>
+				</a>
+				<div>
+					<a href="{{ url('subasta/'.$art['id']) }}">
+						<h3>{{$art['nombre_producto']}}</h3>
+					</a>
+				</div>
+			</div>
+		</div></br></br></br>
 		<div class="col-md-4  col-xs-12 col-sm-4">
 			<form action="{{ url('update_valoracion') }}" method="post" enctype="multipart/form-data" id="form-validate">
 				<input type="hidden" name="_method" value="PUT">
@@ -96,21 +108,6 @@
 					</div>
 				</form>
 			</div>
-
-
-			<div class="col-md-3  col-xs-12 col-sm-3">
-				<div id="datosProducto">
-					<h5>Producto</h5>
-					<a href="{{ url('subasta/'.$art['id']) }}">
-						<img id="fotoProducto" src="{{ url('images/subastas/'.$foto['imagen']) }}"/>
-					</a>
-					<div>
-						<a href="{{ url('subasta/'.$art['id']) }}">
-							<h3>{{$art['nombre_producto']}}</h3>
-						</a>
-					</div>
-				</div>
-			</div><br><br><br>
 		</div>
 	</div>
 	@stop
