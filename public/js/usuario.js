@@ -374,9 +374,6 @@ function valoraciones(){
 	txt +="<th>Puntuacion</th>";
 	txt +="<th>Fecha</th>";
 	txt +="</tr></thead>";
-
-	alert("hola");
-	
 	$.get(url,function(data,status){
 		if(data==""){
 			txt+="</table>"
@@ -386,9 +383,8 @@ function valoraciones(){
 			txt+= '<tr class="info">';
 			txt +="<td><a href='usuario/valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
-			txt +="<td>"+data[0][i].puntuacion+"</td>";
-			//txt +="<td>"+data[4][data[0][i].puntuacion].descripcion+"</td>";
-			txt +="<td>////"+formatoFecha(data[0][i].fecha)+"</td>";
+			txt +="<td><input id='puntuacion' name='puntuacion' type='number' data-min='1' step='1' data-max='5' class='rating' data-show-caption='true' data-show-clear='false' data-disabled='false' data-size='xs' value='"+data[0][i].puntuacion+"'></input></td>";
+			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
 			txt +="</tr>";
 			
 		};

@@ -468,15 +468,15 @@
         defaultCaption: '{rating} Stars',
         starCaptions: {
             0.5: 'Half Star',
-            1: 'One Star',
+            1: 'Nefasto',
             1.5: 'One & Half Star',
-            2: 'Two Stars',
+            2: 'Tolerable',
             2.5: 'Two & Half Stars',
-            3: 'Three Stars',
+            3: 'Optimo',
             3.5: 'Three & Half Stars',
-            4: 'Four Stars',
+            4: 'Bueno',
             4.5: 'Four & Half Stars',
-            5: 'Five Stars'
+            5: 'Perfecto'
         },
         starCaptionClasses: {
             0.5: 'label label-danger',

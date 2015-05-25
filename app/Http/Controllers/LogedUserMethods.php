@@ -280,7 +280,7 @@ class LogedUserMethods extends Controller {
 				$art = Articulo::find($val[0][$i]->articulo_id);
 				$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
 				$val[3][$j] = $art;
-				$val[4][$j] = $escala;
+				$val[4][$j] = $escala[$val[0][$i]->puntuacion]->descripcion;
 				$j++;
 			}else{}
 		}
