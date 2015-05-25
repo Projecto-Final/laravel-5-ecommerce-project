@@ -765,7 +765,6 @@ public function comprovarEstado(Request $request){
 
 
 			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
-//Empresa tiempoPorrogaArticulo precioPorroga
 
 		}
 
@@ -775,16 +774,34 @@ public function comprovarEstado(Request $request){
 }
 
 //merge avoided xD
-public function valoracion($id){
+public function write_valoracion($id){
+	$user = Auth::user();
 	$val = Valoracion::find($id);
 	$art = Articulo::find($val->articulo_id);
 	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
+	if($validante->id == $user->id){
+		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+		return view('valoracion',$data);
+	}else{
+		return redirect('usuario');
+	}
+}
 
-	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
-
-	return view('valoracion',$data);
+public function view_valoracion($id){
+	$user = Auth::user();
+	$val = Valoracion::find($id);
+	$art = Articulo::find($val->articulo_id);
+	$foto = $art->imagenes[0];
+	$valorado = Usuario::find($val->valorado_id);
+	$validante = Usuario::find($val->validante_id);
+	if($valorado->id == $user->id){
+		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+		return view('valorado',$data);
+	}else{
+		return redirect('usuario');
+	}
 }
 
 public function updateValoracion(Request $request){
