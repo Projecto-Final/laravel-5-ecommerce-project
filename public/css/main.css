@@ -857,6 +857,7 @@ ul.form-list, ul.tags-list {
   float: left;
   width: 100%;
   padding-top: 10px;
+   padding-bottom: 20px;
   background-color: aliceblue;
 }
 .parametros-filtrado > ul {
