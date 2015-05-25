@@ -222,24 +222,24 @@ public function buscar_subastas(Request $request)
 				}
 			}
 
-			for ($i=0; $i < count($resultadoBusqueda); $i++) { 
-				for ($j=0; $j <count($resultadoBusqueda[$i]) ; $j++) { 
-					$imagenes = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
+			// for ($i=0; $i < count($resultadoBusqueda); $i++) { 
+			// 	for ($j=0; $j <count($resultadoBusqueda[$i]) ; $j++) { 
+			// 		$imagenes = Imagen::where("articulo_id","=", $resultadoBusqueda[$i][$j]->id)->get();
 
-					if($imagenes == null){
-						$resultadoBusqueda[$i][$j][$j]="default.jpg";
-					}else{
-						$resultadoBusqueda[$i][$j][$j]=$imagenes;
-					}
-					var_dump($imagenes);
-				}
-			}
+			// 		if($imagenes == null){
+			// 			$resultadoBusqueda[$i][$j][$j]="default.jpg";
+			// 		}else{
+			// 			$resultadoBusqueda[$i][$j][$j]=$imagenes;
+			// 		}
+			// 		var_dump($imagenes);
+			// 	}
+			// }
 
 			
 		}
 
 	}
-	//return view("resultado_busqueda", ["resultadoBusqueda" =>$resultadoBusqueda] );
+	return view("resultado_busqueda", ["resultadoBusqueda" =>$resultadoBusqueda] );
 }
 
 // Funciones para ver el perfil de otro usuario
