@@ -16,9 +16,7 @@ function prorrogar(url){
 	bootbox.prompt("Para poder completar el pago necesitamos su NIF", function(result) {
 		var url =$("#prorrogar").val();
 		var id_subasta = $("#subastaId").val();
-		if (result === null || isDNI(result)) {   
-		alert(result);
-		alert(url);
+		if (result === null || isDNI(result)) {
 			$.get(url,{
 				id_subasta: id_subasta,
 				nif: result
