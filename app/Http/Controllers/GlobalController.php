@@ -95,7 +95,7 @@ class GlobalController extends Controller {
 		$articulo = Articulo::find($idArticulo);
 
 
-$propietario=false;
+		$propietario=false;
 //si esta logueado
 if (Auth::check())//hay que añadir el ACTIVO
 {   
@@ -216,9 +216,10 @@ public function buscar_subastas(Request $request)
 
 // Funciones para ver el perfil de otro usuario
 //muestra las subasta que tiene
-public function get_subastas($id){
+public function subastas(Request $request){
+	$submitedArray = $request->all();
 	$direccion = url('/images/subastas/');
-	$subastas[0] = Usuario::find($id)->articulos()->where('precio_venta','=', -1)->get();
+	$subastas[0] = Usuario::find($submitedArray['id'])->articulos()->where('precio_venta','=', -1)->get();
 	for ($i=0; $i < count($subastas[0]); $i++) { 
 		$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
 	}
@@ -226,9 +227,10 @@ public function get_subastas($id){
 }
 
 // muestra las valoraciones 
-public function valoraciones($id){	
+public function valoraciones(Request $request){	
+	$submitedArray = $request->all();	
 	$direccion = url('/images/subastas/');
-	$user = Usuario::find($id);
+	$user = Usuario::find($submitedArray['id']);
 	$val[0] = $user->valVenta;
 	$j = 0;
 	for ($i=0; $i < count($val[0]); $i++) { 
@@ -243,6 +245,13 @@ public function valoraciones($id){
 	return $val;
 }
 // informacion del perfil usuario
+public function coger_perfil(Request $request)
+{			
+	$submitedArray = $request->all();	
+	$user = Usuario::find($submitedArray['id']);
+	return $user;
+}
+
 public function perfil($id)
 {			
 	$user = Usuario::find($id);
@@ -251,13 +260,11 @@ public function perfil($id)
 
 public function ventas(Request $request){
 	$submitedArray = $request->all();
-	var_dump($submitedArray);
 	$direccion = url('/images/subastas/');
 	$ventas[0] = Usuario::find($submitedArray['id'])->ventas()->where('precio_venta','>', -1)->get();
 	for ($i=0; $i < count($ventas[0]); $i++) { 
 		$ventas[1][$i] = $direccion.'/'.$ventas[0][$i]->imagenes[0]->imagen;
 	}
-	var_dump($ventas);
 	return $ventas;
 }
 
