@@ -232,6 +232,39 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function editar_usuario($idUsuario)
+	{
+		$usuario = Usuario::find($idUsuario);
+
+		return view('admin.editar_usuario', ['usuario' => $usuario]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
+	public function guardar_usuario($idUsuario,Request $request)
+	{
+		$usuarioActualizado = $request->all();
+		$usuario = Usuario::find($idUsuario);
+		$usuario->imagen_perfil = $usuarioActualizado['imagen_perfil'];
+		$usuario->username = $usuarioActualizado['username'];
+		$usuario->nombre = $usuarioActualizado['nombre'];
+		$usuario->apellido = $usuarioActualizado['apellido'];
+		$usuario->email = $usuarioActualizado['email'];
+		$usuario->reputacion = $usuarioActualizado['reputacion'];
+		$usuario->permisos = $usuarioActualizado['permisos'];
+		$usuario->save();
+
+		return redirect("administracion/usuarios/editar/".$idUsuario);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function get_pujasEnSubasta($idSubasta)
 	{
 		$subastas = Puja::orderBy('id','asc')->whereRaw("articulo_id =".$idSubasta)->get();

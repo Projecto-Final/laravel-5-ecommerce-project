@@ -369,10 +369,9 @@ function valoraciones(){
 	txt += "<h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
-	txt +="<th><asasd</th>";
+	txt +="<th></th>";
 	txt +="<th>Valorante</th>";
 	txt +="<th>Puntuacion</th>";
-	txt +="<th>Mensaje</th>";
 	txt +="<th>Fecha</th>";
 	txt +="</tr></thead>";
 	$.get(url,function(data,status){
@@ -382,10 +381,9 @@ function valoraciones(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
+			txt +="<td><a href='usuario/valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
-			txt +="<td>"+data[0][i].texto+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
 			txt +="</tr>";
 		};
@@ -426,7 +424,7 @@ function valoracionesPendientes(){
 				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 				txt +="</tr>";
 			};
-			txt+="</table>";
+			txt+="</table></div>";
 			$(".contact-info").html(txt);
 		}else{
 			txt+="</table>";

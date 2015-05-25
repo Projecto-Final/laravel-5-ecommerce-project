@@ -5,6 +5,18 @@
 
 @section('opciones_usuario')
 
+<script type="text/javascript">
+// var completada = {{$val->completada}};
+// if(completada == 1){
+// 	$("#submit").css("display","none");
+// 	$("#texto").html({{$val->texto}});
+// 	$("#texto").attr("readonly","true");
+// 	$("#puntuacion").attr("data-disabled","true");
+// 	$("#puntuacion").attr("value",{{$val->puntuacion}});
+// }
+</script>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-4  col-xs-12 col-sm-6">
@@ -92,9 +104,9 @@
 						</ul>
 						<ul class="form-list">
 							<li class="fields">
-								<div class="customer-name">
+								<div id="comentario" class="customer-name">
 									<div class="field ">
-										<label for="descripcion" class="required"><em>*</em>Descripción</label>
+										<label for="descripcion" class="required"><em>*</em>Comentario</label>
 										<div class="input-box">
 											<textarea id="texto" name="texto" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70"> </textarea>
 											<span class="errorJS" id="descripcion_error">&nbsp;Campo obligatorio</span>
@@ -104,7 +116,7 @@
 							</li>
 						</ul>
 						<input type="hidden" name="id" value="{{$val->id}}">
-						<input type='submit' title="Submit" class="button" value="Valora"> 
+						<input id="submit" type='submit' title="Submit" class="button" value="Valora"> 
 					</div>
 				</form>
 			</div>

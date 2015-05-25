@@ -681,24 +681,7 @@ public function pujasAutom(Request $request){
 	}
 }
 
-public function ultimaPuja(Request $request){
-	try {
-		$submitedArray = $request->all();
-		$articuloId = $submitedArray['id_subasta'];
-		$userId = Auth::user()->id;
-		$usuario = Usuario::find($userId);
-		$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
-		if($ultimapuja==false){
-			return 0;
-		}else{
-			return $ultimapuja;
-		}
-		
-	} catch (Exception $e) {
-		
-	}
-	
-}
+
 
 
 public function todasPujas(Request $request){
@@ -785,7 +768,7 @@ public function write_valoracion($id){
 	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
-	if($validante->id == $user->id){
+	if($validante->id == $user->id && $val->completada == 0){
 		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
 		return view('valoracion',$data);
 	}else{
@@ -833,11 +816,15 @@ public function aceptarUltimaP(Request $request){
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujaGanadora =	$articulo->ultimaPuja($submitedArray['id_subasta']);
+		if($pujaGanadora!=false){
+			$articulo->comprador_id = $pujaGanadora->pujador_id;
+			$articulo->precio_venta = $pujaGanadora->cantidad;
+			$articulo->fecha_venda = Carbon::now();
+			$articulo->save();
+			
+		}
 
-		$articulo->comprador_id = $pujaGanadora->pujador_id;
-		$articulo->precio_venta = $pujaGanadora->cantidad;
-		$articulo->fecha_venda = Carbon::now();
-		$articulo->save();
+		
 	} catch (Exception $e) {
 		return $e;
 	}

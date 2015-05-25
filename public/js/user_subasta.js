@@ -28,7 +28,7 @@ function prorrogar(url){
 		id_subasta: id_subasta
 	})
 	.done(function(data) {
-		alert("Subasta Prorrogada");
+		notifications("notificacion", "Subasta Prorrogada", "");
 		comprovarEstado();
 
 	});
@@ -42,7 +42,7 @@ function aceptarPuja(url){
 			id_subasta: id_subasta
 		})
 		.done(function(data) {
-			alert("Felicidades por tu venta!");
+			notifications("notificacion", "Felicidades por tu venta!", "");
 			comprovarEstado();
 
 		});
@@ -107,6 +107,7 @@ function cargarTP(){
 		});
 	}else{
 		$("#TPujas").slideUp(800);
+		clearInterval(mostrarTPInt);
 	}
 }
 

@@ -315,4 +315,23 @@ public function confPujaSuperada(){
 
 }
 
+public function ultimaPuja(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articuloId = $submitedArray['id_subasta'];
+		$userId = Auth::user()->id;
+		$usuario = Usuario::find($userId);
+		$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
+		if($ultimapuja==false){
+			return 0;
+		}else{
+			return $ultimapuja;
+		}
+		
+	} catch (Exception $e) {
+		
+	}
+	
+}
+
 }

@@ -80,6 +80,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 	// Usuarios
 	Route::get('administracion/usuarios', 'LogedAdminMethods@usuarios');
+	Route::get('administracion/usuarios/editar/{idUsuario}', 'LogedAdminMethods@editar_usuario');
+	Route::put('administracion/usuarios/editar/{idUsuario}', 'LogedAdminMethods@guardar_usuario');
 	Route::get('administracion/usuarios/eliminar/{idUsuario}', 'LogedAdminMethods@eliminar_usuario');
 
 	// Categorías
