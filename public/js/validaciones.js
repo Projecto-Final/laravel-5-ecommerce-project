@@ -28,6 +28,12 @@
  	var val;
  	var aux;
 
+ /*	for (var i = 0; i < porTagName.length; i++) {
+ 		if(porTagName[i].type!="hidden"){
+ 			alert(porTagName[i].value);
+ 		}
+ 	}*/
+
  	for (i=0;i<porTagName.length;i++)
  	{
  		current = porTagName[i];
