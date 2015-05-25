@@ -62,11 +62,11 @@
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
 		<script>
-			notifications("error","Esto es un error","enlace");
-			notifications("advertencia","Esto es una advertencia","enlace");
-			notifications("consejo","Esto es un consejo","enlace");
-			notifications("notificacion","Esto es una notificacion","enlace");
-			notifications("alerta","Esto es una alerta","enlace");
+		notifications("error","Esto es un error","enlace");
+		notifications("advertencia","Esto es una advertencia","enlace");
+		notifications("consejo","Esto es un consejo","enlace");
+		notifications("notificacion","Esto es una notificacion","enlace");
+		notifications("alerta","Esto es una alerta","enlace");
 		</script>
 
 		<div id="container-fluid">
@@ -147,6 +147,9 @@
 												<li>
 													<label for="slider-range">Selector precio: </label>
 													<div id="slider-range" style="margin-bottom:15px;"></div>
+												</li>
+												<li>
+													<input type="checkbox" name="filtrar_usuario" value="1" id="filtrar_usuario" class="checkbox" value="Buscar por usuarios"><label for="slider-range">Filtrar por Usuario: </label>												
 												</li>
 											</div>
 										</div>
@@ -350,8 +353,8 @@
 												 	});
 												 });
 
-												</script>
-												<script>
+												 </script>
+												 <script>
 														// SLIDER DE PRECIO MAX - MIN
 														$(function() {
 															$( "#slider-range" ).slider({
@@ -368,6 +371,6 @@
 															$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
 																" - $" + $( "#slider-range" ).slider( "values", 1 ) );
 														});
-													</script>
-												</body>
-												</html>
+														</script>
+													</body>
+													</html>
