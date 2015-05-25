@@ -217,7 +217,6 @@ class LogedUserMethods extends Controller {
 	}
 
 
-
 	/*Obtener ventas del usuario */
 
 	public function get_ventas(){
@@ -336,7 +335,7 @@ class LogedUserMethods extends Controller {
 			'username' => 'required|alpha_num',
 			'direccion' => 'required|String',
 			'email' => 'required|email',
-		]);
+			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
 		}
@@ -356,7 +355,7 @@ class LogedUserMethods extends Controller {
 			'password_old' => 'required|String',
 			'password' => 'required|String',
 			'password_confirmation' => 'required|String',
-		]);
+			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
 		}
@@ -776,7 +775,10 @@ public function valoracion($id){
 	$art = Articulo::find($val->articulo_id);
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
-	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante);
+	$direccion = url('/images/subastas/');
+	$fotoValorado = $direccion.'/'.$valorado->imagen_perfil;
+	$fotoValidante = $direccion.'/'.$validante->imagen_perfil;
+	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante ,'fotoValorado' =>$fotoValorado, 'fotoValidante' =>$fotoValidante);
 	return view('valoracion',$data);
 }
 
