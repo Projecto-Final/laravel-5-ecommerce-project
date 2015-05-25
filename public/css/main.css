@@ -15,6 +15,7 @@ body {
   line-height: 165%;
   font-size: 13px;
   background-color: #f6f6f6;
+  background-image: url('http://www.designbolts.com/wp-content/uploads/2013/02/Golf-Shirt-Grey-Seamless-Pattern-For-Website-Background.jpg');
 }
 
 body {
@@ -161,6 +162,7 @@ CSS PERSONALIZADO
   margin: 0;
   padding: 0;
   width: 100%;
+  background-color: #fff;
 }
 
 .contenedor-header .formulario-busqueda {
@@ -168,7 +170,7 @@ CSS PERSONALIZADO
   margin: auto;
   float: left;
   width: 100%;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #C3C3C3;
 }
 
 .formulario-busqueda > .select-input {
