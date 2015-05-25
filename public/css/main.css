@@ -895,3 +895,9 @@ ul.form-list, ul.tags-list {
   margin-bottom:20px;
 }
 /* CARROUSEL HOME */
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
