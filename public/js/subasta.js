@@ -7,6 +7,9 @@ $(document).ready(function(){
 		pujasAutom();
 		var pujasAutomInt =	setInterval(pujasAutom,7000);
 		
+		ultimaPuja();
+		var ultimaPujaInt =	setInterval(ultimaPuja,7000);
+		
 	}
 	
 	comprovarEstado();
@@ -14,8 +17,6 @@ $(document).ready(function(){
 	
 });
 var cont = 0;
-ultimaPuja();
-var ultimaPujaInt =	setInterval(ultimaPuja,7000);
 
 setInterval(comprovarEstado, 15000);
 
@@ -228,7 +229,7 @@ function cancelConf(){
 			if(data!=1){
 				notifications("error", data, "");
 			}else{
-			
+				
 			    //reconstruimos el contenido
 			    $( ".formConfPuja-button" ).prop( "disabled", false );
 			    $(".formConfPuja-button").html("Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i>");     
@@ -242,9 +243,9 @@ function cancelConf(){
 			txt += "</form><p> <input id='crearConf' type='button' class='btn btn-primary' onclick='crear_confPuja()' value='GUARDAR'> <i class='fa fa-flag-o'></i></p>";
 
 			$("#formConf").html(txt);	
-		
-	})
-}
+			
+		})
+	}
 }
 
 
@@ -397,7 +398,7 @@ function cargarTP(){
 					}
 
 				}			
-			txt+="</table>"
+				txt+="</table>"
 
 
 				txt+="</table>"

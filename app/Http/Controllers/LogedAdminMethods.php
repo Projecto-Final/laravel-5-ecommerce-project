@@ -293,11 +293,24 @@ class LogedAdminMethods extends Controller {
 		return view('admin/categorias',['categorias' => $categorias]);
 	}
 
-	public function editar_categorias($idCategoria)
+	public function editar_categoria($idCategoria)
 	{
-		$categorias = Categoria::find($idCategoria);
+		$categoria = Categoria::find($idCategoria);
 		// EDICION DE DATOS //
-		return redirect("administracion/categorias");
+		return view('admin.editar_categoria',['categoria' => $categoria]);
+	}
+
+	public function guardar_categoria($idCategoria, Request $request)
+	{
+		$categoriaActualizada = $request->all();
+		$categoria = Categoria::find($idCategoria);
+		
+		$categoria->nombre = $categoriaActualizada['nombre'];
+		$categoria->descripcion = $categoriaActualizada['descripcion'];
+		$categoria->save();
+
+
+		return redirect("administracion/categorias/editar/".$idCategoria);
 	}
 
 	public function eliminar_categorias($idCategoria)

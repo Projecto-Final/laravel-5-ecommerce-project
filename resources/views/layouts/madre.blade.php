@@ -20,7 +20,7 @@
 	<script src="{{ url('dataTable.min.js')}} " type="text/javascript"></script>
 	<!-- LIBRERIAS Y CSS STAR RATING -->
 	<link href="{{ url('bootstrap-star-rating/css/star-rating.min.css')}}" media="all" rel="stylesheet" type="text/css" />
-	<script src="{{ url('bootstrap-star-rating/js/star-rating.min.js')}} " type="text/javascript"></script>
+	<script src="{{ url('bootstrap-star-rating/js/star-rating.js')}} " type="text/javascript"></script>
 
 	<!-- JS PROPIO FUNCIONES PAGINA -->
 	<script src="{{url('js/sistema_notificaciones.js')}}" type="text/javascript"></script>

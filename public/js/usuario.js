@@ -378,14 +378,14 @@ function valoraciones(){
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Valoraciones Que Mostrar</h3>";
-		}
+		}			
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
 			txt +="<td><a href='usuario/valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
-			txt +="<td>"+data[0][i].puntuacion+"</td>";
+			txt +="<td>"+data[4][i]+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
-			txt +="</tr>";
+			txt +="</tr>";	
 		};
 		txt+="</table>";
 		$(".contact-info").html(txt);

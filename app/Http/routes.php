@@ -86,7 +86,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 	// Categorías
 	Route::get('administracion/categorias', 'LogedAdminMethods@categorias');
-	Route::get('administracion/categorias/editar/{idCategoria}', 'LogedAdminMethods@editar_categorias');
+	Route::get('administracion/categorias/editar/{idCategoria}', 'LogedAdminMethods@editar_categoria');
+	Route::put('administracion/categorias/editar/{idCategoria}', 'LogedAdminMethods@guardar_categoria');
 	Route::get('administracion/categorias/eliminar/{idCategoria}', 'LogedAdminMethods@eliminar_categorias');
 
 	// SubCategorias
