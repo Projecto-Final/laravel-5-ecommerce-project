@@ -854,26 +854,26 @@ public function aceptarUltimaP(Request $request){
 
 }
 
-public function prorrogar(Request $request){
-	try {
-		$submitedArray = $request->all();
-		$articulo = Articulo::find($submitedArray['id_subasta']);
-
-		$fechaModificar = new Carbon($articulo->fecha_final);
-		$empresa = Empresa::find(1)->get();
-
-		$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
-		$articulo->precio_venta = -1;
-		$articulo->fecha_final = $nuevaFecha;
-		$articulo->save();
-		Factura::create([
-			'usuario_id' => $articulo->subastador_id,
-			'nif' => $submitedArray['nif'],
-			'cantidad_pagada' => $empresa[0]->precioPorroga,
-			'fecha' => Carbon::now(),
-		]);
-	} catch (Exception $e) {
-		return $e;
+	public function prorrogar(Request $request){
+		try {
+			$submitedArray = $request->all();
+			$articulo = Articulo::find($submitedArray['id_subasta']);
+	
+			$fechaModificar = new Carbon($articulo->fecha_final);
+			$empresa = Empresa::find(1)->get();
+	
+			$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
+			$articulo->precio_venta = -1;
+			$articulo->fecha_final = $nuevaFecha;
+			//$articulo->save();
+			Factura::create([
+				'usuario_id' => $articulo->subastador_id,
+				'nif' => $submitedArray['nif'],
+				'cantidad_pagada' => $empresa[0]->precioPorroga,
+				'fecha' => Carbon::now(),
+			]);
+		} catch (Exception $e) {
+			return $e;
+		}
 	}
-}
 }

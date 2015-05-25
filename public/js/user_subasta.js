@@ -47,8 +47,6 @@ function aceptarPuja(url){
 
 function mostrarTP(){
 	cargarTP();
-	
-
 }
 
 function cargarTP(){
