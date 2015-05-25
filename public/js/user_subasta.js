@@ -43,17 +43,18 @@ function prorrogar(url){
 }
 
 function aceptarPuja(url){
-	
-	var id_subasta = $("#subastaId").val();
-	if(confirm("Seguro Que Aceptas la Ultima Oferta")){
-		$.get(url,{
-			id_subasta: id_subasta
-		})
-		.done(function(data) {
-			bootbox.alert("Felicidades por tu venta!");
-			comprovarEstado();
-		});
-	}
+	bootbox.confirm("Seguro Que Aceptas la Ultima Oferta?", function(result) {
+		var id_subasta = $("#subastaId").val();
+		if(result){
+			$.get(url,{
+				id_subasta: id_subasta
+			})
+			.done(function(data) {
+				bootbox.alert("Felicidades por tu venta!");
+				comprovarEstado();
+			});
+		}
+	}); 
 }
 
 function mostrarTP(){

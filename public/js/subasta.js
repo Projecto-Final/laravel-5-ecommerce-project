@@ -215,10 +215,11 @@ function cambiarla(){
 }
 
 function cancelConf(){
+	bootbox.confirm("Seguro Que Desea Cancelarla?", function(result) {
 	var id_subasta = $("#subastaId").val();
 	var url = $("#cancelarConf").val();
 
-	if(confirm("Seguro Que Desea Cancelarla")){
+	if(result){
 
 		$.get(url,{
 			id_subasta: id_subasta
@@ -244,6 +245,7 @@ function cancelConf(){
 			
 		})
 	}
+	});
 }
 
 
@@ -331,25 +333,26 @@ function ultimaPuja(){
 
 function pujar(id_subasta,url){
 
-	//alert(url);
-	if(confirm("Seguro Que Desea Pujar?")){
-		var puja_mayor = $("#exampleInputAmount").val();
-		$.get(url,{
-			id_subasta: id_subasta,
-			puja_mayor : puja_mayor
-		})
-		.done(function(data) {
-			if(data=="Error"){
-				bootbox.alert("El precio mostrado ha cambiado");
-			}else if(data=="Ya Pujaste"){
-				bootbox.alert("Ya Pujaste");
-			}
-			recargarPrecios();
+	bootbox.confirm("Seguro Que Desea Pujar?", function(result) {
+		if(result){
+			var puja_mayor = $("#exampleInputAmount").val();
+			$.get(url,{
+				id_subasta: id_subasta,
+				puja_mayor : puja_mayor
+			})
+			.done(function(data) {
+				if(data=="Error"){
+					bootbox.alert("El precio mostrado ha cambiado");
+				}else if(data=="Ya Pujaste"){
+					bootbox.alert("Ya Pujaste");
+				}
+				recargarPrecios();
 
-		}).fail(function(data){
-			bootbox.alert("Debes estar Logueado para Pujar");
-		});	
-	}
+			}).fail(function(data){
+				bootbox.alert("Debes estar Logueado para Pujar");
+			});	
+		}
+	}); 
 }
 
 function mostrarTP(){

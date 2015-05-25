@@ -46,7 +46,7 @@
  					//alert(current.checked);
 
  					if(current.checked==false){
- 						alert("Debe aceptar las condiciones de uso y politica de privacidad");
+ 						bootbox.alert("Debe aceptar las condiciones de uso y politica de privacidad");
  						getIdMsg(current,true,false);
  						//error=true;
  					}

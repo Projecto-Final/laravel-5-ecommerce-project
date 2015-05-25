@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use DB;
 use Input;
 use Cache;
+use Mail;
 
 class LogedUserMethods extends Controller {
 
