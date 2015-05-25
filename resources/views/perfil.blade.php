@@ -26,6 +26,8 @@
     </div>
   </div>
 </div>
+</div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -52,11 +54,13 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 
 
-  <input type="hidden" id="idUsuario" name="idUsuario" value="{{$user->id}}">
+<input type="hidden" id="idUsuario" name="idUsuario" value="{{$user->id}}">
 
-  @stop
+@stop
 
-  @section('content')
-  @stop
+@section('content')
+@stop
