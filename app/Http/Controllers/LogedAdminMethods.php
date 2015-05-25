@@ -313,7 +313,7 @@ class LogedAdminMethods extends Controller {
 		return redirect("administracion/categorias/editar/".$idCategoria);
 	}
 
-	public function eliminar_categorias($idCategoria)
+	public function eliminar_categoria($idCategoria)
 	{
 		$categoria = Categoria::find($idCategoria);
 		$categoria->delete();
