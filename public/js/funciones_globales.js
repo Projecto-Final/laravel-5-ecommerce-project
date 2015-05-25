@@ -45,7 +45,7 @@ function get_Pendientes(){
 	var url = "usuario/get_Pendientes";
 	$.get(url,function(data,status){
 		if(data != 0){
-			notifications("alerta", "Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas", "/usuario");
+			notifications("alerta", "Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas", "");
 		}
 	});
 }

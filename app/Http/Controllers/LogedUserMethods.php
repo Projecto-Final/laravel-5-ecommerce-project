@@ -166,6 +166,8 @@ class LogedUserMethods extends Controller {
 				$imagenASubir->move(public_path("images/subastas"),$img_name);
 				print_r($imagenASubir);
 
+				echo "<h1>".public_path("images/subastas")."</h1>";
+
 				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
@@ -766,9 +768,13 @@ public function comprovarEstado(Request $request){
 			$dateAr = explode(' ',$articulo->fecha_venda);
 			$newDate = $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0];
 
+<<<<<<< HEAD
 
 			return "Articulo Vendido  Fecha Venta : ".$newDate." Precio Venta : ".$articulo->precio_venta." €";
 //Empresa tiempoPorrogaArticulo precioPorroga
+=======
+			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+>>>>>>> 82ab03a74eb3bed7d8891d74c5d67cb6438a5e47
 
 		}
 
@@ -778,16 +784,34 @@ public function comprovarEstado(Request $request){
 }
 
 //merge avoided xD
-public function valoracion($id){
+public function write_valoracion($id){
+	$user = Auth::user();
 	$val = Valoracion::find($id);
 	$art = Articulo::find($val->articulo_id);
 	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
+	if($validante->id == $user->id){
+		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+		return view('valoracion',$data);
+	}else{
+		return redirect('usuario');
+	}
+}
 
-	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
-
-	return view('valoracion',$data);
+public function view_valoracion($id){
+	$user = Auth::user();
+	$val = Valoracion::find($id);
+	$art = Articulo::find($val->articulo_id);
+	$foto = $art->imagenes[0];
+	$valorado = Usuario::find($val->valorado_id);
+	$validante = Usuario::find($val->validante_id);
+	if($valorado->id == $user->id){
+		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+		return view('valorado',$data);
+	}else{
+		return redirect('usuario');
+	}
 }
 
 public function updateValoracion(Request $request){

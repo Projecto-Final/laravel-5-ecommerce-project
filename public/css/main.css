@@ -432,6 +432,7 @@ SUBASTAS POR CATEGORIAS
   text-align: center;
   padding-bottom: 20px;
   z-index: 0;
+  border-bottom: 1px #EAEAEA solid;
 }
 
 .products-grid .item .item-inner .item-img {
