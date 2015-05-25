@@ -78,7 +78,7 @@ class LogedAdminMethods extends Controller {
 		$SubCategorias = Subcategoria::all();
 		$fecha1Mes = Carbon\Carbon::now()->modify('-30 days');
 
-		$usuarios = Usuario::orderBy('id','asc')->whereRaw("created_at >= '".$fecha1Mes->toDateTimeString()."'")->take(8)->get();
+		$usuarios = Usuario::orderBy('id','desc')->whereRaw("created_at >= '".$fecha1Mes->toDateTimeString()."'")->take(8)->get();
 
 		// Se retornan los datos a la vista, para que esta los monte.
 		return view('admin.dashboard', ['usuarios' => $usuarios,'administrador' => $Adm ,'nSubastas'=> $nSubastas ,'nImagenes'=> $nImagenes, 'SubCategorias'=> $SubCategorias, 'Categorias'=> $Categorias, 'totalMovimientos' => $totalMovimientos, 'nPujas' => $nPujas ]);
