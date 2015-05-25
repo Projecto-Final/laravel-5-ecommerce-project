@@ -1,4 +1,5 @@
 setInterval(confPujaSuperada,7000);
+setInterval(get_Pendientes,7000);
 
 
 function mostrar_filtros(){
@@ -31,11 +32,21 @@ function confPujaSuperada(){
 
 	});
 
-	}
+}
 
 function formatoFecha(fecha){
 	var dateAr = fecha.split(' ');
 	var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
 	return newDate;
 
+}
+
+
+function get_Pendientes(){
+	var url = "usuario/get_Pendientes";
+	$.get(url,function(data,status){
+		if(data != 0){
+			notifications("alerta", "Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas", "/usuario");
+		}
+	});
 }

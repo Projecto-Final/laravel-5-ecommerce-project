@@ -283,17 +283,16 @@ class LogedUserMethods extends Controller {
 	}
 
 	public function get_Pendientes(){	
-		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$count = 0;
 		$val[0] = $user->valCompra;
 		for ($i=0; $i < count($val[0]); $i++) {
-			if($val[0]->completada == 0){
+			if($val[0][$i]->completada == 0){
 				$count++;
 			}
 		}
-		echo $count;
+		return $count;
 	}
 
 	public function get_valoracionesPendientes(){	

@@ -411,20 +411,32 @@ function valoracionesPendientes(){
 			txt+="</table>"
 			txt+="<h3>No Hay Valoraciones pendientes</h3>";
 		}
-		for (var i = 0; i < data[0].length; i++) {
-			txt+= '<tr class="info">';
-			txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
-			txt +="<td>"+data[1][i]+"</td>";
-			txt +="<td>"+data[2][i]+"</td>";
-			txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
-			txt +="</tr>";
-		};
-		txt+="</table></div>";
-		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
-		$(".contact-info").html(txt);	
-	}).fail(function(data){
-		alert("Error en el servidor vuelve a probar mas tarde");
+		var cap = true;
+		if(data[0][0].completada == 1){
+			cap = false;
+		}
+		if(cap == true){
+			for (var i = 0; i < data[0].length; i++) {
+				txt+= '<tr class="info">';
+				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
+				txt +="<td>"+data[1][i]+"</td>";
+				txt +="<td>"+data[2][i]+"</td>";
+				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
+				txt +="</tr>";
+			};
+			txt+="</table></div>";
+			txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+			+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+			$(".contact-info").html(txt);
+		}else{
+			txt+="</table></div>";
+			txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+			+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+			txt+="<h3>No Hay Valoraciones pendientes</h3>";			
+			$(".contact-info").html(txt);
+		}	
+	}).error(function(data){
+		notifications("error", "Error en el servidor vuelve a probar mas tarde ", "");
 	});	
 }
 
@@ -445,7 +457,7 @@ function editarP(){
 		perfil();
 	})
 	.error(function(data){
-		alert("Error en el servidor vuelve a probar mas tarde");
+		notifications("error", "Error en el servidor vuelve a probar mas tarde ", "");
 	});	
 
 }	
