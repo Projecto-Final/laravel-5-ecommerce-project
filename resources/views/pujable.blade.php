@@ -8,6 +8,22 @@
   <h5>PRECIO ACTUAL DEL ARTICULO</h5>
   <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
   <form class="form-inline">
+
+    <div id="estadoSubasta"> 
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">€</div>
+          <input type="text" class="form-control" id="exampleInputAmount" value="{{ $subasta['puja_mayor'] }}" disabled="true">
+        </div>
+      </div>
+
+
+
+      <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
+    </form>
+    <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
+  </div>
+<form>
     @if ($logueado == true) 
     <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
     <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">   
@@ -25,23 +41,7 @@
     <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
     <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
      <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-
-
-    <div id="estadoSubasta"> 
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">€</div>
-          <input type="text" class="form-control" id="exampleInputAmount" value="{{ $subasta['puja_mayor'] }}" disabled="true">
-        </div>
-      </div>
-
-
-
-      <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
-    </form>
-    <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
-  </div>
-
+</form>
 </div>
 
 <div id="datosPujaConf">
@@ -69,6 +69,11 @@
 </div>
 </div>
 @elseif($subasta['precio_venta'] == 0)
+
+<div id="estadoSubasta"> </div>
+<p>Subasta caducada </p>
+</div>
+<div id="formConf"><p></p><p></p><p></p><div>
 <form class="form-inline">
   @if ($logueado == true) 
   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
@@ -89,13 +94,14 @@
   <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
    <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
 </form>
+@elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
+
 <div id="estadoSubasta"> </div>
-<p>Subasta caducada </p>
+<p>Articulo Vendido  - Fecha Venta :  <?php $dateAr = explode(' ',$subasta['fecha_venda']);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>  Precio Venta : {{$subasta['precio_venta']}}</p>
+
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
-
-@elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
-<form class="form-inline">
+  <form class="form-inline">
   @if ($logueado == true) 
   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
   <input type="hidden" id="cargarPujaAut" value="no">
@@ -114,10 +120,5 @@
   <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
    <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
 </form>
-<div id="estadoSubasta"> </div>
-<p>Articulo Vendido  - Fecha Venta :  <?php $dateAr = explode(' ',$subasta['fecha_venda']);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>  Precio Venta : {{$subasta['precio_venta']}}</p>
-
-</div>
-<div id="formConf"><p></p><p></p><p></p><div>
 @endif
 @stop

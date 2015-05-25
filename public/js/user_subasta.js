@@ -23,7 +23,17 @@ function prorrogar(url){
 			})
 			.done(function(data) {
 				notifications("notificacion", "Subasta Prorrogada", "");
-				comprovarEstado();
+				var id_subasta = $("#subastaId").val();
+				var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
+  textaco += '<div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>';
+  textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
+  textaco += '<div class="input-group-addon">€</div>';
+  textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
+   textaco += '</div></div><input id="botonPuja" type="button" class="btn btn-primary" onclick="pujar('+id_subasta+' , "../add_puja")" value=""></form>';   
+        
+    
+				$("#bid").html(textaco);
+
 			})
 		} else {
 			bootbox.alert("Hay un error con el NIF");
@@ -124,6 +134,7 @@ function comprovarEstado(){
 			$("#bid").html(data);
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
+
 
 
 //como ya esta caducada chuto intervalos
