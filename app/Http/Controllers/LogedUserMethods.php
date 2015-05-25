@@ -4,6 +4,7 @@ use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
 use App\Imagen;
+use App\Escala;
 use App\Valoracion;
 use App\Empresa;
 use App\ConfiguracionPuja;
@@ -269,6 +270,7 @@ class LogedUserMethods extends Controller {
 	public function get_valoraciones(){	
 		$direccion = url('/images/subastas/');
 		$id = Auth::user()->id;
+		$escala = Escala::all();
 		$user = Usuario::find($id);
 		$val[0] = $user->valVenta;
 		$j = 0;
@@ -278,6 +280,7 @@ class LogedUserMethods extends Controller {
 				$art = Articulo::find($val[0][$i]->articulo_id);
 				$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
 				$val[3][$j] = $art;
+				$val[4][$j] = $escala;
 				$j++;
 			}else{}
 		}
