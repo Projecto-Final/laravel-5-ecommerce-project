@@ -213,7 +213,9 @@ Route::get('usuario/guardarCambiosPass', 'LogedUserMethods@guardarCambiosPass');
 Route::put('usuario/fotoPerfil', 'LogedUserMethods@save_photo_perfil');
 Route::put('usuario/fotoPortada', 'LogedUserMethods@save_photo_portada');
 // ir a la valoracion con la id
-Route::get('usuario/valoracion/{idValoracion}', 'LogedUserMethods@valoracion');
+Route::get('usuario/valoracion/{idValoracion}', 'LogedUserMethods@write_valoracion');
+// ver la valoracion desde el valorado
+Route::get('usuario/valorado/{idValoracion}', 'LogedUserMethods@view_valoracion');
 //insert valoracion del producto
 Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');
 // pop de valoraciones pendientes

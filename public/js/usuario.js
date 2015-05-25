@@ -364,7 +364,9 @@ function subastasI(){
 function valoraciones(){
 	var url = "usuario/get_valoraciones";
 	var txt="";
-	txt += "<div class='col-md-8'><h3>Mis Valoraciones</h3>"
+	txt+="<button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+	+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button>";	
+	txt += "<h3>Mis Valoraciones</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";
@@ -380,16 +382,14 @@ function valoraciones(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='subasta/"+data[3][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
+			txt +="<td><a href='valoracion/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
 			txt +="<td>"+data[0][i].texto+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
 			txt +="</tr>";
 		};
-		txt+="</table></div>";
-		txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-		+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+		txt+="</table>";
 		$(".contact-info").html(txt);
 	});
 }
@@ -397,7 +397,9 @@ function valoraciones(){
 function valoracionesPendientes(){
 	var url = "usuario/get_valoracionesPendientes";
 	var txt="";
-	txt += "<div class='col-md-8'><h3>Valoraciones pendientes</h3>"
+	txt+="<button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
+	+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button>";
+	txt += "<h3>Valoraciones pendientes</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
 	txt +="<th></th>";	
@@ -429,9 +431,7 @@ function valoracionesPendientes(){
 			+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
 			$(".contact-info").html(txt);
 		}else{
-			txt+="</table></div>";
-			txt+="<div class='col-md-4'><button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-			+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button></div>";
+			txt+="</table>";
 			txt+="<h3>No Hay Valoraciones pendientes</h3>";			
 			$(".contact-info").html(txt);
 		}	
