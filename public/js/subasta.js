@@ -215,7 +215,6 @@ function cancelConf(){
 	var id_subasta = $("#subastaId").val();
 	var url = $("#cancelarConf").val();
 
-
 	if(confirm("Seguro Que Desea Cancelarla")){
 
 		$.get(url,{
@@ -225,25 +224,21 @@ function cancelConf(){
 			if(data!=1){
 				alert(data);
 			}else{
+			
+			    //reconstruimos el contenido
+			    $( ".formConfPuja-button" ).prop( "disabled", false );
+			    $(".formConfPuja-button").html("Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i>");     
+			    $(".formConfPuja").slideUp(800);
+			}
+			var txt = " <form class='form-inline' id='form-validate'>";
+			txt +=  " <h2>Cantidad Máxima Que Pujara</h2>";
+			txt += "<p>  <input trype='text' id='cantidadMax' name='cantidadMax'/>€</p>";
+			txt += "<br> <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>";
+			txt += "<span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>"
+			txt += "</form><p> <input id='crearConf' type='button' class='btn btn-primary' onclick='crear_confPuja()' value='GUARDAR'> <i class='fa fa-flag-o'></i></p>";
 
-     //reconstruimos el contenido
-     $( ".formConfPuja-button" ).prop( "disabled", false );
-     $(".formConfPuja-button").html("Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i>");     
-     $(".formConfPuja").slideUp(800);
- }
- var txt = " <form class='form-inline' id='form-validate'>";
- txt +=  " <h2>Cantidad Máxima Que Pujara</h2>";
- txt += "<p>  <input trype='text' id='cantidadMax' name='cantidadMax'/>€</p>";
- txt += "<br> <span class='errorJS' id='cantidadMax_error'>&nbsp;Campo obligatorio</span>";
- txt += "<span class='errorJS' id='cantidadMax_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>"
- txt += "</form><p> <input id='crearConf' type='button' class='btn btn-primary' onclick='crear_confPuja()' value='GUARDAR'> <i class='fa fa-flag-o'></i></p>";
-
-
- $("#formConf").html(txt);	
-
-
-});
-
+			$("#formConf").html(txt);	
+		);
 	}
 }
 
@@ -252,8 +247,6 @@ function pujasAutom(){
 
 	var url = $("#pujasAutom").val();
 	var id_subasta = $("#subastaId").val();
-
-	
 
 	$.get(url,{
 		id_subasta: id_subasta
@@ -270,20 +263,15 @@ function pujasAutom(){
 			txt +="<th>Fecha Puja</th>";
 			txt +="<th>Estado</th></tr></thead>";
 
-			
-			
-
-
 			for (var i = data.length-1; i > -1; i--) {
 				txt+= '<tr class="info">';
 				txt +="<td>"+data[i].cantidad+"</td>";
-				txt +="<td>"+data[i].fecha_puja+"</td>";
+				txt +="<td>"+formatoFecha(data[i].fecha_puja)+"</td>";
 				if(data[i].superada==0){
 					txt +="<td>En Cabeza</td></tr>";
 				}else{
 					txt +="<td>Superada</td></tr>";
 				}
-				
 			}
 			txt+="</table>";
 			txt += "</div>";
@@ -296,11 +284,8 @@ function pujasAutom(){
 
 function ultimaPuja(){
 
-
 	var url = $("#ultimaPuja").val();
 	var id_subasta = $("#subastaId").val();
-
-	
 
 	$.get(url,{
 		id_subasta: id_subasta
@@ -324,14 +309,13 @@ function ultimaPuja(){
 			}else{
 				txt +="<td> Automática </td>";
 			}				
-			txt +="<td>"+data[0].fecha_puja+"</td>";
+			txt +="<td>"+formatoFecha(data[0].fecha_puja)+"</td>";
 			if(data[0].superada==0){
 				txt +="<td>En Cabeza</td></tr>";
 			}else{
 				txt +="<td>Superada</td></tr>";
 			}
 
-			
 			txt+="</table>"
 
 			$("#UltimaPujaInfo").html(txt);
@@ -361,14 +345,12 @@ function pujar(id_subasta,url){
 		}).fail(function(data){
 			alert("Debes Estar Logueado Para Pujar");
 		});	
-
-
 	}
 }
-function mostrarTP(){
-cargarTP();
-$("#TPujas").slideDown(800);
 
+function mostrarTP(){
+	cargarTP();
+	$("#TPujas").slideDown(800);
 }
 
 function cargarTP(){
@@ -398,9 +380,7 @@ function cargarTP(){
 				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
 				txt +="<td>"+data[1][i].username+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";
-				var dateAr = data[0][i].fecha_puja.split(' ');
-				var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
-				txt +="<td>"+newDate+"</td>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
 				if(data[0][i].superada==0){
 					txt +="<td>En Cabeza</td></tr>";
 				}else{
@@ -424,8 +404,6 @@ function comprovarEstado(){
 	var url = $("#comprovarEstado").val();
 	var id_subasta = $("#subastaId").val();
 
-
-
 	$.get(url,{
 		id_subasta: id_subasta
 	})
@@ -439,17 +417,10 @@ function comprovarEstado(){
 			$("#estadoSubasta").html(data);
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
-
-//como ya esta caducada chuto intervalos
-clearInterval(recargarPreciosInt);
-
-
-clearInterval(ultimaPujaInt);
-
-
-
-}
-}).fail(function(data){
-	
-});	
+			//como ya esta caducada chuto intervalos
+			clearInterval(recargarPreciosInt);
+			clearInterval(ultimaPujaInt);
+		}
+	}).fail(function(data){
+	});	
 }

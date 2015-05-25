@@ -10,7 +10,6 @@ $(document).ready(function(){
 	}
 	//ultimaPuja();
 	
-	
 });
 var cont=0;
 function prorrogar(url){
@@ -25,9 +24,7 @@ function prorrogar(url){
 		comprovarEstado();
 
 	});
-
 }
-
 
 function aceptarPuja(url){
 	
@@ -55,8 +52,6 @@ function cargarTP(){
 	var url = $("#todasPujas").val();
 	var id_subasta = $("#subastaId").val();
 
-
-
 	$.get(url,{
 		id_subasta: id_subasta
 	})
@@ -77,9 +72,7 @@ function cargarTP(){
 				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
 				txt +="<td>"+data[1][i].username+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";
-				var dateAr = data[0][i].fecha_puja.split(' ');
-				var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
-				txt +="<td>"+newDate+"</td>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
 				if(data[0][i].superada==0){
 					txt +="<td>En Cabeza</td></tr>";
 				}else{
@@ -104,8 +97,6 @@ function comprovarEstado(){
 	var url = $("#comprovarEstado").val();
 	var id_subasta = $("#subastaId").val();
 
-
-
 	$.get(url,{
 		id_subasta: id_subasta
 	})
@@ -120,20 +111,12 @@ function comprovarEstado(){
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
 
-//como ya esta caducada chuto intervalos
-
-
-
-clearInterval(comprovarEstadoInt);
-
-
-clearInterval(recargarPreciosInt);
-
-
-}
-}).fail(function(data){
-	
-});	
+			//como ya esta caducada chuto intervalos
+			clearInterval(comprovarEstadoInt);
+			clearInterval(recargarPreciosInt);
+		}
+	}).fail(function(data){
+	});	
 }
 
 
@@ -146,24 +129,12 @@ function recargarPrecios(){
 		id_subasta: id_subasta
 	})
 	.done(function(data) {
-
-
 		var precio = data[0]['incremento_precio']+data[0]['puja_mayor'];
-
-	
-
 		$("#exampleInputAmount").val(data[0]['puja_mayor']) ;
-
 		$("#tdPrecio").html(data[0]['puja_mayor']+"€");
-
 		//por motivos que desconozco sin el aux no va
 		var aux = data[1]
 		$("#numPujas").html(aux);
-
 		$("#contPujas").html("Nº Pujas :<br>"+aux);
-
-
-
 	});
-
 }

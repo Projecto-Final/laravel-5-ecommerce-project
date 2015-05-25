@@ -188,7 +188,7 @@
                           <div class="input-box">
                          
                                                       
-                             <input type="text" id="fechafin" name="fechafin" value="{{$fecha_final}}" title="Nombre" maxlength="255" readonly>
+                             <input type="text" id="fechafin" name="fechafin" value="<?php $dateAr = explode(' ',$fecha_final);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>" title="Nombre" maxlength="255" readonly>
                           </div>
                         </div>
                       </div>

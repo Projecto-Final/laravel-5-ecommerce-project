@@ -11,3 +11,9 @@ function interruptor_visibilidad(estado){
 		$(".parametros-button").html("mostrar opciones <i class='fa fa-eye'></i>");
 	}
 }
+
+function formatoFecha(fecha){
+	var dateAr = fecha.split(' ');
+	var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
+	return newDate;
+}
