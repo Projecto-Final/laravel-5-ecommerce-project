@@ -35,7 +35,7 @@
                       <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                         <div class="item-inner clearfix">
                           <div class="badges"> </div>
-                          <div class="item-img"> <a class="product-image" href="{{ url('subasta/'.$subasta[0][0]['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/subastas/'.$subasta[0]) }}" alt=" Retis lapen casen "> </span> </a> </div>
+                          <div class="item-img"> <a class="product-image" href="{{ url('subasta/'.$subasta[0]['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/subastas/'.$subasta[0]['imagen']) }}" alt=" Retis lapen casen "> </span> </a> </div>
                           <div class="item-info">
                             <div class="info-inner">
                               <div class="item-title"> <a href="" onclick="javascript: return true" title=" Retis lapen casen ">{{ $subasta[0]['nombre_producto'] }} </a> </div>
@@ -47,7 +47,7 @@
                               <div class="rating">
                                 <p class="no-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                               </div>
-                              <button title="Add to Cart" class="btn-cart" onclick="">Subastar</button>
+                              <a href="{{ url('subasta/'.$subasta[0]['id']) }}"><button title="Add to Cart" class="btn-cart" onclick="">Subastar</button></a>
                             </div>
                           </div>
                         </div>
