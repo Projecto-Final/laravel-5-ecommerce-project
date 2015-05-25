@@ -60,7 +60,7 @@
 										<div class="input-box">
 											<input type="checkbox" name="politica_privacidad" title="Sign Up for Newsletter" value="1" id="politica_privacidad" class="checkbox">
 										</div>
-										<label for="politica_privacidad">Acepto las condiciones de uso y politica de privacidad.</label></td>
+										<label for="politica_privacidad">Acepto las condiciones de uso y politica de privacidad. <a href="{{url('politica')}}" target="_blank">Clica aquí para ojearla.</a></label></td>
 										<span class='errorJS' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span></td>
 									</li>
 								</ul>
@@ -100,7 +100,7 @@
 							</div>
 							<div class="buttons-set">
 								<p class="required">* Campos requeridos</p>
-								<p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
+								<p class="back-link"><a href="{{url()}}" class="back-link">« Regresar al inicio</a></p>
 
 								<!-- <button type="submit" title="Submit" class="button" onclick='formValidatorr()'><span><span>Registrar</span></span></button> -->
 								

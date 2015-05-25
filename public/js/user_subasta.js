@@ -77,7 +77,9 @@ function cargarTP(){
 				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
 				txt +="<td>"+data[1][i].username+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";
-				txt +="<td>"+data[0][i].fecha_puja+"</td>";
+				var dateAr = data[0][i].fecha_puja.split(' ');
+				var newDate = dateAr[1] + " " + dateAr[0].split('-')[2] + '/' + dateAr[0].split('-')[1] + '/' + dateAr[0].split('-')[0];
+				txt +="<td>"+newDate+"</td>";
 				if(data[0][i].superada==0){
 					txt +="<td>En Cabeza</td></tr>";
 				}else{
