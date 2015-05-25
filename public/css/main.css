@@ -249,7 +249,7 @@ INFORMACION CLIENTES
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   margin-bottom: 20px;
-  border: 1px solid #EAEAEA;
+  border: 1px solid #DDDDDD;
 }
 .contenedor-informacion-clientes .item i, .contenedor-informacion-clientes  .item i {
   margin-right: 10px;
