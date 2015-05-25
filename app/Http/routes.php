@@ -98,6 +98,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	
 	// Configuracion Empresa/Pagina
 	Route::get('administracion/configuracion', 'LogedAdminMethods@configuracion');
+	Route::get('administracion/configuracion/editar', 'LogedAdminMethods@editar_configuracion');
+	Route::put('administracion/configuracion/editar', 'LogedAdminMethods@guardar_configuracion');
 	// Limpiar cache ( si hay )
 	Route::get('administracion/limpiar_cache', 'LogedAdminMethods@limpiar_cache');
 	
