@@ -46,6 +46,7 @@
 								<option value="{{ $categoria['id'] }}"> {{ $categoria['nombre'] }}</option>
 								@endif
 								@empty
+								<option>No hay categorias creadas </option>
 								@endforelse
 							</select>
 						</div>

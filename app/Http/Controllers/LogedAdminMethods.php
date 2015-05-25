@@ -339,6 +339,8 @@ class LogedAdminMethods extends Controller {
 		
 		$subcategoria->nombre = $subCategoriaActualizada['nombre'];
 		$subcategoria->descripcion = $subCategoriaActualizada['descripcion'];
+		$subcategoria->categoria_id = $subCategoriaActualizada['categoria_id'];
+
 		$subcategoria->save();
 
 		return redirect("administracion/subcategorias/editar/".$idSubcategoria);
