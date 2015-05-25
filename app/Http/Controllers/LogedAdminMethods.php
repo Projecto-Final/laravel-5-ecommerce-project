@@ -370,14 +370,20 @@ class LogedAdminMethods extends Controller {
 	public function guardar_factura($idFactura, Request $request)
 	{
 		$facturaActualizada = $request->all();
+		$factura = Factura::find($idFactura);
 		
+		$factura->detalle = $facturaActualizada['xx'];
 
 		$factura->save();
 
 		return redirect("administracion/facturas/editar/".$idFacturas);
 	}
 
+	public function eliminar_factura($idFactura)
 	{
+		$factura = Factura::find($idFactura);
+		$factura->delete();
+		return redirect("administracion/facturas");
 	}
 
 	public function configuracion()
