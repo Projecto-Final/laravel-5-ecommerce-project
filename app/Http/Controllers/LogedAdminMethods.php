@@ -166,7 +166,7 @@ class LogedAdminMethods extends Controller {
 		$subasta->save();
 		
 		//$subasta->delete();
-		//return view('admin.editar_subasta', ['subasta' => $subasta, 'localidades' => $localidades, 'subcategorias' => $subcategorias, 'usuarios' => $usuarios]);
+		return redirect("administracion/subastas/editar/".$idSubasta);
 	}
 
 	/**
