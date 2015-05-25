@@ -52,12 +52,10 @@ class FinalizarVentas extends Command {
 					$articulo->save();
 					$comprador = Usuario::find($articulo->comprador_id);
 					Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
-						$message->from("3fym.info@gmail.com", "info");
 						$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
 					});
 					$vendedor = Usuario::find($articulo->subastador_id);
 					Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
-						$message->from("3fym.info@gmail.com", "info");
 						$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
 					});
 					Valoracion::Create([
@@ -72,8 +70,7 @@ class FinalizarVentas extends Command {
 					$articulo->precio_venta = 0;
 					$articulo->save();
 					$vendedor = Usuario::find($articulo->subastador_id);
-					Mail::raw("Parece que has promocionado tu articulo en una mala fecha, tranquilo, siempre puedes prorrogar tu oferta un tiempo mas a ver si aparece la horda de pujadores que estaban en las sombras. Para la prorroga solo tienes que volver a tu panel de perfil y darle a la opcion en tu pagina web de subastas favorita!!!!! Cualquier duda la respondemos en el mail: 3fym.info@gmail.com", function($message) use ($vendedor) {
-						$message->from("3fym.info@gmail.com", "info");
+					Mail::raw("Parece que has promocionado tu articulo en una mala fecha, tranquilo, siempre puedes prorrogar tu oferta un tiempo mas a ver si aparece la horda de pujadores que estaban en las sombras. Para la prorroga solo tienes que volver a tu panel de perfil y darle a la opcion en tu pagina web de subastas favorita!!!!! Cualquier duda la respondemos en el mail: info.mail.3fym@gmail.com", function($message) use ($vendedor) {
 						$message->to($vendedor->email, $vendedor->nombre)->subject('Parece que necesitas mas tiempo');
 					});
 				}

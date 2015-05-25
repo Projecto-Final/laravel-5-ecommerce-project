@@ -453,23 +453,23 @@ class LogedUserMethods extends Controller {
 	}
 
 	public function ultimaPuja(Request $request){
-	try {
-		$submitedArray = $request->all();
-		$articuloId = $submitedArray['id_subasta'];
-		$userId = Auth::user()->id;
-		$usuario = Usuario::find($userId);
-		$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
-		if($ultimapuja==false){
-			return 0;
-		}else{
-			return $ultimapuja;
+		try {
+			$submitedArray = $request->all();
+			$articuloId = $submitedArray['id_subasta'];
+			$userId = Auth::user()->id;
+			$usuario = Usuario::find($userId);
+			$ultimapuja=$usuario->ultimaPujaSubasta($articuloId);
+			if($ultimapuja==false){
+				return 0;
+			}else{
+				return $ultimapuja;
+			}
+
+		} catch (Exception $e) {
+
 		}
-		
-	} catch (Exception $e) {
-		
+
 	}
-	
-}
 
 	public function engendrar_puja($articulo,$pujaAut,$idPujador){
 		try {
@@ -844,36 +844,48 @@ public function aceptarUltimaP(Request $request){
 			$articulo->precio_venta = $pujaGanadora->cantidad;
 			$articulo->fecha_venda = Carbon::now();
 			$articulo->save();
-			
+			$comprador = Usuario::find($articulo->comprador_id);
+			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
+				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
+			});
+			$vendedor = Usuario::find($articulo->subastador_id);
+			Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
+				$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
+			});
+			Valoracion::Create([
+				'texto' => '',
+				'valorado_id' => $vendedor->id,
+				'validante_id' => $comprador->id,
+				'puntuacion' => 1,
+				'fecha' => Carbon::now(),
+				'articulo_id' => $articulo->id,
+			]);
 		}
-
-		
 	} catch (Exception $e) {
 		return $e;
 	}
-
 }
 
-	public function prorrogar(Request $request){
-		try {
-			$submitedArray = $request->all();
-			$articulo = Articulo::find($submitedArray['id_subasta']);
-	
-			$fechaModificar = new Carbon($articulo->fecha_final);
-			$empresa = Empresa::find(1)->get();
-	
-			$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
-			$articulo->precio_venta = -1;
-			$articulo->fecha_final = $nuevaFecha;
-			$articulo->save();
-			Factura::create([
-				'usuario_id' => $articulo->subastador_id,
-				'nif' => $submitedArray['nif'],
-				'cantidad_pagada' => $empresa[0]->precioPorroga,
-				'fecha' => Carbon::now(),
+public function prorrogar(Request $request){
+	try {
+		$submitedArray = $request->all();
+		$articulo = Articulo::find($submitedArray['id_subasta']);
+
+		$fechaModificar = new Carbon($articulo->fecha_final);
+		$empresa = Empresa::find(1)->get();
+
+		$nuevaFecha = $fechaModificar->addDays($empresa[0]->tiempoPorrogaArticulo);
+		$articulo->precio_venta = -1;
+		$articulo->fecha_final = $nuevaFecha;
+		$articulo->save();
+		Factura::create([
+			'usuario_id' => $articulo->subastador_id,
+			'nif' => $submitedArray['nif'],
+			'cantidad_pagada' => $empresa[0]->precioPorroga,
+			'fecha' => Carbon::now(),
 			]);
-		} catch (Exception $e) {
-			return $e;
-		}
+	} catch (Exception $e) {
+		return $e;
 	}
+}
 }
