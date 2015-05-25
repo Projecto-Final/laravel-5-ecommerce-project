@@ -768,7 +768,7 @@ public function write_valoracion($id){
 	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
-	if($validante->id == $user->id){
+	if($validante->id == $user->id && $val->completada == 0){
 		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
 		return view('valoracion',$data);
 	}else{
