@@ -8,7 +8,7 @@
 
 
 @section('info_extra')
-<script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/validaciones.js') }}"></script>
 <div id="sns_content" class="wrap layout-m new-subasta">
   <div class="container">
     <div class="row">
@@ -20,7 +20,7 @@
             </div>
             <form action="{{ url('add_subasta') }}" method="post" enctype="multipart/form-data" id="form-validate">
               <input type="hidden" name="_method" value="PUT">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
               <div class="fieldset">
                 <input type="hidden" name="success_url" value="">
                 <input type="hidden" name="error_url" value="">
