@@ -5,6 +5,7 @@ use App\Categoria;
 use App\Articulo;
 use App\Imagen;
 use App\Valoracion;
+use App\Factura;
 use App\Empresa;
 use App\ConfiguracionPuja;
 use Session;
@@ -846,7 +847,7 @@ public function prorrogar(Request $request){
 		Factura::create([
 			'usuario_id' => $articulo->subastador_id,
 			'nif' => $submitedArray['nif'],
-			'cantidad_pagada' => $empresa->precioPorroga,
+			'cantidad_pagada' => $empresa[0]->precioPorroga,
 			'fecha' => Carbon::now(),
 		]);
 	} catch (Exception $e) {

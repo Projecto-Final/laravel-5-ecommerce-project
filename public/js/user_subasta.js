@@ -13,24 +13,23 @@ $(document).ready(function(){
 });
 var cont=0;
 function prorrogar(url){
-	var url =$("#prorrogar").val();
-	var id_subasta = $("#subastaId").val();
-
-	bootbox.prompt("What is your name?", function(result) {                
-		if (result === null) {                                             
-			Example.show("Prompt dismissed");                              
+	bootbox.prompt("Para poder completar el pago necesitamos su NIF", function(result) {
+		var url =$("#prorrogar").val();
+		var id_subasta = $("#subastaId").val();
+		if (result === null || isDNI(result)) {   
+		alert(result);
+		alert(url);
+			$.get(url,{
+				id_subasta: id_subasta,
+				nif: result
+			})
+			.done(function(data) {
+				notifications("notificacion", "Subasta Prorrogada", "");
+				comprovarEstado();
+			})
 		} else {
-			Example.show("Hi <b>"+result+"</b>");                          
+			bootbox.alert("Hay un error con el NIF");
 		}
-	});
-
-	$.get(url,{
-		id_subasta: id_subasta
-	})
-	.done(function(data) {
-		notifications("notificacion", "Subasta Prorrogada", "");
-		comprovarEstado();
-
 	});
 }
 
@@ -44,7 +43,6 @@ function aceptarPuja(url){
 		.done(function(data) {
 			notifications("notificacion", "Felicidades por tu venta!", "");
 			comprovarEstado();
-
 		});
 	}
 }
