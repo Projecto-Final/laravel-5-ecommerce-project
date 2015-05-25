@@ -62,11 +62,11 @@
 			<div class="notification-box alert"><p><b>alert: </b>text</p><i class="glyphicon glyphicon-alert"></i><div onClick="closeNotificationBox('.alert')" class="glyphicon glyphicon-remove-sign"></div></div>
 		</div>
 		<script>
-		notifications("error","Esto es un error","enlace");
-		notifications("advertencia","Esto es una advertencia","enlace");
-		notifications("consejo","Esto es un consejo","enlace");
-		notifications("notificacion","Esto es una notificacion","enlace");
-		notifications("alerta","Esto es una alerta","enlace");
+		// notifications("error","Esto es un error","enlace");
+		// notifications("advertencia","Esto es una advertencia","enlace");
+		// notifications("consejo","Esto es un consejo","enlace");
+		// notifications("notificacion","Esto es una notificacion","enlace");
+		// notifications("alerta","Esto es una alerta","enlace");
 		</script>
 
 		<div id="container-fluid">
