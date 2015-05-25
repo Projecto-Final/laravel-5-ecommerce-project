@@ -57,6 +57,10 @@ input.input-text {
   transition: all 0.2s ease-out;
   color: #aaa;
 }
+select {
+    padding: 4px;
+  border: 1px #C3C3C3 solid;
+}
 
 /* Eliminar la puta roña de outline */
 :focus { outline: none; }

@@ -108,7 +108,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 // RUTAS GLOBALES ( AUTH/GUEST )
 Route::get('get_allCategories', 'GlobalController@get_allCategories');
-
+Route::get('get_localidades', 'GlobalController@get_localidades');
 Route::get('subasta/{idSubasta}', 'GlobalController@get_selectedSubasta');
 
 /* BUSCAR MEDIANTE FILTRO */
