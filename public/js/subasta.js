@@ -374,6 +374,7 @@ function cargarTP(){
 				txt+="<h4>Pujas</h4>";
 				txt+='<table class="table table-striped">';
 				txt+= '<thead><tr class="success">';
+				txt +="<th></th>";
 				txt +="<th>Usuario</th>";	
 				txt +="<th>Cantidad</th>";
 				txt +="<th>Fecha Puja</th>";
@@ -381,6 +382,7 @@ function cargarTP(){
 
 				for (var i = data[0].length-1; i > -1; i--) {
 					txt+= '<tr class="info">';
+					txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
 					txt +="<td>"+data[1][i].username+"</td>";
 					txt +="<td>"+data[0][i].cantidad+"</td>";
 					txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
