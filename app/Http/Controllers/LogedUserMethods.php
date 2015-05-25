@@ -763,8 +763,11 @@ public function comprovarEstado(Request $request){
 
 		}else if($articulo->precio_venta!=0 && $articulo->precio_venta!=-1){
 
+			$dateAr = explode(' ',$articulo->fecha_venda);
+			$newDate = $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0];
 
-			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
+
+			return "Articulo Vendido  Fecha Venta : ".$newDate." Precio Venta : ".$articulo->precio_venta." €";
 //Empresa tiempoPorrogaArticulo precioPorroga
 
 		}

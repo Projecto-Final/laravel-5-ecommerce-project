@@ -117,7 +117,7 @@
   <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
 </form>
 <div id="estadoSubasta"> </div>
-<p>Articulo Vendido  - Fecha Venta :  {{$subasta['fecha_venda']}}  Precio Venta : {{$subasta['precio_venta']}}</p>
+<p>Articulo Vendido  - Fecha Venta :  <?php $dateAr = explode(' ',$subasta['fecha_venda']);  echo $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0]; ?>  Precio Venta : {{$subasta['precio_venta']}}</p>
 
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
