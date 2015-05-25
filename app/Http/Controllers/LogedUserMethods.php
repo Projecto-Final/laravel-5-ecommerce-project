@@ -768,14 +768,8 @@ public function comprovarEstado(Request $request){
 			$dateAr = explode(' ',$articulo->fecha_venda);
 			$newDate = $dateAr[1] . " " .explode('-',$dateAr[0])[2] . '/' . explode('-',$dateAr[0])[1] . '/' . explode('-',$dateAr[0])[0];
 
-<<<<<<< HEAD
-
+			//Empresa tiempoPorrogaArticulo precioPorroga
 			return "Articulo Vendido  Fecha Venta : ".$newDate." Precio Venta : ".$articulo->precio_venta." €";
-//Empresa tiempoPorrogaArticulo precioPorroga
-=======
-			return "Articulo Vendido  Fecha Venta : ".$articulo->fecha_venda." Precio Venta : ".$articulo->precio_venta." €";
->>>>>>> 82ab03a74eb3bed7d8891d74c5d67cb6438a5e47
-
 		}
 
 	} catch (Exception $e) {
