@@ -356,6 +356,13 @@ function pujar(id_subasta,url){
 
 function mostrarTP(){
 	cargarTP();
+	var estado = $("#TPujas").css("display");
+	
+	if(estado=="none")	{
+		$("#TPujas").slideDown(800);
+	}else{
+		$("#TPujas").slideUp(800);
+	}
 
 }
 
@@ -363,9 +370,7 @@ function cargarTP(){
 	
 	var url = $("#todasPujas").val();
 	var id_subasta = $("#subastaId").val();
-	var estado = $("#TPujas").css("display");
 	
-	if(estado=="none")	{   
 
 
 
@@ -402,20 +407,16 @@ function cargarTP(){
 
 
 				txt+="</table>"
-				$("#TPujas").slideDown(800);
+				
 				$("#TPujas").html(txt);
 				if(cont==0){
 					cont++;
-					var mostrarTPInt = setInterval(mostrarTP,10000);
+					var cargarTPInt = setInterval(cargarTP,10000);
 				}
 			}
 		});
 	}
-	else{
-		$("#TPujas").slideUp(800);
-		clearInterval(mostrarTPInt);
-	}
-}
+
 
 function comprovarEstado(){
 
