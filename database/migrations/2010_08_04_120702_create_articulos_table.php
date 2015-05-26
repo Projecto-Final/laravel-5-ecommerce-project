@@ -34,6 +34,10 @@ class CreateArticulosTable extends Migration {
                   $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
                   $table->integer('comprador_id')->unsigned()->nullable();
                   $table->foreign('comprador_id')->references('id')->on('usuarios');
+                   $table->integer('Metodo_pago_id')->unsigned();
+                  $table->foreign('Metodo_pago_id')->references('id')->on('Metodo_pagos');
+                   $table->integer('Metodo_envio')->unsigned();
+                  $table->foreign('Metodo_envio')->references('id')->on('Metodo_envios');
                   $table->rememberToken();
                   $table->timestamps();
             });
