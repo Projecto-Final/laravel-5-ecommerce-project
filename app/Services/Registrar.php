@@ -31,7 +31,7 @@ class Registrar implements RegistrarContract {
 	 * @return Usuario
 	 */
 	public function create(array $data)
-	{ 
+	{ var_dump($data);
 		return Usuario::create([
 			'username' => $data['username'],
 			'email' => $data['email'],
