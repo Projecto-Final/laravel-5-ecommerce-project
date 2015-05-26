@@ -223,9 +223,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
+        {{--*/ $activeURL = explode('/', Request::url());  /*--}}   
           <li class="treeview">
             <a href=""><i class="fa fa-tachometer"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu"  style='display: block;'>
+            <ul class="treeview-menu"  {{ isset($activeURL[3]) & !isset($activeURL[4]) ? 'style=display:block;' : 'Style="display:none;"' }}>
               <li><a href="{{ url('administracion') }}">Backend</a></li>  
               <li><a href="{{ url('') }}">Frontend</a></li>
               <li><a href="{{ url('administracion/estadisticas') }}">Estadísticas</a></li>
@@ -241,17 +242,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('administracion/usuarios') }}"><i class="fa fa-users"></i> <span>Usuarios</span> </a>
           </li>
           <li class="treeview">
-            <a href="{{ url('administracion/categorias') }}"><i class="fa fa-cube"></i> <span>Categorías</span> </a>
+            <a href="{{ url('administracion/categorias') }}"><i class="fa fa-cube"></i> <span>Categorías</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu" {{ isset($activeURL[3]) & isset($activeURL[4]) ? $activeURL[4]=="categorias" ? 'style=display:block;' : '' : '' }}>
+              <li><a href="{{ url('administracion/categorias') }}">Listar</a></li>  
+              <li><a href="{{ url('administracion/categorias/crear') }}">Crear</a></li>
+            </ul>
           </li>
           <li class="treeview">
-            <a href="{{ url('administracion/subcategorias') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span> </a>
+            <a href="{{ url('administracion/subcategorias') }}"><i class="fa fa-cubes"></i> <span>Subcategorías</span>  <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu" {{ isset($activeURL[3]) & isset($activeURL[4]) ? $activeURL[4]=="subcategorias" ? 'style=display:block;' : '' : '' }}>
+              <li><a href="{{ url('administracion/subcategorias') }}">Listar</a></li>
+              <li><a href="{{ url('administracion/subcategorias/crear') }}">Crear</a></li>
+            </ul>
           </li>
           <li class="treeview">
             <a href="{{ url('administracion/facturas') }}"><i class="fa fa-credit-card"></i> <span>Facturas</span> </a>
           </li>
           <li class="treeview">
             <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
+            <ul class="treeview-menu" {{ isset($activeURL[3]) & isset($activeURL[4]) ? $activeURL[4]=="configuracion" ? 'style=display:block;' : '' : '' }}>
               <li><a href="{{ url('administracion/configuracion') }}">Configuración</a></li>
               <li><a href="{{ url('administracion/limpiar_cache') }}">Limpiar cache</a></li>
             </ul>

@@ -22,7 +22,9 @@
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
-
+				<button class="btn btn-info" style="float:right;">Crear Categoria <i class="fa fa-plus-square"></i></button>
+			</div>
+			<div class="box-body">
 				<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 					<thead>
 						<tr>
