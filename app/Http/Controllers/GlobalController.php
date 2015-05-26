@@ -85,19 +85,19 @@ class GlobalController extends Controller {
 	 public function index()
 	 {
 		// Buscamos todos los Articulos  que tenemos ( si tenemos )
-	 	$arrayArtImg = [];
-	 	$Articulos = Articulo::where('precio_venta', '=', -1)->orderBy('fecha_inicio','DESC')->take(6);
-	 	$categorias = Categoria::all();
-	 	foreach ($Articulos as $key => $Articulo) {
-	 		$imagenes =  $Articulo->imagenes;
-	 		foreach ($imagenes as $key2 => $imagen) {
-	 			if($key2==0){
-	 				$arrayArtImg[$key] = [$Articulo, $imagen['imagen']];
-	 			}
-	 		}
-	 	}
-	 	return view("index", ["subastas" =>$arrayArtImg, "categorias" => $categorias] );
-	 }
+		$arrayArtImg = [];
+		$Articulos = Articulo::where('precio_venta', '=', -1)->orderBy('fecha_inicio','DESC')->take(6)->get();
+		$categorias = Categoria::all();
+		foreach ($Articulos as $key => $Articulo) {
+			$imagenes =  $Articulo->imagenes;
+			foreach ($imagenes as $key2 => $imagen) {
+				if($key2==0){
+					$arrayArtImg[$key] = [$Articulo, $imagen['imagen']];
+				}
+			}
+		}
+		return view("index", ["subastas" =>$arrayArtImg, "categorias" => $categorias] );
+	}
 
 
 	/**
