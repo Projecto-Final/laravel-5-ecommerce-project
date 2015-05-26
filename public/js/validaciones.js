@@ -13,11 +13,11 @@
 
  function formValidator(){
  	var formulario = document.getElementById('form-validate');
- 	validator();
- 	validarDropdowns();
- 	if(error==false){
+ 	// validator();
+ 	// validarDropdowns();
+ 	// if(error==false){
  		formulario.submit();
- 	}
+ 	// }
  }
 
 	

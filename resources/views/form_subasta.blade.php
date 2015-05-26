@@ -33,14 +33,20 @@
                         <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
                         <div class="input-box">
                           <input type="text" id="nombre_producto" name="nombre_producto" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                          <span class='errorJS' id='nombre_producto_error'>&nbsp;Campo obligatorio</span></td>
+                          <span class='errorJS' id='nombre_producto_error'>&nbsp;Campo obligatorio</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                         </div>
                       </div>
                       <div class="field ">
                         <label for="modelo" class="required"><em>*</em>Modelo</label>
                         <div class="input-box">
                           <input type="text" id="modelo" name="modelo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                          <span class='errorJS' id='modelo_error'>&nbsp;Campo obligatorio</span></td>
+                          <span class='errorJS' id='modelo_error'>&nbsp;Campo obligatorio</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                         </div>
                       </div>
                     </div>
@@ -55,7 +61,10 @@
                           <select id="localizacion" value="" title="Nombre" name="localizacion" maxlength="255" class="input-text required-entry">
                             <option value="">Cargando...</option>
                           </select>
-                          <span class='errorJS' id='localizacion_error'>&nbsp;Campo obligatorio</span></td>
+                          <span class='errorJS' id='localizacion_error'>&nbsp;Campo obligatorio</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                         </div>
                       </div>
                       <script>
@@ -72,7 +81,10 @@
                                 <label for="estado" class="required"><em>*</em>Estado</label>
                                 <div class="input-box">
                                   <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                                  <span class='errorJS' id='estado_error'>&nbsp;Campo obligatorio</span></td>
+                                  <span class='errorJS' id='estado_error'>&nbsp;Campo obligatorio</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                                 </div>
                               </div>
                             </div>
@@ -85,7 +97,10 @@
                                 <label for="descripcion" class="required"><em>*</em>Descripción</label>
                                 <div class="input-box">
                                   <textarea id="descripcion" name="descripcion" value="" title="Descarticulo" maxlength="255" class="input-text required-entry" rows="4" cols="70" name="descarticulo"> </textarea>
-                                  <span class='errorJS' id='descripcion_error'>&nbsp;Campo obligatorio</span></td>
+                                  <span class='errorJS' id='descripcion_error'>&nbsp;Campo obligatorio</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                                 </div>
                               </div>
                             </div>
@@ -103,7 +118,10 @@
                                 <label for="email" class="control-label">IMAGENES</label>
                                 <div id="img_container">
                                   <input type="file" id="imgart_1" class="cnt" name="images[0]"> 
-                                  <span class='errorJS' id='imgart_1_error'>&nbsp;debe haber una imagen</span></td>
+                                  <span class='errorJS' id='imgart_1_error'>&nbsp;debe haber una imagen</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                                 </div>
                                 <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
                                 <button type="button" id="menosImagenes" class="btn btn-primary"><i class="fa fa-minus"></i> IMAGENES </button>
@@ -139,7 +157,10 @@
                                  <select id="categoria" value="" title="Nombre" name="sel_categroia" maxlength="255" class="input-text required-entry">
                                   <option value="">Cargando...</option>
                                 </select>
-                                <span class='errorJS' id='sel_categroia_error'>&nbsp;Debes escojer una</span></td>
+                                <span class='errorJS' id='sel_categroia_error'>&nbsp;Debes escojer una</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                                 <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_allCategories') }}", function(result){
@@ -158,7 +179,10 @@
                              <select name="subcategoria" id="subcategoria" name="narticulo" value="" title="Nombre" name="sel_subcategroia" maxlength="255" class="input-text required-entry">
                               <option value="">Seleccione una categoria.</option>
                             </select>
-                            <span class='errorJS' id='sel_subcategroia_error'>&nbsp;Debes escojer una</span></td>
+                            <span class='errorJS' id='sel_subcategroia_error'>&nbsp;Debes escojer una</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                             <div id="descriptext" class="input-box"></div>
                             <script>
                               // Script pro rellenar dropdown!
@@ -194,8 +218,11 @@
                             <div class="input-box">
                               <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                               <br>
-                              <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span></td>
+                              <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span>
                               <span class='errorJS' id='precio_inicial_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                             </div>
                           </div>
                           <div class="field ">
@@ -203,8 +230,11 @@
                             <div class="input-box">
                               <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
                               <br>
-                              <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>
+                              <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span>
                               <span class='errorJS' id='incremento_precio_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>                          </div>
+                          @if(isset($errors) && ($errors->first('nombre_producto') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+                          @endif
                             </div>
                             <div class="field ">
                               <label >Tu puja acabará :</label>

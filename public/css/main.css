@@ -850,6 +850,9 @@ ul.form-list, ul.tags-list {
   color: red;
   display:none;
 }
+.errorSys{
+  color: red;
+}
 
 /* ESTILO DE BUSCADOR Y OPCIONES FILTRADO */
 .parametros-filtrado {
