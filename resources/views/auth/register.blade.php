@@ -37,14 +37,18 @@
 												<label for="nombre" class="required"><em>*</em>Nombre</label>
 												<div class="input-box">
 													<input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" title="Nombre" maxlength="255" class="input-text required-entry">
+													<br>
 													<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='nombre_error2'>&nbsp;Solo se permiten caracteres alfabeticos</span></td>
 												</div>
 											</div>
 											<div class="field name-lastname">
 												<label for="apellidos" class="required"><em>*</em>Apellidos</label>
 												<div class="input-box">
 													<input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" title="Apellido" maxlength="255" class="input-text required-entry">
+													<br>
 													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='apellido_error2'>&nbsp;Solo se permiten caracteres alfabeticos</span></td>
 												</div>
 											</div>
 											<div class="field name-lastname">
