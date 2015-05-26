@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 use DB;
 use Cache;
 
-
 class LogedAdminMethods extends Controller {
 
 	/*
@@ -412,7 +411,9 @@ class LogedAdminMethods extends Controller {
 	{
 		$facturas = Factura::all();
 		$articulo = Articulo::all();
-		return view('admin.facturas',['facturas' => $facturas]);
+		$pdf = PDF::loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+		//return view('admin.facturas',['facturas' => $facturas]);
 	}
 
 	public function generar_factura_pdf($idFactura)

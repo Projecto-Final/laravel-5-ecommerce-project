@@ -845,6 +845,7 @@ public function aceptarUltimaP(Request $request){
 			$articulo->fecha_venda = Carbon::now();
 			$articulo->save();
 			$comprador = Usuario::find($articulo->comprador_id);
+			
 			// Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
 			// 	$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
 			// });

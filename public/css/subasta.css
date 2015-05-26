@@ -560,7 +560,8 @@
 		background-color: #FAFAFA;
 		border: 1px #fff solid;
 		border-radius: 2px;
-		padding-top: 20px;	
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 	.article-content > .buy {
 		height: auto;
@@ -659,6 +660,12 @@
 		height: 70%;
 		overflow: auto;
 		background-color: #FFB770;
+	}
+
+	.subasta-box {
+		border: 1px #C3C3C3 solid;
+		background-color: #fff;
+		padding: 20px;
 	}
 
 
