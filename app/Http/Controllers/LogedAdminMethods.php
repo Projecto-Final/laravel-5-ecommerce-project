@@ -393,6 +393,8 @@ class LogedAdminMethods extends Controller {
 	public function facturas()
 	{
 		$facturas = Factura::all();
+		$usuarios = Usuario::all();
+		$usuarios->facturas;
 		return view('admin.facturas',['facturas' => $facturas]);
 	}
 

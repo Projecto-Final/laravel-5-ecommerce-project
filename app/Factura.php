@@ -10,10 +10,14 @@ class Factura extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['usuario_id', 'nif', 'cantidad_pagada', 'fecha'];
+	protected $fillable = ['usuario_id', 'articulo_id', 'nif', 'cantidad_pagada', 'fecha'];
 
 	public function usuario()
 	{
 		return $this->belongsTo('App\Usuario');
+	}
+	public function articulo()
+	{
+		return $this->belongsTo('App\Articulo');
 	}
 }
