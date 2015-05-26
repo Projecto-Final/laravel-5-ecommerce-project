@@ -74,8 +74,6 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 	// Facturas
 	Route::get('administracion/facturas', 'LogedAdminMethods@facturas');
-	Route::get('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@editar_factura');
-	Route::put('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@guardar_factura');
 	Route::get('administracion/facturas/eliminar/{idFactura}', 'LogedAdminMethods@eliminar_factura');
 
 	// Media ( Imágenes)
