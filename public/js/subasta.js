@@ -357,13 +357,7 @@ function pujar(id_subasta,url){
 
 function mostrarTP(){
 	cargarTP();
-	var estado = $("#TPujas").css("display");
-	
-	if(estado=="none")	{
-		$("#TPujas").slideDown(800);
-	}else{
-		$("#TPujas").slideUp(800);
-	}
+
 
 }
 
@@ -371,10 +365,11 @@ function cargarTP(){
 	
 	var url = $("#todasPujas").val();
 	var id_subasta = $("#subastaId").val();
+
+
+	var estado = $("#TPujas").css("display");
 	
-
-
-
+	if(estado=="none")	{  
 
 		$.get(url,{
 			id_subasta: id_subasta
@@ -403,20 +398,23 @@ function cargarTP(){
 						txt +="<td >Superada</td></tr>";
 					}
 
-				}			
+				}
 				txt+="</table>"
 
 
 				txt+="</table>"
-				
+				$("#TPujas").slideDown(800);
 				$("#TPujas").html(txt);
 				if(cont==0){
 					cont++;
-					var cargarTPInt = setInterval(cargarTP,10000);
+					var mostrarTPInt = setInterval(mostrarTP,10000);
 				}
-			}
+			}else{
+		bootbox.alert("No hay pujas que mostrar");
+	}
 		});
 	}
+}
 
 
 function comprovarEstado(){

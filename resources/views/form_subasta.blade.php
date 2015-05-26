@@ -19,6 +19,7 @@
               <h1>Nueva subasta</h1>
             </div>
             <form action="{{ url('add_subasta') }}" method="post" enctype="multipart/form-data" id="form-validate">
+             <!--   <form  method="post" enctype="multipart/form-data" id="form-validate"> -->
               <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
               <div class="fieldset">
@@ -101,7 +102,8 @@
                               <div class="field ">
                                 <label for="email" class="control-label">IMAGENES</label>
                                 <div id="img_container">
-                                  <input type="file" id="imgart_1" class="cnt" name="images[0]"> <BR>
+                                  <input type="file" id="imgart_1" class="cnt" name="images[0]"> 
+                                  <span class='errorJS' id='imgart_1_error'>&nbsp;debe haber una imagen</span></td>
                                 </div>
 
                                 <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
@@ -109,7 +111,9 @@
                                 $("#masImagenes").click(function() {
                                   if($(".cnt").length < 6){
                                     var addto = "#imgart_"+$(".cnt").length;
-                                    $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">');
+                                    var txt = '<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">';
+                                    txt += "<span class='errorJS' id='imgart_"+($(".cnt").length+1)+"_error'>&nbsp;debe haber una imagen</span></td><br>"
+                                    $(addto).after(txt);
                                   }
                                 });
                                 </script>
@@ -185,14 +189,18 @@
                             <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
                             <div class="input-box">
                               <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                              <br>
                               <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span></td>
+                              <span class='errorJS' id='precio_inicial_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
                             </div>
                           </div>
                           <div class="field ">
                             <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
                             <div class="input-box">
                               <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
-                              <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>                          </div>
+                              <br>
+                              <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span></td>
+                              <span class='errorJS' id='incremento_precio_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>                          </div>
                             </div>
                             <div class="field ">
                               <label >Tu puja acabará :</label>
@@ -211,7 +219,7 @@
                     <p class="back-link"><a href="index.html" class="back-link">« Regresar al inicio</a></p>
                     <!--     <button type="submit" title="Submit" class="button"><span><span>Crear Subasta</span></span></button> -->
 
-                    <input type='submit' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
+                    <input type='button' title="Submit" class="button" onclick='formValidator()' value="Crear Subasta"><span>
                   </div>
                 </form>
               </div>

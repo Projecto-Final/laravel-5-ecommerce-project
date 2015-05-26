@@ -68,7 +68,7 @@
 
 	//cantidad maxima de puja automatica
 	//valida los dcimales
-	if(current.name=="cantidadMax"){
+	if(current.name=="cantidadMax"||current.name=="precio_inicial"||current.name=="incremento_precio"){
 
 
 		if( isNaN(val)){
@@ -187,7 +187,7 @@ function validarEmail( email ) {
 }
 
 function mostraError(idElem) {
-	
+//	alert(idElem);
 	error=true;
 	document.getElementById(idElem).style.display="inline";
 }

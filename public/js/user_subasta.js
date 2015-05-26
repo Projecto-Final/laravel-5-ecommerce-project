@@ -8,8 +8,8 @@ $(document).ready(function(){
 		
 	}
 	//ultimaPuja();
-		recargarPrecios();
-		var recargarPreciosInt =setInterval(recargarPreciosInt,7000);
+	recargarPrecios();
+	var recargarPreciosInt =setInterval(recargarPreciosInt,7000);
 	
 });
 var cont=0;
@@ -26,13 +26,13 @@ function prorrogar(url){
 				bootbox.alert("Subasta Prorrogada");
 				var id_subasta = $("#subastaId").val();
 				var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
-  				textaco += '<div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>';
-  				textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
-  				textaco += '<div class="input-group-addon">€</div>';
-  				textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
-  				textaco += '</div></div><input id="botonPuja" type="button" class="btn btn-primary" onclick="pujar('+id_subasta+' , "../add_puja")" value=""></form>';   
-        
-    
+				textaco += '<div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>';
+				textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
+				textaco += '<div class="input-group-addon">€</div>';
+				textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
+				textaco += '</div></div><input id="botonPuja" type="button" class="btn btn-primary" onclick="pujar('+id_subasta+' , "../add_puja")" value=""></form>';   
+				
+				
 				$("#bid").html(textaco);
 
 			})
@@ -51,15 +51,15 @@ function aceptarPuja(url){
 			})
 			.done(function(data) {
 				if(data!=0){
+					
+
+					bootbox.alert("Felicidades por tu venta!");
+
+					comprovarEstado();
+				}else{
+					bootbox.alert("No Hay Pujas");
+				}
 				
-
-			bootbox.alert("Felicidades por tu venta!");
-
-			comprovarEstado();
-		}else{
-			bootbox.alert("No Hay Pujas");
-		}
-			
 			});
 		}
 	}); 
@@ -117,11 +117,10 @@ function cargarTP(){
 					cont++;
 					var mostrarTPInt = setInterval(mostrarTP,10000);
 				}
-			}
+			}else{
+		bootbox.alert("No hay pujas que mostrar");
+	}
 		});
-	}else{
-		$("#TPujas").slideUp(800);
-		clearInterval(mostrarTPInt);
 	}
 }
 
