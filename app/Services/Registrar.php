@@ -21,7 +21,7 @@ class Registrar implements RegistrarContract {
 			'nombre' => 'required|alpha|max:20',
 			'apellido' => 'required|alpha|max:200',
 			'direccion' => 'required|max:20',
-			]);
+		]);
 	}
 
 	/**
@@ -44,7 +44,6 @@ class Registrar implements RegistrarContract {
 			'texto_presentacion' =>$data['texto_presentacion'],
 			'localidad_id' =>$data['localidad_id'],
 			'activa'=> 1,
-			]);
+		]);
 	}
-
 }

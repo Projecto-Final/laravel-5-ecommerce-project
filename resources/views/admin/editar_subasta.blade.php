@@ -30,23 +30,23 @@
 					<div class="form-group">
 						<label>Modelo</label>
 						<input type="text" name="modelo" class="form-control" value="{{ $subasta['modelo'] }}">
-                        @if(isset($errors) && ($errors->first('modelo') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('modelo')}}</span>
-                        @endif
+						@if(isset($errors) && ($errors->first('modelo') !== null))
+						<br/><span class="errorSys">&nbsp;{{$errors->first('modelo')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Nombre</label>
 						<input type="text" name="nombre_producto" class="form-control" value="{{ $subasta['nombre_producto'] }}">
-                        @if(isset($errors) && ($errors->first('nombre_producto') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
-                        @endif
+						@if(isset($errors) && ($errors->first('nombre_producto') !== null))
+						<br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Estado</label>
 						<input type="text" name="estado" class="form-control" value="{{ $subasta['estado'] }}">
-                        @if(isset($errors) && ($errors->first('estado') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('estado')}}</span>
-                        @endif
+						@if(isset($errors) && ($errors->first('estado') !== null))
+						<br/><span class="errorSys">&nbsp;{{$errors->first('estado')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Localidad</label>
@@ -57,16 +57,16 @@
 							<option>Sin registros</option>
 							@endforelse
 						</select>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+						@if(isset($errors) && ($errors->first('localizacion') !== null))
+						<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>
 						<textarea class="form-control"  name="descripcion" rows="3" placeholder="Sin descripcion...">{{ $subasta['descripcion'] }}</textarea>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+						@if(isset($errors) && ($errors->first('localizacion') !== null))
+						<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+						@endif
 					</div>
 					<h3 class="text-aqua">Detalles Subastador/Comprador</h3>
 					<div class="form-group">
@@ -85,9 +85,9 @@
 								<option>Sin registros</option>
 								@endforelse
 							</select>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label>Comprador</label>
@@ -104,9 +104,9 @@
 								<option>Sin registros</option>
 								@endforelse
 							</select>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 					</div>
 					<h3 class="text-aqua">Detalles Categorización</h3>
@@ -125,9 +125,9 @@
 								<option>Sin registros</option>
 								@endforelse
 							</select>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 					</div>
 					<h3 class="text-aqua">Detalles Precio</h3>
@@ -136,33 +136,33 @@
 						<div class="input-group">
 							<input type="text" name="precio_inicial" class="form-control" value="{{ $subasta['precio_inicial'] }}">
 							<span class="input-group-addon">€</span>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<label>Incremento</label>
 						<div class="input-group">
 							<input type="text" name="incremento_precio" class="form-control" value="{{ $subasta['incremento_precio'] }}">
 							<span class="input-group-addon">€</span>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<label>Precio Venda</label>
 						<div class="input-group">
 							<input type="text" name="precio_venta" class="form-control" value="{{ $subasta['precio_venta'] }}">
 							<span class="input-group-addon">€</span>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<label>Mayor Puja</label>
 						<div class="input-group">
 							<input type="text" name="puja_mayor" class="form-control" value="{{ $subasta['puja_mayor'] }}">
 							<span class="input-group-addon">€</span>
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 					</div>
 					<h3 class="text-aqua">Detalles Fechas</h3>
@@ -173,9 +173,9 @@
 								<i class="fa fa-calendar"></i>
 							</div>
 							<input type="text" name="fecha_inicio" class="form-control" value="{{ $subasta['fecha_inicio']}}">
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<label>Fecha Final</label>
 						<div class="input-group">
@@ -183,9 +183,9 @@
 								<i class="fa fa-calendar"></i>
 							</div>
 							<input type="text" name="fecha_final" class="form-control" value="{{ $subasta['fecha_final']}}">
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<label>Fecha Venda</label>
 						<div class="input-group">
@@ -193,16 +193,16 @@
 								<i class="fa fa-calendar"></i>
 							</div>
 							<input type="text" name="fecha_venda" class="form-control" value="{{ $subasta['fecha_venda']}}">
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label>Porrogado</label>
 							<input type="text" name="porrogado" class="form-control" value="{{ $subasta['porrogado'] }}">
-                        @if(isset($errors) && ($errors->first('localizacion') !== null))
-                          <br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
-                        @endif
+							@if(isset($errors) && ($errors->first('localizacion') !== null))
+							<br/><span class="errorSys">&nbsp;{{$errors->first('localizacion')}}</span>
+							@endif
 						</div>
 						<button class="btn btn-block btn-success btn-flat">Guardar <i class="fa fa-save"></i></button>
 					</form>

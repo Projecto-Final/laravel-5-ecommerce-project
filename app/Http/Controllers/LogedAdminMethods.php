@@ -166,6 +166,7 @@ class LogedAdminMethods extends Controller {
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
 		}
+
 		$subastaUpdate = $request->all();
 		$subasta = Articulo::find($idSubasta);
 		$subasta->modelo = $subastaUpdate['modelo'];
@@ -264,6 +265,20 @@ class LogedAdminMethods extends Controller {
 	 */
 	public function guardar_usuario($idUsuario,Request $request)
 	{
+		$v = $this->validate($request, [
+			'username' => 'required|max:255|alpha_num|unique:usuarios',
+			'email' => 'required|email|max:255|unique:usuarios',
+			'nombre' => 'required|alpha|max:20',
+			'apellido' => 'required|alpha|max:200',
+			'reputacion' => 'required|numeric',
+			'permisos' => 'required|boolean',
+			'imagen_perfil' => 'required|string',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$usuarioActualizado = $request->all();
 		$usuario = Usuario::find($idUsuario);
 		$usuario->imagen_perfil = $usuarioActualizado['imagen_perfil'];
@@ -326,6 +341,15 @@ class LogedAdminMethods extends Controller {
 
 	public function guardar_nueva_categoria(Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|string',
+			'descripcion' => 'required|string',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$nuevaCategoria = $request->all();
 		$categoria = new Categoria;
 		$categoria->nombre = $nuevaCategoria['nombre'];
@@ -337,6 +361,15 @@ class LogedAdminMethods extends Controller {
 
 	public function guardar_categoria($idCategoria, Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|string',
+			'descripcion' => 'required|string',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$categoriaActualizada = $request->all();
 		$categoria = Categoria::find($idCategoria);
 		$categoria->nombre = $categoriaActualizada['nombre'];
@@ -375,6 +408,16 @@ class LogedAdminMethods extends Controller {
 
 	public function guardar_nueva_subcategoria(Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|string',
+			'descripcion' => 'required|string',
+			'categoria_id' => 'required|integer',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$nuevaCategoria = $request->all();
 		$categoria = new Subcategoria;
 		$categoria->nombre = $nuevaCategoria['nombre'];
@@ -387,6 +430,16 @@ class LogedAdminMethods extends Controller {
 
 	public function guardar_subcategoria($idSubcategoria, Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|string',
+			'descripcion' => 'required|string',
+			'categoria_id' => 'required|integer',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$subCategoriaActualizada = $request->all();
 		$subcategoria = Subcategoria::find($idSubcategoria);
 		
@@ -468,6 +521,19 @@ class LogedAdminMethods extends Controller {
 
 	public function guardar_configuracion(Request $request)
 	{
+		$v = $this->validate($request, [
+			'nombre' => 'required|string',
+			'direccion' => 'required|string',
+			'tiempoArticulo' => 'required|integer',
+			'tiempoPorrogaArticulo' => 'required|integer',
+			'inactividad' => 'required|integer',
+			'precioPorroga' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
+
 		$nuevaConfiguracion = $request->all();
 		$configuracion = Empresa::find(1);
 		

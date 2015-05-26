@@ -29,10 +29,16 @@
 					<div class="form-group">
 						<label>Nombre</label>
 						<input type="text" name="nombre" class="form-control" value="{{ $categoria['nombre'] }}">
+						@if(isset($errors) && ($errors->first('nombre') !== null))
+							<span class="errorSys">&nbsp;{{$errors->first('nombre')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>
 						<textarea class="form-control"  name="descripcion" rows="3" placeholder="Introduce reputacion...">{{ $categoria['descripcion'] }}</textarea>
+						@if(isset($errors) && ($errors->first('descripcion') !== null))
+							<span class="errorSys">&nbsp;{{$errors->first('descripcion')}}</span>
+						@endif
 					</div>
 					<button class="btn btn-block btn-success btn-flat">Guardar <i class="fa fa-save"></i></button>
 				</form>

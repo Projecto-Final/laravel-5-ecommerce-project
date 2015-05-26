@@ -30,10 +30,16 @@
 					<div class="form-group">
 						<label>Nombre</label>
 						<input type="text" name="nombre" class="form-control" value="{{ $subCategoria['nombre'] }}">
+						@if(isset($errors) && ($errors->first('nombre') !== null))
+							<span class="errorSys">&nbsp;{{$errors->first('nombre')}}</span>
+						@endif
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>
 						<textarea class="form-control"  name="descripcion" rows="3" placeholder="Introduce reputacion...">{{ $subCategoria['descripcion'] }}</textarea>
+						@if(isset($errors) && ($errors->first('descripcion') !== null))
+							<span class="errorSys">&nbsp;{{$errors->first('descripcion')}}</span>
+						@endif
 					</div>
 					<label class="text-aqua">Configuración Categoria</label>
 					<div class="form-group">
@@ -50,6 +56,9 @@
 								@endforelse
 							</select>
 						</div>
+					@if(isset($errors) && ($errors->first('categoria_id') !== null))
+						<span class="errorSys">&nbsp;{{$errors->first('categoria_id')}}</span>
+					@endif
 					</div>
 					<button class="btn btn-block btn-success btn-flat">Guardar <i class="fa fa-save"></i></button>
 				</form>
