@@ -66,7 +66,7 @@
             <td class="tg-031e">Porroga</td>
             <td class="tg-031e"><a href="#">{{ $articulo['nombre_producto'] }}</a></td>
             <td class="tg-031e">{{ $factura['cantidad_pagada'] }}</td>
-            <td class="tg-031e">{{--*/ echo ($factura['cantidad_pagada']*0.21); /*--}}</td>
+            <td class="tg-031e">{{--*/ echo round(($factura['cantidad_pagada']*0.21), 2); /*--}}</td>
           </tr>
         </tbody>
       </table>
@@ -74,7 +74,7 @@
         <div style="">
           <p>
             <strong>
-              Total a pagar: {{--*/ echo ($factura['cantidad_pagada']*0.21+$factura['cantidad_pagada']); /*--}}<br>
+              Total a pagar: {{--*/ echo round(($factura['cantidad_pagada']*0.21+$factura['cantidad_pagada']), 2); /*--}} €<br>
             </strong>
           </p>
         </div>
