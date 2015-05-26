@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration {
             $table->float('reputacion');
             $table->string('texto_presentacion');
             $table->integer('permisos');
-            $table->string('localidad_id')->references('id')->on('localidades');
+            $table->integer('localidad_id')->references('id')->on('localidades');
             $table->string('email')->unique();
             $table->String('password', 60);
             $table->boolean('activa')->default(true);

@@ -69,14 +69,21 @@
 											<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span></td>
 										</div>
 									</li>
-									<li class="control">
+									</ul>
+									<li>
+										<label for="apodo" class="Direccion"><em>*</em>Direccion</label>
 										<div class="input-box">
-											<input type="checkbox" name="politica_privacidad" title="Sign Up for Newsletter" value="1" id="politica_privacidad" class="checkbox">
+											<input type="text" id="Direccion" class="input-text required-entry"  name="Direccion" >
+											<span class='errorJS' id='Direccion_error'>&nbsp;Campo obligatorio</span></td>
 										</div>
-										<label for="politica_privacidad">Acepto las condiciones de uso y politica de privacidad. <a href="{{url('politica')}}" target="_blank">Clica aquí para ojearla.</a></label></td>
-										<span class='errorJS' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span></td>
 									</li>
-								</ul>
+									</ul>	
+										<div class="input-box">
+									<label for="texto_presentacion" >Texto de Presentacion</label>
+								<br><textarea name="texto_presentacion" id="texto_presentacion" rows="4" cols="50"></textarea><br>
+								
+								
+									
 							</div>
 							<div class="fieldset">
 								<h2 class="legend">Información de Login</h2>
@@ -109,8 +116,15 @@
 											</div>
 										</div>
 									</li>
-								</ul><label for="texto_presentacion" ><em>*</em>Texto de Presentacion</label>
-								<br><textarea name="texto_presentacion" id="texto_presentacion" rows="4" cols="50"></textarea>
+									<li class="control">
+										<div class="input-box">
+											<input type="checkbox" name="politica_privacidad" title="Sign Up for Newsletter" value="1" id="politica_privacidad" class="checkbox">
+										</div>										
+										<label for="politica_privacidad">Acepto las condiciones de uso y politica de privacidad. <a href="{{url('politica')}}" target="_blank">Clica aquí para ojearla.</a></label></td>
+										<span class='errorJS' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span></td>
+									</li>
+								</ul>
+								
 							</div>
 							
 							<div class="buttons-set">
