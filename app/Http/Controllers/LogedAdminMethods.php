@@ -343,11 +343,29 @@ class LogedAdminMethods extends Controller {
 		return view('admin/subcategorias',['subCategorias' => $subCategorias]);
 	}
 
+	public function crear_subcategoria()
+	{
+		$categorias = Categoria::all();
+		return view('admin.crear_subcategoria',['categorias' => $categorias]);
+	}
+
 	public function editar_subcategoria($idSubcategoria)
 	{
 		$subcategoria = Subcategoria::find($idSubcategoria);
 		$categoria = Categoria::all();
 		return view('admin.editar_subcategoria',['subCategoria' => $subcategoria, "categorias" => $categoria]);
+	}
+
+	public function guardar_nueva_subcategoria(Request $request)
+	{
+		$nuevaCategoria = $request->all();
+		$categoria = new Subcategoria;
+		$categoria->nombre = $nuevaCategoria['nombre'];
+		$categoria->descripcion = $nuevaCategoria['descripcion'];
+		$categoria->categoria_id = $nuevaCategoria['categoria_id'];
+		$categoria->save();
+
+		return redirect("administracion/subcategorias");
 	}
 
 	public function guardar_subcategoria($idSubcategoria, Request $request)
