@@ -14,6 +14,16 @@ class Articulo extends Model {
 	//protected $fillable = ['nombre_producto', 'modelo', 'estado', 'descripcion', 'localizacion', 'precio_venta', 'fecha_inicio', 'fecha_final', 'vendido', 'fecha_venda', 'precio_inicial', 'incremento_precio', 'puja_mayor', 'subastador_id', 'subcategoria_id', 'comprador_id'];
 	protected $fillable = ['nombre_producto', 'modelo', 'estado', 'descripcion', 'localizacion', 'fecha_inicio', 'fecha_final', 'precio_inicial', 'incremento_precio','puja_mayor', 'subastador_id', 'subcategoria_id','comprador_id'];
 
+
+	public function Metodo_envio()
+	{
+		return $this->belongsTo('App\Metodo_envio');
+	}
+	public function Metodo_pago()
+	{
+		return $this->belongsTo('App\Metodo_pago');
+	}
+
 	public function usuario()
 	{
 		return $this->belongsTo('App\Usuario');

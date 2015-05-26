@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Factura extends Model {
+class Metodo_envio extends Model {
 
 	//	protected $table = 'articulos';
 	/**
@@ -12,13 +12,9 @@ class Factura extends Model {
 	 */
 	protected $fillable = ['nombre', 'descripcion'];
 
-	public function usuario()
-	{
-		return $this->belongsTo('App\Articulo');
-	}
 	public function articulos()
 	{
-		return $this->belongsTo('App\Articulo');
+		return $this->hasMany('App\Articulo', 'Metodo_envio_id', 'id');
 	}
 }
 

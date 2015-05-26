@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Factura extends Model {
+class Metodo_pago extends Model {
 
 	//	protected $table = 'articulos';
 	/**
@@ -10,14 +10,10 @@ class Factura extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['usuario_id', 'articulo_id', 'nif', 'cantidad_pagada', 'fecha'];
+	protected $fillable = ['nombre', 'descripcion'];
 
-	public function usuario()
-	{
-		return $this->belongsTo('App\Usuario');
-	}
 	public function articulos()
 	{
-		return $this->belongsTo('App\Articulo');
+		return $this->hasMany('App\Articulo', 'Metodo_pago_id', 'id');
 	}
 }
