@@ -115,7 +115,7 @@ class GlobalController extends Controller {
 	 */
 			public function get_baja(){
 				if(Auth::check()){
-					if(Auth::user()->activa == false){
+					if(Auth::user()->activa == 0){
 						Auth::logout();
 						return view('caducada');
 					}
@@ -197,10 +197,10 @@ public function buscar_subastas(Request $request)
 
 	if (isset($urlParams['filtrar_usuario'])) {
 		if ($urlParams['buscar'] == ""){
-			$users = Usuario::where("permisos","=", 0)->get();
+			$users = Usuario::whereRaw("permisos = 0 and activa = 1")->get();
 			return view('resultado_busqueda_usuario',['usuarios' => $users]);
 		}else{
-			$users = Usuario::whereRaw("username like '".$urlParams['buscar']."%' and permisos = 0")->get();
+			$users = Usuario::whereRaw("username like '".$urlParams['buscar']."%' and permisos = 0 and activa = 1")->get();
 			return view('resultado_busqueda_usuario',['usuarios' => $users]);
 		} 
 	}

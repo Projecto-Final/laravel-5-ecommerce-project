@@ -41,8 +41,8 @@ class Registrar implements RegistrarContract {
 			'direccion' => $data['direccion'],
 			'imagen_perfil' => "default.jpg",
 			'imagen_background' => "default_wallpaper.jpg",
-			'texto_presentacion' =>$data[''],
-			'localidad_id' =>$data[''],
+			'texto_presentacion' =>$data['texto_presentacion'],
+			'localidad_id' =>$data['localidad_id'],
 			]);
 	}
 

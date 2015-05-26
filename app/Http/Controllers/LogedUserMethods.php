@@ -61,20 +61,6 @@ class LogedUserMethods extends Controller {
 		return $data = Categoria::all();
 	}
 
-		/**
-	 * SABER SI ESTAS ACTIVO
-	 * 
-	 * @return Response
-	 */
-		public function get_baja()
-		{
-			if(Auth){
-				$user = Auth::user();
-				if($user->activa == '0'){
-					Auth::logout();
-				}
-			}
-		}
 
 
 	/**
@@ -905,11 +891,16 @@ public function prorrogar(Request $request){
 	}
 }
 
-public function baja(){
-	$id = Auth::user()->id;
-	$user = Usuario::find($id);
-	$user->activa = false;
-	$user->save();
+public function baja(Request $request){
+	$submitedArray = $request->all();
+	if($submitedArray['num'] == 1){	
+		$id = Auth::user()->id;
+		$user = Usuario::find($id);
+		$user->activa = 0;
+		$user->save();
+		Auth::logout();
+	}
+
 }
 
 

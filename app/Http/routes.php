@@ -24,6 +24,7 @@ Route::controllers([
 	]);
 
 
+
 Route::get('test', function()
 {
 	return view('testing');
@@ -241,6 +242,8 @@ Route::put('update_valoracion', 'LogedUserMethods@updateValoracion');
 // pop de valoraciones pendientes
 Route::get('usuario/get_Pendientes', 'LogedUserMethods@get_Pendientes');
 
+Route::put('usuario/baja', 'LogedUserMethods@baja');
+
 /////Others Perfil usuario
 
 Route::get('perfil/{idUsuario}', 'GlobalController@perfil');
@@ -248,3 +251,4 @@ Route::get('subastas', 'GlobalController@subastas');
 Route::get('valoraciones', 'GlobalController@valoraciones');
 Route::get('ventas', 'GlobalController@ventas');
 Route::get('coger_perfil', 'GlobalController@coger_perfil');
+
