@@ -72,9 +72,7 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
-		+"Texto de Presentacion :  <input type='text' id='texto_presentacion' name='texto_presentacion' value='"+data.texto_presentacion+"' title='email' maxlength='255' >"//class='input-text required-entry'
-		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
-		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
+		+"Texto de Presentacion :  <input type='text' id='texto_presentacion' name='texto_presentacion' value='"+data.texto_presentacion+"' maxlength='255' >"//class='input-text required-entry'
 		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
 		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Darte de baja'>";
@@ -98,15 +96,6 @@ function baja(){
 		}else{}
 	}); 
 
-}
-
-function sleep(milliseconds) {
-	var start = new Date().getTime();
-	for (var i = 0; i < 1e7; i++) {
-		if ((new Date().getTime() - start) > milliseconds){
-			break;
-		}
-	}
 }
 
 function compras(){
@@ -482,6 +471,7 @@ function editarP(){
 		+"<p>Apodo :</p>"+data.username
 		+"<p>Nombre :</p>"+data.nombre
 		+"<p>Apellidos :</p>"+data.apellido
+		+"<p>Texto de presentación :</p>"+data.texto_presentacion
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at);
@@ -504,22 +494,27 @@ function ValidarCambiosContrasena(){
 }
 
 function ValidarCambios(){
+	alert("1");
 	var confirm = validator();
+	alert("2");
+	alert(confirm);
 	if(confirm==true){
+		alert("3");
 		guardarCambios();
 	}
 }
 
 
 
-function perfilGuardar(username,nombre,apellidos,direccion,email){
+function perfilGuardar(username,nombre,apellidos,direccion,email,texto_presentacion){
 	var url = "usuario/guardarCambios";
 	$.get(url,{
 		username: username,
 		nombre: nombre,
 		apellidos: apellidos,
 		direccion: direccion,
-		email: email
+		email: email,
+		texto_presentacion: texto_presentacion
 	})
 	.done(function(data) {
 		bootbox.alert("Datos cambiados correctamente");
@@ -563,8 +558,9 @@ function guardarCambios(){
 	var apellidos = document.getElementById('apellidos').value;
 	var direccion = document.getElementById('direccion').value;
 	var email = document.getElementById('email').value;
+	var texto_presentacion = document.getElementById('texto_presentacion').value;
 
-	perfilGuardar(username,nombre,apellidos,direccion,email);
+	perfilGuardar(username,nombre,apellidos,direccion,email,texto_presentacion);
 }
 
 function aparencia(){

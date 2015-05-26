@@ -342,9 +342,9 @@ class LogedUserMethods extends Controller {
 			'nombre' => 'required|alpha_num',
 			'apellidos' => 'required|alpha_num',
 			'username' => 'required|alpha_num',
-			'direccion' => 'required|String',
+			'direccion' => 'required|string',
 			'email' => 'required|email',
-			'texto_presentacion' => 'required|String',
+			'texto_presentacion' => 'required|string',
 			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -363,9 +363,9 @@ class LogedUserMethods extends Controller {
 	public function guardarCambiosPass(Request $request)
 	{
 		$v = $this->validate($request, [
-			'password_old' => 'required|String',
-			'password' => 'required|String',
-			'password_confirmation' => 'required|String',
+			'password_old' => 'required|string',
+			'password' => 'required|string',
+			'password_confirmation' => 'required|string',
 			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
