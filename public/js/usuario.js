@@ -73,14 +73,36 @@ function formEditar(){
 		+"</br>"
 		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
-		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Date de baja'>";
+		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Darte de baja'>";
 		$(".contact-info").html(txt);
 	});
 }
 
 function baja(){
-	var url = "usuario/baja";
-	$.get(url,function(data,status){});
+
+	bootbox.confirm("Si te das de baja la unica manera de activar tu cuenta sera enviando un email <b>'info.mail.3fym@gmail.com'</b></br>¿Estas seguro dar de baja tu cuenta?", function(result) {
+		if(result){
+			$.ajax({
+				url: 'usuario/baja',
+				type: 'PUT',
+				headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') },
+				'data':{ 'num' : 1},
+				success: function(data) {
+					location.reload();
+				}
+			});
+		}else{}
+	}); 
+
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }
 
 function compras(){

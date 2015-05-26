@@ -10,6 +10,8 @@
 <script src="{{ url('js/validaciones.js') }}"></script>
 <script src="{{ url('js/usuario.js') }}"></script>
 
+<meta name="_token" content="{{ csrf_token() }}"/>
+
 <div id="sns_content" class="wrap layout-m">
   <div class="container-fluid header_perfil" >
     <span id="editarFportada" class=" glyphicon glyphicon-pencil" aria-hidden="true"></span>

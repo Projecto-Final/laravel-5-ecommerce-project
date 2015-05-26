@@ -115,7 +115,7 @@ class GlobalController extends Controller {
 	 */
 			public function get_baja(){
 				if(Auth::check()){
-					if(Auth::user()->activa == false){
+					if(Auth::user()->activa == 0){
 						Auth::logout();
 						return view('caducada');
 					}
