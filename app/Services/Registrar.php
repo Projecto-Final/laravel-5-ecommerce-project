@@ -19,8 +19,8 @@ class Registrar implements RegistrarContract {
 			'email' => 'required|email|max:255|unique:usuarios',
 			'password' => 'required|confirmed|min:6',
 			'nombre' => 'required|alpha|max:20',
-			'apellido' => 'required|alpha|max:100',
-			'direccion' => 'required|alpha|max:20',
+			'apellido' => 'required|alpha|max:200',
+			'direccion' => 'required|max:20',
 			]);
 	}
 

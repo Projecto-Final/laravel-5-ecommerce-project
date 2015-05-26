@@ -50,7 +50,7 @@
 											<div class="field name-lastname">
 												<label for="direccion" class="required"><em>*</em>Direccion</label>
 												<div class="input-box">
-													<select id="direccion" value="" title="Direccion" name="direccion" maxlength="255" class="input-text required-entry">
+													<select id="direccion" value="" title="direccion" name="direccion" maxlength="255" class="input-text required-entry">
 														<option value="">Cargando...</option>
 													</select>
 													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
@@ -127,7 +127,7 @@
 	$.getJSON("{{ url('get_localidades') }}", function(result){
 		var scatm = "";
 		$.each(result, function(i, field){
-			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+			scatm += "<option value="+field.nombre+">"+field.nombre+"</option>";
 		});
 		$(".field select#direccion").html(scatm);
 	});
