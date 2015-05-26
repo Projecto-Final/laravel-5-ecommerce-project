@@ -86,7 +86,7 @@ class GlobalController extends Controller {
 	 {
 		// Buscamos todos los Articulos  que tenemos ( si tenemos )
 	 	$arrayArtImg = [];
-	 	$Articulos = Articulo::all();
+	 	$Articulos = Articulo::where('precio_venta', '=', -1)->orderBy('fecha_inicio','DESC')->take(6);
 	 	$categorias = Categoria::all();
 	 	foreach ($Articulos as $key => $Articulo) {
 	 		$imagenes =  $Articulo->imagenes;
