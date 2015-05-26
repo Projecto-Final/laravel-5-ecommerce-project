@@ -13,6 +13,7 @@ function perfil(){
 		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
 		+"<p>Nombre :</p>"+data.nombre
 		+"<p>Apellidos :</p>"+data.apellido
+		+"<p>Texto de presentación :</p>"+data.texto_presentacion		
 		+"<p>Direccion :</p>"+data.direccion
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at)+"</div>"

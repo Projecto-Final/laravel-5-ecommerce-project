@@ -344,6 +344,7 @@ class LogedUserMethods extends Controller {
 			'username' => 'required|alpha_num',
 			'direccion' => 'required|String',
 			'email' => 'required|email',
+			'texto_presentacion' => 'required|String',
 			]);
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -355,6 +356,7 @@ class LogedUserMethods extends Controller {
 		$user->username = $submitedArray["username"];
 		$user->direccion = $submitedArray["direccion"];
 		$user->email = $submitedArray["email"];
+		$user->texto_presentacion = $submitedArray["texto_presentacion"];
 		$user->save();
 	}
 
