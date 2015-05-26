@@ -888,4 +888,13 @@ public function prorrogar(Request $request){
 		return $e;
 	}
 }
+
+public function baja(){
+	$id = Auth::user()->id;
+	$user = Usuario::find($id);
+	$user->activa = false;
+	$user->save();
+}
+
+
 }

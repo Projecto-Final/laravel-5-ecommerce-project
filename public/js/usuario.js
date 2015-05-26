@@ -72,11 +72,16 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
 		+"</br><p class='espaciodor2'></p>"
-		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>";
+		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
+		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Date de baja'>";
 		$(".contact-info").html(txt);
 	});
 }
 
+function baja(){
+	var url = "usuario/baja";
+	$.get(url,function(data,status){});
+}
 
 function compras(){
 	var url = "usuario/get_compras";
