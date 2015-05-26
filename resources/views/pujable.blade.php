@@ -1,7 +1,7 @@
 @extends('view_subasta')
 @section('pujable')
 <script src="{{ url('js/subasta.js') }}"></script>
-<div class="col-lg-7 col-md-6 col-xs-8 article-content">
+<div class="col-lg-5 col-md-6 col-sm-6 col-xs-8">
  <div class="bid" id="bid">
   @if ($subasta['precio_venta'] == -1)
 
