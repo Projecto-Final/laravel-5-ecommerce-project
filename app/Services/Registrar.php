@@ -20,6 +20,7 @@ class Registrar implements RegistrarContract {
 			'password' => 'required|confirmed|min:6',
 			'nombre' => 'required|max:20',
 			'apellido' => 'required|max:100',
+			'direccion' => 'required|max:20',
 		]);
 	}
 
@@ -37,6 +38,7 @@ class Registrar implements RegistrarContract {
 			'password' => bcrypt($data['password']),
 			'nombre' => $data['nombre'],
 			'apellido' => $data['apellido'],
+			'direccion' => $data['direccion'],
 			'imagen_perfil' => "default.jpg",
 			'imagen_background' => "default_wallpaper.jpg",
 		]);

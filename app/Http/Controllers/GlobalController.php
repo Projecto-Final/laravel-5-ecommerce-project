@@ -50,8 +50,8 @@ class GlobalController extends Controller {
 	 * @return Response
 	 */
 	public function get_localidades()
-	{
-		return $data = Localidad::all();
+	{		
+		return $data = Localidad::all()->orderBy('nombre')->get();
 	}
 
 	/**

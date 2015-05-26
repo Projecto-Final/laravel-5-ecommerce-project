@@ -47,6 +47,15 @@
 													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
 												</div>
 											</div>
+											<div class="field name-lastname">
+												<label for="direccion" class="required"><em>*</em>Direccion</label>
+												<div class="input-box">
+													<select id="direccion" value="" title="Direccion" name="direccion" maxlength="255" class="input-text required-entry">
+														<option value="">Cargando...</option>
+													</select>
+													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
+												</div>
+											</div>
 										</div>
 									</li>
 									<li>
@@ -105,11 +114,23 @@
 								<!-- <button type="submit" title="Submit" class="button" onclick='formValidatorr()'><span><span>Registrar</span></span></button> -->
 								
 								<input type='button' title="Submit" class="button" onclick='formValidator()' value="Registrar"><span>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-@endsection
+
+
+	<script>
+	$.getJSON("{{ url('get_localidades') }}", function(result){
+		var scatm = "";
+		$.each(result, function(i, field){
+			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+		});
+		$(".field select#direccion").html(scatm);
+	});
+	</script>
+
+	@endsection

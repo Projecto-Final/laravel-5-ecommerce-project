@@ -1,5 +1,5 @@
 setInterval(confPujaSuperada,7000);
-get_Pendientes();
+setInterval(get_Pendientes,50000);
 
 function mostrar_filtros(){
 	interruptor_visibilidad($(".parametros-filtrado").css("display"));
