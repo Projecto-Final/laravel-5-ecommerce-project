@@ -801,7 +801,7 @@ public function write_valoracion($id){
 		return redirect('usuario');
 	}
 }
-
+// visualizacion de una valoracion valorada
 public function view_valoracion($id){
 	$user = Auth::user();
 	$val = Valoracion::find($id);
@@ -813,14 +813,22 @@ public function view_valoracion($id){
 	return view('valorado',$data);
 }
 
+
+// updateamos la valoracion ya generada en la venta
 public function updateValoracion(Request $request){
+
 	$submitedArray = $request->all();
-	$val = Valoracion::find($submitedArray["id"]);
+
+	$val = Valoracion::find($submitedArray["id"]);	
 	$val->completada = 1;
 	$val->texto = $submitedArray["texto"];
 	$val->puntuacion = $submitedArray['puntuacion'];
 	$val->fecha = Carbon::now();
 	$val->save();
+	// formula de recuento de la reputacion del usuario
+	$user=Usuario::find($val->valorado->id);
+	$user->reputacion = ($user->reputacion + $submitedArray['puntuacion'])/2;
+	$user->save();
 	return redirect('usuario');
 }
 
@@ -845,24 +853,28 @@ public function aceptarUltimaP(Request $request){
 			$articulo->fecha_venda = Carbon::now();
 			$articulo->save();
 			$comprador = Usuario::find($articulo->comprador_id);
-			
-			// Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
-			// 	$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
-			// });
-			// $vendedor = Usuario::find($articulo->subastador_id);
-			// Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
-			// 	$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
-			// });
+
+			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
+				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
+			});
+			var_dump($articulo->subastador_id);
+			$vendedor = Usuario::find($articulo->subastador_id);
+			Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
+				$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
+			});
 
 			$valoracion = new Valoracion;
 			$valoracion->texto = '';
-			$valoracion->valorado_id= $vendedor_id;
-			$valoracion->validante_id = $comprador_id;
+			$valoracion->valorado_id= $vendedor->id;
+			$valoracion->validante_id = $comprador->id;
 			$valoracion->puntuacion = 1;
 			$valoracion->completada = 0;
 			$valoracion->fecha = Carbon::now();
 			$valoracion->articulo_id = $articulo->id;
 			$valoracion->save();
+			echo "<pre>";
+			var_dump($valoracion);
+			echo "</pre>";
 			// Valoracion::Create([
 			// 	'texto' => '',
 			// 	'valorado_id' => $vendedor->id,
