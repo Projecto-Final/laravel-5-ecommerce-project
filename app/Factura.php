@@ -16,7 +16,7 @@ class Factura extends Model {
 	{
 		return $this->belongsTo('App\Usuario');
 	}
-	public function articulo()
+	public function articulos()
 	{
 		return $this->belongsTo('App\Articulo');
 	}

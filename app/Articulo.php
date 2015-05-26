@@ -40,6 +40,10 @@ class Articulo extends Model {
 	{
 		return $this->hasMany('App\ConfiguracionPuja', 'articulo_id', 'id');
 	}
+	public function Facturas()
+	{
+		return $this->hasMany('App\Articulo', 'articulo_id', 'id');
+	}
 	public function ultimaPuja($articulo_id){
 
 		$puja = DB::table('pujas')->where('articulo_id', '=', $articulo_id)->where ('superada','=', 0)->get();

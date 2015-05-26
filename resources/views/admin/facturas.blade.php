@@ -29,18 +29,29 @@
         <thead>
           <tr>
             <th>id</th>
-            <th>Modelo</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Estado</th>
-            <th>Localización</th>
-            <th>Fecha Finalización</th>
-            <th>Tiempo Restante</th>
-            <th>Precio Inicial/Actual</th>
+            <th>Usuario</th>
+            <th>Articulo</th>
+            <th>NIF</th>
+            <th>Cantidad a facturar</th>
+            <th>Fecha</th>
             <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
+          @foreach ($facturas as $factura)
+          <tr>
+            <td>{{ $factura['id'] }}</td>
+            <td>{{ $factura['usuario_id'] }}</td>
+            <td>{{ $factura['articulo_id'] }}</td>
+            <td>{{ $factura['nif'] }}</td>
+            <td>{{ $factura['cantidad_pagada'] }}</td>
+            <td>{{ $factura['fecha'] }}</td>
+            <td> 
+              <a href="{{ url(''.URL::current().'/editar/'.$factura['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
+              <a href="{{ url(''.URL::current().'/eliminar/'.$factura['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
+            </tr>
+          </tr>
+          @endforeach
         </tbody>
       </table>
 
