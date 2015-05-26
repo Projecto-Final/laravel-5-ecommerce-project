@@ -61,6 +61,22 @@ class LogedUserMethods extends Controller {
 		return $data = Categoria::all();
 	}
 
+		/**
+	 * SABER SI ESTAS ACTIVO
+	 * 
+	 * @return Response
+	 */
+		public function get_baja()
+		{
+			if(Auth){
+				$user = Auth::user();
+				if($user->activa == '0'){
+					Auth::logout();
+				}
+			}
+		}
+
+
 	/**
 	 * OBTENER TODAS LAS SUB-CATEGORIAS
 	 * 
