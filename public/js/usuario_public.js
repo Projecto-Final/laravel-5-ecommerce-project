@@ -125,7 +125,7 @@ function valoraciones(){
 		}
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='subasta/"+data[3][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
+			txt +="<td><a href='../valorado/"+data[3][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[0][i].puntuacion+"</td>";
 			txt +="<td>"+data[0][i].texto+"</td>";

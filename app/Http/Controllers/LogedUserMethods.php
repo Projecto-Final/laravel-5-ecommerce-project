@@ -807,12 +807,8 @@ public function view_valoracion($id){
 	$foto = $art->imagenes[0];
 	$valorado = Usuario::find($val->valorado_id);
 	$validante = Usuario::find($val->validante_id);
-	if($valorado->id == $user->id){
-		$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
-		return view('valorado',$data);
-	}else{
-		return redirect('usuario');
-	}
+	$data = array ('val' => $val, 'art' => $art, 'valorado'=> $valorado, 'validante' =>$validante, 'foto' => $foto);
+	return view('valorado',$data);
 }
 
 public function updateValoracion(Request $request){
@@ -860,7 +856,7 @@ public function aceptarUltimaP(Request $request){
 				'puntuacion' => 1,
 				'fecha' => Carbon::now(),
 				'articulo_id' => $articulo->id,
-			]);
+				]);
 		}else{
 			return 0;
 		}
@@ -886,7 +882,7 @@ public function prorrogar(Request $request){
 			'nif' => $submitedArray['nif'],
 			'cantidad_pagada' => $empresa[0]->precioPorroga,
 			'fecha' => Carbon::now(),
-		]);
+			]);
 	} catch (Exception $e) {
 		return $e;
 	}
