@@ -43,6 +43,7 @@ class Registrar implements RegistrarContract {
 			'imagen_background' => "default_wallpaper.jpg",
 			'texto_presentacion' =>$data['texto_presentacion'],
 			'localidad_id' =>$data['localidad_id'],
+			'activa'=> 1;
 			]);
 	}
 
