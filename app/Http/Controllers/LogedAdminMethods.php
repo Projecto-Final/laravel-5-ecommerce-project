@@ -397,11 +397,12 @@ class LogedAdminMethods extends Controller {
 		return view('admin.facturas',['facturas' => $facturas]);
 	}
 
-	public function editar_factura($idFactura)
-	{
-		$factura = Factura::find($idSubcategoria);
-		return view('admin.editar_factura',['factura' => $factura]);
-	}
+	// No se usa
+	// public function editar_factura($idFactura)
+	// {
+	// 	$factura = Factura::find($idSubcategoria);
+	// 	return view('admin.editar_factura',['factura' => $factura]);
+	// }
 
 	public function guardar_factura($idFactura, Request $request)
 	{
