@@ -47,8 +47,8 @@
             <td>{{ $factura['cantidad_pagada'] }}</td>
             <td>{{ $factura['fecha'] }}</td>
             <td> 
-              <a href="{{ url(''.URL::current().'/editar/'.$factura['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
-              <a href="{{ url(''.URL::current().'/eliminar/'.$factura['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
+              <a href="{{ url(''.URL::current().'/pdf/'.$factura['id'])}}" class="btn btn-danger btn-xs"><i  class="fa fa-file-pdf-o"></i> PDF <i  class="fa fa-download"></i></a> 
+              <a href="{{ url(''.URL::current().'/xml/'.$factura['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-file-pdf-o"></i> XML <i  class="fa fa-file-code-o"></i></a> 
             </tr>
           </tr>
           @endforeach
