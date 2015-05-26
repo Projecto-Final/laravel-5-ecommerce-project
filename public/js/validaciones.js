@@ -30,6 +30,7 @@
 
  	for (i=0;i<porTagName.length;i++)
  	{
+ 		
  		current = porTagName[i];
  		//alert(current.name);
  		if(current.type!="hidden"){
@@ -45,8 +46,12 @@
  						//error=true;
  					}
  				}
+ 				//hay que meterle los selects a pelo a la array
+ 				//if(current.type=="select")
+
+
  				val = current.value;
- 				
+ 				alert(current.type);
  				if(val==""){ getIdMsg(current,false,true);}
 
  				if(val!=""){
@@ -79,11 +84,9 @@
 			}else{	
 				var posicComa = val.indexOf(',');
 				var dectext = val.substring(val.indexOf(',')+1, val.length);
-				var posicPunt = val.indexOf('.');
-				var dectext2 = val.substring(val.indexOf('.')+1, val.length);
 				
-				if(posicComa!=-1 || posicPunt!=-1){
-					if (dectext.length > ndecimal || dectext2 > ndecimal)
+				if(posicComa!=-1){
+					if (dectext.length > ndecimal)
 					{
 						getIdMsg(current,true,true);
 					}
@@ -188,8 +191,8 @@ function validarEmail( email ) {
 
 function mostraError(idElem) {
 //	alert(idElem);
-	error=true;
-	document.getElementById(idElem).style.display="inline";
+error=true;
+document.getElementById(idElem).style.display="inline";
 }
 
 function ocultaError(idElem) {
@@ -227,21 +230,22 @@ function isDNI(dni) {
 	}
 }
 
-
-function tiene_numeros(texto){
-	var numeros="0123456789";
-	for(i=0; i<texto.length; i++){
-		if (numeros.indexOf(texto.charAt(i),0)!=-1){
-			return 1;
-		}
-	}
-	return 0;
-}
-
+//le paso el valor  del campo y compruevo que solo sea alfabetico si no lo es devuelve false
 function AllowAlphabet(value){
 	if (!value.match(/^[\sa-zA-ZñÑ]+$/))
 	{
 		return false;
 	}
+}
+
+//le paso el elemento y del el miro el selected index para que escoja algo del dropdown si no ha escojido devuelve false
+function JSFunctionValidate(elemento)
+{
+	if(elemento.selectedIndex == 0)
+	{
+		alert("Please select ddl");
+		return false;
+	}
+	return true;
 }
 

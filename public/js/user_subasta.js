@@ -26,16 +26,20 @@ function prorrogar(url){
 				bootbox.alert("Subasta Prorrogada");
 				var id_subasta = $("#subastaId").val();
 				var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
-				textaco += '<div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>';
+				textaco += '<div id="contPujas">Nº Pujas :<br></div>';
 				textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
 				textaco += '<div class="input-group-addon">€</div>';
 				textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
-				textaco += '</div></div><input id="botonPuja" type="button" class="btn btn-primary" onclick="pujar('+id_subasta+' , "../add_puja")" value=""></form>';   
+				textaco += '</div></div> <input id="botonPuja" type="button" class="btn btn-primary" onclick="aceptarPuja();" value="Aceptar la Ultima Puja"></form>';   
 				
 				
 				$("#bid").html(textaco);
+				recargarPrecios();
 
-			})
+
+			}).fail(function(data){
+				bootbox.alert("Debes estar Logueado para Esto");
+			});	
 		} else {
 			bootbox.alert("Hay un error con el NIF");
 		}
@@ -44,6 +48,9 @@ function prorrogar(url){
 
 function aceptarPuja(url){
 	bootbox.confirm("Seguro Que Aceptas la Ultima Oferta?", function(result) {
+		if(url==null){
+			url = "../aceptarUltimaP"
+		}
 		var id_subasta = $("#subastaId").val();
 		if(result){
 			$.get(url,{
@@ -60,13 +67,23 @@ function aceptarPuja(url){
 					bootbox.alert("No Hay Pujas");
 				}
 				
-			});
+			}).fail(function(data){
+				bootbox.alert("Debes estar Logueado para Ello");
+			});	
 		}
 	}); 
 }
 
 function mostrarTP(){
-	cargarTP();
+	
+	var estado = $("#TPujas").css("display");
+	
+	if(estado=="none")	{ 
+		cargarTP();
+		$("#TPujas").slideDown(800);
+	}else{
+		$("#TPujas").slideUp(800);
+	}
 }
 
 function cargarTP(){
@@ -75,53 +92,51 @@ function cargarTP(){
 	var id_subasta = $("#subastaId").val();
 
 
-	var estado = $("#TPujas").css("display");
 	
-	if(estado=="none")	{  
 
-		$.get(url,{
-			id_subasta: id_subasta
-		})
-		.done(function(data) {
-			if(data!=0){
-				var txt = "";
-				txt+="<h4>Pujas</h4>";
-				txt+='<table class="table table-striped">';
-				txt+= '<thead><tr class="success">';
-				txt +="<th></th>";
-				txt +="<th>Usuario</th>";	
-				txt +="<th>Cantidad</th>";
-				txt +="<th>Fecha Puja</th>";
-				txt +="<th>Estado</th></tr></thead>";			
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+			var txt = "";
+			txt+="<h4>Pujas</h4>";
+			txt+='<table class="table table-striped">';
+			txt+= '<thead><tr class="success">';
+			txt +="<th></th>";
+			txt +="<th>Usuario</th>";	
+			txt +="<th>Cantidad</th>";
+			txt +="<th>Fecha Puja</th>";
+			txt +="<th>Estado</th></tr></thead>";			
 
-				for (var i = data[0].length-1; i > -1; i--) {
-					txt+= '<tr class="info">';
-					txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
-					txt +="<td>"+data[1][i].username+"</td>";
-					txt +="<td>"+data[0][i].cantidad+"</td>";
-					txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
-					if(data[0][i].superada==0){
-						txt +="<td>En Cabeza</td></tr>";
-					}else{
-						txt +="<td >Superada</td></tr>";
-					}
-
+			for (var i = data[0].length-1; i > -1; i--) {
+				txt+= '<tr class="info">';
+				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
+				txt +="<td>"+data[1][i].username+"</td>";
+				txt +="<td>"+data[0][i].cantidad+"</td>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
+				if(data[0][i].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td >Superada</td></tr>";
 				}
-				txt+="</table>"
+
+			}
+			txt+="</table>"
 
 
-				txt+="</table>"
-				$("#TPujas").slideDown(800);
-				$("#TPujas").html(txt);
-				if(cont==0){
-					cont++;
-					var mostrarTPInt = setInterval(mostrarTP,10000);
-				}
-			}else{
-		bootbox.alert("No hay pujas que mostrar");
-	}
-		});
-	}
+			txt+="</table>"
+
+			$("#TPujas").html(txt);
+			if(cont==0){
+				cont++;
+				var cargarTPInt = setInterval(cargarTP,10000);
+			}
+		}else{
+			bootbox.alert("No hay pujas que mostrar");
+		}
+	});
+
 }
 
 

@@ -356,9 +356,15 @@ function pujar(id_subasta,url){
 }
 
 function mostrarTP(){
-	cargarTP();
-
-
+	
+	var estado = $("#TPujas").css("display");
+	
+	if(estado=="none")	{ 
+		$("#TPujas").slideDown(800);
+		cargarTP();
+	}else{
+		$("#TPujas").slideUp(800);
+	}
 }
 
 function cargarTP(){
@@ -367,53 +373,51 @@ function cargarTP(){
 	var id_subasta = $("#subastaId").val();
 
 
-	var estado = $("#TPujas").css("display");
 	
-	if(estado=="none")	{  
 
-		$.get(url,{
-			id_subasta: id_subasta
-		})
-		.done(function(data) {
-			if(data!=0){
-				var txt = "";
-				txt+="<h4>Pujas</h4>";
-				txt+='<table class="table table-striped">';
-				txt+= '<thead><tr class="success">';
-				txt +="<th></th>";
-				txt +="<th>Usuario</th>";	
-				txt +="<th>Cantidad</th>";
-				txt +="<th>Fecha Puja</th>";
-				txt +="<th>Estado</th></tr></thead>";			
+	$.get(url,{
+		id_subasta: id_subasta
+	})
+	.done(function(data) {
+		if(data!=0){
+			var txt = "";
+			txt+="<h4>Pujas</h4>";
+			txt+='<table class="table table-striped">';
+			txt+= '<thead><tr class="success">';
+			txt +="<th></th>";
+			txt +="<th>Usuario</th>";	
+			txt +="<th>Cantidad</th>";
+			txt +="<th>Fecha Puja</th>";
+			txt +="<th>Estado</th></tr></thead>";			
 
-				for (var i = data[0].length-1; i > -1; i--) {
-					txt+= '<tr class="info">';
-					txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
-					txt +="<td>"+data[1][i].username+"</td>";
-					txt +="<td>"+data[0][i].cantidad+"</td>";
-					txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
-					if(data[0][i].superada==0){
-						txt +="<td>En Cabeza</td></tr>";
-					}else{
-						txt +="<td >Superada</td></tr>";
-					}
-
+			for (var i = data[0].length-1; i > -1; i--) {
+				txt+= '<tr class="info">';
+				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
+				txt +="<td>"+data[1][i].username+"</td>";
+				txt +="<td>"+data[0][i].cantidad+"</td>";
+				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
+				if(data[0][i].superada==0){
+					txt +="<td>En Cabeza</td></tr>";
+				}else{
+					txt +="<td >Superada</td></tr>";
 				}
-				txt+="</table>"
+
+			}
+			txt+="</table>"
 
 
-				txt+="</table>"
-				$("#TPujas").slideDown(800);
-				$("#TPujas").html(txt);
-				if(cont==0){
-					cont++;
-					var mostrarTPInt = setInterval(mostrarTP,10000);
-				}
-			}else{
-		bootbox.alert("No hay pujas que mostrar");
-	}
-		});
-	}
+			txt+="</table>"
+			
+			$("#TPujas").html(txt);
+			if(cont==0){
+				cont++;
+				var cargarTPInt = setInterval(cargarTP,10000);
+			}
+		}else{
+			bootbox.alert("No hay pujas que mostrar");
+		}
+	});
+
 }
 
 
@@ -436,8 +440,8 @@ function comprovarEstado(){
 			$("#datosPujaConf").hide();
 			$("#contPujas").hide();
 			//como ya esta caducada chuto intervalos
-			clearInterval(recargarPreciosInt);
-			clearInterval(ultimaPujaInt);
+			// clearInterval(recargarPreciosInt);
+			// clearInterval(ultimaPujaInt);
 		}
 	}).fail(function(data){
 	});	
