@@ -97,12 +97,12 @@ function baja(){
 }
 
 function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds){
+			break;
+		}
+	}
 }
 
 function compras(){
@@ -344,6 +344,7 @@ function subastas(){
 		$(".contact-info").html(txt);
 	});	
 }
+
 function subastasI(){
 	var url = "usuario/get_subastasI";
 	var txt="";
@@ -380,7 +381,7 @@ function subastasI(){
 		};
 		txt+="</table>"
 		$(".contact-info").html(txt);
-	})	.error(function(data){
+	}).error(function(data){
 		txt+="</table>"
 		txt+="<h3>No Hay Subastas Inactivas</h3>";
 		txt+="</table>"
@@ -416,7 +417,11 @@ function valoraciones(){
 		};
 		txt+="</table>";
 		$(".contact-info").html(txt);
-	});
+	}).error(function(data){
+		txt+="</table>"
+		txt+="<h3>No Hay Valoraciones Que Mostrar</h3>";
+		$(".contact-info").html(txt);
+	});	
 }
 
 function valoracionesPendientes(){
@@ -459,7 +464,9 @@ function valoracionesPendientes(){
 			$(".contact-info").html(txt);
 		}	
 	}).error(function(data){
-		bootbox.alert("Error en el servidor vuelve a probar mas tarde ");
+		txt+="</table>"
+		txt+="<h3>No Hay Valoraciones Pendientes Que Mostrar</h3>";
+		$(".contact-info").html(txt);
 	});	
 }
 

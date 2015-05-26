@@ -839,27 +839,38 @@ public function aceptarUltimaP(Request $request){
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujaGanadora =	$articulo->ultimaPuja($submitedArray['id_subasta']);
 		if($pujaGanadora!=false){
+			echo "Entrado";
 			$articulo->comprador_id = $pujaGanadora->pujador_id;
 			$articulo->precio_venta = $pujaGanadora->cantidad;
 			$articulo->fecha_venda = Carbon::now();
 			$articulo->save();
 			$comprador = Usuario::find($articulo->comprador_id);
-			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
-				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
-			});
-			$vendedor = Usuario::find($articulo->subastador_id);
-			Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
-				$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
-			});
-			Valoracion::Create([
-				'texto' => '',
-				'valorado_id' => $vendedor->id,
-				'validante_id' => $comprador->id,
-				'puntuacion' => 1,
-				'completada' => 0,
-				'fecha' => Carbon::now(),
-				'articulo_id' => $articulo->id,
-				]);
+			// Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
+			// 	$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
+			// });
+			// $vendedor = Usuario::find($articulo->subastador_id);
+			// Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
+			// 	$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
+			// });
+
+			$valoracion = new Valoracion;
+			$valoracion->texto = '';
+			$valoracion->valorado_id= $vendedor_id;
+			$valoracion->validante_id = $comprador_id;
+			$valoracion->puntuacion = 1;
+			$valoracion->completada = 0;
+			$valoracion->fecha = Carbon::now();
+			$valoracion->articulo_id = $articulo->id;
+			$valoracion->save();
+			// Valoracion::Create([
+			// 	'texto' => '',
+			// 	'valorado_id' => $vendedor->id,
+			// 	'validante_id' => $comprador->id,
+			// 	'puntuacion' => 1,
+			// 	'completada' => 0,
+			// 	'fecha' => Carbon::now(),
+			// 	'articulo_id' => $articulo->id,
+			// 	]);
 		}else{
 			return 0;
 		}
