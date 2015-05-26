@@ -256,11 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="treeview">
-            <a href="{{ url('administracion/facturas') }}"><i class="fa fa-credit-card"></i> <span>Facturas</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu" {{ isset($activeURL[3]) & isset($activeURL[4]) ? $activeURL[4]=="facturas" ? 'style=display:block;' : '' : '' }}>
-              <li><a href="{{ url('administracion/facturas') }}">Listar</a></li>
-              <li><a href="{{ url('administracion/facturas/crear') }}">Crear</a></li>
-            </ul>
+            <a href="{{ url('administracion/facturas') }}"><i class="fa fa-credit-card"></i> <span>Facturas</span> </a>
           </li>
           <li class="treeview">
             <a href=""><i class="fa fa-cog"></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
