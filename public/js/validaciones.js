@@ -8,20 +8,22 @@
 
  }
  */
+ var error=false; 
  var ndecimal = 2;
 
  function formValidator(){
  	var formulario = document.getElementById('form-validate');
- 	var confirm = validator();
- 	if(confirm==true){
+ 	validator();
+ 	validarDropdowns();
+ 	if(error==false){
  		formulario.submit();
  	}
  }
 
-
+	
  function validator(){
 
- 	error=false; 	
+ 	
  	var formulario = document.getElementById('form-validate');
  	var porTagName = formulario.getElementsByTagName("input");
  	var current;
@@ -46,12 +48,10 @@
  						//error=true;
  					}
  				}
- 				//hay que meterle los selects a pelo a la array
- 				//if(current.type=="select")
+ 				
 
 
  				val = current.value;
- 				alert(current.type);
  				if(val==""){ getIdMsg(current,false,true);}
 
  				if(val!=""){
@@ -128,14 +128,14 @@
 			}
 		}
 	}
-	if(error==false){
-		//alert("submit");
-		//formulario.submit();
-		return true;
-	}else{
-		//alert("no submit")
-		return false;
-	}
+	// if(error==false){
+	// 	//alert("submit");
+	// 	//formulario.submit();
+	// 	return true;
+	// }else{
+	// 	//alert("no submit")
+	// 	return false;
+	// }
 }
 
 // recoje el id del campo y si debe mostrar o no ocultar el error y si es un error especial
@@ -243,9 +243,40 @@ function JSFunctionValidate(elemento)
 {
 	if(elemento.selectedIndex == 0)
 	{
-		alert("Please select ddl");
+		//alert("Please select ddl");
 		return false;
 	}
 	return true;
 }
 
+
+
+ function validarDropdowns(){
+
+ 	error=false; 	
+ 	var formulario = document.getElementById('form-validate');
+ 	var porTagName = formulario.getElementsByTagName("select");
+ 	var current;
+ 	var val;
+
+ 	for (i=0;i<porTagName.length;i++)
+ 	{
+ 		
+ 		current = porTagName[i];
+ 		if(JSFunctionValidate(current)==false){
+ 				getIdMsg(current, true,false);
+ 		}else{
+ 			getIdMsg(current, false,false);
+ 		}
+
+
+	}
+	// if(error==false){
+	// 	//alert("submit");
+	// 	//formulario.submit();
+	// 	return true;
+	// }else{
+	// 	//alert("no submit")
+	// 	return false;
+	// }
+}

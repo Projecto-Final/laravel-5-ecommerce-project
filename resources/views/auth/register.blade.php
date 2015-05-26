@@ -52,12 +52,12 @@
 												</div>
 											</div>
 											<div class="field name-lastname">
-												<label for="direccion" class="required"><em>*</em>Direccion</label>
+												<label for="localidad_id" class="required"><em>*</em>Localidad</label>
 												<div class="input-box">
-													<select id="direccion" value="" title="direccion" name="direccion" maxlength="255" class="input-text required-entry">
+													<select id="localidad_id" value="" title="localidad_id" name="localidad_id" maxlength="255" class="input-text required-entry">
 														<option value="">Cargando...</option>
 													</select>
-													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='direccion_error'>&nbsp;Campo obligatorio</span></td>
 												</div>
 											</div>
 										</div>
@@ -109,8 +109,10 @@
 											</div>
 										</div>
 									</li>
-								</ul>
+								</ul><label for="texto_presentacion" ><em>*</em>Texto de Presentacion</label>
+								<br><textarea name="texto_presentacion" id="texto_presentacion" rows="4" cols="50"></textarea>
 							</div>
+							
 							<div class="buttons-set">
 								<p class="required">* Campos requeridos</p>
 								<p class="back-link"><a href="{{url()}}" class="back-link">« Regresar al inicio</a></p>
@@ -131,7 +133,7 @@
 	$.getJSON("{{ url('get_localidades') }}", function(result){
 		var scatm = "";
 		$.each(result, function(i, field){
-			scatm += "<option value="+field.nombre+">"+field.nombre+"</option>";
+			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
 		});
 		$(".field select#direccion").html(scatm);
 	});
