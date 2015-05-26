@@ -172,9 +172,6 @@
                     <div class="contenedor-subastas"> 
                       <!-- ARTICULOS --> 
                       @forelse($subastas as $contador => $subasta)
-                      @if($contador > 12)
-                      <?php break;?>
-                      @endif
                       <!-- MUESTRA -->
                       <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                         <div class="item-inner clearfix">
