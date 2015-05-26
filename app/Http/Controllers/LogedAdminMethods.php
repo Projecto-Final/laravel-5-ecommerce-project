@@ -397,6 +397,17 @@ class LogedAdminMethods extends Controller {
 		return view('admin.facturas',['facturas' => $facturas]);
 	}
 
+	public function generar_factura_pdf($idFactura)
+	{
+		$factura = Factura::find($idSubcategoria);
+		return view('admin.segenerapdf',['factura' => $factura]);
+	}
+	public function generar_factura_xml($idFactura)
+	{
+		$factura = Factura::find($idSubcategoria);
+		return view('admin.segeneraxml',['factura' => $factura]);
+	}
+
 	// No se usa
 	// public function editar_factura($idFactura)
 	// {
