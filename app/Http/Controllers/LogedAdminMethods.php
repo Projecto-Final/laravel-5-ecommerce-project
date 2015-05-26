@@ -16,6 +16,7 @@ use App\Puja;
 use Illuminate\Http\Request;
 use DB;
 use Cache;
+use PDF;
 
 class LogedAdminMethods extends Controller {
 
@@ -464,15 +465,15 @@ class LogedAdminMethods extends Controller {
 	{
 		$facturas = Factura::all();
 		$articulo = Articulo::all();
-		$pdf = PDF::loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-		//return view('admin.facturas',['facturas' => $facturas]);
+		return view('admin.facturas',['facturas' => $facturas]);
 	}
 
 	public function generar_factura_pdf($idFactura)
 	{
-		$factura = Factura::find($idSubcategoria);
-		return view('admin.segenerapdf',['factura' => $factura]);
+		$factura = Factura::find($idFactura);
+		 $pdf = PDF::loadHTML($factura->id);
+        return $pdf->stream();
+		// return view('admin.segenerapdf',['factura' => $factura]);
 	}
 	public function generar_factura_xml($idFactura)
 	{

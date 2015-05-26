@@ -21,7 +21,7 @@ class CreateUsuariosTable extends Migration {
             $table->string('imagen_perfil');
             $table->string('imagen_background');
             $table->float('reputacion');
-            $table->string('texto_presentacion');
+            $table->string('texto_presentacion')->unsigned()->nullable();
             $table->integer('permisos');
             $table->integer('localidad_id')->references('id')->on('localidades');
             $table->string('email')->unique();

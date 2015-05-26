@@ -11,11 +11,7 @@
   <form class="form-inline">
 
 
-   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
-   <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
-   <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
-   <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-    <input type="hidden" id="prorrogar" value="{{url('prorrogar')}}">
+
 
    <div id="estadoSubasta"> 
     <div class="form-group">
@@ -35,6 +31,12 @@
 
 
 </div>
+<form>   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
+   <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
+   <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
+   <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
+    <input type="hidden" id="prorrogar" value="{{url('prorrogar')}}"></form>
+
 @elseif($subasta['precio_venta'] == 0)
 <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
 
