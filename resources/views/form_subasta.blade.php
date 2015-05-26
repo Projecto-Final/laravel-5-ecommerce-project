@@ -105,15 +105,19 @@
                                   <input type="file" id="imgart_1" class="cnt" name="images[0]"> 
                                   <span class='errorJS' id='imgart_1_error'>&nbsp;debe haber una imagen</span></td>
                                 </div>
-
                                 <button type="button" id="masImagenes" class="btn btn-primary"><i class="fa fa-plus"></i> IMAGENES </button>
+                                <button type="button" id="menosImagenes" class="btn btn-primary"><i class="fa fa-minus"></i> IMAGENES </button>
                                 <script>
                                 $("#masImagenes").click(function() {
                                   if($(".cnt").length < 6){
                                     var addto = "#imgart_"+$(".cnt").length;
-                                    var txt = '<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">';
-                                    txt += "<span class='errorJS' id='imgart_"+($(".cnt").length+1)+"_error'>&nbsp;debe haber una imagen</span></td><br>"
-                                    $(addto).after(txt);
+                                    $(addto).after('<input type="file" id="imgart_'+($(".cnt").length+1)+'" class="cnt" name="images['+$(".cnt").length+']">');
+                                  }
+                                });
+                                $("#menosImagenes").click(function() {
+                                  if($(".cnt").length > 1){
+                                    var delto = "#imgart_"+$(".cnt").length;
+                                    $(delto).remove();
                                   }
                                 });
                                 </script>
