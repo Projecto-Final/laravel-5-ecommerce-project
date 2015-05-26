@@ -74,6 +74,12 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/subastas/pujas/{idSubasta}', 'LogedAdminMethods@get_pujasEnSubasta');
 	Route::get('administracion/subastas/eliminar/{idSubasta}', 'LogedAdminMethods@eliminar_subasta');
 
+	// Facturas
+	Route::get('administracion/facturas', 'LogedAdminMethods@facturas');
+	Route::get('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@editar_factura');
+	Route::put('administracion/facturas/editar/{idFactura}', 'LogedAdminMethods@guardar_factura');
+	Route::get('administracion/facturas/eliminar/{idFactura}', 'LogedAdminMethods@eliminar_factura');
+
 	// Media ( Imágenes)
 	Route::get('administracion/media', 'LogedAdminMethods@media');
 	Route::get('administracion/media/eliminar/{idImagen}', 'LogedAdminMethods@eliminar_media');
