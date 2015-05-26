@@ -72,7 +72,8 @@ function formEditar(){
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 		+"</br>"
-		+"Texto de Presentacion :  <input type='text' id='texto_presentacion' name='texto_presentacion' value='"+data.texto_presentacion+"' maxlength='255' >"//class='input-text required-entry'
+		+"</br>"
+		+"Texto de Presentacion : </br></br> <textarea  id='texto_presentacion' name='texto_presentacion' rows='5' cols='80' maxlength='255' >"+data.texto_presentacion+"</textarea>"//class='input-text required-entry'
 		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
 		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Darte de baja'>";
@@ -494,12 +495,8 @@ function ValidarCambiosContrasena(){
 }
 
 function ValidarCambios(){
-	alert("1");
 	var confirm = validator();
-	alert("2");
-	alert(confirm);
 	if(confirm==true){
-		alert("3");
 		guardarCambios();
 	}
 }
