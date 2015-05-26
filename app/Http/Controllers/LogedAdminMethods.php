@@ -471,9 +471,12 @@ class LogedAdminMethods extends Controller {
 	public function generar_factura_pdf($idFactura)
 	{
 		$factura = Factura::find($idFactura);
-		 $pdf = PDF::loadHTML($factura->id);
+		$articulo = Articulo::find($factura['articulo_id']);
+		$usuario = Usuario::find($factura['usuario_id']);
+		$factura = Factura::find($idFactura);
+		 $pdf = PDF::loadHTML(view('factura_pdf',['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]));
         return $pdf->stream();
-		// return view('admin.segenerapdf',['factura' => $factura]);
+		;
 	}
 	public function generar_factura_xml($idFactura)
 	{
