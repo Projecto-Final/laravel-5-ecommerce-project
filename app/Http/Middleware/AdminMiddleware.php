@@ -13,6 +13,7 @@ class AdminMiddleware {
      */
     public function handle($request, Closure $next)
     {	
+        
         if ($request->user()->permisos != '1')
         {
             return redirect('/');

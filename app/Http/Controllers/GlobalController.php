@@ -233,12 +233,12 @@ public function buscar_subastas(Request $request)
 				// Query de articulos no?
 				foreach ($query as $key2 => $art) {
 					$resultadoBusqueda[$key][0] = $art;
-						$messup = $art->imagenes; // magia negra //
-						foreach ($messup as $key => $imagen) {
-							$imagen->imagen;
-							// KEY POSICION DEL BUCLE [0 O 1 POSICION DE ART E IMAGEN]
-							break; // Sale del bucle al pillar la primera imagen.
-						}
+						// $messup = $art->imagenes; // magia negra //
+						// foreach ($messup as $key => $imagen) {
+						// 	$imagen->imagen;
+						// 	// KEY POSICION DEL BUCLE [0 O 1 POSICION DE ART E IMAGEN]
+						// 	break; // Sale del bucle al pillar la primera imagen.
+						// }
 					}
 
 				}
