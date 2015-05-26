@@ -32,6 +32,7 @@
               <p>
                 Dirección: {{ $usuario['direccion'] }} <br>
                 Email: {{ $usuario['email']}} <br>
+                NIF: {{ $factura['nif']}}
                 <br>
               </p>
             </div>
