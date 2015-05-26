@@ -37,20 +37,24 @@
 												<label for="nombre" class="required"><em>*</em>Nombre</label>
 												<div class="input-box">
 													<input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" title="Nombre" maxlength="255" class="input-text required-entry">
+													<br>
 													<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='nombre_error2'>&nbsp;Solo se permiten caracteres alfabeticos</span></td>
 												</div>
 											</div>
 											<div class="field name-lastname">
 												<label for="apellidos" class="required"><em>*</em>Apellidos</label>
 												<div class="input-box">
 													<input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" title="Apellido" maxlength="255" class="input-text required-entry">
+													<br>
 													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
+													<span class='errorJS' id='apellido_error2'>&nbsp;Solo se permiten caracteres alfabeticos</span></td>
 												</div>
 											</div>
 											<div class="field name-lastname">
 												<label for="direccion" class="required"><em>*</em>Direccion</label>
 												<div class="input-box">
-													<select id="direccion" value="" title="Direccion" name="direccion" maxlength="255" class="input-text required-entry">
+													<select id="direccion" value="" title="direccion" name="direccion" maxlength="255" class="input-text required-entry">
 														<option value="">Cargando...</option>
 													</select>
 													<span class='errorJS' id='apellido_error'>&nbsp;Campo obligatorio</span></td>
@@ -127,7 +131,7 @@
 	$.getJSON("{{ url('get_localidades') }}", function(result){
 		var scatm = "";
 		$.each(result, function(i, field){
-			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+			scatm += "<option value="+field.nombre+">"+field.nombre+"</option>";
 		});
 		$(".field select#direccion").html(scatm);
 	});

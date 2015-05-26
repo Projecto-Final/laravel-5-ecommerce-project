@@ -18,7 +18,7 @@
  	}
  }
 
- var error = false;
+
  function validator(){
 
  	error=false; 	
@@ -55,6 +55,14 @@
 	if(current.name=="email"){
 		if(validarEmail(val)==false){
 			getIdMsg(current,true,true);
+		}
+	}
+
+	if(current.name=="nombre" || current.name =="apellido"){
+		if(AllowAlphabet(val)==false){
+			getIdMsg(current,true,true);
+		}else{
+			getIdMsg(current,false,true);
 		}
 	}
 
@@ -127,7 +135,10 @@
 	}
 }
 
-
+// recoje el id del campo y si debe mostrar o no ocultar el error y si es un error especial
+//elem    id lemento
+//si   mostrar o no 
+//especial     si es especial
 function getIdMsg(elem, si,especial){
 	var ele = elem.getAttribute("id");
 
@@ -191,9 +202,9 @@ function ocultaError(idElem) {
 function isDNI(dni) {
 	var numero, let, letra;
 	var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
- 
+
 	dni = dni.toUpperCase();
- 
+
 	if(expresion_regular_dni.test(dni) === true){
 		numero = dni.substr(0,dni.length-1);
 		numero = numero.replace('X', 0);
@@ -215,3 +226,22 @@ function isDNI(dni) {
 		return false;
 	}
 }
+
+
+function tiene_numeros(texto){
+	var numeros="0123456789";
+	for(i=0; i<texto.length; i++){
+		if (numeros.indexOf(texto.charAt(i),0)!=-1){
+			return 1;
+		}
+	}
+	return 0;
+}
+
+function AllowAlphabet(value){
+	if (!value.match(/^[\sa-zA-ZñÑ]+$/))
+	{
+		return false;
+	}
+}
+
