@@ -25,7 +25,7 @@ class CreateValoracionesTable extends Migration {
 			$table->integer('puntuacion')->unsigned();
 			$table->foreign('puntuacion')->references('id')->on('escalas');
 			$table->dateTime('fecha');
-			$table->boolean('completada')->default(false);
+			$table->boolean('completada')->default(0);
 			$table->rememberToken();
 			$table->timestamps();
 		});

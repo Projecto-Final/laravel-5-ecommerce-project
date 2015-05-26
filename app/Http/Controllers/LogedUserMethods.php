@@ -854,6 +854,7 @@ public function aceptarUltimaP(Request $request){
 				'valorado_id' => $vendedor->id,
 				'validante_id' => $comprador->id,
 				'puntuacion' => 1,
+				'completada' => 0,
 				'fecha' => Carbon::now(),
 				'articulo_id' => $articulo->id,
 				]);
