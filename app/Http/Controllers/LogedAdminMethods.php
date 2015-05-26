@@ -404,17 +404,18 @@ class LogedAdminMethods extends Controller {
 	// 	return view('admin.editar_factura',['factura' => $factura]);
 	// }
 
-	public function guardar_factura($idFactura, Request $request)
-	{
-		$facturaActualizada = $request->all();
-		$factura = Factura::find($idFactura);
+	// NO BORRAR	
+	// public function guardar_factura($idFactura, Request $request)
+	// {
+	// 	$facturaActualizada = $request->all();
+	// 	$factura = Factura::find($idFactura);
 		
-		$factura->detalle = $facturaActualizada['xx'];
+	// 	$factura->detalle = $facturaActualizada['xx'];
 
-		$factura->save();
+	// 	$factura->save();
 
-		return redirect("administracion/facturas/editar/".$idFacturas);
-	}
+	// 	return redirect("administracion/facturas/editar/".$idFacturas);
+	// }
 
 	public function eliminar_factura($idFactura)
 	{
