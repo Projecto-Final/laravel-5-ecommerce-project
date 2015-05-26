@@ -149,6 +149,24 @@ class LogedAdminMethods extends Controller {
 	 */
 	public function guardar_subasta(Request $request, $idSubasta)
 	{
+		$v = $this->validate($request, [
+			'nombre_producto' => 'required|string',
+			'modelo' => 'required|string',
+			'estado' => 'required|alpha',
+			'localizacion' => 'required|alpha_num',
+			'descripcion' => 'required',
+			'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+			'subcategoria_id' => 'required|integer',
+			'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+			'precio_venta' => 'regex:/^\d+(\.\d{1,2})?/i',
+			'fecha_inicio' => 'required|date',
+			'fecha_venda' => 'date',
+			'porrogado' => 'required|boolean',
+		]);
+
+		if ($v !== NULL && $v->fails()) {
+			return redirect()->back()->withErrors($v->errors());
+		}
 		$subastaUpdate = $request->all();
 		$subasta = Articulo::find($idSubasta);
 		$subasta->modelo = $subastaUpdate['modelo'];

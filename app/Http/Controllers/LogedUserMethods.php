@@ -121,8 +121,8 @@ class LogedUserMethods extends Controller {
 
 		try {
 			$v = $this->validate($request, [
-				'nombre_producto' => 'required|alpha_num',
-				'modelo' => 'required|alpha_num',
+				'nombre_producto' => 'required|string',
+				'modelo' => 'required|string',
 				'estado' => 'required|alpha',
 				'localizacion' => 'required|alpha_num',
 				'descripcion' => 'required',
