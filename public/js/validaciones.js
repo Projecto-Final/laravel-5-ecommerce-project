@@ -129,14 +129,14 @@
 			}
 		}
 	}
-	// if(error==false){
-	// 	//alert("submit");
-	// 	//formulario.submit();
-	// 	return true;
-	// }else{
-	// 	//alert("no submit")
-	// 	return false;
-	// }
+	if(error==false){
+		//alert("submit");
+		//formulario.submit();
+		return true;
+	}else{
+		//alert("no submit")
+		return false;
+	}
 }
 
 // recoje el id del campo y si debe mostrar o no ocultar el error y si es un error especial
@@ -272,12 +272,12 @@ function JSFunctionValidate(elemento)
 
 
 	}
-	// if(error==false){
-	// 	//alert("submit");
-	// 	//formulario.submit();
-	// 	return true;
-	// }else{
-	// 	//alert("no submit")
-	// 	return false;
-	// }
+	if(error==false){
+		//alert("submit");
+		//formulario.submit();
+		return true;
+	}else{
+		//alert("no submit")
+		return false;
+	}
 }
