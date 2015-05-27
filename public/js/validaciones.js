@@ -10,11 +10,12 @@
  */
  var error=false; 
  var ndecimal = 2;
-
+//llamo a los validadores
  function formValidator(){
  	var formulario = document.getElementById('form-validate');
  	var leDoy = validator();
  	var seguro = validarDropdowns();
+ 	//me aseguro que se hace bien
  	if(leDoy==true && seguro== true){
  		formulario.submit();
  	}
