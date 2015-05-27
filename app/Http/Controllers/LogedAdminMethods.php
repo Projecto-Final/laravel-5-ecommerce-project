@@ -99,6 +99,21 @@ class LogedAdminMethods extends Controller {
 		GROUP BY MONTH(`fecha_inicio`)
 		*/
 
+		/* Usuaris per zona geogràfica */
+
+		/* Usuaris per número de compres */
+		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
+
+		/* Usuaris per € cobrats */
+		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
+
+		/* Usuaris per € pagats */
+
+		/* Usuaris per número de vendes */
+
+		/* Usuaris per número de licitacions (puja) oferides */
+
+
 		$año = date('Y');
 		$aux2 = 0;
 		$EstadisticasAnuales = array();
