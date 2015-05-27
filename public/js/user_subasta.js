@@ -17,31 +17,33 @@ function prorrogar(url){
 	bootbox.prompt("Para poder completar el pago necesitamos su NIF", function(result) {
 		var url =$("#prorrogar").val();
 		var id_subasta = $("#subastaId").val();
-		if (result === null || isDNI(result)) {
-			$.get(url,{
-				id_subasta: id_subasta,
-				nif: result
-			})
-			.done(function(data) {
-				bootbox.alert("Subasta Prorrogada");
-				var id_subasta = $("#subastaId").val();
-				var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
-				textaco += '<div id="contPujas">Nº Pujas :<br></div>';
-				textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
-				textaco += '<div class="input-group-addon">€</div>';
-				textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
-				textaco += '</div></div> <input id="botonPuja" type="button" class="btn btn-primary" onclick="aceptarPuja();" value="Aceptar la Ultima Puja"></form>';   
-				
-				
-				$("#bid").html(textaco);
-				recargarPrecios();
+		if(result != null){
+			if (isDNI(result)) {
+				$.get(url,{
+					id_subasta: id_subasta,
+					nif: result
+				})
+				.done(function(data) {
+					bootbox.alert("Subasta Prorrogada");
+					var id_subasta = $("#subastaId").val();
+					var textaco = '<h5>PRECIO ACTUAL DEL ARTICULO</h5>';
+					textaco += '<div id="contPujas">Nº Pujas :<br></div>';
+					textaco += '<form class="form-inline"><div id="estadoSubasta"><div class="form-group"><div class="input-group">';
+					textaco += '<div class="input-group-addon">€</div>';
+					textaco += '<input type="text" class="form-control" id="exampleInputAmount" value="" disabled="true">';     
+					textaco += '</div></div> <input id="botonPuja" type="button" class="btn btn-primary" onclick="aceptarPuja();" value="Aceptar la Ultima Puja"></form>';   
+					
+					
+					$("#bid").html(textaco);
+					recargarPrecios();
 
 
-			}).fail(function(data){
-				bootbox.alert("Debes estar Logueado para Esto");
-			});	
-		} else {
-			bootbox.alert("Hay un error con el NIF");
+				}).fail(function(data){
+					bootbox.alert("Debes estar Logueado para Esto");
+				});	
+			} else {
+				bootbox.alert("Hay un error con el NIF");
+			}
 		}
 	});
 }

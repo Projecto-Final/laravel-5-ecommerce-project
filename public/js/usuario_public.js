@@ -10,13 +10,14 @@ function perfil(){
 	})
 	.done(function(data) {
 		var txt = "<h3>Información básica</h3>"
-		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
-		+"<p>Nombre :</p>"+data.nombre
-		+"<p>Apellidos :</p>"+data.apellido
-		+"<p>Texto de presentación :</p>"+data.texto_presentacion		
-		+"<p>Direccion :</p>"+data.direccion
-		+"<p>Email :</p>"+data.email
-		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at)+"</div>"
+		+"<div class='col-md-8'><p>Apodo :</p>"+data[0].username
+		+"<p>Nombre :</p>"+data[0].nombre
+		+"<p>Apellidos :</p>"+data[0].apellido
+		+"<p>Texto de presentación :</p>"+data[0].texto_presentacion		
+		+"<p>Direccion :</p>"+data[0].direccion
+		+"<p>Localidad :</p>"+data[1].nombre
+		+"<p>Email :</p>"+data[0].email
+		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data[0].created_at)+"</div>"
 		$(".contact-info").html(txt);
 		txt+="</table>"
 		$(".contact-info").html(txt);

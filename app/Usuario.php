@@ -19,7 +19,7 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['username', 'email', 'password', 'nombre', 'apellido', 'imagen_perfil', 'imagen_background','avisado','direccion','texto_presentacion'];
+	protected $fillable = ['username', 'email', 'password', 'nombre', 'apellido', 'imagen_perfil', 'imagen_background','avisado','direccion','texto_presentacion','localidad_id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -71,10 +71,10 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	{
 		return $this->hasMany('App\Articulo', 'subastador_id','id');
 	}
-	public function Facturas()
-	{
-		return $this->hasMany('App\Factura', 'usuario_id', 'id');
-	}
+    public function localidad()
+    {
+        return $this->belongsTo('App\Localidad');
+    }
 
 //conf pujas activas y no superadas
 	public function confPujasSubasta($articulo_id){

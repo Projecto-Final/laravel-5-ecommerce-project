@@ -341,6 +341,13 @@
 												});
 												$("#ubicacion").html($("#ubicacion").html()+scatm);
 											});
+											$.getJSON("{{ url('get_localidades') }}", function(result){
+												var scatm = "";
+												$.each(result, function(i, field){
+													scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+												});
+												$("#ubicacion").html($("#ubicacion").html()+scatm);
+											});
 
 												 // Script pro rellenar dropdown!
 												 $("#categoria-art").change(function() {

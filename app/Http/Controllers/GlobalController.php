@@ -312,14 +312,17 @@ public function valoraciones(Request $request){
 // informacion del perfil usuario
 public function perfil($id)
 {			
-	$user = Usuario::find($id);
+	$user[0] = Usuario::find($id);
+	$user[1] = $user[0]->localidad;
 	return view('perfil',['user' => $user]);
 }
 
 public function coger_perfil(Request $request)
 {			
+
 	$submitedArray = $request->all();
-	$user = Usuario::find($submitedArray['id']);
+	$user[0] = Usuario::find($submitedArray['id']);
+	$user[1] = $user[0]->localidad;
 	return $user;
 }
 

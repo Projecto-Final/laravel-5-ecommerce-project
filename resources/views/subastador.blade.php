@@ -55,7 +55,7 @@ Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='pro
 </form>
 
   @elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
-  <div id="contPujas">Nº Pujas :<br>{{ $pujas}}</div>
+  
   <form class="form-inline">
    <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
    <input type="hidden" id="comprovarEstado" value="no">
@@ -67,5 +67,13 @@ Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='pro
 
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
+    <form class="form-inline">
+   <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
+   <input type="hidden" id="comprovarEstado" value="no">
+    <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
+    <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
+
+ </form>
   @endif
+
   @stop

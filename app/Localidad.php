@@ -8,4 +8,8 @@ class Localidad extends Model {
 
 	protected $fillable = ['nombre','codigo_postal'];
 	
+	public function usuarios()
+	{
+		return $this->hasMany('App\Usuario');
+	}
 }
