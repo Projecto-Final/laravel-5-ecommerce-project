@@ -23,25 +23,7 @@
     </form>
     <p colspan="3">* El incremento de puja actual es de {{ $subasta['incremento_precio']}}€</p>
   </div>
-<!-- <form>
-    @if ($logueado == true) 
-    <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
-    <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">   
-    <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
-    @elseif($logueado == false)
-    <input type="hidden" id="cargarPrecio" value="{{url('cargar_precioGuest')}}">
-    <input type="hidden" id="cargarPujaAut" value="no">   
-    <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstadoGuest')}}">
 
-    @endif            
-    <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
-    <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">
-    <input type="hidden" id="cancelarConf" value="{{url('cancelarConf')}}">
-    <input type="hidden" id="crearConfPuja" value="{{url('crearConfPuja')}}">
-    <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
-    <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
-     <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-</form> -->
 </div>
 
 <div id="datosPujaConf">
@@ -74,26 +56,7 @@
 <p>Subasta caducada </p>
 </div>
 <div id="formConf"><p></p><p></p><p></p><div>
-<!-- <form class="form-inline">
-  @if ($logueado == true) 
-  <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
-  <input type="hidden" id="cargarPujaAut" value="no">
- 
-  <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
-  @elseif($logueado == false)
-  <input type="hidden" id="cargarPrecio" value="{{url('cargar_precioGuest')}}">
-  <input type="hidden" id="cargarPujaAut" value="no">
-  <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstadoGuest')}}">
 
-  @endif            
-  <input type="hidden" id="subastaId" value="{{ $subasta['id'] }}">
-  <input type="hidden" id="cambiarConf" value="{{url('cambiarConf')}}">
-  <input type="hidden" id="cancelarConf" value="{{url('cancelarConf')}}">
-  <input type="hidden" id="crearConfPuja" value="{{url('crearConfPuja')}}">
-  <input type="hidden" id="pujasAutom" value="{{url('pujasAutom')}}">
-  <input type="hidden" id="ultimaPuja" value="{{url('ultimaPuja')}}">
-   <input type="hidden" id="todasPujas" value="{{url('todasPujas')}}">
-</form> -->
 @elseif($subasta['precio_venta'] != 0 && $subasta['precio_venta'] != -1)
 
 <div id="estadoSubasta"> </div>
@@ -106,7 +69,7 @@
   <form class="form-inline">
   @if ($logueado == true) 
   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precio')}}">
-  <input type="hidden" id="cargarPujaAut" value="no">
+  <input type="hidden" id="cargarPujaAut" value="{{url('cargarPujaAut')}}">   
   <input type="hidden" id="comprovarEstado" value="{{url('comprovarEstado')}}">
   @elseif($logueado == false)
   <input type="hidden" id="cargarPrecio" value="{{url('cargar_precioGuest')}}">
