@@ -7,6 +7,7 @@
 @section('js')
 @stop
 
+
 @section('nombre_pagina', 'Estadísticas')
 
 @section('descripcion_pagina', 'Estadisticas al detalle.')
