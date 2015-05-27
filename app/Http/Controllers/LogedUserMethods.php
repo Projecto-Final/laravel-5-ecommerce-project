@@ -168,33 +168,18 @@ class LogedUserMethods extends Controller {
 				'comprador_id' => null,
 				'metodo_envio_id'=> $submitedArray['sel_Metodo_envio'],
 				'metodo_pago_id'=> $submitedArray['Metodo_pago'],
-				]);
-			echo "<pre>";
-			
-			$contIMGS = 0;
+			]);
+
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
 				$img_extension = $imagenASubir->getClientOriginalExtension();
 				$img_name = $posicion."_".$articulo->id."_".md5($userId).".".$img_extension;
-				echo $imagenASubir;
 				$imagenASubir->move(public_path("images/subastas"),$img_name);
-				print_r($imagenASubir);
-
-				echo "<h1>".public_path("images/subastas")."</h1>";
-
-				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
-				//if($contIMGS==0){
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
-					]);
-			// }else{
-			// 	$contIMGS++;
-			// }
+				]);
 			}
-
-			echo "</pre>";
-
 			
 			return redirect('subasta/'.$articulo->id)->withInput()->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
 			//return view("view_subasta", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes] );

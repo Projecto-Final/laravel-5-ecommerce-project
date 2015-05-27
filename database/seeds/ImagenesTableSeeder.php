@@ -88,11 +88,5 @@ class ImagenesTableSeeder extends Seeder {
 			'articulo_id' => 13,
 			'imagen' => "maroto.jpg",
 			]);
-
-		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 14,
-			'imagen' => "maroto.jpg",
-			]);		
 	}
 }
