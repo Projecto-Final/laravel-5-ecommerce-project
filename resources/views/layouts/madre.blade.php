@@ -111,7 +111,14 @@
 										</div>
 										<button class="parametros-button" type="button" onClick="mostrar_filtros();">mostrar opciones <i class='fa fa-eye'></i></button>
 										<div class="parametros-filtrado container">
+											<h5>Usuarios</h5>
+											<div class="col-md-12">
+												<li><label for="slider-range">Filtrar por Usuarios : </label>
+													<input type="checkbox" name="filtrar_usuario" id="filtrar_usuario" class="checkbox" value="Buscar por usuarios">												
+												</li>
+											</div>
 											<p>NOTA: Si no especificas parametros de busqueda, buscara todas las subastas.</p>
+											<h5>Productos</h5>
 											<div class="col-md-6">
 												<li>
 													<label for="categoria-art">Categoria: </label>
@@ -146,9 +153,6 @@
 												<li>
 													<label for="slider-range">Selector precio: </label>
 													<div id="slider-range" style="margin-bottom:15px;"></div>
-												</li>
-												<li>
-													<input type="checkbox" name="filtrar_usuario" value="1" id="filtrar_usuario" class="checkbox" value="Buscar por usuarios"><label for="slider-range">Filtrar por Usuario: </label>												
 												</li>
 											</div>
 										</div>
@@ -324,7 +328,7 @@
 			<script src="{{url('js/bootstrap.min.js')}}"></script>
 			<script src="{{url('js/malign/easter/egg.js')}}"></script>
 			<script>
-			
+
 											// Script pro rellenar dropdown!
 											$.getJSON("{{ url('get_allCategories') }}", function(result){
 												var scatm = "";
@@ -333,14 +337,6 @@
 												});
 												$("#categoria-art").html($("#categoria-art").html()+scatm);
 											});
-											$.getJSON("{{ url('get_localidades') }}", function(result){
-												var scatm = "";
-												$.each(result, function(i, field){
-													scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-												});
-												$("#ubicacion").html($("#ubicacion").html()+scatm);
-											});
-
 
 												 // Script pro rellenar dropdown!
 												 $("#categoria-art").change(function() {
