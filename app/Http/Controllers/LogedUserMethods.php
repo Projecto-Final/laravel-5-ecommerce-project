@@ -106,8 +106,8 @@ class LogedUserMethods extends Controller {
 	{
 		$empresa = Empresa::find(1)->get();
 
-		$fecha_inicio = Carbon::now();
-		$fecha_final = Carbon::now()->addDays($empresa[0]->tiempoArticulo);
+		$fecha_inicio = Carbon::now('Europe/Madrid');
+		$fecha_final = Carbon::now('Europe/Madrid')->addDays($empresa[0]->tiempoArticulo);
 
 		return view('form_subasta', ["fecha_final" =>$fecha_final]);
 	}
@@ -146,8 +146,8 @@ class LogedUserMethods extends Controller {
 
 			$empresa = Empresa::find(1)->get();
 
-			$fecha_inicio = Carbon::now();
-			$fecha_final = Carbon::now()->addDays($empresa[0]->tiempoArticulo);
+			$fecha_inicio = Carbon::now('Europe/Madrid');
+			$fecha_final = Carbon::now('Europe/Madrid')->addDays($empresa[0]->tiempoArticulo);
 
 
 			$articulo = Articulo::create([
@@ -491,7 +491,7 @@ class LogedUserMethods extends Controller {
 				'confpuja_id' => $pujaAut,
 				'articulo_id' => $articulo->id,
 				'pujador_id' => $idPujador,
-				'fecha_puja' => Carbon::now()
+				'fecha_puja' => Carbon::now('Europe/Madrid')
 				]);	
 			$user = Usuario::find($idPujador);	
 			$user->touch();
@@ -535,7 +535,7 @@ class LogedUserMethods extends Controller {
 				'articulo_id' => $articuloId,
 				'usuario_id' => Auth::user()->id,
 				'superada' => 0,
-				'fecha_config' => Carbon::now()
+				'fecha_config' => Carbon::now('Europe/Madrid')
 				]);
 
 			$this->comprovarCF($articuloId);
@@ -828,7 +828,7 @@ public function updateValoracion(Request $request){
 	$val->completada = 1;
 	$val->texto = $submitedArray["texto"];
 	$val->puntuacion = $submitedArray['puntuacion'];
-	$val->fecha = Carbon::now();
+	$val->fecha = Carbon::now('Europe/Madrid');
 	$val->save();
 	// formula de recuento de la reputacion del usuario
 	$user=Usuario::find($val->valorado->id);
@@ -864,7 +864,7 @@ public function aceptarUltimaP(Request $request){
 			echo "Entrado";
 			$articulo->comprador_id = $pujaGanadora->pujador_id;
 			$articulo->precio_venta = $pujaGanadora->cantidad;
-			$articulo->fecha_venda = Carbon::now();
+			$articulo->fecha_venda = Carbon::now('Europe/Madrid');
 			$articulo->save();
 			$comprador = Usuario::find($articulo->comprador_id);
 
@@ -883,7 +883,7 @@ public function aceptarUltimaP(Request $request){
 			$valoracion->validante_id = $comprador->id;
 			$valoracion->puntuacion = 1;
 			$valoracion->completada = 0;
-			$valoracion->fecha = Carbon::now();
+			$valoracion->fecha = Carbon::now('Europe/Madrid');
 			$valoracion->articulo_id = $articulo->id;
 			$valoracion->save();
 
@@ -912,7 +912,7 @@ public function prorrogar(Request $request){
 			'usuario_id' => $articulo->subastador_id,
 			'nif' => $submitedArray['nif'],
 			'cantidad_pagada' => $empresa[0]->precioPorroga,
-			'fecha' => Carbon::now(),
+			'fecha' => Carbon::now('Europe/Madrid'),
 			'articulo_id' => $articulo->id,
 			]);
 	} catch (Exception $e) {

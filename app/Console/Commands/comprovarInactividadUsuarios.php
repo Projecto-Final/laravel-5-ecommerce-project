@@ -50,7 +50,7 @@ class comprovarInactividadUsuarios extends Command {
 	{
 		$empresa = Empresa::all()->take(1);
 		$usuarios = Usuario::all();
-		$now = Carbon::now();
+		$now = Carbon::now('Europe/Madrid');
 		foreach ($usuarios as $usuario) {
 			$updated = new Carbon($usuario->updated_at);
 			$diasInactivo = $updated->diff($now)->days;
