@@ -113,7 +113,6 @@
 										<div class="parametros-filtrado container">
 											<p>NOTA: Si no especificas parametros de busqueda, buscara todas las subastas.</p>
 											<div class="col-md-6">
-												
 												<li>
 													<label for="categoria-art">Categoria: </label>
 													<select id="categoria-art" name="categoria" style="width: 100%;">
@@ -341,13 +340,7 @@
 												});
 												$("#ubicacion").html($("#ubicacion").html()+scatm);
 											});
-											$.getJSON("{{ url('get_localidades') }}", function(result){
-												var scatm = "";
-												$.each(result, function(i, field){
-													scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-												});
-												$("#ubicacion").html($("#ubicacion").html()+scatm);
-											});
+
 
 												 // Script pro rellenar dropdown!
 												 $("#categoria-art").change(function() {
