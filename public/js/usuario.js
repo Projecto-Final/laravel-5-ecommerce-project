@@ -477,10 +477,10 @@ function valoracionesPendientes(){
 		if(cap == true){
 			for (var i = 0; i < data[0].length; i++) {
 				txt+= '<tr class="info">';
-				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";															
+				txt +="<td><a href='usuario/valoracion/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";															
 				txt +="<td>"+data[1][i]+"</td>";
 				txt +="<td>"+data[3][i].nombre_producto+"</td>";
-				txt +="<td><a href='usuario/valoracion/"+data[3][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
+				txt +="<td><a href='usuario/valoracion/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 				txt +="</tr>";
 			};
 			txt+="</table></div>";

@@ -776,7 +776,6 @@ public function comprovarEstado(Request $request){
 	}
 }
 
-//merge avoided xD
 public function write_valoracion($id){
 	$user = Auth::user();
 	$val = Valoracion::find($id);
