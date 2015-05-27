@@ -887,15 +887,7 @@ public function aceptarUltimaP(Request $request){
 			$valoracion->articulo_id = $articulo->id;
 			$valoracion->save();
 
-			// Valoracion::Create([
-			// 	'texto' => '',
-			// 	'valorado_id' => $vendedor->id,
-			// 	'validante_id' => $comprador->id,
-			// 	'puntuacion' => 1,
-			// 	'completada' => 0,
-			// 	'fecha' => Carbon::now(),
-			// 	'articulo_id' => $articulo->id,
-			// 	]);
+			
 		}else{
 			return 0;
 		}
