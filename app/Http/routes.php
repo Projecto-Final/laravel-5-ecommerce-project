@@ -62,8 +62,18 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	// ADMIN CP ACCESS
 	Route::get('administracion', 'LogedAdminMethods@index');
 
-	// Admin views
+	/*
+	* Admin views
+	*
+	* get = peticiones normales URL
+	* put = peticiones POST URL.
+	*
+	* !Respetar el orden en cascada.
+	*/
+
+	// Estadisticas
 	Route::get('administracion/estadisticas/usuarios', 'LogedAdminMethods@estadisticas_usuarios');
+	Route::get('administracion/estadisticas/categorias', 'LogedAdminMethods@estadisticas_categorias');
 
 	// Subastas
 	Route::get('administracion/subastas', 'LogedAdminMethods@subastas');

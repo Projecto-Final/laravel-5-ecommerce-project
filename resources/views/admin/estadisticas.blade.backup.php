@@ -29,6 +29,7 @@
 					<div class="box-body">
 						<div class="chart">
 							<canvas id="areaChart" height="255" width="787" style="width: 787px; height: 255px;"></canvas>
+              
 						</div>
 					</div><!-- /.box-body -->
 				</div><!-- /.box -->

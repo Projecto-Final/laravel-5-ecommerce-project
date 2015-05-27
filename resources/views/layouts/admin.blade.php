@@ -235,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ url('administracion/estadisticas') }}"><i class="fa fa-bar-chart"></i> <span>Estadísticas</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu" {{ isset($activeURL[3]) & isset($activeURL[4]) ? $activeURL[4]=="estadisticas" ? 'style=display:block;' : '' : '' }}>
               <li><a href="{{ url('administracion/estadisticas/usuarios') }}">Usuarios</a></li>  
-              <li><a href="{{ url('administracion/estadisticas/categorias') }}">Crear</a></li>
+              <li><a href="{{ url('administracion/estadisticas/categorias') }}">Categorías</a></li>
             </ul>
           </li>
           <li class="treeview">

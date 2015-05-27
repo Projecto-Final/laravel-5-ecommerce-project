@@ -167,6 +167,27 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function estadisticas_categorias(){
+
+
+		$categoriasNumCompras = DB::table('categorias')
+		->select(DB::raw('categorias.nombre as nombreCategoria, count(articulos.id) as numCompras '))
+		->join('subcategorias', 'categorias.id', '=', 'subcategorias.categoria_id')
+		->join('articulos','subcategorias.id','=','articulos.subcategoria_id')
+		->where('articulos.precio_venta', '!=', -1)
+		->groupBy('categorias.id')
+		->orderBy('numCompras',"desc")
+		->get();
+		
+
+		return view("admin.estadisticas_categorias", ['categoriasNumCompras' => $categoriasNumCompras]);
+	}
+
+	/**
+	 * Envia datos de estadisticas a la VIEW
+	 *
+	 * @return Response
+	 */
 	public function subastas()
 	{
 		$subastas = Articulo::all();
