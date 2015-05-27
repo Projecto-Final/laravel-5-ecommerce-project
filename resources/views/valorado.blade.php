@@ -75,7 +75,7 @@
 							<li class="fields">
 								<div class="customer-name">
 									<div class="field ">
-										<label>Nombre del valorante :</label>
+										<label>Nombre del valorado :</label>
 										<div class="input-box">
 											<input type="text" id="fechafin" name="fechafin" value="{{$valorado->nombre}}" title="Nombre" maxlength="255" readonly="">
 										</div>
