@@ -42,9 +42,10 @@
       <div id="UltimaPujaInfo"></div>
       
     </div>
-    <h5>Informació Básica</h5>
+    
 
     <table class="table table-bordered">
+      <h4>Informació Básica</h4>
       <tbody>
         <tr>
           <td>Artículo:</td>
