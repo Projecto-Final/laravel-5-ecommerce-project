@@ -13,9 +13,9 @@
 
  function formValidator(){
  	var formulario = document.getElementById('form-validate');
- 	validator();
- 	validarDropdowns();
- 	if(error==false){
+ 	var leDoy = validator();
+ 	var seguro = validarDropdowns();
+ 	if(leDoy==true && seguro== true){
  		formulario.submit();
  	}
  }
@@ -79,9 +79,11 @@
 
 		if( isNaN(val)){
 			getIdMsg(current,true,true);
+		
 		}else{
 			if(val<0){
 				getIdMsg(current,true,true);
+			
 			}else{	
 				var posicComa = val.indexOf(',');
 				var dectext = val.substring(val.indexOf(',')+1, val.length);
@@ -90,6 +92,7 @@
 					if (dectext.length > ndecimal)
 					{
 						getIdMsg(current,true,true);
+					
 					}
 				}else{
 					getIdMsg(current,false,true);
@@ -191,7 +194,7 @@ function validarEmail( email ) {
 }
 
 function mostraError(idElem) {
-	alert(idElem);
+	
 error=true;
 document.getElementById(idElem).style.display="inline";
 }
