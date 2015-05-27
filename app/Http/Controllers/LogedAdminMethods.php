@@ -139,11 +139,19 @@ class LogedAdminMethods extends Controller {
 
 		/* Usuaris per número de vendes */
 		// SELECT *, count(`id`) as nVentas, SUM(`precio_venta`) FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by nVentas DESC
+		$usuariosNumVentas = DB::table('articulos')
+		->select(DB::raw('usuarios.id as usuario_id, count("articulos.id") as nVentas, usuarios.nombre as vendedor_nombre'))
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('subastador_id')
+		->orderBy('nVentas',"desc")
+		->get();
+
 
 		/* Usuaris per número de licitacions (puja) oferides */
 		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
 
-		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados]);
+		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados, "usuariosNumVentas" => $usuariosNumVentas]);
 	}
 
 	/**

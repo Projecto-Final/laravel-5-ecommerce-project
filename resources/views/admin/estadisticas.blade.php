@@ -118,6 +118,37 @@
       </div>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
+  <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">(Est-4) Usuarios por Nº de ventas</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <table class="table table-hover">
+            <tbody><tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Nº Ventas</th>
+              <th>Opciones</th>
+            </tr>
+
+            @for ($i = 0; $i < count($usuariosNumVentas); $i++)
+            <tr>
+              <td>{{--*/ echo $usuariosNumVentas[$i]->usuario_id; /*--}}</td>
+              <td>{{--*/ echo $usuariosNumVentas[$i]->vendedor_nombre; /*--}}</td>
+              <td>{{--*/ echo $usuariosNumVentas[$i]->nVentas; /*--}}</td>
+              <td><a class="label label-success" href="{{ url('perfil/'.$usuariosNumVentas[$i]->usuario_id) }}">Ver Usuario</a></td>
+            </tr>
+            @endfor
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
 </div><!-- /.col (LEFT) -->
 </div>
 </div>
