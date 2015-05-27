@@ -191,7 +191,7 @@ function validarEmail( email ) {
 }
 
 function mostraError(idElem) {
-//	alert(idElem);
+	alert(idElem);
 error=true;
 document.getElementById(idElem).style.display="inline";
 }

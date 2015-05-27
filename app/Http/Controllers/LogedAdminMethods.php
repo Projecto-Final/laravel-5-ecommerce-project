@@ -197,7 +197,7 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'nombre_producto' => 'required|string',
 			'modelo' => 'required|string',
-			'estado' => 'required|alpha',
+			'estado' => 'required|alpha_dash',
 			'localizacion' => 'required|alpha_num',
 			'descripcion' => 'required',
 			'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
@@ -314,8 +314,8 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'username' => 'required|max:255|alpha_num|unique:usuarios',
 			'email' => 'required|email|max:255|unique:usuarios',
-			'nombre' => 'required|alpha|max:20',
-			'apellido' => 'required|alpha|max:200',
+			'nombre' => 'required|alpha_dash|max:20',
+			'apellido' => 'required|alpha_dash|max:200',
 			'reputacion' => 'required|numeric',
 			'permisos' => 'required|boolean',
 			'imagen_perfil' => 'required|string',
