@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Metodo_pago extends Model {
-	
+
 protected $table = 'metodo_pagos';
 	/**
 	 * The attributes that are mass assignable.
@@ -14,6 +14,6 @@ protected $table = 'metodo_pagos';
 
 	public function articulos()
 	{
-		return $this->hasMany('App\Articulo', 'Metodo_pago_id', 'id');
+		return $this->hasMany('App\Articulo', 'metodo_pago_id', 'id');
 	}
 }

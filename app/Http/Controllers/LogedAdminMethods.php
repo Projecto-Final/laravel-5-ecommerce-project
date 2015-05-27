@@ -100,12 +100,31 @@ class LogedAdminMethods extends Controller {
 		*/
 
 		/* Usuaris per zona geogràfica */
+		// PENDIENTE
 
 		/* Usuaris per número de compres */
 		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
 
+		$usuariosNCompras = DB::table('articulos')
+		->select(DB::raw('usuarios.id as comprador_id, usuarios.nombre as comprador_nombre, count("articulos.id") as nc'))
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('comprador_id')
+		->orderBy('nc',"desc")
+		->get();
+		// $usuariosNCompras = Articulo::whereRaw("'precio_venta' != -1 order by 'comprador_id'")->get();
+
+
 		/* Usuaris per € cobrats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
+		$usuariosEurCobrados = DB::table('articulos')
+		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('subastador_id')
+		->orderBy('pventaTotal',"desc")
+		->get();
+
 
 		/* Usuaris per € pagats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `comprador_id` order by pventaTotal DESC
@@ -116,22 +135,7 @@ class LogedAdminMethods extends Controller {
 		/* Usuaris per número de licitacions (puja) oferides */
 		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
 
-
-		$año = date('Y');
-		$aux2 = 0;
-		$EstadisticasAnuales = array();
-		$EstadisticasPujas = array();
-
-		for ($i=1; $i <= 12; $i++) { 
-			$aux2 = 0;
-			$aux = Articulo::orderBy('id','asc')->whereRaw("MONTH(`fecha_inicio`) = '".$i."' and YEAR(`fecha_inicio`) = ".$año."")->get();
-			foreach ($aux as $key => $articulo) {
-				$aux2 += count($articulo->pujas);
-			}
-			$EstadisticasPujas[$i] = $aux2;
-			$EstadisticasAnuales[$i] = count($aux);
-		}
-		return view("admin.estadisticas", ['estadisticasSubasta' => $EstadisticasAnuales, 'estadisticasPujas' => $EstadisticasPujas]);
+		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados]);
 	}
 
 	/**
@@ -180,7 +184,7 @@ class LogedAdminMethods extends Controller {
 			'fecha_inicio' => 'required|date',
 			'fecha_venda' => 'date',
 			'porrogado' => 'required|boolean',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -292,7 +296,7 @@ class LogedAdminMethods extends Controller {
 			'reputacion' => 'required|numeric',
 			'permisos' => 'required|boolean',
 			'imagen_perfil' => 'required|string',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -363,7 +367,7 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'nombre' => 'required|string',
 			'descripcion' => 'required|string',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -383,7 +387,7 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'nombre' => 'required|string',
 			'descripcion' => 'required|string',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -431,7 +435,7 @@ class LogedAdminMethods extends Controller {
 			'nombre' => 'required|string',
 			'descripcion' => 'required|string',
 			'categoria_id' => 'required|integer',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -453,7 +457,7 @@ class LogedAdminMethods extends Controller {
 			'nombre' => 'required|string',
 			'descripcion' => 'required|string',
 			'categoria_id' => 'required|integer',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());
@@ -492,8 +496,8 @@ class LogedAdminMethods extends Controller {
 		$articulo = Articulo::find($factura['articulo_id']);
 		$usuario = Usuario::find($factura['usuario_id']);
 		$factura = Factura::find($idFactura);
-		 $pdf = PDF::loadHTML(view('factura_pdf',['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]));
-        return $pdf->stream();
+		$pdf = PDF::loadHTML(view('factura_pdf',['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]));
+		return $pdf->stream();
 		;
 	}
 	public function generar_factura_xml($idFactura)
@@ -514,7 +518,7 @@ class LogedAdminMethods extends Controller {
 	// {
 	// 	$facturaActualizada = $request->all();
 	// 	$factura = Factura::find($idFactura);
-		
+
 	// 	$factura->detalle = $facturaActualizada['xx'];
 
 	// 	$factura->save();
@@ -550,7 +554,7 @@ class LogedAdminMethods extends Controller {
 			'tiempoPorrogaArticulo' => 'required|integer',
 			'inactividad' => 'required|integer',
 			'precioPorroga' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-		]);
+			]);
 
 		if ($v !== NULL && $v->fails()) {
 			return redirect()->back()->withErrors($v->errors());

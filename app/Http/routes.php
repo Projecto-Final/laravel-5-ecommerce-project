@@ -252,3 +252,8 @@ Route::get('valoraciones', 'GlobalController@valoraciones');
 Route::get('ventas', 'GlobalController@ventas');
 Route::get('coger_perfil', 'GlobalController@coger_perfil');
 
+
+Route::get('get_metodo_pago', 'GlobalController@get_metodo_pago');
+
+
+Route::get('get_metodo_envio', 'GlobalController@get_metodo_envio');

@@ -210,6 +210,43 @@
                         </div>
                       </li>
                     </ul>
+
+  <ul class="form-list">
+                          <li class="fields">
+                            <div class="customer-name">
+                              <div class="field">
+                                <label for="Metodo_envio" class="required"><em>*</em>Metodo de Envio</label>
+                                <div class="input-box">
+                                 <select id="Metodo_envio" value="" title="Nombre" name="sel_Metodo_envio" maxlength="255" class="input-text required-entry">
+                                  <option value="">Cargando...</option>
+                                </select>
+                                <span class='errorJS' id='sel_Metodo_envio_error'>&nbsp;Debes escojer una</span>
+                          @if(isset($errors) && ($errors->first('categoria') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('categoria')}}</span>
+                          @endif
+                          
+                            </div>
+                          </div>
+                          <div class="field ">
+                            <label for="Metodo_pago" class="required"><em>*</em>Metodo de Pago</label>
+                            <div class="input-box">
+                             <select name="Metodo_pago" id="Metodo_pago" value="" title="Nombre" name="sel_Metodo_pago" maxlength="255" class="input-text required-entry">
+                              <option value="">Cargando...</option>
+                            </select>
+                            <span class='errorJS' id='sel_Metodo_pago_error'>&nbsp;Debes escojer una</span>
+                          @if(isset($errors) && ($errors->first('subcategoria') !== null))
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('subcategoria')}}</span>
+                          @endif
+                            <div id="descriptext" class="input-box"></div>
+                         
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                    
+
+
                     <ul class="form-list">
                       <li class="fields">
                         <div class="customer-name">
@@ -262,4 +299,30 @@
         </div>
       </div>
     </div>
+     <script>
+    metPago();
+    merEnvio();
+    
+    function metPago(){
+  $.getJSON("{{ url('get_metodo_pago') }}", function(result){
+    var scatm = "<option value='ninguna'>Escoja una</option>";
+    $.each(result, function(i, field){
+      scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+    });
+    $(".field select#Metodo_envio").html(scatm);
+  });
+
+}
+function merEnvio(){
+    $.getJSON("{{ url('get_metodo_envio') }}", function(result){
+    var scatm = "<option value='ninguna'>Escoja una</option>";
+    $.each(result, function(i, field){
+      scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+    });
+    $(".field select#Metodo_pago").html(scatm);
+  });
+  }
+  </script>
     @stop
+
+

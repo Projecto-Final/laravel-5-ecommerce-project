@@ -129,6 +129,8 @@ class LogedUserMethods extends Controller {
 				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 				'subcategoria' => 'required|alpha_num',
 				'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
+				'Metodo_envio' => 'required',
+				'Metodo_pago' => 'required',
 				]);
 
 			if ($v !== NULL && $v->fails()) {
@@ -161,6 +163,8 @@ class LogedUserMethods extends Controller {
 				'puja_mayor' => $submitedArray['precio_inicial'],
 				'porrogado' => 0,
 				'comprador_id' => null,
+				'metodo_envio_id'=> $submitedArray['Metodo_envio'],
+				'metodo_pago_id'=> $submitedArray['Metodo_pago'],
 				]);
 			echo "<pre>";
 

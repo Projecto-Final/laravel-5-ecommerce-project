@@ -3,6 +3,8 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
+use App\Metodo_pago;
+use App\Metodo_envio;
 use Input;
 use App\Imagen;
 use Session;
@@ -157,6 +159,10 @@ $pujas = count($aux);
 $imagenes = $articulo->imagenes; 
 $subcategoria = $articulo->subcategoria; 
 $categoria = $subcategoria->categoria;
+$metodoEnv = $articulo->Metodo_envio;
+$metodoPa = $articulo->Metodo_pago;
+
+
 
 //diversificacion de ruta entre usuario y propietario
 if($propietario){
@@ -167,10 +173,10 @@ if($propietario){
 	$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
 	$precio_pro = $empresa[0]->precioPorroga;
 	
-	return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro]);
+	return response()->view("subastador", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "tiempo_pro"=>$tiempo_pro,"precio_pro"=>$precio_pro, "metodoEnv"=>$metodoEnv ,"metodoPa" =>$metodoPa]);
 
 }else{
-	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado]);
+	return response()->view("pujable", ["subasta" => $articulo , "subastador" => $subastador, "imagenes" => $imagenes, "pujas"=> $pujas, "subcategoria"=>$subcategoria, "categoria"=> $categoria, "logueado"=>$logueado, "metodoEnv"=>$metodoEnv ,"metodoPa" =>$metodoPa]);
 }
 
 
@@ -425,6 +431,16 @@ public function todasPujas(Request $request){
 		return $e;
 	}
 }
+public function get_metodo_pago(){
+	$data = Metodo_pago::all();
+	return $data;
+}
 
+public function get_metodo_envio()
+{
+	$data = Metodo_envio::all();
+	return $data;
+}
 
 }
+
