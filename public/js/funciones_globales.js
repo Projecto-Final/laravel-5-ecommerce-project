@@ -1,5 +1,4 @@
 setInterval(confPujaSuperada,7000);
-setInterval(get_Pendientes,50000);
 
 function mostrar_filtros(){
 	interruptor_visibilidad($(".parametros-filtrado").css("display"));
@@ -37,11 +36,4 @@ function formatoFecha(fecha){
 }
 
 
-function get_Pendientes(){
-	var url = "usuario/get_Pendientes";
-	$.get(url,function(data,status){
-		if(data != 0){
-			bootbox.alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
-		}
-	});
 }
