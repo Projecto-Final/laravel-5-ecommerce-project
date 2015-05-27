@@ -20,7 +20,7 @@
 				<!-- AREA CHART -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Usuarios por Nº de compras</h3>
+						<h3 class="box-title">(Est-2) Usuarios por Nº de compras</h3>
 						<div class="box-tools pull-right">
 							<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 							<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -54,7 +54,7 @@
         <!-- AREA CHART -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Usuarios por € de cobrados</h3>
+            <h3 class="box-title">(Est-3) Usuarios por € de cobrados</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -66,7 +66,8 @@
                 <tbody><tr>
                   <th>ID</th>
                   <th>Usuario</th>
-                  <th>Nº Compras</th>
+                  <th>Nº Ventas</th>
+                  <th>Total Euros cobrados</th>
                   <th>Opciones</th>
                 </tr>
 
@@ -74,7 +75,8 @@
                 <tr>
                   <td>{{--*/ echo $usuariosEurCobrados[$i]->comprador_id; /*--}}</td>
                   <td>{{--*/ echo $usuariosEurCobrados[$i]->comprador_nombre; /*--}}</td>
-                  <td>{{--*/ echo $usuariosEurCobrados[$i]->pventaTotal; /*--}}</td>
+                  <td>{{--*/ echo $usuariosEurCobrados[$i]->nVentas; /*--}}</td>
+                   <td>{{--*/ echo $usuariosEurCobrados[$i]->pventaTotal; /*--}}</td>
                   <td><a class="label label-success" href="{{ url('perfil/'.$usuariosEurCobrados[$i]->comprador_id) }}">Ver Usuario</a></td>
                 </tr>
                 @endfor

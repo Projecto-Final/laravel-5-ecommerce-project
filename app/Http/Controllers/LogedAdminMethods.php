@@ -118,7 +118,7 @@ class LogedAdminMethods extends Controller {
 		/* Usuaris per € cobrats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
 		$usuariosEurCobrados = DB::table('articulos')
-		->select(DB::raw('usuarios.id as comprador_id, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
+		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
 		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('subastador_id')
