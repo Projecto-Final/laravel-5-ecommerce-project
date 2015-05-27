@@ -131,9 +131,9 @@
               </tr>
               <tr>
                 <td>Metodo de Pago</td>
-                <td>{{$metodoPa}}</td>
+                <td colspan="3">{{$metodoPa['nombre']}}</td>
                 <td>Metodo Envio</td>
-                <td>{{$metodoEnv}}</td>
+                <td colspan="3">{{$metodoEnv['nombre']}}</td>
               </tr>
             </tbody>
           </table>

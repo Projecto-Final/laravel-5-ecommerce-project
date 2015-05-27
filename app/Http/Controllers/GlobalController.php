@@ -157,11 +157,12 @@ $pujas = count($aux);
 $imagenes = $articulo->imagenes; 
 $subcategoria = $articulo->subcategoria; 
 $categoria = $subcategoria->categoria;
-$metodoEnv = $artiuclo->Metodo_envio;
-$metodoPa = $artiuclo->Metodo_pago;
+$metodoEnv = $articulo->Metodo_envio;
+$metodoPa = $articulo->Metodo_pago;
 
 
-
+echo $metodoPa;
+echo $metodoEnv;
 //diversificacion de ruta entre usuario y propietario
 if($propietario){
 
