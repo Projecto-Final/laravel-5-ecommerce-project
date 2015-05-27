@@ -129,6 +129,12 @@
                 <td>Precio Inicial:</td>
                 <td colspan="3">{{ $subasta['precio_inicial']}}€</td>
               </tr>
+              <tr>
+                <td>Metodo de Pago</td>
+                <td>{{$metodoPa}}</td>
+                <td>Metodo Envio</td>
+                <td>{{$metodoEnv}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
