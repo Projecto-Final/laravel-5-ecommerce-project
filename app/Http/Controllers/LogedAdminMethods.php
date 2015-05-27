@@ -156,6 +156,7 @@ class LogedAdminMethods extends Controller {
 		->groupBy('usuario_id')
 		->orderBy('nPujas',"desc")
 		->get();
+		print_r($usuariosNumLicitaciones[0]);
 
 
 		return view("admin.estadisticas_usuarios", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados, "usuariosNumVentas" => $usuariosNumVentas, "usuariosNumLicitaciones" => $usuariosNumLicitaciones]);

@@ -105,7 +105,7 @@
                 <td>{{--*/ echo $usuariosNumLicitaciones[$i]->usuario_id; /*--}}</td>
                 <td>{{--*/ echo $usuariosNumLicitaciones[$i]->comprador_nombre; /*--}}</td>
                 <td>{{--*/ echo $usuariosNumLicitaciones[$i]->nPujas; /*--}}</td>
-                <td><a class="label label-success" href="{{ url('perfil/'.$usuariosEurPagados[$i]->usuario_id) }}">Ver Usuario</a></td>
+                <td><a class="label label-success" href="{{ url('perfil/'.$usuariosNumLicitaciones[$i]->usuario_id) }}">Ver Usuario</a></td>
               </tr>
               @endfor
             </tbody>
