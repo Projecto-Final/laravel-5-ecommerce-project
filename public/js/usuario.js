@@ -25,6 +25,7 @@ function get_Pendientes(){
 			bootbox.alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
 		}
 	});
+}
 
 function perfil(){
 	var url = "usuario/get_perfil";
