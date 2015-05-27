@@ -25,6 +25,7 @@ function perfil(){
 		+"<p>Apellidos :</p>"+data.apellido
 		+"<p>Texto de presentación :</p>"+data.texto_presentacion
 		+"<p>Direccion :</p>"+data.direccion
+		+"<p>Localidad :</p>"+data.localidad
 		+"<p>Email :</p>"+data.email
 		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at)+"</div>"
 		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
