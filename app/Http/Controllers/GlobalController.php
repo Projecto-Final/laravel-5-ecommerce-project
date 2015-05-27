@@ -3,6 +3,8 @@ use App\Usuario;
 use App\Subcategoria;
 use App\Categoria;
 use App\Articulo;
+use App\Metodo_pago;
+use App\Metodo_envio;
 use Input;
 use App\Imagen;
 use Session;
@@ -161,8 +163,7 @@ $metodoEnv = $articulo->Metodo_envio;
 $metodoPa = $articulo->Metodo_pago;
 
 
-echo $metodoPa;
-echo $metodoEnv;
+
 //diversificacion de ruta entre usuario y propietario
 if($propietario){
 
@@ -430,6 +431,16 @@ public function todasPujas(Request $request){
 		return $e;
 	}
 }
+public function get_metodo_pago(){
+	$data = Metodo_pago::all();
+	return $data;
+}
 
+public function get_metodo_envio()
+{
+	$data = Metodo_envio::all();
+	return $data;
+}
 
 }
+
