@@ -435,7 +435,7 @@ function valoracionesPendientes(){
 	var url = "usuario/get_valoracionesPendientes";
 	var txt="";
 	txt+="<button class='bb' onclick='valoraciones();'>Valoraciones de mis ventas</button>"
-	+"<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button>";
+	txt+="<button class='bb' onclick='valoracionesPendientes();'>Valoraciones pendientes</button>";
 	txt += "<h3>Valoraciones pendientes</h3>"
 	txt+='<table class="table table-striped">';
 	txt+= '<thead><tr class="success">';
@@ -446,6 +446,7 @@ function valoracionesPendientes(){
 	txt +="</tr></thead>";
 	$.get(url,function(data,status){})
 	.done(function(data) {
+		alert(data);
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Valoraciones pendientes</h3>";

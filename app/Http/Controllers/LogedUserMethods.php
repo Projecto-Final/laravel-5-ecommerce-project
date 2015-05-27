@@ -273,19 +273,17 @@ class LogedUserMethods extends Controller {
 
 	public function get_valoraciones(){	
 		$direccion = url('/images/subastas/');
-		$id = Auth::user()->id;
+		$user = Auth::user();
 		$escala = Escala::all();
-		$user = Usuario::find($id);
-		$val[0] = $user->valVenta;
-		$j = 0;
-		for ($i=0; $i < count($val[0]); $i++) { 
-			if($val[0][$i]->completada == 1){
-				$val[1][$j] = $val[0][$i]->validante->username;
+		$valoraciones = $user->valVenta();
+		for ($i=0; $i < count($valoraciones); $i++) {
+			if($valoraciones[$i]->completada == 1){
+				$val[0][$i] = $valoraciones[$i];
+				$val[1][$i] = $val[0][$i]->validante->username;
 				$art = Articulo::find($val[0][$i]->articulo_id);
-				$val[2][$j] = $direccion.'/'.$art->imagenes[0]->imagen;
-				$val[3][$j] = $art;
-				$val[4][$j] = $escala[$val[0][$i]->puntuacion]->descripcion;
-				$j++;
+				$val[2][$i] = $direccion.'/'.$art->imagenes[0]->imagen;
+				$val[3][$i] = $art;
+				$val[4][$i] = $escala[$val[0][$i]->puntuacion]->descripcion;
 			}else{}
 		}
 		return $val;
@@ -295,7 +293,7 @@ class LogedUserMethods extends Controller {
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$count = 0;
-		$val[0] = $user->valCompra;
+		$val[0] = $user->valCompra();
 		for ($i=0; $i < count($val[0]); $i++) {
 			if($val[0][$i]->completada == 0){
 				$count++;
@@ -306,18 +304,16 @@ class LogedUserMethods extends Controller {
 
 	public function get_valoracionesPendientes(){	
 		$direccion = url('/images/subastas/');
-		$id = Auth::user()->id;
-		$user = Usuario::find($id);
-		$val[0] = $user->valCompra;
-		$j = 0;
-		for ($i=0; $i < count($val[0]); $i++) {
-			if($val[0][$i]->completada == 0){
-				$val[1][$j] = $val[0][$i]->valorado->username;
+		$user = Auth::user();
+		$valoraciones = $user->valVenta();
+		for ($i=0; $i < count($valoraciones); $i++) {
+			if($valoraciones[$i]->completada == 0){
+				$val[0][$i] = $valoraciones[$i];
+				$val[1][$i] = $val[0][$i]->valorado()->username;
 				$art = Articulo::find($val[0][$i]->articulo_id);
-				$val[2][$j] = $art->nombre_producto;
-				$val[3][$j] = $val[0][$i]->id;
-				$val[4][$j] = $direccion.'/'.$art->imagenes[0]->imagen;				
-				$j++;
+				$val[2][$i] = $art->nombre_producto;
+				$val[3][$i] = $val[0][$i]->id;
+				$val[4][$i] = $direccion.'/'.$art->imagenes[0]->imagen;
 			}else{}
 		}
 		return $val;
@@ -829,7 +825,16 @@ public function updateValoracion(Request $request){
 	$val->save();
 	// formula de recuento de la reputacion del usuario
 	$user=Usuario::find($val->valorado->id);
-	$user->reputacion = ($user->reputacion + $submitedArray['puntuacion'])/2;
+	$valoraciones = $user->valVenta();
+	$total = 0;
+	foreach ($valoraciones as $valoracion) {
+		$total += $valoracion->puntuacion;
+	}
+	if ($total == 0 || count($valoraciones) == 0) {
+		$user->reputacion = 1;
+	} else {
+		$user->reputacion = ($total/count($valoraciones));
+	}
 	$user->save();
 	return redirect('usuario');
 }
