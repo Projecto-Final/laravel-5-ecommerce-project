@@ -87,6 +87,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion/usuarios/editar/{idUsuario}', 'LogedAdminMethods@editar_usuario');
 	Route::put('administracion/usuarios/editar/{idUsuario}', 'LogedAdminMethods@guardar_usuario');
 	Route::get('administracion/usuarios/eliminar/{idUsuario}', 'LogedAdminMethods@eliminar_usuario');
+	Route::get('administracion/usuarios/activar/{idUsuario}', 'LogedAdminMethods@activar_usuario');
+	Route::get('administracion/usuarios/desactivar/{idUsuario}', 'LogedAdminMethods@desactivar_usuario');
 
 	// Categorías
 	Route::get('administracion/categorias', 'LogedAdminMethods@categorias');

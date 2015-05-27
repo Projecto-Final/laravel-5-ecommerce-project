@@ -295,6 +295,33 @@ class LogedAdminMethods extends Controller {
 		$usuario->delete();
 		return redirect("administracion/usuarios");
 	}
+		/**
+	 * Activa un usuario dado de baja
+	 *
+	 * @return Response
+	 */
+		public function activar_usuario($idUsuario)
+		{
+			$usuario = Usuario::find($idUsuario);
+			$usuario->activa = 1;
+			$usuario->save();
+
+			return redirect("administracion/usuarios");
+		}
+
+	/**
+	 * Desactivar un usuario 
+	 *
+	 * @return Response
+	 */
+	public function desactivar_usuario($idUsuario)
+	{
+		$usuario = Usuario::find($idUsuario);
+		$usuario->activa = 0;
+		$usuario->save();
+		
+		return redirect("administracion/usuarios");
+	}
 
 	/**
 	 * Envia datos de estadisticas a la VIEW

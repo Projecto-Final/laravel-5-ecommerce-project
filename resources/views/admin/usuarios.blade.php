@@ -35,6 +35,7 @@
             <th>Apellidos</th>
             <th>Email</th>
             <th>Reputación</th>
+            <th>Activa</th>
             <th>Permisos</th>
             <th>Opciones</th>
           </tr>
@@ -51,6 +52,13 @@
             <td>{{ $usuario['email'] }}</td>
             <td>{{ $usuario['reputacion'] }}</td>
             <td>
+            @if($usuario['activa']==1)
+            <b class="badge bg-green">TRUE</b>
+            @else 
+            <b class="badge bg-grey">FALSE</b>
+            @endif
+          </td>
+            <td>
              @if($usuario['permisos']==1)
              <b class="badge bg-green">ADMIN</b>
              @else 
@@ -59,7 +67,9 @@
            </td>
            <td> 
             <a href="{{ url(''.URL::current().'/editar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
-            <a href="{{ url(''.URL::current().'/eliminar/'.$usuario['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a> 
+            <a href="{{ url(''.URL::current().'/eliminar/'.$usuario['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a>
+            <a href="{{ url(''.URL::current().'/activar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Activar </a>  
+            <a href="{{ url(''.URL::current().'/desactivar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Desactivar </a>  
           </tr>
           @endforeach
         </tbody>
@@ -73,9 +83,9 @@
 
 @section('scripts_extra')
 <script>
-  $(document).ready(function() {
-    $('#example').dataTable();
-    $('#example2').dataTable();
-  });
+$(document).ready(function() {
+  $('#example').dataTable();
+  $('#example2').dataTable();
+});
 </script>
 @stop
