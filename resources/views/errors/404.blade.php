@@ -233,9 +233,10 @@
 		}
 
 		.bottom {
-			border-color: #fff transparent transparent transparent;
-			border-width: 8px 8px 0px 8px;
-			bottom: -8px;
+			border-color: #F8F8F8 transparent transparent transparent;
+			border-width: 40px 20px 0px 20px;
+			bottom: -30px;
+			left:218px;
 		}
 		.absBOT {
 			position: fixed;
