@@ -119,7 +119,7 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
 		$usuariosEurCobrados = DB::table('articulos')
 		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
-		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('subastador_id')
 		->orderBy('pventaTotal',"desc")
@@ -130,7 +130,7 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `comprador_id` order by pventaTotal DESC
 		$usuariosEurPagados = DB::table('articulos')
 		->select(DB::raw('usuarios.id as usuario_id, count("articulos.id") as nCompras, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pcompratotal'))
-		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('comprador_id')
 		->orderBy('pcompratotal',"desc")
@@ -141,7 +141,7 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`) as nVentas, SUM(`precio_venta`) FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by nVentas DESC
 		$usuariosNumVentas = DB::table('articulos')
 		->select(DB::raw('usuarios.id as usuario_id, count("articulos.id") as nVentas, usuarios.nombre as vendedor_nombre'))
-		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('subastador_id')
 		->orderBy('nVentas',"desc")
@@ -158,7 +158,7 @@ class LogedAdminMethods extends Controller {
 		->get();
 
 
-		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados, "usuariosNumVentas" => $usuariosNumVentas, "usuariosNumLicitaciones" => $usuariosNumLicitaciones]);
+		return view("admin.estadisticas_usuarios", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados, "usuariosNumVentas" => $usuariosNumVentas, "usuariosNumLicitaciones" => $usuariosNumLicitaciones]);
 	}
 
 	/**
