@@ -139,12 +139,59 @@
 .glyphicon:hover{
 	opacity: 0.5;
 }
-
 #editarFportada {
+	top:0px;
+	left: 15px;
+	width: 100%;
+	height: 100%;
 	position: absolute;
 	color: #1B9BFF;
 	font-size: 28px;
 	cursor: pointer;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+}
+#editarFportada > b {
+	top: 80px;
+	left: -210px;
+	position: absolute;
+	padding: 10px 20px;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	padding-left: 80px;
+	font-size: 12px;
+
+}
+#editarFportada > b > i {
+	padding-left: 10px;
+	background-color: #fff;
+	color: #000;
+	padding: 2px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+
+}
+#editarFportada {
+	top:0px;
+	right:0px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.0);
+	font-size: 28px;
+	cursor: pointer;
+}
+#editarFportada > b:hover {
+	top: 80px;
+	left: -50px;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 #editarFP {
 	top:0px;
@@ -161,10 +208,11 @@
 	transition: all 1s;
 	-webkit-transition: all 1s;
 	-moz-transition: all 1s;
+	z-index:9999;
 }
 #editarFP > b {
 	top: 80px;
-	right: -185px;
+	right: -195px;
 	position: absolute;
 	padding: 10px 20px;
 	transition: all 1s;
@@ -174,23 +222,34 @@
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	padding-right: 80px;
+	font-size: 12px;
 
 }
-#editarFP:hover {
+#editarFP > b > i {
+	padding-right: 10px;
+	background-color: #fff;
+	color: #000;
+	padding: 2px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+
+}
+#editarFP {
 	top:0px;
 	right:0px;
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	color: #fff;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.0);
 	font-size: 28px;
 	cursor: pointer;
 	border-radius: 100%;
 	-moz-border-radius: 100%;
 	-webkit-border-radius: 100%;
 }
-#editarFP:hover > b {
+#editarFP > b:hover {
 	top: 80px;
 	right:-50px;
 	background-color: rgba(0, 0, 0, 0.5);

@@ -14,8 +14,9 @@
 
 <div id="sns_content" class="wrap layout-m">
   <div class="container-fluid header_perfil" >
-    <span id="editarFportada" class=" glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$imagBack) }});">
+    <span id="editarFportada" aria-hidden="true"><b> Actualizar foto perfil. <i class="fa fa-camera"></i></b></span>
       <div class="stadistic_info_user col-xs-12 col-md-12">
        <div id="confPerfil" class="col-md-9 pop_up" style="display:none;" >
         <form action="{{ url('usuario/fotoPerfil') }}" method="post" enctype="multipart/form-data">
@@ -40,7 +41,7 @@
       </div>
       <div class="container">
         <div class="img_perfil col-xs-12" style="background-image: url({{ url('images/profiles/'.$imagPerf) }}) ;">
-        <span id="editarFP" class="" aria-hidden="true"><b class="fa fa-camera">Actualizar foto perfil.</b></span>
+        <span id="editarFP" class="" aria-hidden="true"><b><i class="fa fa-camera"></i> Actualizar foto perfil.</b></span>
        </div>
 
 
