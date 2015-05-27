@@ -32,7 +32,7 @@
                       <div class="field ">
                         <label for="nombre_producto" class="required"><em>*</em>Nombre Producto</label>
                         <div class="input-box">
-                          <input type="text" id="nombre_producto" name="nombre_producto" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <input type="text" id="nombre_producto" name="nombre_producto" title="Nombre" maxlength="255" value="{{ old('nombre_producto') }}" class="input-text required-entry">
                           <span class='errorJS' id='nombre_producto_error'>&nbsp;Campo obligatorio</span>
                           @if(isset($errors) && ($errors->first('nombre_producto') !== null))
                             <br/><span class="errorSys">&nbsp;{{$errors->first('nombre_producto')}}</span>
@@ -42,7 +42,7 @@
                       <div class="field ">
                         <label for="modelo" class="required"><em>*</em>Modelo</label>
                         <div class="input-box">
-                          <input type="text" id="modelo" name="modelo" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                          <input type="text" id="modelo" name="modelo"  title="Nombre" maxlength="255" class="input-text required-entry" value="{{ old('modelo') }}">
                           <span class='errorJS' id='modelo_error'>&nbsp;Campo obligatorio</span>
                           @if(isset($errors) && ($errors->first('modelo') !== null))
                             <br/><span class="errorSys">&nbsp;{{$errors->first('modelo')}}</span>
@@ -58,7 +58,7 @@
                       <div class="field ">
                         <label for="localizacion" class="required"><em>*</em>Localización</label>
                         <div class="input-box">
-                          <select id="localizacion" value="" title="Nombre" name="localizacion" maxlength="255" class="input-text required-entry">
+                          <select id="localizacion" title="Nombre" name="localizacion" maxlength="255" class="input-text required-entry">
                             <option value="">Cargando...</option>
                           </select>
                           <span class='errorJS' id='localizacion_error'>&nbsp;Campo obligatorio</span>
@@ -70,7 +70,7 @@
                       <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_localidades') }}", function(result){
-                                var scatm = "";
+                                var scatm = "<option value=''>Escoja Una</option>";
                                 $.each(result, function(i, field){
                                   scatm += "<option value="+field.id+">"+field.nombre+"</option>";
                                 });
@@ -80,7 +80,7 @@
                               <div class="field ">
                                 <label for="estado" class="required"><em>*</em>Estado</label>
                                 <div class="input-box">
-                                  <input type="text" id="estado" name="estado" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                                  <input type="text" id="estado" name="estado"  title="Nombre" maxlength="255" class="input-text required-entry" value="{{ old('estado') }}">
                                   <span class='errorJS' id='estado_error'>&nbsp;Campo obligatorio</span>
                           @if(isset($errors) && ($errors->first('estado') !== null))
                             <br/><span class="errorSys">&nbsp;{{$errors->first('estado')}}</span>
@@ -164,7 +164,7 @@
                                 <script>
                               // Script pro rellenar dropdown!
                               $.getJSON("{{ url('get_allCategories') }}", function(result){
-                                var scatm = "";
+                                var scatm = "<option value=''>Escoja Una</option>";;
                                 $.each(result, function(i, field){
                                   scatm += "<option value="+field.id+">"+field.nombre+"</option>";
                                 });
@@ -189,7 +189,7 @@
                               $(".field select#categoria").change(function() {
                                 var aux = "{{ url('get_allSubCategoriesOnCategory') }}/"+$(".field select#categoria").val();
                                 $.getJSON(aux , function(result){
-                                  var scatm = "";
+                                  var scatm = "<option value=''>Escoja Una</option>";
                                   $.each(result, function(i, field){
                                     scatm += "<option value="+field.id+">"+field.nombre+"</option>";
                                   });
@@ -253,7 +253,7 @@
                           <div class="field ">
                             <label for="precio_inicial" class="required"><em>*</em>Precio inicial</label>
                             <div class="input-box">
-                              <input type="text" id="precio_inicial" name="precio_inicial" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                              <input type="text" id="precio_inicial" name="precio_inicial"  value="{{ old('precio_inicial') }}" title="Nombre" maxlength="255" class="input-text required-entry">
                               <br>
                               <span class='errorJS' id='precio_inicial_error'>&nbsp;Campo obligatorio</span>
                               <span class='errorJS' id='precio_inicial_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>
@@ -265,7 +265,7 @@
                           <div class="field ">
                             <label for="incremento_precio" class="required"><em>*</em>Incremento de las pujas</label>
                             <div class="input-box">
-                              <input type="text" id="incremento_precio" name="incremento_precio" value="" title="Nombre" maxlength="255" class="input-text required-entry">
+                              <input type="text" id="incremento_precio" name="incremento_precio" value="{{ old('incremento_precio') }}" title="Nombre" maxlength="255" class="input-text required-entry">
                               <br>
                               <span class='errorJS' id='incremento_precio_error'>&nbsp;Campo obligatorio</span>
                               <span class='errorJS' id='incremento_precio_error2'>&nbsp;Debe ser un numero positivo, con dos decimales como máximo</span>                          </div>

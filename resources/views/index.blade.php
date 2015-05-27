@@ -63,19 +63,6 @@
       <div class="col-lg-12">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
-          <ol class="carousel-indicators">
-            {{--*/ $smartCount = 0; /*--}}
-            @for($i = 0; $i < count($subastas); $i++)
-            @if($smartCount==0)
-            <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}" class="active"></li>
-            @else
-            <li data-target="#carousel-example-generic" data-slide-to="{{ $smartCount }}"></li>
-            @endif
-            {{--*/ $smartCount++; /*--}}
-
-            @endfor
-          </ol>
-
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             {{--*/ $smartCount = 0; /*--}}

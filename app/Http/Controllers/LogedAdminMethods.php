@@ -91,7 +91,7 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function estadisticas(){
+	public function estadisticas_usuarios(){
 		/*
 		consulta sql
 		SELECT * FROM `articulos` 
@@ -119,7 +119,7 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
 		$usuariosEurCobrados = DB::table('articulos')
 		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
-		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('subastador_id')
 		->orderBy('pventaTotal',"desc")
@@ -128,14 +128,37 @@ class LogedAdminMethods extends Controller {
 
 		/* Usuaris per € pagats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `comprador_id` order by pventaTotal DESC
+		$usuariosEurPagados = DB::table('articulos')
+		->select(DB::raw('usuarios.id as usuario_id, count("articulos.id") as nCompras, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pcompratotal'))
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('comprador_id')
+		->orderBy('pcompratotal',"desc")
+		->get();
+
 
 		/* Usuaris per número de vendes */
 		// SELECT *, count(`id`) as nVentas, SUM(`precio_venta`) FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by nVentas DESC
+		$usuariosNumVentas = DB::table('articulos')
+		->select(DB::raw('usuarios.id as usuario_id, count("articulos.id") as nVentas, usuarios.nombre as vendedor_nombre'))
+		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('subastador_id')
+		->orderBy('nVentas',"desc")
+		->get();
+
 
 		/* Usuaris per número de licitacions (puja) oferides */
 		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
+		$usuariosNumLicitaciones = DB::table('pujas')
+		->select(DB::raw('usuarios.id as usuario_id, usuarios.nombre as comprador_nombre, count(`pujador_id`) as nPujas'))
+		->join('usuarios', 'pujas.pujador_id', '=', 'usuarios.id')
+		->groupBy('usuario_id')
+		->orderBy('nPujas',"desc")
+		->get();
 
-		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados]);
+
+		return view("admin.estadisticas_usuarios", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados, "usuariosEurPagados" => $usuariosEurPagados, "usuariosNumVentas" => $usuariosNumVentas, "usuariosNumLicitaciones" => $usuariosNumLicitaciones]);
 	}
 
 	/**
@@ -174,7 +197,7 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'nombre_producto' => 'required|string',
 			'modelo' => 'required|string',
-			'estado' => 'required|alpha',
+			'estado' => 'required|alpha_dash',
 			'localizacion' => 'required|alpha_num',
 			'descripcion' => 'required',
 			'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
@@ -291,8 +314,8 @@ class LogedAdminMethods extends Controller {
 		$v = $this->validate($request, [
 			'username' => 'required|max:255|alpha_num|unique:usuarios',
 			'email' => 'required|email|max:255|unique:usuarios',
-			'nombre' => 'required|alpha|max:20',
-			'apellido' => 'required|alpha|max:200',
+			'nombre' => 'required|alpha_dash|max:20',
+			'apellido' => 'required|alpha_dash|max:200',
 			'reputacion' => 'required|numeric',
 			'permisos' => 'required|boolean',
 			'imagen_perfil' => 'required|string',

@@ -119,11 +119,11 @@ class LogedUserMethods extends Controller {
 	public function add_subasta(Request $request)
 	{
 
-		try {
+		 try {
 			$v = $this->validate($request, [
 				'nombre_producto' => 'required|string',
 				'modelo' => 'required|string',
-				'estado' => 'required|alpha',
+				'estado' => 'required|alpha_dash',
 				'localizacion' => 'required|alpha_num',
 				'descripcion' => 'required',
 				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
@@ -163,7 +163,7 @@ class LogedUserMethods extends Controller {
 				'puja_mayor' => $submitedArray['precio_inicial'],
 				'porrogado' => 0,
 				'comprador_id' => null,
-				'metodo_envio_id'=> $submitedArray['Metodo_envio'],
+				'metodo_envio_id'=> $submitedArray['sel_Metodo_envio'],
 				'metodo_pago_id'=> $submitedArray['Metodo_pago'],
 				]);
 			echo "<pre>";
