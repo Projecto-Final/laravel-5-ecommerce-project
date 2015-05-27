@@ -8,6 +8,7 @@ use App\Escala;
 use App\Factura;
 use App\Empresa;
 use App\Valoracion;
+use App\Localidad;
 use App\ConfiguracionPuja;
 use Session;
 use Auth;
@@ -216,7 +217,9 @@ class LogedUserMethods extends Controller {
 	public function get_perfil()
 	{			
 		$id = Auth::user()->id;
-		$user = Usuario::find($id);
+		$user[0] = Usuario::find($id);
+		$user[1] = $user[0]->localidad;
+		$user[2] = Localidad::all();
 		return $user;
 	}
 
@@ -341,6 +344,7 @@ class LogedUserMethods extends Controller {
 			'apellidos' => 'required|alpha_num',
 			'username' => 'required|alpha_num',
 			'direccion' => 'required|string',
+			'localidad' => 'required|string',
 			'email' => 'required|email',
 			'texto_presentacion' => 'required|string',
 			]);
@@ -353,6 +357,7 @@ class LogedUserMethods extends Controller {
 		$user->apellido = $submitedArray["apellidos"];
 		$user->username = $submitedArray["username"];
 		$user->direccion = $submitedArray["direccion"];
+		$user->localidad_id = $submitedArray["localidad"];
 		$user->email = $submitedArray["email"];
 		$user->texto_presentacion = $submitedArray["texto_presentacion"];
 		$user->save();

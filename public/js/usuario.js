@@ -20,14 +20,14 @@ function perfil(){
 	var url = "usuario/get_perfil";
 	$.get(url,function(data,status){
 		var txt = "<h3>Información básica</h3>"
-		+"<div class='col-md-8'><p>Apodo :</p>"+data.username
-		+"<p>Nombre :</p>"+data.nombre
+		+"<div class='col-md-8'><p>Apodo :</p>"+data[0].username
+		+"<p>Nombre :</p>"+data[0].nombre
 		+"<p>Apellidos :</p>"+data.apellido
-		+"<p>Texto de presentación :</p>"+data.texto_presentacion
-		+"<p>Direccion :</p>"+data.direccion
-		+"<p>Localidad :</p>"+data.localidad
-		+"<p>Email :</p>"+data.email
-		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data.created_at)+"</div>"
+		+"<p>Texto de presentación :</p>"+data[0].texto_presentacion
+		+"<p>Direccion :</p>"+data[0].direccion
+		+"<p>Email :</p>"+data[0].email
+		+"<p>Localidad :</p>"+data[1].nombre
+		+"<p>Fecha de creación de la cuenta :</p>"+formatoFecha(data[0].created_at)+"</div>"
 		+"<div class='col-md-4'><button class='bb' onclick='formEditar();' >Editar Perfil</button></div>"
 		+"<div class='col-md-4'><button class='bb' onclick='mostraCambioContrasena();' >Cambiar Contraseña</button></div>";
 		$(".contact-info").html(txt);
@@ -60,37 +60,45 @@ function formEditar(){
 		txt += "<h3>Editar Perfil</h3>"	
 		+"<input type='hidden' name='_token' value='{{ csrf_token() }}'>"
 		+"<input name='form_key' type='hidden' value='YI43JcRMPlZ5bHvi'>"	
-		+"Apodo :  <input type='text' id='username' name='username' value='"+data.username+"' title='username' maxlength='255'>"// class='input-text required-entry'
+		+"Apodo :  <input type='text' id='username' name='username' value='"+data[0].username+"' title='username' maxlength='255'>"// class='input-text required-entry'
 		+"<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span>"
 
 		+"<span id='username_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
-		+"Nombre :  <input type='text' id='nombre' name='nombre' value='"+data.nombre+"' title='nombre' maxlength='255' >"//class='input-text required-entry'
+		+"Nombre :  <input type='text' id='nombre' name='nombre' value='"+data[0].nombre+"' title='nombre' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span>"
 
 		+"<span id='nombre_sistemError' class='errorSys'></span>"
 		+"</br>"
-		+"Apellidos :   <input type='text' id='apellidos' name='apellidos' value='"+data.apellido+"' title='apellidos' maxlength='255' >"//class='input-text required-entry'
+		+"Apellidos :   <input type='text' id='apellidos' name='apellidos' value='"+data[0].apellido+"' title='apellidos' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='apellidos_error'>&nbsp;Campo obligatorio</span>"
 
 		+"<span id='apellido_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
-		+"Direccion :   <input type='text' id='direccion' name='direccion' value='"+data.direccion+"' title='direccion' maxlength='255' >"//class='input-text required-entry'
+		+"Direccion :   <input type='text' id='direccion' name='direccion' value='"+data[0].direccion+"' title='direccion' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='direccion_error'>&nbsp;Campo obligatorio</span>"
 
 		+"<span id='direccion_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
-		+"Email :  <input type='text' id='email' name='email' value='"+data.email+"' title='email' maxlength='255' >"//class='input-text required-entry'
+
+		+"Localidad : <select id='localidad'>";
+		for (var i = 0; i < data[2].length; i++) {
+			txt+="<option value='"+data[2][i].id+"'>"+data[2][i].nombre+"</option>";
+		};
+		txt+= "</select></br><p class='espaciodor2'></p>";
+
+		txt+="Email :  <input type='text' id='email' name='email' value='"+data[0].email+"' title='email' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
 
 		+"<span id='email_sistemError' class='errorSys'></span>"
 		+"</br>"
-		+"</br>"
-		+"Texto de Presentacion : </br></br> <textarea  id='texto_presentacion' name='texto_presentacion' rows='5' cols='80' maxlength='255' >"+data.texto_presentacion+"</textarea>"//class='input-text required-entry'
+		+"</br><p class='espaciodor2'></p>"
+		+"Texto de Presentacion : </br></br> <textarea  id='texto_presentacion' name='texto_presentacion' rows='5' cols='80' maxlength='255' >"+data[0].texto_presentacion+"</textarea>"//class='input-text required-entry'
 		+"</br><p class='espaciodor2'></p>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambios()' value='Guardar Cambios'>"
-		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Darte de baja'>";
+		+"</br></br></br><input type='button' title='Submit' class='button' onclick='baja()' value='Darte de baja'>"
+
 		$(".contact-info").html(txt);
 	});
 }
@@ -517,13 +525,14 @@ function ValidarCambios(){
 
 
 
-function perfilGuardar(username,nombre,apellidos,direccion,email,texto_presentacion){
+function perfilGuardar(username,nombre,apellidos,direccion,localidad,email,texto_presentacion){
 	var url = "usuario/guardarCambios";
 	$.get(url,{
 		username: username,
 		nombre: nombre,
 		apellidos: apellidos,
 		direccion: direccion,
+		localidad: localidad,
 		email: email,
 		texto_presentacion: texto_presentacion
 	})
@@ -579,8 +588,10 @@ function guardarCambios(){
 	var direccion = document.getElementById('direccion').value;
 	var email = document.getElementById('email').value;
 	var texto_presentacion = document.getElementById('texto_presentacion').value;
+	var localidad = document.getElementById('localidad').value;
 
-	perfilGuardar(username,nombre,apellidos,direccion,email,texto_presentacion);
+
+	perfilGuardar(username,nombre,apellidos,direccion,localidad,email,texto_presentacion);
 }
 
 function aparencia(){

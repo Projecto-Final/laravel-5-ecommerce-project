@@ -73,7 +73,7 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	}
     public function localidad()
     {
-        return $this->belongsTo('App\Localidad', 'id', 'localidad_id');
+        return $this->belongsTo('App\Localidad');
     }
 
 //conf pujas activas y no superadas
