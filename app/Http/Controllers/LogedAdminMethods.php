@@ -104,10 +104,6 @@ class LogedAdminMethods extends Controller {
 
 		/* Usuaris per número de compres */
 		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
-		$año = date('Y');
-		$aux2 = 0;
-		$EstadisticasAnuales = array();
-		$EstadisticasPujas = array();
 
 		$usuariosNCompras = DB::table('articulos')
 		->select(DB::raw('usuarios.id as comprador_id, usuarios.nombre as comprador_nombre, count("articulos.id") as nc'))
@@ -116,11 +112,19 @@ class LogedAdminMethods extends Controller {
 		->groupBy('comprador_id')
 		->orderBy('nc',"desc")
 		->get();
-		print_r($usuariosNCompras[0]->nc);
 		// $usuariosNCompras = Articulo::whereRaw("'precio_venta' != -1 order by 'comprador_id'")->get();
+
 
 		/* Usuaris per € cobrats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
+		$usuariosEurCobrados = DB::table('articulos')
+		->select(DB::raw('usuarios.id as comprador_id, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
+		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('subastador_id')
+		->orderBy('pventaTotal',"desc")
+		->get();
+
 
 		/* Usuaris per € pagats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `comprador_id` order by pventaTotal DESC
@@ -131,7 +135,7 @@ class LogedAdminMethods extends Controller {
 		/* Usuaris per número de licitacions (puja) oferides */
 		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
 
-		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras]);
+		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras, "usuariosEurCobrados" => $usuariosEurCobrados]);
 	}
 
 	/**
