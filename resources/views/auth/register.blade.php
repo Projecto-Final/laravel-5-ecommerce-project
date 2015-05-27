@@ -1,13 +1,11 @@
 @extends('layouts.madre')
 
 @section('registro_login')
-
 <script type="text/javascript" src="{{ URL::asset('js/validaciones.js') }}"></script>
-
 <div id="sns_content" class="wrap layout-m">
 	<div class="container">
 		<div class="row">
-			<div id="sns_main" class="col-md-12 col-main">
+			<div id="sns_main" class="col-md-12 col-main" style="margin-bottom:20px;">
 				<div id="sns_mainmidle">
 					<div class="account-create">
 						<div class="page-title">
@@ -30,7 +28,6 @@
 										</ul>
 									</div>
 									@endif
-
 									<li class="fields">
 										<div class="customer-name">
 											<div class="field name-firstname">
@@ -80,11 +77,6 @@
 										</div>
 									</li>
 								</ul>	
-
-								
-								<!-- <button type="submit" title="Submit" class="button" onclick='formValidatorr()'><span><span>Registrar</span></span></button> -->
-
-
 							</div>
 							<div class="fieldset">
 								<h2 class="legend">Información de Login</h2>
@@ -125,23 +117,18 @@
 										<span class='errorJS' id='politica_privacidad_error'>&nbsp;Debe aceptar las condiciones de uso y politica de privacidad</span>
 									</li>
 								</ul>
-
 							</div>
-
 							<div class="buttons-set">
 								<p class="required">* Campos requeridos</p>
 								<p class="back-link"><a href="{{url()}}" class="back-link">« Regresar al inicio</a></p>
 								<input type='button' title="Submit" class="button" onclick='formValidator()' value="Registrar"><span>
 							</div>
-
 						</div>
-
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<script>
 		$.getJSON("{{ url('get_localidades') }}", function(result){
 			var scatm = "<option value='ninguna'>Escoja una</option>";
@@ -151,5 +138,4 @@
 			$(".field select#localidad_id").html(scatm);
 		});
 	</script>
-
 	@endsection
