@@ -26,10 +26,12 @@ class ArticulosTableSeeder extends Seeder {
 			'incremento_precio' => 60,
 			'puja_mayor' => 20,
 			'porrogado'=> 0,
+			'Metodo_pago_id' => 1,
+			'Metodo_envio_id'=> 2,
 			'subastador_id' => 1,
 			'subcategoria_id' => 1,
 			'comprador_id' => -1
-		]);
+			]);
 		$fecha = new DateTime('NOW');
 		$fecha->modify('-1 day');
 		$fecha2 = new DateTime('NOW');
@@ -48,11 +50,13 @@ class ArticulosTableSeeder extends Seeder {
 			'precio_inicial' => 200,
 			'incremento_precio' => 20,			
 			'puja_mayor' => 300,
+			'Metodo_pago_id' => 1,
+			'Metodo_envio_id'=> 2,
 			'porrogado'=> 1,
 			'subastador_id' => 1,
 			'subcategoria_id' => 17,
 			'comprador_id' => -1
-		]);
+			]);
 
 		Articulo::create([
 			'nombre_producto' => 'Silla de Oficina Neo',
@@ -66,33 +70,37 @@ class ArticulosTableSeeder extends Seeder {
 			'fecha_venda' => "2015-04-14 23:55:00",
 			'precio_inicial' => 100,
 			'puja_mayor' => 120,
+			'Metodo_pago_id' => 1,
+			'Metodo_envio_id'=> 2,
 			'porrogado'=> 0,
 			'incremento_precio' => 100,
 			'subastador_id' => 3,
 			'subcategoria_id' => 11,
 			'comprador_id' => 2
-		]);
+			]);
 
 		for ($i=0; $i < 10; $i++) { 
 			$precio = rand(50,5000);
 			Articulo::create([
-					'nombre_producto' => $faker->word." ".$faker->word,
-					'modelo' => $faker->word,
-					'estado' => 'Optimo',
-					'descripcion' => $faker->text($maxNbChars = 200),
-					'localizacion' => 'Canovellas',
-					'precio_venta' => $precio,
-					'fecha_inicio' => $faker->dateTimeThisYear($max = 'now'),
-					'fecha_final' => $faker->dateTimeThisYear($max = 'now'),
-					'fecha_venda' => $faker->dateTimeThisYear($max = 'now'),
-					'precio_inicial' => $precio,
-					'puja_mayor' => $precio,
-					'porrogado'=> 0,
-					'incremento_precio' => rand(5,200),
-					'subastador_id' => rand(2,10),
-					'subcategoria_id' => rand(2,5),
-					'comprador_id' => -1
-			]);
+				'nombre_producto' => $faker->word." ".$faker->word,
+				'modelo' => $faker->word,
+				'estado' => 'Optimo',
+				'descripcion' => $faker->text($maxNbChars = 200),
+				'localizacion' => 'Canovellas',
+				'precio_venta' => $precio,
+				'fecha_inicio' => $faker->dateTimeThisYear($max = 'now'),
+				'fecha_final' => $faker->dateTimeThisYear($max = 'now'),
+				'fecha_venda' => $faker->dateTimeThisYear($max = 'now'),
+				'precio_inicial' => $precio,
+				'puja_mayor' => $precio,
+				'porrogado'=> 0,
+				'Metodo_pago_id' => 1,
+				'Metodo_envio_id'=> 2,
+				'incremento_precio' => rand(5,200),
+				'subastador_id' => rand(2,10),
+				'subcategoria_id' => rand(2,5),
+				'comprador_id' => -1
+				]);
 		}
 	}
 }

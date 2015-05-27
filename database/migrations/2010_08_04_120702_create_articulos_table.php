@@ -36,8 +36,8 @@ class CreateArticulosTable extends Migration {
                   $table->foreign('comprador_id')->references('id')->on('usuarios');
                    $table->integer('Metodo_pago_id')->unsigned();
                   $table->foreign('Metodo_pago_id')->references('id')->on('Metodo_pagos');
-                   $table->integer('Metodo_envio')->unsigned();
-                  $table->foreign('Metodo_envio')->references('id')->on('Metodo_envios');
+                   $table->integer('Metodo_envio_id')->unsigned();
+                  $table->foreign('Metodo_envio_id')->references('id')->on('Metodo_envios');
                   $table->rememberToken();
                   $table->timestamps();
             });

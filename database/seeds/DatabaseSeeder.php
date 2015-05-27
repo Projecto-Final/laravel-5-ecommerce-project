@@ -10,8 +10,8 @@ class DatabaseSeeder extends Seeder {
 	 *
 	 * @return void
 	 */
-    public function run()
-    {
+	public function run()
+	{
 		Model::unguard();
 
 		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -31,7 +31,11 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ImagenesTableSeeder');
 		$this->call('LocalidadesTableSeeder');
 		$this->call('FacturasTableSeeder');
+		$this->call('Metodo_pagosTableSeeder');
+		$this->call('Metodo_enviosTableSeeder');
+		
+		
 
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-    }
+	}
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Metodo_envio;
+use App\Metodo_pagos;
 
 class Metodo_pagosTableSeeder extends Seeder {
 
