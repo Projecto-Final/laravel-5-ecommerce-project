@@ -9,7 +9,7 @@
 <script src="{{ url('bootstrap-star-rating/js/star-rating.js')}} " type="text/javascript"></script>
 <script src="{{ url('js/validaciones.js') }}"></script>
 <script src="{{ url('js/usuario.js') }}"></script>
-
+<!-- a dormir -->
 <meta name="_token" content="{{ csrf_token() }}"/>
 
 <div id="sns_content" class="wrap layout-m">
