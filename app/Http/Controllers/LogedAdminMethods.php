@@ -104,6 +104,11 @@ class LogedAdminMethods extends Controller {
 
 		/* Usuaris per número de compres */
 		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
+		$año = date('Y');
+		$aux2 = 0;
+		$EstadisticasAnuales = array();
+		$EstadisticasPujas = array();
+		$usuariosNCompras = Articulo::whereRaw("'precio_venta' != -1 group by 'comprador_id'")->get();
 
 		/* Usuaris per € cobrats */
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
@@ -117,22 +122,7 @@ class LogedAdminMethods extends Controller {
 		/* Usuaris per número de licitacions (puja) oferides */
 		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
 
-
-		$año = date('Y');
-		$aux2 = 0;
-		$EstadisticasAnuales = array();
-		$EstadisticasPujas = array();
-
-		for ($i=1; $i <= 12; $i++) { 
-			$aux2 = 0;
-			$aux = Articulo::orderBy('id','asc')->whereRaw("MONTH(`fecha_inicio`) = '".$i."' and YEAR(`fecha_inicio`) = ".$año."")->get();
-			foreach ($aux as $key => $articulo) {
-				$aux2 += count($articulo->pujas);
-			}
-			$EstadisticasPujas[$i] = $aux2;
-			$EstadisticasAnuales[$i] = count($aux);
-		}
-		return view("admin.estadisticas", ['estadisticasSubasta' => $EstadisticasAnuales, 'estadisticasPujas' => $EstadisticasPujas]);
+		return view("admin.estadisticas", ['usuariosNCompras' => $usuariosNCompras]);
 	}
 
 	/**
