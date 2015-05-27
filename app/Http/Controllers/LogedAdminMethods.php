@@ -201,11 +201,13 @@ class LogedAdminMethods extends Controller {
 			'estado' => 'required|alpha_dash',
 			'localizacion' => 'required|alpha_num',
 			'descripcion' => 'required',
+			'puja_mayor' => 'regex:/^\d+(\.\d{1,2})?/i',
 			'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 			'subcategoria_id' => 'required|integer',
 			'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 			'precio_venta' => 'regex:/^\d+(\.\d{1,2})?/i',
 			'fecha_inicio' => 'required|date',
+			'fecha_final' => 'date',
 			'fecha_venda' => 'date',
 			'porrogado' => 'required|boolean',
 			]);
@@ -221,6 +223,7 @@ class LogedAdminMethods extends Controller {
 		$subasta->estado = $subastaUpdate['estado'];
 		$subasta->localizacion = $subastaUpdate['localizacion'];
 		$subasta->descripcion = $subastaUpdate['descripcion'];
+		$subasta->puja_mayor = $subastaUpdate['puja_mayor'];
 		$subasta->subcategoria_id = $subastaUpdate['subcategoria_id'];
 		$subasta->precio_inicial = $subastaUpdate['precio_inicial'];
 		$subasta->precio_venta = $subastaUpdate['precio_venta'];
