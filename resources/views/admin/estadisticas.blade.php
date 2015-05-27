@@ -35,15 +35,15 @@
                   <th>Nº Compras</th>
                   <th>Opciones</th>
                 </tr>
-                @forelse($usuariosNCompras as $usuarioNCompras)
+
+                @for($a = 0;$a < count($usuariosNCompras);$a++)
                 <tr>
-                  <td>{{ $usuarioNCompras['id'] }}</td>
-                  <td>{{ $usuarioNCompras['username'] }}</td>
-                  <td>{{ $usuarioNCompras['id'] }}</td>
-                  <td><span class="label label-success"><a href="{{ url('perfil/'.$usuarioNCompras['id'])}}">Ver Usuario</a></span></td>
+                  <td>{{--*/ echo $usuariosNCompras[$a]->comprador_id; /*--}}</td>
+                  <td>{{--*/ echo $usuariosNCompras[$a]->comprador_nombre; /*--}}</td>
+                  <td>{{--*/ echo $usuariosNCompras[$a]->nc; /*--}}</td>
+                  <td><span class="label label-success"><a href="{{ url('perfil/'.$usuariosNCompras[$a])}}">Ver Usuario</a></span></td>
                 </tr>
-                @empty
-                @endforelse
+                @endfor
               </tbody></table>
             </div>
           </div><!-- /.box-body -->
