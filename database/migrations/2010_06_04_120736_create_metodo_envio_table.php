@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetodosEnvioTable extends Migration {
+class CreateMetodoEnvioTable extends Migration {
 
 	/**
 	 * Run the migrations.

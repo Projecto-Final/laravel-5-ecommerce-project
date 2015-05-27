@@ -3,8 +3,8 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Metodo_envio extends Model {
-
-	//	protected $table = 'articulos';
+	
+protected $table = 'metodo_envios';
 	/**
 	 * The attributes that are mass assignable.
 	 *

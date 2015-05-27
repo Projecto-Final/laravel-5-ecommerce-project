@@ -3,8 +3,8 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Metodo_pago extends Model {
-
-	//	protected $table = 'articulos';
+	
+protected $table = 'metodo_pagos';
 	/**
 	 * The attributes that are mass assignable.
 	 *
