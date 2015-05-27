@@ -40,8 +40,9 @@
 
      <div style="float: left;width: 100%;margin-top: 12px;">
       <div id="UltimaPujaInfo"></div>
-      <h5>Informació Básica</h5>
+      
     </div>
+    <h5>Informació Básica</h5>
 
     <table class="table table-bordered">
       <tbody>
@@ -130,9 +131,9 @@
                 <td colspan="3">{{ $subasta['precio_inicial']}}€</td>
               </tr>
               <tr>
-                <td>Metodo de Pago</td>
+                <td>Metodo de Pago : </td>
                 <td colspan="3">{{$metodoPa['nombre']}}</td>
-                <td>Metodo Envio</td>
+                <td>Metodo Envio : </td>
                 <td colspan="3">{{$metodoEnv['nombre']}}</td>
               </tr>
             </tbody>

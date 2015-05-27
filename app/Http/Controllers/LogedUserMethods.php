@@ -767,7 +767,7 @@ public function comprovarEstado(Request $request){
 				$tiempo_pro = $empresa[0]->tiempoPorrogaArticulo;
 				$precio_pro = $empresa[0]->precioPorroga;
 
-				return "<div id='contPujas'>Nº Pujas :<br></div>Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
+				return "Subasta Caducada  <button class='MostrarPujas-button' type='button' onClick='prorrogar();'>Prorrogar </button> Tiempo prorroga : ".$tiempo_pro." Dias al Precio de ".$precio_pro." €";
 			}else{
 				return "Subasta Caducada";
 			}
@@ -916,6 +916,7 @@ public function prorrogar(Request $request){
 			'nif' => $submitedArray['nif'],
 			'cantidad_pagada' => $empresa[0]->precioPorroga,
 			'fecha' => Carbon::now(),
+			'articulo_id' => $articulo->id,
 			]);
 	} catch (Exception $e) {
 		return $e;
