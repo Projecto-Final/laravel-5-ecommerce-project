@@ -59,10 +59,7 @@ function recargarPrecios(){
 				$( "#botonPuja" ).prop( "disabled", false );
 			}
 		}
-
-
 	});
-
 }
 
 
