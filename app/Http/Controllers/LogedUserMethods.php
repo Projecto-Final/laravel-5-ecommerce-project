@@ -129,8 +129,10 @@ class LogedUserMethods extends Controller {
 				'precio_inicial' => 'required|regex:/^\d+(\.\d{1,2})?/i',
 				'subcategoria' => 'required|alpha_num',
 				'incremento_precio' => 'required|regex:/^\d+(\.\d{1,2})?/i',
-				'Metodo_envio' => 'required',
+				'sel_Metodo_envio' => 'required',
 				'Metodo_pago' => 'required',
+				'subcategoria' => 'required',
+				'images'=> 'required',
 				]);
 
 			if ($v !== NULL && $v->fails()) {
@@ -167,7 +169,8 @@ class LogedUserMethods extends Controller {
 				'metodo_pago_id'=> $submitedArray['Metodo_pago'],
 				]);
 			echo "<pre>";
-
+			
+			$contIMGS = 0;
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
 				$img_extension = $imagenASubir->getClientOriginalExtension();
 				$img_name = $posicion."_".$articulo->id."_".md5($userId).".".$img_extension;
@@ -178,11 +181,15 @@ class LogedUserMethods extends Controller {
 				echo "<h1>".public_path("images/subastas")."</h1>";
 
 				//$upload_success = Input::file($imagenASubir)->move(public_path("images/subastas"), $img_name);
+				//if($contIMGS==0){
 				$img = Imagen::create([
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
 					]);
+			// }else{
+			// 	$contIMGS++;
+			// }
 			}
 
 			echo "</pre>";

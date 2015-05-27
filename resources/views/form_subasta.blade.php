@@ -217,12 +217,12 @@
                               <div class="field">
                                 <label for="Metodo_envio" class="required"><em>*</em>Metodo de Envio</label>
                                 <div class="input-box">
-                                 <select id="Metodo_envio" value="" title="Nombre" name="sel_Metodo_envio" maxlength="255" class="input-text required-entry">
+                                 <select id="Metodo_envio" title="Nombre" name="sel_Metodo_envio" maxlength="255" class="input-text required-entry">
                                   <option value="">Cargando...</option>
                                 </select>
                                 <span class='errorJS' id='sel_Metodo_envio_error'>&nbsp;Debes escojer una</span>
                           @if(isset($errors) && ($errors->first('categoria') !== null))
-                            <br/><span class="errorSys">&nbsp;{{$errors->first('categoria')}}</span>
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('sel_Metodo_envio')}}</span>
                           @endif
                           
                             </div>
@@ -230,12 +230,12 @@
                           <div class="field ">
                             <label for="Metodo_pago" class="required"><em>*</em>Metodo de Pago</label>
                             <div class="input-box">
-                             <select name="Metodo_pago" id="Metodo_pago" value="" title="Nombre" name="sel_Metodo_pago" maxlength="255" class="input-text required-entry">
+                             <select name="Metodo_pago" id="Metodo_pago"  title="Nombre" name="sel_Metodo_pago" maxlength="255" class="input-text required-entry">
                               <option value="">Cargando...</option>
                             </select>
                             <span class='errorJS' id='sel_Metodo_pago_error'>&nbsp;Debes escojer una</span>
                           @if(isset($errors) && ($errors->first('subcategoria') !== null))
-                            <br/><span class="errorSys">&nbsp;{{$errors->first('subcategoria')}}</span>
+                            <br/><span class="errorSys">&nbsp;{{$errors->first('Metodo_pago')}}</span>
                           @endif
                             <div id="descriptext" class="input-box"></div>
                          
