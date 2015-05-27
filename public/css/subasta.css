@@ -88,7 +88,6 @@
 	/* ###################################################### */
 
 
-
 	/* CARROUSEL STYLE */
 	.carousel-control.left,.carousel-control.right {
 		background-color: transparent;
@@ -96,7 +95,7 @@
 		opacity: 1;
 		height: 80px;
 		width: 80px;
-		top: 150px;
+		top: 100px;
 		transition: all 1s;
 		-webkit-transition: all 1s;
 		-moz-transition: all 1s;
