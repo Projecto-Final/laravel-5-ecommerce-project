@@ -39,13 +39,16 @@ function mostraCambioContrasena(){
 		+"<p id='espaciodor'></p><h4>Cambio de contraseña</h4>"
 		+"Contraseña vieja: <input type='password' name='password_old' id='password_old' title='password' class='input-text required-entry validate-password'></br></br>"
 		+"<span class='errorJS' id='password_old_error'>&nbsp;Campo obligatorio</span></td></br></br>"
+		+"<span id='password_old_sistemError' class='errorSys'></span>"
 		+"Contraseña : <input type='password' name='password' id='password' title='password' class='input-text required-entry validate-password'>"
 		+"<span class='errorJS' id='password_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='password_error2'>&nbsp;La contraseña debe se der de almenos 6 caracteres</span>"
+		+"<span id='password_sistemError' class='errorSys'></span>"
 		+"</br>"
 		+"</br>Repetir Contraseña : <input type='password' id='password_confirmation' name='password_confirmation' title='Confirm Password' class='input-text required-entry validate-cpassword'>"
 		+"<span class='errorJS' id='password_confirmation_error2'>&nbsp;Las contraseñas deben coincidir</span>"
 		+"<span class='errorJS' id='password_confirmation_error'>&nbsp;Campo obligatorio</span></td></br></br>"
+		+"<span id='password_confirmation_sistemError' class='errorSys'></span>"
 		+"<input type='button' title='Submit' class='button' onclick='ValidarCambiosContrasena()' value='Guardar Cambios'>");
 }	
 
@@ -58,19 +61,29 @@ function formEditar(){
 		+"<input name='form_key' type='hidden' value='YI43JcRMPlZ5bHvi'>"	
 		+"Apodo :  <input type='text' id='username' name='username' value='"+data.username+"' title='username' maxlength='255'>"// class='input-text required-entry'
 		+"<span class='errorJS' id='username_error'>&nbsp;Campo obligatorio</span>"
+
+		+"<span id='username_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
 		+"Nombre :  <input type='text' id='nombre' name='nombre' value='"+data.nombre+"' title='nombre' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='nombre_error'>&nbsp;Campo obligatorio</span>"
+
+		+"<span id='nombre_sistemError' class='errorSys'></span>"
 		+"</br>"
 		+"Apellidos :   <input type='text' id='apellidos' name='apellidos' value='"+data.apellido+"' title='apellidos' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='apellidos_error'>&nbsp;Campo obligatorio</span>"
+
+		+"<span id='apellido_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
 		+"Direccion :   <input type='text' id='direccion' name='direccion' value='"+data.direccion+"' title='direccion' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='direccion_error'>&nbsp;Campo obligatorio</span>"
+
+		+"<span id='direccion_sistemError' class='errorSys'></span>"
 		+"</br><p class='espaciodor2'></p>"
 		+"Email :  <input type='text' id='email' name='email' value='"+data.email+"' title='email' maxlength='255' >"//class='input-text required-entry'
 		+"<span class='errorJS' id='email_error'>&nbsp;Campo obligatorio</span>"
 		+"<span class='errorJS' id='email_error2'>&nbsp;Debe ser una direccion de correo valida</span>"
+
+		+"<span id='email_sistemError' class='errorSys'></span>"
 		+"</br>"
 		+"</br>"
 		+"Texto de Presentacion : </br></br> <textarea  id='texto_presentacion' name='texto_presentacion' rows='5' cols='80' maxlength='255' >"+data.texto_presentacion+"</textarea>"//class='input-text required-entry'
@@ -518,7 +531,12 @@ function perfilGuardar(username,nombre,apellidos,direccion,email,texto_presentac
 		perfil();
 	})
 	.error(function(data){
-		bootbox.alert("Error en el servidor vuelve a probar mas tarde");
+		var errors = data.responseJSON;
+		$('#username_sistemError').html(errors.username);
+		$('#nombre_sistemError').html(errors.nombre);
+		$('#apellido_sistemError').html(errors.apellidos);
+		$('#direccion_sistemError').html(errors.direccion);
+		$('#email_sistemError').html(errors.email);
 	});	
 }
 
@@ -545,9 +563,13 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 		//alert("Mal introducida la contraseña vieja");
 	})
 	.error(function(data){
-		//alert("Error en el servidor vuelve a probar mas tarde");
-	});	
+		var errors = data.responseJSON;
+		$('#password_sistemError').html(errors.password);
+		$('#password_confirmation_sistemError').html(errors.password_confirmation);
+		$('#password_old_sistemError').html(errors.password_old);
+	});
 }
+
 
 function guardarCambios(){
 	var username = document.getElementById('username').value;
