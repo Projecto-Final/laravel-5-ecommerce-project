@@ -36,12 +36,12 @@
                   <th>Opciones</th>
                 </tr>
 
-                @for($a = 0;$a < count($usuariosNCompras);$a++)
+              @for ($i = 0; $i < count($usuariosNCompras); $i++)
                 <tr>
-                  <td>{{--*/ echo $usuariosNCompras[$a]->comprador_id; /*--}}</td>
-                  <td>{{--*/ echo $usuariosNCompras[$a]->comprador_nombre; /*--}}</td>
-                  <td>{{--*/ echo $usuariosNCompras[$a]->nc; /*--}}</td>
-                  <td><span class="label label-success"><a href="{{ url('perfil/'.$usuariosNCompras[$a])}}">Ver Usuario</a></span></td>
+                  <td>{{--*/ echo $usuariosNCompras[$i]->comprador_id; /*--}}</td>
+                  <td>{{--*/ echo $usuariosNCompras[$i]->comprador_nombre; /*--}}</td>
+                  <td>{{--*/ echo $usuariosNCompras[$i]->nc; /*--}}</td>
+                  <td><span class="label label-success"><a href="{{ url('perfil/'.$usuariosNCompras[$i]->comprador_id) }}">Ver Usuario</a></span></td>
                 </tr>
                 @endfor
               </tbody></table>
