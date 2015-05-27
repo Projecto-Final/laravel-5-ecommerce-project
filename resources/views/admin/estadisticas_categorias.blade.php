@@ -16,69 +16,11 @@
 <div id="content-admin">
   <div class="container-fluid">
     <div class="row">
-
-
-      <div class="col-md-6">
-        <div class="box box-solid">
-          <div class="box-header with-border">
-            <h3 class="box-title">Collapsible Accordion</h3>
-          </div><!-- /.box-header -->
-          <div class="box-body">
-            <div class="box-group" id="accordion">
-              <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-              <div class="panel box box-primary">
-                <div class="box-header with-border">
-                  <h4 class="box-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="">
-                      Collapsible Group Item #1
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
-                  <div class="box-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-              <div class="panel box box-danger">
-                <div class="box-header with-border">
-                  <h4 class="box-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
-                      Collapsible Group Danger
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                  <div class="box-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-              <div class="panel box box-success">
-                <div class="box-header with-border">
-                  <h4 class="box-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
-                      Collapsible Group Success
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                  <div class="box-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- /.box-body -->
-        </div><!-- /.box -->
-      </div>
-      
-
       <div class="col-md-6">
         <!-- AREA CHART -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Area Chart</h3>
+            <h3 class="box-title">Categorias de productos por Nº Compras Especifico</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -95,7 +37,7 @@
         <!-- DONUT CHART -->
         <div class="box box-danger">
           <div class="box-header with-border">
-            <h3 class="box-title">Donut Chart</h3>
+            <h3 class="box-title">Categorias de productos por Nº Compras General</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -161,10 +103,7 @@
         //- AREA CHART -
         //--------------
 
-        // Get context with jQuery - using jQuery's .get() method.
-        var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var areaChart = new Chart(areaChartCanvas);
+
 
         var areaChartData = {
           labels: [@foreach($categoriasNumCompras as $key => $categoriaNumCompras) '{{ "".$categoriaNumCompras->nombreCategoria."" }}' @if($key!=(count($categoriasNumCompras)-1)) , @endif @endforeach],
@@ -232,7 +171,6 @@
         };
 
         //Create the line chart
-        areaChart.Line(areaChartData, areaChartOptions);
 
         //-------------
         //- LINE CHART -
@@ -250,42 +188,27 @@
         var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
+        {{--*/ $colors = ["red","blue","green","grey","cyan","magenta","yellow","orange","purple","brown"]; 
+        $nColors = count($colors)-1;
+        
+          /*--}}
+        @foreach($categoriasNumCompras as $key => $categoriaNumCompras)
         {
-          value: 700,
-          color: "#f56954",
-          highlight: "#f56954",
-          label: "Chrome"
-        },
-        {
-          value: 500,
-          color: "#00a65a",
-          highlight: "#00a65a",
-          label: "IE"
-        },
-        {
-          value: 400,
-          color: "#f39c12",
-          highlight: "#f39c12",
-          label: "FireFox"
-        },
-        {
-          value: 600,
-          color: "#00c0ef",
-          highlight: "#00c0ef",
-          label: "Safari"
-        },
-        {
-          value: 300,
-          color: "#3c8dbc",
-          highlight: "#3c8dbc",
-          label: "Opera"
-        },
-        {
-          value: 100,
-          color: "#d2d6de",
-          highlight: "#d2d6de",
-          label: "Navigator"
+          {{--*/
+            $colorPicked = $colors[$nColors];
+            $nColors--;
+          /*--}}
+          value: {{ $categoriaNumCompras->numCompras }},
+         
+          color: "{{ $colorPicked }}",
+          highlight: "{{ $colorPicked }}",
+          label: "{{ $categoriaNumCompras->nombreCategoria }}"
         }
+        @if($key!=(count($categoriasNumCompras)-1)) 
+        , 
+        @endif
+        @endforeach
+       
         ];
         var pieOptions = {
           //Boolean - Whether we should show a stroke on each segment
@@ -315,48 +238,7 @@
         // You can switch between pie and douhnut using the method below.
         pieChart.Doughnut(PieData, pieOptions);
 
-        //-------------
-        //- BAR CHART -
-        //-------------
-        var barChartCanvas = $("#barChart").get(0).getContext("2d");
-        var barChart = new Chart(barChartCanvas);
-        var barChartData = areaChartData;
-        barChartData.datasets[0].fillColor = "#FF8800";
-        barChartData.datasets[0].strokeColor = "#FF8800";
-        barChartData.datasets[0].pointColor = "#FF8800";
-        barChartData.datasets[1].fillColor = "#00a65a";
-        barChartData.datasets[1].strokeColor = "#00a65a";
-        barChartData.datasets[1].pointColor = "#00a65a";
-        var barChartOptions = {
-          //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-          scaleBeginAtZero: true,
-          //Boolean - Whether grid lines are shown across the chart
-          scaleShowGridLines: true,
-          //String - Colour of the grid lines
-          scaleGridLineColor: "rgba(0,0,0,.05)",
-          //Number - Width of the grid lines
-          scaleGridLineWidth: 1,
-          //Boolean - Whether to show horizontal lines (except X axis)
-          scaleShowHorizontalLines: true,
-          //Boolean - Whether to show vertical lines (except Y axis)
-          scaleShowVerticalLines: true,
-          //Boolean - If there is a stroke on each bar
-          barShowStroke: true,
-          //Number - Pixel width of the bar stroke
-          barStrokeWidth: 2,
-          //Number - Spacing between each of the X value sets
-          barValueSpacing: 5,
-          //Number - Spacing between data sets within X values
-          barDatasetSpacing: 1,
-          //String - A legend template
-          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-          //Boolean - whether to make the chart responsive
-          responsive: true,
-          maintainAspectRatio: false
-        };
-
-        barChartOptions.datasetFill = false;
-        barChart.Bar(barChartData, barChartOptions);
+        
       });
 
 
