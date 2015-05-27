@@ -113,7 +113,7 @@ function cargarTP(){
 
 			for (var i = data[0].length-1; i > -1; i--) {
 				txt+= '<tr class="info">';
-				txt +="<td><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
+				txt +="<td style='height:50px;width:50px;'><a href="+data[3][i]+"><img src="+data[2][i]+"></img></a></td>";
 				txt +="<td>"+data[1][i].username+"</td>";
 				txt +="<td>"+data[0][i].cantidad+"</td>";
 				txt +="<td>"+formatoFecha(data[0][i].fecha_puja)+"</td>";
