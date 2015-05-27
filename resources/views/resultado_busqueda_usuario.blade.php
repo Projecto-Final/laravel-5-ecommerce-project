@@ -35,7 +35,6 @@
                       <div class="item item-animate col-xs-12 col-sm-4 col-md-4 col-lg-2" style="-webkit-animation-delay:0ms;-moz-animation-delay:0ms;-o-animation-delay:0ms;animation-delay:0ms;">
                         <div class="item-inner clearfix">
                           <div class="badges"> </div>
-                          <script type="text/javascript">alert({{$usuario['id']}});</script>
                           <div class="item-img"> <a class="product-image" href="{{ url('perfil/'.$usuario['id']) }}" title=" Retis lapen casen "> <span class="image-main"> <img src="{{ url('images/profiles/'.$usuario['imagen_perfil']) }}" alt=" Retis lapen casen "> </span> </a> </div>
                           <div class="item-info">
                             <div class="info-inner">

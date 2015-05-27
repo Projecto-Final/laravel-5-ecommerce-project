@@ -281,9 +281,11 @@ public function subastas(Request $request){
 	$submitedArray = $request->all();	
 	$direccion = url('/images/subastas/');
 	$subastas[0] = Usuario::find($submitedArray['id'])->articulos()->where('precio_venta','=', -1)->get();
-	if(count($subastas) != 0){
+	if(count($subastas[0]) != 0){
 		for ($i=0; $i < count($subastas[0]); $i++) { 
 			if($subastas[0][$i]->imagenes[0]->imagen == ""){
+				$subastas[1][$i] = $direccion.'/maroto.jpg';
+			}else{
 				$subastas[1][$i] = $direccion.'/'.$subastas[0][$i]->imagenes[0]->imagen;
 			}
 		}

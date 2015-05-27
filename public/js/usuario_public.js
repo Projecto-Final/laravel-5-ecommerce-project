@@ -81,7 +81,7 @@ function subastas(){
 		id: id
 	})
 	.done(function(data) {
-		if(data==""){
+		if(data==" "){
 			txt+="</table>"
 			txt+="<h3>No Tiene Subastas Activas</h3>";
 		}
@@ -92,9 +92,10 @@ function subastas(){
 			txt +="<td>"+formatoFecha(data[0][i].fecha_inicio)+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha_final)+"</td>";
 			txt +="<td>"+data[0][i].precio_inicial+"</td>";
+			txt +="<td><a href='../subasta/"+data[0][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 			txt +="</tr>";
 		};
-		txt+="</table>"
+		txt+="</table>";
 		$(".contact-info").html(txt);
 	}).error(function(data){
 		txt+="</table>"
@@ -103,6 +104,8 @@ function subastas(){
 		$(".contact-info").html(txt);
 	});	
 }
+
+
 
 function valoraciones(){
 	var id = $("#idUsuario").val();	
