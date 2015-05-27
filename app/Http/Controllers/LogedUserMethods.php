@@ -5,9 +5,9 @@ use App\Categoria;
 use App\Articulo;
 use App\Imagen;
 use App\Escala;
-use App\Valoracion;
 use App\Factura;
 use App\Empresa;
+use App\Valoracion;
 use App\ConfiguracionPuja;
 use Session;
 use Auth;
@@ -279,48 +279,39 @@ class LogedUserMethods extends Controller {
 		$direccion = url('/images/subastas/');
 		$user = Auth::user();
 		$escala = Escala::all();
-		$valoraciones = $user->valVenta();
-		for ($i=0; $i < count($valoraciones); $i++) {
-			if($valoraciones[$i]->completada == 1){
-				$val[0][$i] = $valoraciones[$i];
-				$val[1][$i] = $val[0][$i]->validante->username;
-				$art = Articulo::find($val[0][$i]->articulo_id);
-				$val[2][$i] = $direccion.'/'.$art->imagenes[0]->imagen;
-				$val[3][$i] = $art;
-				$val[4][$i] = $escala[$val[0][$i]->puntuacion]->descripcion;
-			}else{}
+		$valoraciones[0] = Valoracion::where('valorado_id', '=', $user->id)->where('completada', '=', 1)->get();
+		foreach ($valoraciones[0] as $key => $value) {
+			$valoraciones[$key] = $valoraciones[$key];
+			$valoraciones[1][$key] = $valoraciones[0][$key]->validante->username;
+			$art = Articulo::find($valoraciones[0][$key]->articulo_id);
+			$valoraciones[2][$key] = $direccion.'/'.$art->imagenes[0]->imagen;
+			$valoraciones[3][$key] = $art;
+			$valoraciones[4][$key] = $escala[$valoraciones[0][$key]->puntuacion]->descripcion;
 		}
-		return $val;
+		return $valoraciones;
 	}
 
 	public function get_Pendientes(){	
 		$id = Auth::user()->id;
 		$user = Usuario::find($id);
 		$count = 0;
-		$val[0] = $user->valCompra();
-		for ($i=0; $i < count($val[0]); $i++) {
-			if($val[0][$i]->completada == 0){
-				$count++;
-			}
-		}
-		return $count;
+		$val = Valoracion::where('validante_id', '=', $user->id)->where('completada', '=', 0)->get();
+		return count($val);
 	}
 
-	public function get_valoracionesPendientes(){	
+	public function get_valoracionesPendientes(){
 		$direccion = url('/images/subastas/');
 		$user = Auth::user();
-		$valoraciones = $user->valVenta();
-		for ($i=0; $i < count($valoraciones); $i++) {
-			if($valoraciones[$i]->completada == 0){
-				$val[0][$i] = $valoraciones[$i];
-				$val[1][$i] = $val[0][$i]->valorado()->username;
-				$art = Articulo::find($val[0][$i]->articulo_id);
-				$val[2][$i] = $art->nombre_producto;
-				$val[3][$i] = $val[0][$i]->id;
-				$val[4][$i] = $direccion.'/'.$art->imagenes[0]->imagen;
-			}else{}
+		$escala = Escala::all();
+		$valoraciones[0] = Valoracion::where('validante_id', '=', $user->id)->where('completada', '=', 0)->get();
+		foreach ($valoraciones[0] as $key => $value) {
+			$valoraciones[$key] = $valoraciones[$key];
+			$valoraciones[1][$key] = $valoraciones[0][$key]->valorado->username;
+			$art = Articulo::find($valoraciones[0][$key]->articulo_id);
+			$valoraciones[2][$key] = $direccion.'/'.$art->imagenes[0]->imagen;
+			$valoraciones[3][$key] = $art;
 		}
-		return $val;
+		return $valoraciones;
 	}
 
 	public function get_confPuj()

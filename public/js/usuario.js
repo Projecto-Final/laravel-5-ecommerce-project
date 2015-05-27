@@ -416,7 +416,7 @@ function valoraciones(){
 		}			
 		for (var i = 0; i < data[0].length; i++) {
 			txt+= '<tr class="info">';
-			txt +="<td><a href='usuario/valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
+			txt +="<td><a href='valorado/"+data[0][i].id+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";												
 			txt +="<td>"+data[1][i]+"</td>";
 			txt +="<td>"+data[4][i]+"</td>";
 			txt +="<td>"+formatoFecha(data[0][i].fecha)+"</td>";
@@ -446,7 +446,6 @@ function valoracionesPendientes(){
 	txt +="</tr></thead>";
 	$.get(url,function(data,status){})
 	.done(function(data) {
-		alert(data);
 		if(data==""){
 			txt+="</table>"
 			txt+="<h3>No Hay Valoraciones pendientes</h3>";
@@ -458,10 +457,10 @@ function valoracionesPendientes(){
 		if(cap == true){
 			for (var i = 0; i < data[0].length; i++) {
 				txt+= '<tr class="info">';
-				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><img style='width:150px;' src='"+data[4][i]+"'/></a></td>";															
+				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><img style='width:150px;' src='"+data[2][i]+"'/></a></td>";															
 				txt +="<td>"+data[1][i]+"</td>";
-				txt +="<td>"+data[2][i]+"</td>";
-				txt +="<td><a href='usuario/valoracion/"+data[3][i]+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
+				txt +="<td>"+data[3][i].nombre_producto+"</td>";
+				txt +="<td><a href='usuario/valoracion/"+data[3][i].id+"'><span class='glyphicon glyphicon-triangle-right'></span></a></td>";
 				txt +="</tr>";
 			};
 			txt+="</table></div>";
