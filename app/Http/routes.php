@@ -63,7 +63,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('administracion', 'LogedAdminMethods@index');
 
 	// Admin views
-	Route::get('administracion/estadisticas', 'LogedAdminMethods@estadisticas');
+	Route::get('administracion/estadisticas/usuarios', 'LogedAdminMethods@estadisticas_usuarios');
 
 	// Subastas
 	Route::get('administracion/subastas', 'LogedAdminMethods@subastas');

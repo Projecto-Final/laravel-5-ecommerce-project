@@ -91,7 +91,7 @@ class LogedAdminMethods extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function estadisticas(){
+	public function estadisticas_usuarios(){
 		/*
 		consulta sql
 		SELECT * FROM `articulos` 
