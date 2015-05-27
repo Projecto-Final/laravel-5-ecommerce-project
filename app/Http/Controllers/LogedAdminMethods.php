@@ -114,6 +114,7 @@ class LogedAdminMethods extends Controller {
 		->join('usuarios', 'articulos.comprador_id', '=', 'usuarios.id')
 		->where('precio_venta', '!=', -1)
 		->groupBy('comprador_id')
+		->orderBy('nc',"desc")
 		->get();
 		print_r($usuariosNCompras[0]->nc);
 		// $usuariosNCompras = Articulo::whereRaw("'precio_venta' != -1 order by 'comprador_id'")->get();
