@@ -72,7 +72,7 @@
                               $.getJSON("{{ url('get_localidades') }}", function(result){
                                 var scatm = "<option value=''>Escoja Una</option>";
                                 $.each(result, function(i, field){
-                                  scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+                                  scatm += "<option value="+field.nombre+">"+field.nombre+"</option>";
                                 });
                                 $(".field select#localizacion").html(scatm);
                               });
