@@ -100,6 +100,7 @@ class LogedAdminMethods extends Controller {
 		*/
 
 		/* Usuaris per zona geogràfica */
+		// PENDIENTE
 
 		/* Usuaris per número de compres */
 		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
