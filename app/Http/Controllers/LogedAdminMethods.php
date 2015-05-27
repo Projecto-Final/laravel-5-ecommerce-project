@@ -108,10 +108,13 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
 
 		/* Usuaris per € pagats */
+		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `comprador_id` order by pventaTotal DESC
 
 		/* Usuaris per número de vendes */
+		// SELECT *, count(`id`) as nVentas, SUM(`precio_venta`) FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by nVentas DESC
 
 		/* Usuaris per número de licitacions (puja) oferides */
+		// SELECT *, count(`pujador_id`) as nPujas FROM `pujas` group by `pujador_id` order by nPujas DESC
 
 
 		$año = date('Y');
