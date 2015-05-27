@@ -77,7 +77,7 @@ class LogedAdminMethods extends Controller {
 		$nImagenes = count(Imagen::all());
 		$Categorias = Categoria::all();
 		$SubCategorias = Subcategoria::all();
-		$fecha1Mes = Carbon\Carbon::now()->modify('-30 days');
+		$fecha1Mes = Carbon\Carbon::now('Europe/Madrid')->modify('-30 days');
 
 		$usuarios = Usuario::orderBy('id','desc')->whereRaw("created_at >= '".$fecha1Mes->toDateTimeString()."'")->take(8)->get();
 

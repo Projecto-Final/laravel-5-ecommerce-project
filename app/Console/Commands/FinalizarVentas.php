@@ -42,7 +42,7 @@ class FinalizarVentas extends Command {
 	{
 		$articulos = Articulo::where('precio_venta', '=', -1)->get();
 		foreach ($articulos as $articulo) {
-			$fecha = Carbon::now();
+			$fecha = Carbon::now('Europe/Madrid');
 			if (Carbon::parse($articulo->fecha_final) <= $fecha) {
 				$puja = Puja::where('articulo_id', '=', $articulo->id)->orderBy('created_at', 'desc')->take(1)->get();
 				if (count($puja)!=0) {
@@ -63,7 +63,7 @@ class FinalizarVentas extends Command {
 						'valorado_id' => $vendedor->id,
 						'validante_id' => $comprador->id,
 						'puntuacion' => 1,
-						'fecha' => Carbon::now(),
+						'fecha' => Carbon::now('Europe/Madrid'),
 						'articulo_id' => $articulo->id,
 					]);
 				} else {
