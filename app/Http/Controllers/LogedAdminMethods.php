@@ -179,7 +179,7 @@ class LogedAdminMethods extends Controller {
 		->orderBy('numCompras',"desc")
 		->get();
 		
-		$categoriasNumCompras = DB::table('categorias')
+		$categoriasNumVentas = DB::table('categorias')
 		->select(DB::raw('categorias.nombre as nombreCategoria, count(articulos.id) as numCompras '))
 		->join('subcategorias', 'categorias.id', '=', 'subcategorias.categoria_id')
 		->join('articulos','subcategorias.id','=','articulos.subcategoria_id')
@@ -188,7 +188,7 @@ class LogedAdminMethods extends Controller {
 		->orderBy('numCompras',"desc")
 		->get();
 
-		return view("admin.estadisticas_categorias", ['categoriasNumCompras' => $categoriasNumCompras]);
+		return view("admin.estadisticas_categorias", ['categoriasNumCompras' => $categoriasNumCompras, 'categoriasNumVentas' => $categoriasNumVentas]);
 	}
 
 	/**

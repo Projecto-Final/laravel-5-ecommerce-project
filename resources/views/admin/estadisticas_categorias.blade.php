@@ -159,20 +159,20 @@
         $nColors = count($colors)-1;
 
           /*--}}
-        @foreach($categoriasNumCompras as $key => $categoriaNumCompras)
+        @foreach($categoriasNumVentas as $key => $categoriaNumVentas)
         {
           {{--*/
             $colorPicked = $colors[$nColors];
             $nColors--;
             if($nColors==0)$nColors=count($colors);
           /*--}}
-          value: {{ $categoriaNumCompras->numCompras }},
+          value: {{ $categoriaNumVentas->numCompras }},
          
           color: "{{ $colorPicked }}",
           highlight: "{{ $colorPicked }}",
-          label: "{{ $categoriaNumCompras->nombreCategoria }}"
+          label: "{{ $categoriaNumVentas->nombreCategoria }}"
         }
-        @if($key!=(count($categoriasNumCompras)-1)) 
+        @if($key!=(count($categoriasNumVentas)-1)) 
         , 
         @endif
         @endforeach
