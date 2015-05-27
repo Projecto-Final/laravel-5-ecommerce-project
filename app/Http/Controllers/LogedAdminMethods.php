@@ -105,6 +105,7 @@ class LogedAdminMethods extends Controller {
 		// SELECT *, count(`id`) FROM `articulos` where `precio_venta` != -1 group by `comprador_id`
 
 		/* Usuaris per € cobrats */
+		// SELECT *, count(`id`), SUM(`precio_venta`) as pventaTotal FROM `articulos` where `precio_venta` != -1 group by `subastador_id` order by pventaTotal DESC
 
 		/* Usuaris per € pagats */
 
