@@ -59,6 +59,7 @@ function aceptarPuja(url){
 				id_subasta: id_subasta
 			})
 			.done(function(data) {
+				alert(data);
 				if(data!=0){
 					
 
@@ -66,11 +67,12 @@ function aceptarPuja(url){
 
 					comprovarEstado();
 				}else{
+
 					bootbox.alert("No Hay Pujas");
 				}
 				
 			}).fail(function(data){
-				bootbox.alert("Ha ocurrido algo inesperado");
+				//bootbox.alert("Ha ocurrido algo inesperado");
 			});	
 		}
 	}); 
