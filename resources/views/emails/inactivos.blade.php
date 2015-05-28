@@ -806,7 +806,7 @@ body.outlook p {
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>{{$art1->nombre_producto}} ha empezado por {{$art1->precio_inicial}} y se acabara el  {{$art1->fecha_final}}<a href="{{url('subasta/'.$art1->id)}}"> Subasta! »</a></p>
+                            <p>{{$art1->nombre_producto}} ha empezado por {{$art1->precio_inicial}} y se acabara el {{$art1->fecha_final}}<a href="{{url('subasta/'.$art1->id)}}"> Subasta! »</a></p>
                           </td>
                           <td class="expander"></td>
                         </tr>
@@ -820,7 +820,7 @@ body.outlook p {
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>{{$art2->nombre_producto}} ha empezado por {{$art2->precio_inicial}} y se acabara el  {{$art2->fecha_final}}<a href="{{url('subasta/'.$art2->id)}}"> Subasta! »</a></p>
+                            <p>{{$art2->nombre_producto}} ha empezado por {{$art2->precio_inicial}} y se acabara el {{$art2->fecha_final}}<a href="{{url('subasta/'.$art2->id)}}"> Subasta! »</a></p>
                           </td>
                           <td class="expander"></td>
                         </tr>
@@ -834,7 +834,7 @@ body.outlook p {
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>{{$art3->nombre_producto}} ha empezado por {{$art3->precio_inicial}} y se acabara el  {{$art3->fecha_final}}<a href="{{url('subasta/'.$art3->id)}}"> Subasta! »</a></p>
+                            <p>{{$art3->nombre_producto}} ha empezado por {{$art3->precio_inicial}} y se acabara el {{$art3->fecha_final}}<a href="{{url('subasta/'.$art3->id)}}"> Subasta! »</a></p>
                           </td>
                           <td class="expander"></td>
                         </tr>
