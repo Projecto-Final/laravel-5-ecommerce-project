@@ -28,7 +28,7 @@
 				@foreach($mensajesRecibidos as $mensajeRecibido)
 				<li>
 					<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});">
-						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
+						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeRecibido->imgperf) }}'/></span>
 						<span class="user-title">{{ $mensajeRecibido->titulo }}</span>
 						<p class="user-desc">{{ $mensajeRecibido->username }}</p>
 					</a>
