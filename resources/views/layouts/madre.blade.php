@@ -33,8 +33,7 @@
 	<link href="{{ url('css/perfil_user.css') }}" rel="stylesheet">
 	<link href="{{ url('css/subasta.css') }}" rel="stylesheet">	
 	<link href="{{ url('css/contacto.css') }}" rel="stylesheet">
-	<!-- ESTILO CHAT -->
-	<link href="{{ url('css/chat.css') }}" rel="stylesheet">
+
 	<!-- Visual Extras CSS -->
 	<link href="{{ url('css/shake.css') }}" rel="stylesheet">
 	<link href="{{ url('css/sistema_notificaciones.css') }}" rel="stylesheet">
@@ -205,6 +204,7 @@
 
 		@yield('opciones_usuario')
 
+		@yield('chats')
 		<!-- FIN CATEGORIA Y SPONSOR -->
 		<footer id="C3">
 			<div id="sns_footer_top" class="wrap footer">
@@ -329,8 +329,8 @@
 		</div>
 		<script src="{{url('js/bootstrap.min.js')}}"></script>
 		<script src="{{url('js/malign/easter/egg.js')}}"></script>
+		@yield('extrascripts')
 		<script>
-
 											// Script pro rellenar dropdown!
 											$.getJSON("{{ url('get_allCategories') }}", function(result){
 												var scatm = "";

@@ -928,14 +928,27 @@ public function baja(Request $request){
 	 */
 	public function chats()
 	{
-			// Enviados
-		$mensajesEnviados = DB::table('mensajes')
-		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
-		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
-		->where('mensajes.emisor_id', '=', Auth::user()->id)
-		->orderBy('mensajes.created_at',"desc")
-		->get();
-		return $mensajesEnviados;
+		try {
+			$mensajesEnviados = DB::table('mensajes')
+			->select(DB::raw('mensajes.id as id, usuarios.username as username, usuarios.imagen_perfil as imgperf, mensajes.titulo as titulo'))
+			->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+			->where('mensajes.emisor_id', '=', Auth::user()->id)
+			->orderBy('mensajes.created_at',"desc")
+			->get();
+
+			$mensajesRecibidos = DB::table('mensajes')
+			->select(DB::raw('mensajes.id as id, usuarios.username as username, usuarios.imagen_perfil as imgperf, mensajes.titulo as titulo'))
+			->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
+			->where('mensajes.receptor_id', '=', Auth::user()->id)
+			->orderBy('mensajes.created_at',"desc")
+			->groupBy("nombre")
+			->get();
+
+			return view('chats',['mensajesEnviados' => $mensajesEnviados,'mensajesRecibidos' => $mensajesRecibidos]);
+		} catch (Exception $e) {
+			return $e;
+		}
+		
 	}
 
 	/**
