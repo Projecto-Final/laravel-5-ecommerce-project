@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use App\Usuario;
 use App\Empresa;
 use App\Articulo;
+use App\Localidad;
 use Mail;
 use Carbon\Carbon;
 
@@ -52,15 +53,15 @@ class comprovarInactividadUsuarios extends Command {
 	 */
 	public function handle()
 	{
-		$empresa = Empresa::all()->take(1);
+		$empresa = Empresa::find(1);
 		$usuarios = Usuario::all();
 		$now = Carbon::now('Europe/Madrid');
 		foreach ($usuarios as $usuario) {
 			$updated = new Carbon($usuario->updated_at);
 			$diasInactivo = $updated->diff($now)->days;
-			if ($diasInactivo > $empresa[0]->inactividad) {
+			if ($diasInactivo > $empresa->inactividad) {
 				$localidad = Localidad::find($usuario->localidad_id);
-				$articulos = Articulo::where('precio_venta', '=', -1)->where('localizacio','=',$localidad->nombre)->orderBy('fecha_inicio', 'desc')->take(3);
+				$articulos = Articulo::where('precio_venta', '=', -1)->where('localizacion','=',$localidad->nombre)->orderBy('fecha_inicio', 'desc')->get();
 				$data = ["usuario" => $usuario, "art1" => $articulos[0], "art2" => $articulos[1], "art3" => $articulos[2]];
 				Mail::send("emails.inactivos", $data, function($message) use ($usuario) {
 					$message->to($usuario->email, $usuario->nombre)->subject('Hola, cuanto tiempo');

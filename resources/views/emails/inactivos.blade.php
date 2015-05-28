@@ -834,7 +834,7 @@ body.outlook p {
                       <table class="twelve columns">
                         <tr>
                           <td class="panel">
-                            <p>{{$art3->nombre_producto}} ha empezado por {{$art3->precio_inicial}} y se acabara el  {{$art3->fecha_final}}<a href="{{url('subasta/.$art3->id')}}"> Subasta! »</a></p>
+                            <p>{{$art3->nombre_producto}} ha empezado por {{$art3->precio_inicial}} y se acabara el  {{$art3->fecha_final}}<a href="{{url('subasta/'.$art3->id)}}"> Subasta! »</a></p>
                           </td>
                           <td class="expander"></td>
                         </tr>
