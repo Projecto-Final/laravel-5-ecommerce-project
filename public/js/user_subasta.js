@@ -9,7 +9,7 @@ $(document).ready(function(){
 	}
 	//ultimaPuja();
 	recargarPrecios();
-	var recargarPreciosInt =setInterval(recargarPreciosInt,7000);
+	var recargarPreciosInt =setInterval(recargarPrecios,7000);
 	
 });
 var cont=0;
@@ -162,15 +162,6 @@ function comprovarEstado(){
 			$("#contPujas").hide();
 
 
-
-//como ya esta caducada chuto intervalos
-
-//esto lo peta
-
-// clearInterval(comprovarEstadoInt);
-
-
-// clearInterval(recargarPreciosInt);
 
 
 }
