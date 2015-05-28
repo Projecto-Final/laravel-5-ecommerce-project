@@ -4,6 +4,8 @@ use Illuminate\Console\Command;
 use App\Articulo;
 use App\Puja;
 use App\Usuario;
+use App\Mensaje;
+use App\LiniaM;
 use App\Valoracion;
 use Carbon\Carbon;
 use Mail;
