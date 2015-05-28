@@ -16,13 +16,15 @@
 		<div class="row">
 
 			<div id="sns_main" class="col-md-12 col-main">
-				<div id="wrapper"><CENTER><h1> CHAT </h1></CENTER>
+				<div id="wrapper">
+				<CENTER><h1> CHAT </h1></CENTER>
+				<CENTER><b style="color:green;">Recibido</b> / <b style="color:red;">Enviado</b></CENTER>
 					<div class="message-container">
 						<div class="message-north">
 							<ul class="message-user-list">
 								@foreach($mensajesEnviados as $mensajeEnviado)
 								<li>
-									<a class="userChat" onClick="cargarChatsEmisor({{ $mensajeEnviado->id }});">
+									<a class="userChat" onClick="cargarChatsEmisor({{ $mensajeEnviado->id }});" style="border-right: 4px red solid;">
 										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
 										<span class="user-title">{{ $mensajeEnviado->titulo }}</span>
 										<p class="user-desc">{{ $mensajeEnviado->username }}</p>
@@ -31,7 +33,7 @@
 								@endforeach
 								@foreach($mensajesRecibidos as $mensajeRecibido)
 								<li>
-									<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});">
+									<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});" style="border-right: 4px green solid;">
 										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeRecibido->imgperf) }}'/></span>
 										<span class="user-title">{{ $mensajeRecibido->titulo }}</span>
 										<p class="user-desc">{{ $mensajeRecibido->username }}</p>
@@ -44,11 +46,12 @@
 							<span class="receptorId" style="display:none;"></span>
 							<span class="emisorId" style="display:none;"></span>
 							<div class="message-thread">
+							SELECCIONA UN CHAT, PARA INICIAR LA CONERSACIÓN.
 							</div>
 						</div>
-						<div class="message-south">
+						<div class="message-south" style="display:none;">
 							<textarea class="nuevoMensaje" cols="20" rows="3"></textarea>
-							<button class="envBoton"onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
+							<button class="envBoton"onClick="enviarMensaje({{ Auth::user()->id }});">Enviar</button>
 						</div>
 					</div>
 				</div>
@@ -66,7 +69,7 @@
 			setInterval(function() {
 				if($('.emisorId').html()==1){
 					cargarChatsEmisor($('.chatId').html());
-				} else {
+				} else if($('.emisorId').html()!="") {
 					cargarChatsReceptor($('.chatId').html());
 				}
 				$('.message-thread').scrollTop(5000);
@@ -121,6 +124,7 @@
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
+		mostrarInput();
 	}
 
 	function cargarChatsReceptor(idChat){
@@ -149,6 +153,11 @@
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
+		mostrarInput();
+	}
+
+	function mostrarInput(){
+		$(".message-south").css("display","block");
 	}
 </script>
 @stop
