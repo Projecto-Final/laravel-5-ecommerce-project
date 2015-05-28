@@ -64,10 +64,15 @@
 @section('extrascripts')
 <script>
 	function enviarMensaje(idEmisor){
-		alert("chatID="+$('.chatId').html());
-		alert("receptorId="+$('.receptorId').html());
-		alert("nuevoMensaje="+$('.nuevoMensaje').val());
-		alert("emisorId="+$('.emisorId').html());
+		$.ajax({
+			method: "POST",
+			url: "{{ url(''.'chats/enviar_mensaje') }}",
+			data: { "mensaje_id" : $('.chatId').html(), "texto" : $('.nuevoMensaje').val(), "emisor" : $('.emisorId').html(), "_token": "{{{ csrf_token() }}}", "_method" : "PUT" }
+		})
+		.done(function( msg ) {
+			alert( "Mensaje enviado: " + msg );
+			
+		});
 	}
 	function cargarChatsEmisor(idChat){
 		$.getJSON("{{ url('get_conversacion_as_emisor') }}"+"/"+idChat, function(result){
@@ -91,7 +96,7 @@
 				$(".chatId").html(field.mid);
 				$(".receptorId").html(field.eid);
 			});
-			$(".emisorId").html({{ Auth::user()->id }});
+			$(".emisorId").html("1");
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
@@ -117,8 +122,8 @@
 				scatm += "</div>";
 				chatTitulo = field.titulo;
 				$(".chatId").html(field.mid);
-				$(".emisorId").html(field.eid);
 			});
+			$(".emisorId").html("0");
 			$(".receptorId").html({{ Auth::user()->id }});
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);

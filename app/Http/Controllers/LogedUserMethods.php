@@ -979,7 +979,7 @@ public function baja(Request $request){
 	{
 		// Recibidos
 		$mensajesEnviados = DB::table('liniasms')
-		->select(DB::raw('mensajes.titulo as titulo, mensajes.emisor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
+		->select(DB::raw('mensajes.id as mid,mensajes.titulo as titulo, mensajes.emisor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
 		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
 		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
 		->where('liniasms.mensaje_id', '=', $idChat)
@@ -987,6 +987,26 @@ public function baja(Request $request){
 		->orderBy('liniasms.created_at',"desc")
 		->get();
 		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los recibidos, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function enviar_mensaje(Request $request)
+	{
+		$todalashit = $request->all();
+		// Recibidos
+		$liniasms = new LiniaM;
+
+		$liniasms->mensaje_id = $todalashit['mensaje_id'];
+		$liniasms->emisor = $todalashit['emisor'];
+		$liniasms->texto = $todalashit['texto'];
+		$liniasms->save();
+
+		return $todalashit['emisor'];
+		
 	}
 
 	/**
