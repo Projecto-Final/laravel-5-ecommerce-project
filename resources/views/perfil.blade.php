@@ -9,7 +9,7 @@
 <script src="{{ url('js/usuario_public.js') }}"></script>
 
 <div id="sns_content" class="wrap layout-m">
-  <div class="container-fluid header_perfil" >
+  <div class="container-fluid header_perfil">
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$user[0]->imagen_background.'') }});">
       <div class="stadistic_info_user col-xs-12 col-md-12">
         <div class="container">
