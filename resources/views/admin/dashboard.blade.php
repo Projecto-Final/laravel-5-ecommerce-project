@@ -15,7 +15,7 @@
 
 @section('contenido')
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-12">
     <!-- USERS LIST -->
     <div class="box box-danger">
       <div class="box-header with-border">
@@ -45,7 +45,7 @@
     </div><!--/.box -->
   </div>
 
-  <div class="col-xs-6">
+  <div class="col-md-6 col-xs-12">
     <div class="box box-default">
       <div class="box-header with-border">
         <h3 class="box-title">Nº Imagenes almacenadas</h3>
@@ -60,7 +60,7 @@
    </div><!-- /.box -->
  </div>
 
- <div class="col-xs-3">
+ <div class="col-md-3 col-xs-12">
   <div class="box box-default">
     <div class="box-header with-border">
       <h3 class="box-title">Nº Pujas (Totales)</h3>
@@ -74,7 +74,7 @@
  </div><!-- /.box -->
 </div>
 
-<div class="col-xs-3">
+<div class="col-md-3 col-xs-12">
   <div class="box box-default">
     <div class="box-header with-border">
       <h3 class="box-title">Total movimientos €</h3>
@@ -89,7 +89,7 @@
 </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-md-6 col-xs-12">
     <div class="box box-default">
       <div class="box-header with-border">
         <h3 class="box-title">Nº Categorias</h3>
@@ -123,7 +123,7 @@
   </div><!-- /.box -->
 </div>
 
-<div class="col-xs-6">
+<div class="col-md-6 col-xs-12">
   <div class="box box-default">
     <div class="box-header with-border">
       <h3 class="box-title">Nº SubCategorias</h3>
