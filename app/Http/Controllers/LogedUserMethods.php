@@ -926,6 +926,23 @@ public function baja(Request $request){
 	 *
 	 * @return Response
 	 */
+	public function chats()
+	{
+			// Enviados
+		$mensajesEnviados = DB::table('mensajes')
+		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->where('mensajes.emisor_id', '=', Auth::user()->id)
+		->orderBy('mensajes.created_at',"desc")
+		->get();
+		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
 	public function get_chats_enviados()
 	{
 		// Enviados

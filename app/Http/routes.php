@@ -198,6 +198,7 @@ Route::get('aceptarUltimaP', 'LogedUserMethods@aceptarUltimaP');
 Route::get('prorrogar', 'LogedUserMethods@prorrogar');
 
 // Rellena chats ( si el usuario tiene alguno )
+Route::get('chats', 'LogedUserMethods@chats'); 
 Route::get('get_chats_enviados', 'LogedUserMethods@get_chats_enviados'); 
 Route::get('get_chats_recibidos', 'LogedUserMethods@get_chats_recibidos'); 
 
