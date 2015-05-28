@@ -1,5 +1,3 @@
-setInterval(get_Pendientes,50000);
-
 $(document).ready(function() {
 	perfil();
 
@@ -18,14 +16,7 @@ $(document).ready(function() {
 });
 
 
-function get_Pendientes(){
-	var url = "usuario/get_Pendientes";
-	$.get(url,function(data,status){
-		if(data != 0){
-			bootbox.alert("Tienes pendiente "+data+" valoraciones. Ves al apartado de valoraciones pendientes y rellenalas");
-		}
-	});
-}
+
 
 function perfil(){
 	var url = "usuario/get_perfil";

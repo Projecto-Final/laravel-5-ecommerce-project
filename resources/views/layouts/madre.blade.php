@@ -107,6 +107,7 @@
 									<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 									<input type="hidden" name="_method" value="PUT">
 									<input type="hidden" id="confPujaSuperada" value="{{url('confPujaSuperada')}}">
+									<input type="hidden" id="pendiente" value="{{url('usuario/get_Pendientes')}}">									
 									<input id="eEGG" type="text" name="buscar" class="entrada-texto" placeholder="Buscar en todas las subastas..."/>
 									<div class="boton-submit">
 										<button type="submit" class="buscar" value="buscar"><i class="fa fa-search"></i></button>
