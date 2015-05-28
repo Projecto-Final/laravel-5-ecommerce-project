@@ -40,12 +40,12 @@
 
      <div style="float: left;width: 100%;margin-top: 12px;">
       <div id="UltimaPujaInfo"></div>
-      
+       <h4>Informació Básica</h4>
     </div>
     
 
     <table class="table table-bordered">
-      <h4>Informació Básica</h4>
+     
       <tbody>
         <tr>
           <td>Artículo:</td>
