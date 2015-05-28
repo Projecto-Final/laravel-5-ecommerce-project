@@ -70,7 +70,6 @@ function aceptarPuja(url){
 				}
 				
 			}).fail(function(data){
-			//	bootbox.alert("Debes estar Logueado para Ello");
 			});	
 		}
 	}); 
