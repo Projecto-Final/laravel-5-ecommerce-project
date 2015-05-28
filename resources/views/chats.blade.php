@@ -36,6 +36,9 @@
 				@endforeach
 			</ul>
 			<h4 class="chatTitulo"></h4>
+			<span class="chatId" style="display:none;"></span>
+			<span class="receptorId" style="display:none;"></span>
+			<span class="emisorId" style="display:none;"></span>
 			<div class="message-thread">
 				
 				<!-- <div class="message bubble-right">
@@ -51,8 +54,8 @@
 			</div>
 		</div>
 		<div class="message-south">
-			<textarea cols="20" rows="3"></textarea>
-			<button>Send</button>
+			<textarea class="nuevoMensaje" cols="20" rows="3"></textarea>
+			<button onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
 		</div>
 	</div>
 </div>
@@ -60,6 +63,12 @@
 
 @section('extrascripts')
 <script>
+	function enviarMensaje(idEmisor){
+		alert("chatID="+$('.chatId').html());
+		alert("receptorId="+$('.receptorId').html());
+		alert("nuevoMensaje="+$('.nuevoMensaje').val());
+		alert("emisorId="+$('.emisorId').html());
+	}
 	function cargarChatsEmisor(idChat){
 		$.getJSON("{{ url('get_conversacion_as_emisor') }}"+"/"+idChat, function(result){
 			var scatm = "";
@@ -79,7 +88,10 @@
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
 				chatTitulo = field.titulo;
+				$(".chatId").html(field.mid);
+				$(".receptorId").html(field.eid);
 			});
+			$(".emisorId").html({{ Auth::user()->id }});
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
@@ -104,7 +116,10 @@
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
 				chatTitulo = field.titulo;
+				$(".chatId").html(field.mid);
+				$(".emisorId").html(field.eid);
 			});
+			$(".receptorId").html({{ Auth::user()->id }});
 			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
