@@ -956,7 +956,25 @@ public function baja(Request $request){
 	 *
 	 * @return Response
 	 */
-	public function get_chats_enviados()
+	public function get_conversacion_emisor($idChat)
+	{
+		// Enviados
+		$mensajesEnviados = DB::table('liniasms')
+		->select(DB::raw('liniasms.texto as mensaje, usuarios.nombre as usuario, liniasms.emisor as propietario'))
+		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
+		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->where('liniasms.mensaje_id', '=', $idChat)
+		->orderBy('liniasms.created_at',"desc")
+		->get();
+		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_conversacion_receptor($idChat)
 	{
 		// Enviados
 		$mensajesEnviados = DB::table('mensajes')

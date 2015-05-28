@@ -16,7 +16,7 @@
 			<ul class="message-user-list">
 				@foreach($mensajesEnviados as $mensajeEnviado)
 				<li>
-					<a href="">
+					<a id="" class="userChat">
 						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
 						<span class="user-title">{{ $mensajeEnviado->titulo }}</span>
 						<p class="user-desc">{{ $mensajeEnviado->username }}</p>
@@ -25,7 +25,7 @@
 				@endforeach
 				@foreach($mensajesRecibidos as $mensajeRecibido)
 				<li>
-					<a href="">
+					<a>
 						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
 						<span class="user-title">{{ $mensajeRecibido->titulo }}</span>
 						<p class="user-desc">{{ $mensajeRecibido->username }}</p>
@@ -35,37 +35,8 @@
 			</ul>
 
 			<div class="message-thread">
-				<div class="message bubble-left">
-					<label class="message-user">Bryan Adams</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-				</div>
-				<div class="message bubble-right">
-					<label class="message-user">Jack Johnson</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-				</div>
-				<div class="message bubble-left">
-					<label class="message-user">Bryan Adams</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-				</div>
-				<div class="message bubble-right">
-					<label class="message-user">Jack Johnson</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>:-)</p>
-				</div>
-				<div class="message bubble-left">
-					<label class="message-user">Bryan Adams</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-				</div>
-				<div class="message bubble-right">
-					<label class="message-user">Jack Johnson</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-				</div>
-				<div class="message bubble-right">
+				selecciona un chat para empezar...
+				<!-- <div class="message bubble-right">
 					<label class="message-user">Jack Johnson</label>
 					<label class="message-timestamp">2 Hours Ago</label>
 					<p>;-)</p>
@@ -74,12 +45,7 @@
 					<label class="message-user">Bryan Adams</label>
 					<label class="message-timestamp">2 Hours Ago</label>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-				</div>
-				<div class="message bubble-left">
-					<label class="message-user">Bryan Adams</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="message-south">
@@ -88,4 +54,20 @@
 		</div>
 	</div>
 </div>
+@stop
+
+@section('extrascripts')
+<script>
+	$( ".userChat" ).click(function() {
+		alert("fired");
+ 	// Script pro rellenar dropdown!
+ 	$.getJSON("{{ url('get_allCategories') }}", function(result){
+ 		var scatm = "";
+ 		$.each(result, function(i, field){
+ 			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+ 		});
+ 		$("#categoria-art").html($("#categoria-art").html()+scatm);
+ 	});
+ });
+</script>
 @stop
