@@ -566,7 +566,7 @@ class LogedUserMethods extends Controller {
 
 				}
 
-				if($confPujas[$i]['puja_maxima'] < $articulo['puja_mayor']){
+				if($confPujas[$i]['puja_maxima']+$articulo['incremento_precio'] < $articulo['puja_mayor']){
 					$confPujas[$i]->superada = 1;
 					$confPujas[$i]->save();
 				}
