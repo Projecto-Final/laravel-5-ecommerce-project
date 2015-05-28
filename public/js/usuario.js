@@ -14,9 +14,6 @@ $(document).ready(function() {
 		$("#confPortada").fadeIn(500);
 	});
 });
-
-
-
       
 function perfil(){
 	var url = "usuario/get_perfil";
@@ -24,7 +21,7 @@ function perfil(){
 		var txt = "<h3>Información básica</h3>"
 		+"<div class='col-md-8'><p>Apodo :</p>"+data[0].username
 		+"<p>Nombre :</p>"+data[0].nombre
-		+"<p>Apellidos :</p>"+data.apellido
+		+"<p>Apellidos :</p>"+data[0].apellido
 		+"<p>Texto de presentación :</p>"+data[0].texto_presentacion
 		+"<p>Direccion :</p>"+data[0].direccion
 		+"<p>Email :</p>"+data[0].email
