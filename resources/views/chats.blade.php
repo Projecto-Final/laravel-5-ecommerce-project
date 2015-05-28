@@ -71,7 +71,11 @@
 		})
 		.done(function( msg ) {
 			alert( "Mensaje enviado: " + msg );
-			
+			if(msg==1){
+				cargarChatsEmisor($('.chatId').html());
+			} else {
+				cargarChatsReceptor($('.chatId').html());
+			}
 		});
 	}
 	function cargarChatsEmisor(idChat){

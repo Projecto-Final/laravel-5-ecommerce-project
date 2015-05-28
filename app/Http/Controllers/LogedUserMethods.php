@@ -965,7 +965,7 @@ public function baja(Request $request){
 		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
 		->where('liniasms.mensaje_id', '=', $idChat)
 		->where('mensajes.emisor_id','=', Auth::user()->id)
-		->orderBy('liniasms.created_at',"desc")
+		->orderBy('liniasms.created_at',"ASC")
 		->get();
 		return $mensajesEnviados;
 	}
@@ -984,7 +984,7 @@ public function baja(Request $request){
 		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
 		->where('liniasms.mensaje_id', '=', $idChat)
 		->where('mensajes.receptor_id','=', Auth::user()->id)
-		->orderBy('liniasms.created_at',"desc")
+		->orderBy('liniasms.created_at',"ASC")
 		->get();
 		return $mensajesEnviados;
 	}
