@@ -35,9 +35,9 @@
 				</li>
 				@endforeach
 			</ul>
-
+			<h4 class="chatTitulo"></h4>
 			<div class="message-thread">
-				selecciona un chat para empezar...
+				
 				<!-- <div class="message bubble-right">
 					<label class="message-user">Jack Johnson</label>
 					<label class="message-timestamp">2 Hours Ago</label>
@@ -63,6 +63,7 @@
 	function cargarChatsEmisor(idChat){
 		$.getJSON("{{ url('get_conversacion_as_emisor') }}"+"/"+idChat, function(result){
 			var scatm = "";
+			var chatTitulo = "";
 			$.each(result, function(i, field){
 				if(field.propietario==1){
 					scatm += "<div class='message bubble-right'>";
@@ -77,7 +78,9 @@
 				scatm += '<label class="message-timestamp">'+field.fecha+'</label>';
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
+				chatTitulo = field.titulo;
 			});
+			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
 	}
@@ -85,6 +88,7 @@
 	function cargarChatsReceptor(idChat){
 		$.getJSON("{{ url('get_conversacion_as_receptor') }}"+"/"+idChat, function(result){
 			var scatm = "";
+			var chatTitulo = "";
 			$.each(result, function(i, field){
 				if(field.propietario==0){
 					scatm += "<div class='message bubble-right'>";
@@ -99,7 +103,9 @@
 				scatm += '<label class="message-timestamp">2 Hours Ago</label>';
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
+				chatTitulo = field.titulo;
 			});
+			$(".chatTitulo").html("titulo: "+chatTitulo);
 			$(".message-thread").html(scatm);
 		});
 	}

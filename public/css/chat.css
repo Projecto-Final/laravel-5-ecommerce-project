@@ -98,6 +98,7 @@
 	height: auto; /*Keep height same as img thumbnail height*/
 	text-decoration: none;
 	color: #313131;
+	cursor:pointer;
 
 	-webkit-transition: all ease .2s;
 	   -moz-transition: all ease .2s;
