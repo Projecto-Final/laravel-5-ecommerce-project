@@ -16,7 +16,7 @@ class CreateEmpresasTable extends Migration {
 		{
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('direccion');
+            $table->string('direccion');
             $table->integer('tiempoArticulo');
             $table->integer('tiempoPorrogaArticulo');
             $table->integer('inactividad');
