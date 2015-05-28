@@ -487,7 +487,6 @@ class LogedUserMethods extends Controller {
 			$user = Usuario::find($idPujador);	
 			$user->touch();
 
-		//AQUI HAY K MIRAR SI HAY ALGUNA CONF PUJAS DE LA SUBASTA
 			$this->comprovarCF($articulo->id);
 
 			return $articulo;
@@ -646,6 +645,7 @@ public function cambiarConf(Request $request){
 		$confpuja = ConfiguracionPuja::find($aux[0]->id);
 		$confpuja->puja_maxima = $pujaMax;
 		$confpuja->save();
+		$this->comprovarCF($articuloId);
 		return $pujaMax;
 
 	} catch (Exception $e) {
