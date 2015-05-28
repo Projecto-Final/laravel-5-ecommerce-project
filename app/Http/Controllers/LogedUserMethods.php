@@ -979,11 +979,11 @@ public function baja(Request $request){
 	{
 		// Recibidos
 		$mensajesEnviados = DB::table('liniasms')
-		->select(DB::raw('mensajes.emisor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
+		->select(DB::raw('mensajes.receptor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
 		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
-		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
 		->where('liniasms.mensaje_id', '=', $idChat)
-		->where('mensajes.emisor_id','=', Auth::user()->id)
+		->where('mensajes.receptor_id','=', Auth::user()->id)
 		->orderBy('liniasms.created_at',"desc")
 		->get();
 		return $mensajesEnviados;
