@@ -28,7 +28,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" style="background-color: #fff; padding: 20px; margin-bottom: 20px;">
   <div class="row">
     <div id="sns_main" class="col-md-12 col-main" >
       <div id="sns_mainmidle background_user">
