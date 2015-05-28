@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use DB;
 use Cache;
 use PDF;
+use View;
+use Response;
 
 class LogedAdminMethods extends Controller {
 
@@ -579,14 +581,20 @@ class LogedAdminMethods extends Controller {
 		$articulo = Articulo::find($factura['articulo_id']);
 		$usuario = Usuario::find($factura['usuario_id']);
 		$factura = Factura::find($idFactura);
-		$pdf = PDF::loadHTML(view('factura_pdf',['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]));
+		$pdf = PDF::loadHTML(view('admin/factura_pdf',['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]));
 		return $pdf->stream();
 		;
 	}
 	public function generar_factura_xml($idFactura)
 	{
-		$factura = Factura::find($idSubcategoria);
-		return view('admin.segeneraxml',['factura' => $factura]);
+		$factura = Factura::find($idFactura);
+		$articulo = Articulo::find($factura['articulo_id']);
+		$usuario = Usuario::find($factura['usuario_id']);
+		$factura = Factura::find($idFactura);
+
+		$content = View::make('index')->with(['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]);
+		return Response::make($content, '200')->header('Content-Type', 'text/xml');
+		
 	}
 
 	// No se usa
