@@ -11,51 +11,48 @@
 @stop
 
 @section('chats')
+<div id="sns_content" class="wrap layout-m">
+	<div class="container">
+		<div class="row">
 
-<div id="wrapper">
-	<div class="message-container">
-		<div class="message-north">
-			<ul class="message-user-list">
-				@foreach($mensajesEnviados as $mensajeEnviado)
-				<li>
-					<a class="userChat" onClick="cargarChatsEmisor({{ $mensajeEnviado->id }});">
-						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
-						<span class="user-title">{{ $mensajeEnviado->titulo }}</span>
-						<p class="user-desc">{{ $mensajeEnviado->username }}</p>
-					</a>
-				</li>
-				@endforeach
-				@foreach($mensajesRecibidos as $mensajeRecibido)
-				<li>
-					<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});">
-						<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeRecibido->imgperf) }}'/></span>
-						<span class="user-title">{{ $mensajeRecibido->titulo }}</span>
-						<p class="user-desc">{{ $mensajeRecibido->username }}</p>
-					</a>
-				</li>
-				@endforeach
-			</ul>
-			<h4 class="chatTitulo"></h4>
-			<span class="chatId" style="display:none;"></span>
-			<span class="receptorId" style="display:none;"></span>
-			<span class="emisorId" style="display:none;"></span>
-			<div class="message-thread">
-				
-				<!-- <div class="message bubble-right">
-					<label class="message-user">Jack Johnson</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>;-)</p>
+			<div id="sns_main" class="col-md-12 col-main">
+				<div id="wrapper"><CENTER><h1> CHAT </h1></CENTER>
+					<div class="message-container">
+						<div class="message-north">
+							<ul class="message-user-list">
+								@foreach($mensajesEnviados as $mensajeEnviado)
+								<li>
+									<a class="userChat" onClick="cargarChatsEmisor({{ $mensajeEnviado->id }});">
+										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
+										<span class="user-title">{{ $mensajeEnviado->titulo }}</span>
+										<p class="user-desc">{{ $mensajeEnviado->username }}</p>
+									</a>
+								</li>
+								@endforeach
+								@foreach($mensajesRecibidos as $mensajeRecibido)
+								<li>
+									<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});">
+										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeRecibido->imgperf) }}'/></span>
+										<span class="user-title">{{ $mensajeRecibido->titulo }}</span>
+										<p class="user-desc">{{ $mensajeRecibido->username }}</p>
+									</a>
+								</li>
+								@endforeach
+							</ul>
+							<h4 class="chatTitulo"></h4>
+							<span class="chatId" style="display:none;"></span>
+							<span class="receptorId" style="display:none;"></span>
+							<span class="emisorId" style="display:none;"></span>
+							<div class="message-thread">
+							</div>
+						</div>
+						<div class="message-south">
+							<textarea class="nuevoMensaje" cols="20" rows="3"></textarea>
+							<button onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
+						</div>
+					</div>
 				</div>
-				<div class="message bubble-left">
-					<label class="message-user">Bryan Adams</label>
-					<label class="message-timestamp">2 Hours Ago</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-				</div> -->
 			</div>
-		</div>
-		<div class="message-south">
-			<textarea class="nuevoMensaje" cols="20" rows="3"></textarea>
-			<button onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
 		</div>
 	</div>
 </div>
