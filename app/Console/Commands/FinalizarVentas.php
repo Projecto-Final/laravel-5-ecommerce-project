@@ -74,7 +74,18 @@ class FinalizarVentas extends Command {
 						'puntuacion' => 1,
 						'fecha' => Carbon::now('Europe/Madrid'),
 						'articulo_id' => $articulo->id,
-					]);
+						]);
+					$mensaje = Mensaje::Create([
+						'titulo' => $articulo->id."|| ".$articulo->nombre_producto,
+						'emisor_id' => $articulo->subastador_id,
+						'receptor_id' => $articulo->comprador_id,
+						'fecha' => Carbon::now('Europe/Madrid'),
+						]);
+					LiniaM::Create([
+						'texto' => 'Hola, habla con '.$comprador->nombre.' sobre el producto',
+						'mensaje_id' =>  $mensaje->id,
+						'emisor' => '1',
+						]);
 				} else {
 					$articulo->precio_venta = 0;
 					$articulo->save();
