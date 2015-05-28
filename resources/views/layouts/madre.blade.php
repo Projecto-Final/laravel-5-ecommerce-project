@@ -332,45 +332,55 @@
 		<script src="{{url('js/malign/easter/egg.js')}}"></script>
 		@yield('extrascripts')
 		<script>
-											// Script pro rellenar dropdown!
-											$.getJSON("{{ url('get_allCategories') }}", function(result){
-												var scatm = "";
-												$.each(result, function(i, field){
-													scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-												});
-												$("#categoria-art").html($("#categoria-art").html()+scatm);
-											});
 
-												 // Script pro rellenar dropdown!
-												 $("#categoria-art").change(function() {
-												 	var aux = "{{ url('get_allSubCategoriesOnCategory') }}/"+$("#categoria-art").val();
-												 	$.getJSON(aux , function(result){
-												 		var scatm = "";
-												 		$.each(result, function(i, field){
-												 			scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-												 		});
-												 		$("#subcategoria-art").html("<option value='*''>Cualquiera</option>"+scatm);
-												 	});
-												 });
+		// Script pro rellenar dropdown!
+		$.getJSON("{{ url('get_localidades') }}", function(result){
+			var scatm = "";
+			$.each(result, function(i, field){
+				scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+			});
+			$("#ubicacion").html($("#ubicacion").html()+scatm);
+		});
 
-												</script>
-												<script>
-														// SLIDER DE PRECIO MAX - MIN
-														$(function() {
-															$( "#slider-range" ).slider({
-																range: true,
-																min: 0,
-																max: 9999,
-																values: [ 0, 350 ],
-																slide: function( event, ui ) {
-																	$("#pmin").val(ui.values[ 0 ]);
-																	$("#pmax").val(ui.values[ 1 ]);
-																	$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-																}
-															});
-															$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-																" - $" + $( "#slider-range" ).slider( "values", 1 ) );
-														});
-													</script>
-												</body>
-												</html>
+		// Script pro rellenar dropdown!
+		$.getJSON("{{ url('get_allCategories') }}", function(result){
+			var scatm = "";
+			$.each(result, function(i, field){
+				scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+			});
+			$("#categoria-art").html($("#categoria-art").html()+scatm);
+		});
+
+		// Script pro rellenar dropdown!
+		$("#categoria-art").change(function() {
+			var aux = "{{ url('get_allSubCategoriesOnCategory') }}/"+$("#categoria-art").val();
+			$.getJSON(aux , function(result){
+				var scatm = "";
+				$.each(result, function(i, field){
+					scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+				});
+				$("#subcategoria-art").html("<option value='*''>Cualquiera</option>"+scatm);
+			});
+		});
+
+	</script>
+	<script>
+		// SLIDER DE PRECIO MAX - MIN
+		$(function() {
+			$( "#slider-range" ).slider({
+				range: true,
+				min: 0,
+				max: 9999,
+				values: [ 0, 350 ],
+				slide: function( event, ui ) {
+					$("#pmin").val(ui.values[ 0 ]);
+					$("#pmax").val(ui.values[ 1 ]);
+					$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				}
+			});
+			$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+				" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		});
+	</script>
+</body>
+</html>
