@@ -42,7 +42,11 @@ class comprovarInactividadUsuarios extends Command {
 	}
 
 	/**
-	 * Execute the command.
+	 * Primero carga el registro empresa para tener el tiempo de inactividad que el/los administradores han configurado
+	 * despues carga todos los usuarios y los recorre uno a uno comprovando si el resultado de hoy (carbon::now()) menos su updated_at
+	 * da una diferencia de dias superior al de la configuracion de la empresa, en caso afirmativo se le envia un mensaje con los tres productos
+	 * mas nuevos de su zona.
+	 * Cada vez que un usuario puja o publica un articulo a subasta, se le hace un touch() pque lo que hace es actualizarle el campo updated_at
 	 *
 	 * @return void
 	 */
@@ -55,7 +59,8 @@ class comprovarInactividadUsuarios extends Command {
 			$updated = new Carbon($usuario->updated_at);
 			$diasInactivo = $updated->diff($now)->days;
 			if ($diasInactivo > $empresa[0]->inactividad) {
-				$articulos = Articulo::where('precio_venta', '=', -1)->orderBy('fecha_inicio', 'desc')->take(3);
+				$localidad = Localidad::find($usuario->localidad_id);
+				$articulos = Articulo::where('precio_venta', '=', -1)->where('localizacio','=',$localidad->nombre)->orderBy('fecha_inicio', 'desc')->take(3);
 				$data = ["usuario" => $usuario, "art1" => $articulos[0], "art2" => $articulos[1], "art3" => $articulos[2]];
 				Mail::send("emails.inactivos", $data, function($message) use ($usuario) {
 					$message->to($usuario->email, $usuario->nombre)->subject('Hola, cuanto tiempo');

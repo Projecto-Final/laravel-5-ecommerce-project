@@ -17,9 +17,7 @@ class LocalidadesTableSeeder extends Seeder {
 			Localidad::create([
 					'nombre' => $faker->state,
 					'codigo_postal' => $faker->postcode,
-				]);
+			]);
 		}
-
-
 	}
 }

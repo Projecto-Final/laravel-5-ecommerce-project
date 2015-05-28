@@ -38,6 +38,15 @@ class FinalizarVentas extends Command {
 	{
 	}
 
+	/**
+	 * Busca por todos los articulos que tengan su precio de venta a -1 (estado activo), a los que le va revisando si han pasado de su fecha final, en el caso de pasar,
+	 * pasara a cerrar la subasta, si no tiene ninguna puja se cerrara con el valor de precio venta a 0 y en el caso de que esa subasta tenga pujas, se cerrara actualizandose el
+	 * campo vendedor_id con la id del mayor pujador.
+	 * En todas als finalizaciones se le informa con un mail a los usuarios afectados
+	 * Si se completa una subasta con venta, se genera una valoracion incompleta para que el comprador valore al usuario subastador
+	 *
+	 * @return void
+	 */
 	public function handle()
 	{
 		$articulos = Articulo::where('precio_venta', '=', -1)->get();
