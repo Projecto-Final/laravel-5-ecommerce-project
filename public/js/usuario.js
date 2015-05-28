@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 
 
-
+      
 function perfil(){
 	var url = "usuario/get_perfil";
 	$.get(url,function(data,status){
