@@ -63,6 +63,17 @@
 
 @section('extrascripts')
 <script>
+
+	$(document).ready(
+		function() {
+			setInterval(function() {
+				if($('.emisorId').html()==1){
+					cargarChatsEmisor($('.chatId').html());
+				} else {
+					cargarChatsReceptor($('.chatId').html());
+				}
+			}, 3000);
+		});
 	function enviarMensaje(idEmisor){
 		$.ajax({
 			method: "POST",
