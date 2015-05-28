@@ -931,25 +931,29 @@ public function baja(Request $request){
 
 		$totalMensajes = array();
 
-		// Iniciados por ti
-		$usLog = Auth::user()->id;
-		$mensajesEnviados = Mensaje::where("emisor_id","=","$usLog")->get();
-		for ($i=0; $i < count($mensajesEnviados); $i++) { 
-		// Precargamos la relacion ( magia! )
-			$mensajesEnviados[$i]->liniasM;
-			$totalMensajes["enviados"][$i]["mensaje"] = $mensajesEnviados[$i];
+		$usuariosEurCobrados = DB::table('articulos')
+		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
+		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
+		->where('precio_venta', '!=', -1)
+		->groupBy('subastador_id')
+		->orderBy('pventaTotal',"desc")
+		->get();
 
-		}
+		/*
+		SELECT usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo, count(liniasms.id)  FROM `mensajes`
+		INNER JOIN liniasms ON mensajes.id = liniasms.mensaje_id
+		INNER JOIN usuarios ON mensajes.emisor_id = usuarios.id
+		where usuarios.id = 1
+		*/
 
-		// No iniciados por ti
-		$mensajesRecibidos = Mensaje::where("receptor_id","=","$usLog")->get();
-		for ($i=0; $i < count($mensajesRecibidos); $i++) { 
-		// Precargamos la relacion ( magia! )
-			$mensajesRecibidos[$i]->liniasM;
-			$totalMensajes["recibidos"][$i]["mensaje"] = $mensajesRecibidos[$i];
+		// $usuario = Usuario::find(Auth::user()->id);
 
-		}
-		return $totalMensajes;
+		// $mensajesRecibidos = $usuario->Mrecibidos;
+		// $mensajesEnviados = $usuario->Menviados;
+		// $totalMensajes["enviados"] = $mensajesEnviados;
+		// $totalMensajes["recibidos"] = $mensajesRecibidos;
+
+	return $totalMensajes;
 	}
 
 

@@ -336,20 +336,6 @@
 				<div class="message-container">
 					<div class="message-north">
 						<ul class="message-user-list">
-							<li>
-								<a href="#">
-									<span class="user-img"></span>
-									<span class="user-title">Bryan Adams</span>
-									<p class="user-desc">badams@music.com</p>
-								</a>
-							</li>
-							<li>
-								<a class="active" href="#">
-									<span class="user-img"></span>
-									<span class="user-title">Enrique Iglesias</span>
-									<p class="user-desc">enriqueiglesias@music.com</p>
-								</a>
-							</li>
 						</ul>
 						<div class="message-thread">
 							<div class="message bubble-left">
@@ -394,12 +380,19 @@
 					$("#chatWINDOW").css("bottom","-47.5%");
 				});
 
-				$.getJSON("{{ url('get_chats/') }}", function(result){
+				$.getJSON("{{ url('get_chats') }}", function(result){
 					var scatm = "";
-					$.each(result, function(i, field){
-						scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-					});
-					$("#categoria-art").html($("#categoria-art").html()+scatm);
+					// alert(result.enviados[0].mensaje.id);
+					for (var i = 0; i >= result.enviados.length; i++) {
+						scatm += "<li>"+
+						"<a href=''>"+
+						"<span class='user-img'></span>"+
+						"<span class='user-title'>"+field.enviados[i]+"</span>"+
+						"<p class='user-desc'>badams@music.com</p>"+
+						"</a>"+
+						"</li>";
+					};
+					$(".message-user-list").html(scatm);
 				});
 			});
 		</script>

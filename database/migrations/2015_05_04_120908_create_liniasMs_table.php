@@ -18,6 +18,7 @@ class CreateLiniasMsTable extends Migration {
             $table->text('texto');
             $table->integer('mensaje_id')->unsigned();
             $table->foreign('mensaje_id')->references('id')->on('mensajes');
+             $table->boolean('emisor')->default(0);
             $table->rememberToken();
             $table->timestamps();
 		});

@@ -10,7 +10,7 @@ class LiniaM extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['texto', 'fecha', 'mensaje_id'];
+	protected $fillable = ['texto', 'fecha', 'emisor', 'mensaje_id'];
 
 	
 	public function mensaje()
