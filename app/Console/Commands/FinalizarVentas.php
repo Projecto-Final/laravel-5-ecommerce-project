@@ -84,7 +84,7 @@ class FinalizarVentas extends Command {
 						'fecha' => Carbon::now('Europe/Madrid'),
 						]);
 					LiniaM::Create([
-						'texto' => 'Hola, habla con '.$comprador->nombre.' sobre el producto',
+						'texto' => 'Esto es un mensaje autogenerado por la compra de un articulo. Para detallar los envios y/o metodos de pago.',
 						'mensaje_id' =>  $mensaje->id,
 						'emisor' => '1',
 						]);

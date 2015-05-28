@@ -69,9 +69,9 @@
             <a href="{{ url(''.URL::current().'/editar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
             <a href="{{ url(''.URL::current().'/eliminar/'.$usuario['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a>
               @if($usuario['activa']==1)
-            <a href="{{ url(''.URL::current().'/desactivar/'.$usuario['id'])}}" class="btn bg-purple btn-xs"><i  class="fa fa-toggle-on"></i>  Desactivar </a>  
+            <a href="{{ url(''.URL::current().'/desactivar/'.$usuario['id'])}}" class="btn btn-warning btn-xs"><i  class="fa fa-toggle-on"></i>  Desactivar </a>  
             @else 
-            <a href="{{ url(''.URL::current().'/activar/'.$usuario['id'])}}" class="btn bg-purple btn-xs"><i  class="fa fa-toggle-off"></i>  Activar </a>  
+            <a href="{{ url(''.URL::current().'/activar/'.$usuario['id'])}}" class="btn btn-warning btn-xs"><i  class="fa fa-toggle-off"></i>  Activar </a>  
             @endif
           </tr>
           @endforeach

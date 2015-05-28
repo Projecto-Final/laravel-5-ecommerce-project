@@ -876,11 +876,11 @@ public function aceptarUltimaP(Request $request){
 				'fecha' => Carbon::now('Europe/Madrid'),
 				]);
 			$liniaM = LiniaM::Create([
-				'texto' => 'Hola, habla con '.$comprador->nombre.' sobre el producto',
+				'texto' => 'Esto es un mensaje autogenerado por la compra de un articulo. Para detallar los envios y/o metodos de pago.',
 				'mensaje_id' =>  $mensaje->id,
 				'emisor' => '1',
 				]);			
-	
+			
 
 			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!! ", function($message) use ($comprador) {
 				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
