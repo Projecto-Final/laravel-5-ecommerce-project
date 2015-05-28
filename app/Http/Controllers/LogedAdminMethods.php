@@ -592,7 +592,7 @@ class LogedAdminMethods extends Controller {
 		$usuario = Usuario::find($factura['usuario_id']);
 		$factura = Factura::find($idFactura);
 
-		$content = View::make('index')->with(['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]);
+		$content = View::make('admin/factura_xml')->with(['factura' => $factura, 'usuario' => $usuario, 'articulo' => $articulo]);
 		return Response::make($content, '200')->header('Content-Type', 'text/xml');
 		
 	}
