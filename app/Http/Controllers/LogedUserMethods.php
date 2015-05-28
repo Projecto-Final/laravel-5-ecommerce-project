@@ -847,48 +847,47 @@ public function perfilVisitante($id){
 
 public function aceptarUltimaP(Request $request){
 	try {
+
 		$submitedArray = $request->all();
 		$articulo = Articulo::find($submitedArray['id_subasta']);
 		$pujaGanadora =	$articulo->ultimaPuja($submitedArray['id_subasta']);
 		if($pujaGanadora!=false){
-			echo "Entrado";
 			$articulo->comprador_id = $pujaGanadora->pujador_id;
 			$articulo->precio_venta = $pujaGanadora->cantidad;
 			$articulo->fecha_venda = Carbon::now('Europe/Madrid');
 			$articulo->save();
 			$comprador = Usuario::find($articulo->comprador_id);
-
-			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
-				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
-			});
-			var_dump($articulo->subastador_id);
 			$vendedor = Usuario::find($articulo->subastador_id);
-			Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
-				$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
-			});
 
-			$valoracion = new Valoracion;
-			$valoracion->texto = '';
-			$valoracion->valorado_id= $vendedor->id;
-			$valoracion->validante_id = $comprador->id;
-			$valoracion->puntuacion = 1;
-			$valoracion->completada = 0;
-			$valoracion->fecha = Carbon::now('Europe/Madrid');
-			$valoracion->articulo_id = $articulo->id;
-			$valoracion->save();
+
+			$valoracion = Valoracion::Create([
+				'texto' => '',
+				'valorado_id' => $vendedor->id,
+				'validante_id' => $comprador->id,
+				'puntuacion' => 1,
+				'fecha' => Carbon::now('Europe/Madrid'),
+				'articulo_id' => $articulo->id,
+				]);
 
 			$mensaje = Mensaje::Create([
-				'titulo' => $articulo->id."|| ".$articulo->nombre_producto,
+				'titulo' => "#(".$articulo->id.")".$articulo->nombre_producto,
 				'emisor_id' => $articulo->subastador_id,
 				'receptor_id' => $articulo->comprador_id,
 				'fecha' => Carbon::now('Europe/Madrid'),
 				]);
-			LiniaM::Create([
+			$liniaM = LiniaM::Create([
 				'texto' => 'Hola, habla con '.$comprador->nombre.' sobre el producto',
 				'mensaje_id' =>  $mensaje->id,
 				'emisor' => '1',
 				]);			
-			
+	
+
+			Mail::raw("¡¡¡¡¡¡Acabas de ganarte el derecho para reclamar tu $articulo->nombre_producto por solo $articulo->precio_venta!!!!!!", function($message) use ($comprador) {
+				$message->to($comprador->email, $comprador->nombre)->subject('¡¡¡Felicidades has ganado la subasta!!!');
+			});
+			Mail::raw("¡¡¡¡¡¡Tras la apabullante guerra de pujas el usuario $comprador->nombre se ha impuesto con una oferta de $articulo->precio_venta para llevarse a: $articulo->nombre_pructo, contacta con el para finalizar el tramite a su correo: $comprador->email !!!!!!", function($message) use ($vendedor) {
+				$message->to($vendedor->email, $vendedor->nombre)->subject('La guerra por tu articulo ha concluido');
+			});
 		}else{
 			return 0;
 		}
@@ -946,6 +945,7 @@ public function baja(Request $request){
 			->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
 			->where('mensajes.emisor_id', '=', Auth::user()->id)
 			->orderBy('mensajes.created_at',"desc")
+			->groupBy("mensajes.id")
 			->get();
 
 			$mensajesRecibidos = DB::table('mensajes')
@@ -953,7 +953,7 @@ public function baja(Request $request){
 			->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
 			->where('mensajes.receptor_id', '=', Auth::user()->id)
 			->orderBy('mensajes.created_at',"desc")
-			->groupBy("nombre")
+			->groupBy("mensajes.id")
 			->get();
 
 			return view('chats',['mensajesEnviados' => $mensajesEnviados,'mensajesRecibidos' => $mensajesRecibidos]);
@@ -1035,7 +1035,6 @@ public function baja(Request $request){
 		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
 		->where('mensajes.receptor_id', '=', Auth::user()->id)
 		->orderBy('mensajes.created_at',"desc")
-		->groupBy("nombre")
 		->get();
 		
 		return $mensajesRecibidos;

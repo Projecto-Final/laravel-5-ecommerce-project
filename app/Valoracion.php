@@ -10,7 +10,7 @@ class Valoracion extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['texto', 'valorado_id', 'validante_id', 'puntuacion', 'fecha','articulo_id'];
+	protected $fillable = ['texto', 'valorado_id', 'validante_id', 'puntuacion', 'fecha','articulo_id','completada'];
 
 	public function validante()
 	{

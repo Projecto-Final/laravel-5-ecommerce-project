@@ -113,7 +113,7 @@ function baja(){
 				headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') },
 				'data':{ 'num' : 1},
 				success: function(data) {
-					location.reload();
+				
 				}
 			});
 		}else{}
