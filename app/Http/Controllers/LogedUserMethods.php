@@ -960,28 +960,31 @@ public function baja(Request $request){
 	{
 		// Enviados
 		$mensajesEnviados = DB::table('liniasms')
-		->select(DB::raw('liniasms.texto as mensaje, usuarios.nombre as usuario, liniasms.emisor as propietario'))
+		->select(DB::raw('mensajes.emisor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
 		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
 		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
 		->where('liniasms.mensaje_id', '=', $idChat)
+		->where('mensajes.emisor_id','=', Auth::user()->id)
 		->orderBy('liniasms.created_at',"desc")
 		->get();
 		return $mensajesEnviados;
 	}
 
 	/**
-	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
+	 * 	Consulta los chats y devuelve los recibidos, segun el userID, si tiene chats. 
 	 *
 	 * @return Response
 	 */
 	public function get_conversacion_receptor($idChat)
 	{
-		// Enviados
-		$mensajesEnviados = DB::table('mensajes')
-		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		// Recibidos
+		$mensajesEnviados = DB::table('liniasms')
+		->select(DB::raw('mensajes.emisor_id as eid, liniasms.texto as mensaje, usuarios.username as usuario, liniasms.emisor as propietario, liniasms.created_at as fecha'))
+		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
 		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
-		->where('mensajes.emisor_id', '=', Auth::user()->id)
-		->orderBy('mensajes.created_at',"desc")
+		->where('liniasms.mensaje_id', '=', $idChat)
+		->where('mensajes.emisor_id','=', Auth::user()->id)
+		->orderBy('liniasms.created_at',"desc")
 		->get();
 		return $mensajesEnviados;
 	}
