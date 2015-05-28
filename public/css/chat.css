@@ -20,7 +20,7 @@
 	left: -11px;
 	height: 13px;
 	width: 13px;
-	background: inherit; /*#B7CC90*/
+	background: inherit; 
 	z-index: 100;
 
 	-webkit-transform: rotate(-45deg);
@@ -51,7 +51,7 @@
 	right: -99.8%;
 	height: 13px;
 	width: 13px;
-	background: inherit; /*#90B2CC*/
+	background: inherit; 
 
 	-webkit-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
@@ -63,8 +63,8 @@
 	display: block;
 	margin: auto;
 	margin-top: 2.5%;
-	height: 620px; /*Global Height of Widget*/
-	width: 1000px; /*Global Width of Widget*/
+	height: 620px;
+	width: 100%; 
 	background: #E1E1E1;
 	border: 1px #C7C7C7 solid;
 	border-radius: 4px;
@@ -104,7 +104,7 @@
 .message-container > .message-north > .message-user-list a {
 	display: block;
 	padding: 10px;
-	height: auto; /*Keep height same as img thumbnail height*/
+	height: auto; 
 	text-decoration: none;
 	color: #313131;
 	cursor:pointer;

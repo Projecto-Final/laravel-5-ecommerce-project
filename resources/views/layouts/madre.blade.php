@@ -82,6 +82,7 @@
 						@if(Auth::user()->permisos==1)
 						<li> <a href="{{ url('administracion') }}"><i class="fa fa-tachometer"></i> Administración</a> </li>
 						@endif
+						<li> <a href="{{ url('chats') }}"><i class="fa fa-weixin"></i> Chats</a> </li>
 						<li> <a href="{{ url('usuario') }}"><i class="fa fa-user"></i> Mis cosas</a> </li>
 						<li> <a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a> </li>
 					</ul>
