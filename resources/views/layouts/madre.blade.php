@@ -383,18 +383,30 @@
 				$.getJSON("{{ url('get_chats_enviados') }}", function(result){
 					var scatm = "";
 
-					 $.each(result, function(index, item) {
-						scatm += "<li>";
+					$.each(result, function(index, item) {
+						scatm += "<li style='border-right:4px grey solid;'>";
 						scatm += "<a href=''>";
 						scatm += "<span class='user-img'></span>";
 						scatm += "<span class='user-title'>"+result[index].titulo+"</span>";
 						scatm += "<p class='user-desc'>"+result[index].nombre+"</p>";
 						scatm += "</a>";
 						scatm += "</li>";
-					 });
-
-					alert("sale");
+					});
 					$(".message-user-list").html(scatm);
+				});
+				$.getJSON("{{ url('get_chats_recibidos') }}", function(result){
+					var scatm = "";
+
+					$.each(result, function(index, item) {
+						scatm += "<li style='border-right:4px green solid;'>";
+						scatm += "<a href=''>";
+						scatm += "<span class='user-img'></span>";
+						scatm += "<span class='user-title'>"+result[index].titulo+"</span>";
+						scatm += "<p class='user-desc'>"+result[index].nombre+"</p>";
+						scatm += "</a>";
+						scatm += "</li>";
+					});
+					$(".message-user-list").html(scatm+$(".message-user-list").html());
 				});
 			});
 		</script>

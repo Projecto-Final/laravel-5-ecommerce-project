@@ -199,7 +199,7 @@ Route::get('prorrogar', 'LogedUserMethods@prorrogar');
 
 // Rellena chats ( si el usuario tiene alguno )
 Route::get('get_chats_enviados', 'LogedUserMethods@get_chats_enviados'); 
-Route::get('get_chats_recibidos', 'LogedUserMethods@get_chats_redibidos'); 
+Route::get('get_chats_recibidos', 'LogedUserMethods@get_chats_recibidos'); 
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');
