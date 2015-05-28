@@ -22,7 +22,7 @@
 					<div class="message-container">
 						<div class="message-north">
 							<ul class="message-user-list">
-								@foreach($mensajesEnviados as $mensajeEnviado)
+								@forelse($mensajesEnviados as $mensajeEnviado)
 								<li>
 									<a class="userChat" onClick="cargarChatsEmisor({{ $mensajeEnviado->id }});" style="border-right: 4px red solid;">
 										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeEnviado->imgperf) }}'/></span>
@@ -30,8 +30,10 @@
 										<p class="user-desc">{{ $mensajeEnviado->username }}</p>
 									</a>
 								</li>
-								@endforeach
-								@foreach($mensajesRecibidos as $mensajeRecibido)
+								@empty
+								<p>Aun no has enviado ningun mensaje</p>
+								@endforelse
+								@forelse($mensajesRecibidos as $mensajeRecibido)
 								<li>
 									<a onClick="cargarChatsReceptor({{ $mensajeRecibido->id }});" style="border-right: 4px green solid;">
 										<span class="user-img"><img src='{{ url('images/profiles/'.$mensajeRecibido->imgperf) }}'/></span>
@@ -39,7 +41,9 @@
 										<p class="user-desc">{{ $mensajeRecibido->username }}</p>
 									</a>
 								</li>
-								@endforeach
+								@empty
+								<p>Aun no has recibido ningun mensaje</p>
+								@endforelse
 							</ul>
 							<h4 class="chatTitulo"></h4>
 							<span class="chatId" style="display:none;"></span>
