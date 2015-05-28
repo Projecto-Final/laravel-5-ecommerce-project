@@ -48,7 +48,7 @@
 						</div>
 						<div class="message-south">
 							<textarea class="nuevoMensaje" cols="20" rows="3"></textarea>
-							<button onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
+							<button class="envBoton"onClick="enviarMensaje({{ Auth::user()->id }});">Send</button>
 						</div>
 					</div>
 				</div>
@@ -74,19 +74,25 @@
 		});
 
 	function enviarMensaje(idEmisor){
-		$.ajax({
-			method: "POST",
-			url: "{{ url(''.'chats/enviar_mensaje') }}",
-			data: { "mensaje_id" : $('.chatId').html(), "texto" : $('.nuevoMensaje').val(), "emisor" : $('.emisorId').html(), "_token": "{{{ csrf_token() }}}", "_method" : "PUT" }
-		})
-		.done(function( msg ) {
-			alert( "Mensaje enviado: " + msg );
-			if(msg==1){
-				cargarChatsEmisor($('.chatId').html());
-			} else {
-				cargarChatsReceptor($('.chatId').html());
-			}
-		});
+		if($('.nuevoMensaje').val()==""){
+			alert("Introduce un mensaje!");
+		} else {
+			$.ajax({
+				method: "POST",
+				url: "{{ url(''.'chats/enviar_mensaje') }}",
+				data: { "mensaje_id" : $('.chatId').html(), "texto" : $('.nuevoMensaje').val(), "emisor" : $('.emisorId').html(), "_token": "{{{ csrf_token() }}}", "_method" : "PUT" }
+			})
+			.done(function( msg ) {
+				if(msg==1){
+					cargarChatsEmisor($('.chatId').html());
+				} else {
+					cargarChatsReceptor($('.chatId').html());
+				}
+				$('.nuevoMensaje').val("");
+				$('.nuevoMensaje').focus();
+				$('.message-thread').scrollTop(5000);
+			});
+		}
 	}
 
 	function cargarChatsEmisor(idChat){
