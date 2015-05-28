@@ -303,7 +303,7 @@ function ultimaPuja(){
 			
 			txt+= '<tr class="info">';
 			txt +="<td>"+data[0].cantidad+"</td>";
-			if(data[0].confpuja_id!=null){
+			if(data[0].confpuja_id==null){
 				txt +="<td> Manual </td>";
 			}else{
 				txt +="<td> Automática </td>";

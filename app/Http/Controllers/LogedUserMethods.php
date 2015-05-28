@@ -10,6 +10,8 @@ use App\Empresa;
 use App\Valoracion;
 use App\Localidad;
 use App\ConfiguracionPuja;
+use App\Mensaje;
+use App\LiniaM;
 use Session;
 use Auth;
 use Carbon\Carbon;
@@ -203,8 +205,8 @@ class LogedUserMethods extends Controller {
 	{			
 		$id = Auth::user()->id;
 		$user[0] = Usuario::find($id);
-		if($user->texto_presentacion == null){
-			$user->texto_presentacion = "...";
+		if($user[0]->texto_presentacion == null){
+			$user[0]->texto_presentacion = "...";
 		}
 		$user[1] = $user[0]->localidad;
 		$user[2] = Localidad::all();
@@ -920,14 +922,90 @@ public function baja(Request $request){
 }
 
 	/**
-	 * 	Consulta los chats y devuelve, segun el userID, si tiene chats. 
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
 	 *
 	 * @return Response
 	 */
-	public function get_chats()
+	public function chats()
 	{
+		try {
+			$mensajesEnviados = DB::table('mensajes')
+			->select(DB::raw('mensajes.id as id, usuarios.username as username, usuarios.imagen_perfil as imgperf, mensajes.titulo as titulo'))
+			->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+			->where('mensajes.emisor_id', '=', Auth::user()->id)
+			->orderBy('mensajes.created_at',"desc")
+			->get();
+
+			$mensajesRecibidos = DB::table('mensajes')
+			->select(DB::raw('mensajes.id as id, usuarios.username as username, usuarios.imagen_perfil as imgperf, mensajes.titulo as titulo'))
+			->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
+			->where('mensajes.receptor_id', '=', Auth::user()->id)
+			->orderBy('mensajes.created_at',"desc")
+			->groupBy("nombre")
+			->get();
+
+			return view('chats',['mensajesEnviados' => $mensajesEnviados,'mensajesRecibidos' => $mensajesRecibidos]);
+		} catch (Exception $e) {
+			return $e;
+		}
 		
 	}
+
+	/**
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_conversacion_emisor($idChat)
+	{
+		// Enviados
+		$mensajesEnviados = DB::table('liniasms')
+		->select(DB::raw('liniasms.texto as mensaje, usuarios.nombre as usuario, liniasms.emisor as propietario'))
+		->join('mensajes', 'liniasms.mensaje_id', '=', 'mensajes.id')
+		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->where('liniasms.mensaje_id', '=', $idChat)
+		->orderBy('liniasms.created_at',"desc")
+		->get();
+		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_conversacion_receptor($idChat)
+	{
+		// Enviados
+		$mensajesEnviados = DB::table('mensajes')
+		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->where('mensajes.emisor_id', '=', Auth::user()->id)
+		->orderBy('mensajes.created_at',"desc")
+		->get();
+		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los recibidos , segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_chats_recibidos()
+	{
+
+		
+		$mensajesRecibidos = DB::table('mensajes')
+		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
+		->where('mensajes.receptor_id', '=', Auth::user()->id)
+		->orderBy('mensajes.created_at',"desc")
+		->groupBy("nombre")
+		->get();
+		
+		return $mensajesRecibidos;
+	}
+
 
 
 }

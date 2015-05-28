@@ -198,8 +198,9 @@ Route::get('aceptarUltimaP', 'LogedUserMethods@aceptarUltimaP');
 Route::get('prorrogar', 'LogedUserMethods@prorrogar');
 
 // Rellena chats ( si el usuario tiene alguno )
-Route::get('get_chats', 'LogedUserMethods@get_chats'); 
-
+Route::get('chats', 'LogedUserMethods@chats'); 
+Route::get('get_conversacion_as_emisor/{idChat}', 'LogedUserMethods@get_conversacion_emisor');
+Route::get('get_conversacion_as_receptor/{idChat}', 'LogedUserMethods@get_conversacion_receptor'); 
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');

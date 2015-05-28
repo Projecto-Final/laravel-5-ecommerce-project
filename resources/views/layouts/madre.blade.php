@@ -33,8 +33,7 @@
 	<link href="{{ url('css/perfil_user.css') }}" rel="stylesheet">
 	<link href="{{ url('css/subasta.css') }}" rel="stylesheet">	
 	<link href="{{ url('css/contacto.css') }}" rel="stylesheet">
-	<!-- ESTILO CHAT -->
-	<link href="{{ url('css/chat.css') }}" rel="stylesheet">
+
 	<!-- Visual Extras CSS -->
 	<link href="{{ url('css/shake.css') }}" rel="stylesheet">
 	<link href="{{ url('css/sistema_notificaciones.css') }}" rel="stylesheet">
@@ -205,6 +204,7 @@
 
 		@yield('opciones_usuario')
 
+		@yield('chats')
 		<!-- FIN CATEGORIA Y SPONSOR -->
 		<footer id="C3">
 			<div id="sns_footer_top" class="wrap footer">
@@ -327,86 +327,10 @@
 				</div>
 			</footer>
 		</div>
-		<section id="chatWINDOW">
-			<div class="controles">
-				<div class="abrirC"><i class="fa fa-caret-up"></i> Abrir chat</div>
-				<div class="cerrarC" style="display:none;"><i class="fa fa-caret-down"></i> Cerrar Chat</div>
-			</div>
-			<div id="wrapper">
-				<div class="message-container">
-					<div class="message-north">
-						<ul class="message-user-list">
-							<li>
-								<a href="#">
-									<span class="user-img"></span>
-									<span class="user-title">Bryan Adams</span>
-									<p class="user-desc">badams@music.com</p>
-								</a>
-							</li>
-							<li>
-								<a class="active" href="#">
-									<span class="user-img"></span>
-									<span class="user-title">Enrique Iglesias</span>
-									<p class="user-desc">enriqueiglesias@music.com</p>
-								</a>
-							</li>
-						</ul>
-						<div class="message-thread">
-							<div class="message bubble-left">
-								<label class="message-user">Bryan Adams</label>
-								<label class="message-timestamp">2 Hours Ago</label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-							</div>
-							<div class="message bubble-right">
-								<label class="message-user">Jack Johnson</label>
-								<label class="message-timestamp">2 Hours Ago</label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat nunc ut nibh interdum tempus. Donec at lorem eget sapien iaculis porttitor id quis ligula feugiat nunc ut nibh justo eget elit aliquet interdum tempus.</p>
-							</div>
-							<div class="message bubble-left">
-								<label class="message-user">Bryan Adams</label>
-								<label class="message-timestamp">2 Hours Ago</label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-							<div class="message bubble-right">
-								<label class="message-user">Jack Johnson</label>
-								<label class="message-timestamp">2 Hours Ago</label>
-								<p>:-)</p>
-							</div>
-						</div>
-					</div>
-					<div class="message-south">
-						<textarea cols="20" rows="3"></textarea>
-						<button>Send</button>
-					</div>
-				</div>
-			</div>
-		</section>
-		<script>
-			$(function() {
-				$(".abrirC").click(function() {
-					$(".abrirC").css("display","none");
-					$(".cerrarC").css("display","");
-					$("#chatWINDOW").css("bottom","0px");
-				});
-				$(".cerrarC").click(function() {
-					$(".abrirC").css("display","");
-					$(".cerrarC").css("display","none");
-					$("#chatWINDOW").css("bottom","-47.5%");
-				});
-
-				$.getJSON("{{ url('get_chats/') }}", function(result){
-					var scatm = "";
-					$.each(result, function(i, field){
-						scatm += "<option value="+field.id+">"+field.nombre+"</option>";
-					});
-					$("#categoria-art").html($("#categoria-art").html()+scatm);
-				});
-			});
-		</script>
 		<script src="{{url('js/bootstrap.min.js')}}"></script>
 		<script src="{{url('js/malign/easter/egg.js')}}"></script>
+		@yield('extrascripts')
 		<script>
-
 											// Script pro rellenar dropdown!
 											$.getJSON("{{ url('get_allCategories') }}", function(result){
 												var scatm = "";
