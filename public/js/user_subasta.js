@@ -70,6 +70,7 @@ function aceptarPuja(url){
 				}
 				
 			}).fail(function(data){
+				bootbox.alert("Ha ocurrido algo inesperado");
 			});	
 		}
 	}); 
