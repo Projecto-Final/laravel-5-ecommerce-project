@@ -576,11 +576,15 @@ function perfilGuardarPass(password_old,password,password_confirmation){
 		password_confirmation: password_confirmation
 	})
 	.done(function(data) {
-		bootbox.alert("Contraseña cambiada correctamente");
-		perfil();
+		if (data == "false") {
+			bootbox.alert("Mal introducida la contraseña vieja");
+		}else{
+			bootbox.alert("Contraseña cambiada correctamente");
+			perfil();
+		}
 	})
 	.fail(function(data){
-		bootbox.alert("Mal introducida la contraseña vieja");
+		bootbox.alert("sadsa");
 		//alert("Mal introducida la contraseña vieja");
 	})
 	.error(function(data){
