@@ -112,7 +112,7 @@ class ArticulosTableSeeder extends Seeder {
 		$fecha2->modify('+3 day');
 
 		Articulo::create([
-			'nombre_producto' => 'novela "la desaparicíon de Suzumiya Haruhi"',
+			'nombre_producto' => 'Suzumiya no Shoshitsu',
 			'modelo' => 'Novelas Ivrea',
 			'estado' => 'Nuevo',
 			'descripcion' => 'cuarta novela de la saga de novelas de Suzumiya Haruhi',
