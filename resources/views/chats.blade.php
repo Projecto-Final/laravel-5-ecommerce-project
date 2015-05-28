@@ -72,8 +72,10 @@
 				} else {
 					cargarChatsReceptor($('.chatId').html());
 				}
-			}, 3000);
+				$('.message-thread').scrollTop(5000);
+			}, 2000);
 		});
+
 	function enviarMensaje(idEmisor){
 		$.ajax({
 			method: "POST",
@@ -89,6 +91,7 @@
 			}
 		});
 	}
+
 	function cargarChatsEmisor(idChat){
 		$.getJSON("{{ url('get_conversacion_as_emisor') }}"+"/"+idChat, function(result){
 			var scatm = "";
