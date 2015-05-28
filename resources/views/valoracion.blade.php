@@ -6,9 +6,9 @@
 @section('opciones_usuario')
 <div id="sns_content" class="wrap layout-m">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-4  col-xs-12 col-sm-6">
-				<div id="datosValorado">
+		<div class="row" style="padding:20px;background:#fff;">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div id="datosValorado"  class="col-md-6 col-xs-12" style="text-align:center;">
 					<h5>Usuario Valorado</h5>
 					<a href="{{ url('perfil/'.$valorado['id']) }}">
 						<img id="fotoSubastador" src="{{ url('images/profiles/'.$valorado['imagen_perfil']) }}"/>
@@ -20,7 +20,7 @@
 						<input id="input-id" type="number" data-min="0" data-max="5" class="rating" data-show-caption="false" data-show-clear="false" data-disabled="true" data-size="xs" value="{{$valorado['reputacion']}}"></input>
 					</div>
 				</div>
-				<div id="datosValidante">
+				<div id="datosValidante"  class="col-md-6 col-xs-12" style="text-align:center;">
 					<h5>Usuario Validante</h5>
 					<a href="{{ url('perfil/'.$validante['id']) }}">
 						<img id="fotoSubastador" src="{{ url('images/profiles/'.$validante['imagen_perfil']) }}"/>
@@ -33,20 +33,21 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6  col-xs-12 col-sm-4">
+			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div id="datosProducto" >
 					<h5>Producto</h5>
 					<a href="{{ url('subasta/'.$art['id']) }}">
-						<img style="border:3px solid black;" id="fotoProducto" src="{{ url('images/subastas/'.$foto['imagen']) }}"/>
+						<img class="col-md-6" style="border:3px solid black;" id="fotoProducto" src="{{ url('images/subastas/'.$foto['imagen']) }}"/>
 					</a>
-					<div>
+					<div style="padding-right:10px;">
 						<a href="{{ url('subasta/'.$art['id']) }}">
-							<h3>{{$art['nombre_producto']}}</h3>
+							<h4>{{$art['nombre_producto']}}</h4>
+							<p>{{$art['descripcion']}}</p>
 						</a>
 					</div>
 				</div>
 			</div></br></br></br>
-			<div class="col-md-4  col-xs-12 col-sm-4">
+			<div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px;">
 				<form action="{{ url('update_valoracion') }}" method="post" enctype="multipart/form-data" id="form-validate">
 					<input type="hidden" name="_method" value="PUT">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">	

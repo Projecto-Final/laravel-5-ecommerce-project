@@ -117,7 +117,7 @@
 				} else {
 					scatm += '<label class="message-user">'+field.usuario+'</label>';
 				}
-				scatm += '<label class="message-timestamp">'+field.fecha+'</label>';
+				scatm += '<label class="message-timestamp">'+formatoFecha(field.fecha)+'</label>';
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
 				chatTitulo = field.titulo;
@@ -146,7 +146,7 @@
 				} else {
 					scatm += '<label class="message-user">'+field.usuario+'</label>';
 				}
-				scatm += '<label class="message-timestamp">2 Hours Ago</label>';
+				scatm += '<label class="message-timestamp">'+formatoFecha(field.fecha)+'</label>';
 				scatm += "<p>"+field.mensaje+"</p>";
 				scatm += "</div>";
 				chatTitulo = field.titulo;

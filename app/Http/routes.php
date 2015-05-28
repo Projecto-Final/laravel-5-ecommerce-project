@@ -161,7 +161,7 @@ Route::put('add_subasta', 'LogedUserMethods@add_subasta');
 
 Route::get('add_puja', 'LogedUserMethods@add_puja'); 
 //RECARGA los datos de precio de la subasta
-Route::get('cargar_precio', 'LogedUserMethods@cargar_precio'); 
+Route::get('cargar_precio', 'GlobalController@cargar_precio'); 
 
 //RECARGA los datos de precio de la subasta Guest mode
 Route::get('cargar_precioGuest', 'GuestUserMethods@cargar_precioGuest');

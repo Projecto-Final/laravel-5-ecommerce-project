@@ -1,5 +1,8 @@
 setInterval(confPujaSuperada, 10000);
-setInterval(get_Pendientes, 10000);
+$(document).ready(function() {
+	get_Pendientes();
+});
+
 
 
 function mostrar_filtros(){

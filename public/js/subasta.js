@@ -14,13 +14,15 @@ $(document).ready(function(){
 	
 	comprovarEstado();
 	recargarPrecios();
+	setInterval(comprovarEstado, 15000);
+
+	setInterval(recargarPrecios, 7000);
+
+
 	
 });
 var cont = 0;
 
-setInterval(comprovarEstado, 15000);
-
-var recargarPreciosInt = setInterval(recargarPrecios, 7000);
 
 function avisoLog(){
 	bootbox.alert("Debes estar logueado para pujar");
@@ -209,19 +211,19 @@ function cambiarla(){
 
 function cancelConf(){
 	bootbox.confirm("Seguro Que Desea Cancelarla?", function(result) {
-	var id_subasta = $("#subastaId").val();
-	var url = $("#cancelarConf").val();
+		var id_subasta = $("#subastaId").val();
+		var url = $("#cancelarConf").val();
 
-	if(result){
+		if(result){
 
-		$.get(url,{
-			id_subasta: id_subasta
-		})
-		.done(function(data) {
-			if(data!=1){
-				bootbox.alert(data);
-			}else{
-				
+			$.get(url,{
+				id_subasta: id_subasta
+			})
+			.done(function(data) {
+				if(data!=1){
+					bootbox.alert(data);
+				}else{
+
 			    //reconstruimos el contenido
 			    $( ".formConfPuja-button" ).prop( "disabled", false );
 			    $(".formConfPuja-button").html("Configurar Pujas Automáticas <i class='fa fa-floppy-o'></i>");     
@@ -237,7 +239,7 @@ function cancelConf(){
 			$("#formConf").html(txt);	
 			
 		})
-	}
+		}
 	});
 }
 
