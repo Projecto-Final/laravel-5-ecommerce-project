@@ -380,18 +380,20 @@
 					$("#chatWINDOW").css("bottom","-47.5%");
 				});
 
-				$.getJSON("{{ url('get_chats') }}", function(result){
+				$.getJSON("{{ url('get_chats_enviados') }}", function(result){
 					var scatm = "";
-					// alert(result.enviados[0].mensaje.id);
-					for (var i = 0; i >= result.enviados.length; i++) {
-						scatm += "<li>"+
-						"<a href=''>"+
-						"<span class='user-img'></span>"+
-						"<span class='user-title'>"+field.enviados[i]+"</span>"+
-						"<p class='user-desc'>badams@music.com</p>"+
-						"</a>"+
-						"</li>";
-					};
+
+					 $.each(result, function(index, item) {
+						scatm += "<li>";
+						scatm += "<a href=''>";
+						scatm += "<span class='user-img'></span>";
+						scatm += "<span class='user-title'>"+result[index].titulo+"</span>";
+						scatm += "<p class='user-desc'>"+result[index].nombre+"</p>";
+						scatm += "</a>";
+						scatm += "</li>";
+					 });
+
+					alert("sale");
 					$(".message-user-list").html(scatm);
 				});
 			});

@@ -922,39 +922,42 @@ public function baja(Request $request){
 }
 
 	/**
-	 * 	Consulta los chats y devuelve, segun el userID, si tiene chats. 
+	 * 	Consulta los chats y devuelve los enviados, segun el userID, si tiene chats. 
 	 *
 	 * @return Response
 	 */
-	public function get_chats()
+	public function get_chats_enviados()
+	{
+		// Enviados
+		$mensajesEnviados = DB::table('mensajes')
+		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		->join('usuarios', 'mensajes.receptor_id', '=', 'usuarios.id')
+		->where('mensajes.emisor_id', '=', Auth::user()->id)
+		->orderBy('mensajes.created_at',"desc")
+		->get();
+		return $mensajesEnviados;
+	}
+
+	/**
+	 * 	Consulta los chats y devuelve los recibidos , segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_chats_recibidos()
 	{
 
-		$totalMensajes = array();
-
-		$usuariosEurCobrados = DB::table('articulos')
-		->select(DB::raw('usuarios.id as comprador_id, count("articulos.id") as nVentas, usuarios.nombre as comprador_nombre, SUM(`precio_venta`) as pventaTotal'))
-		->join('usuarios', 'articulos.subastador_id', '=', 'usuarios.id')
-		->where('precio_venta', '!=', -1)
-		->groupBy('subastador_id')
-		->orderBy('pventaTotal',"desc")
+		
+		$mensajesRecibidos = DB::table('mensajes')
+		->select(DB::raw('usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo'))
+		->join('usuarios', 'mensajes.emisor_id', '=', 'usuarios.id')
+		->where('mensajes.receptor_id', '=', Auth::user()->id)
+		->orderBy('mensajes.created_at',"desc")
+		->groupBy("nombre")
 		->get();
-
-		/*
-		SELECT usuarios.nombre as nombre, usuarios.email as email, mensajes.titulo as titulo, count(liniasms.id)  FROM `mensajes`
-		INNER JOIN liniasms ON mensajes.id = liniasms.mensaje_id
-		INNER JOIN usuarios ON mensajes.emisor_id = usuarios.id
-		where usuarios.id = 1
-		*/
-
-		// $usuario = Usuario::find(Auth::user()->id);
-
-		// $mensajesRecibidos = $usuario->Mrecibidos;
-		// $mensajesEnviados = $usuario->Menviados;
-		// $totalMensajes["enviados"] = $mensajesEnviados;
-		// $totalMensajes["recibidos"] = $mensajesRecibidos;
-
-	return $totalMensajes;
+		
+		return $mensajesRecibidos;
 	}
+
 
 
 }
