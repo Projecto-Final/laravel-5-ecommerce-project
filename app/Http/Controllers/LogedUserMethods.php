@@ -10,6 +10,8 @@ use App\Empresa;
 use App\Valoracion;
 use App\Localidad;
 use App\ConfiguracionPuja;
+use App\Mensaje;
+use App\LiniaM;
 use Session;
 use Auth;
 use Carbon\Carbon;
@@ -926,7 +928,28 @@ public function baja(Request $request){
 	 */
 	public function get_chats()
 	{
-		
+
+		$totalMensajes = array();
+
+		// Iniciados por ti
+		$usLog = Auth::user()->id;
+		$mensajesEnviados = Mensaje::where("emisor_id","=","$usLog")->get();
+		for ($i=0; $i < count($mensajesEnviados); $i++) { 
+		// Precargamos la relacion ( magia! )
+			$mensajesEnviados[$i]->liniasM;
+			$totalMensajes["enviados"][$i]["mensaje"] = $mensajesEnviados[$i];
+
+		}
+
+		// No iniciados por ti
+		$mensajesRecibidos = Mensaje::where("receptor_id","=","$usLog")->get();
+		for ($i=0; $i < count($mensajesRecibidos); $i++) { 
+		// Precargamos la relacion ( magia! )
+			$mensajesRecibidos[$i]->liniasM;
+			$totalMensajes["recibidos"][$i]["mensaje"] = $mensajesRecibidos[$i];
+
+		}
+		return $totalMensajes;
 	}
 
 
