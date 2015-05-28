@@ -322,6 +322,10 @@ class GlobalController extends Controller {
 				$user[1] = $user[0]->localidad;
 				return view('perfil',['user' => $user]);
 			}
+		}else{
+			$user[0] = Usuario::find($id);
+			$user[1] = $user[0]->localidad;
+			return view('perfil',['user' => $user]);
 		}		
 
 
