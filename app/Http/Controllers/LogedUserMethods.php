@@ -120,7 +120,7 @@ class LogedUserMethods extends Controller {
 	public function add_subasta(Request $request)
 	{
 
-		 try {
+		try {
 			$v = $this->validate($request, [
 				'nombre_producto' => 'required|string',
 				'modelo' => 'required|string',
@@ -168,7 +168,7 @@ class LogedUserMethods extends Controller {
 				'comprador_id' => null,
 				'metodo_envio_id'=> $submitedArray['sel_Metodo_envio'],
 				'metodo_pago_id'=> $submitedArray['Metodo_pago'],
-			]);
+				]);
 
 			foreach ($submitedArray['images'] as $posicion => $imagenASubir) {
 				$img_extension = $imagenASubir->getClientOriginalExtension();
@@ -178,7 +178,7 @@ class LogedUserMethods extends Controller {
 					'articulo_id' => $articulo->id,
 					'imagen' => $img_name,
 					'descripcion' => "blabla",
-				]);
+					]);
 			}
 			
 			return redirect('subasta/'.$articulo->id)->withInput()->with('message', 'Tu subasta ha sido creada satisfactoriamente!');
@@ -918,6 +918,16 @@ public function baja(Request $request){
 	}
 
 }
+
+	/**
+	 * 	Consulta los chats y devuelve, segun el userID, si tiene chats. 
+	 *
+	 * @return Response
+	 */
+	public function get_chats()
+	{
+		
+	}
 
 
 }

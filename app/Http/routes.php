@@ -197,6 +197,9 @@ Route::get('aceptarUltimaP', 'LogedUserMethods@aceptarUltimaP');
 
 Route::get('prorrogar', 'LogedUserMethods@prorrogar');
 
+// Rellena chats ( si el usuario tiene alguno )
+Route::get('get_chats', 'LogedUserMethods@get_chats'); 
+
 
 /* Obtener Todas las categorías. */
 //Route::get('get_allCategories', 'LogedUserMethods@get_allCategories');

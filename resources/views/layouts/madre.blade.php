@@ -393,6 +393,14 @@
 					$(".cerrarC").css("display","none");
 					$("#chatWINDOW").css("bottom","-47.5%");
 				});
+
+				$.getJSON("{{ url('get_chats/') }}", function(result){
+					var scatm = "";
+					$.each(result, function(i, field){
+						scatm += "<option value="+field.id+">"+field.nombre+"</option>";
+					});
+					$("#categoria-art").html($("#categoria-art").html()+scatm);
+				});
 			});
 		</script>
 		<script src="{{url('js/bootstrap.min.js')}}"></script>
