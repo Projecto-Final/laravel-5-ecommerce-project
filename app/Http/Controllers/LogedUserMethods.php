@@ -877,6 +877,17 @@ public function aceptarUltimaP(Request $request){
 			$valoracion->articulo_id = $articulo->id;
 			$valoracion->save();
 
+			$mensaje = Mensaje::Create([
+				'titulo' => $articulo->id."|| ".$articulo->nombre_producto,
+				'emisor_id' => $articulo->subastador_id,
+				'receptor_id' => $articulo->comprador_id,
+				'fecha' => Carbon::now('Europe/Madrid'),
+				]);
+			LiniaM::Create([
+				'texto' => 'Hola, habla con '.$comprador->nombre.' sobre el producto',
+				'mensaje_id' =>  $mensaje->id,
+				'emisor' => '1',
+				]);			
 			
 		}else{
 			return 0;
