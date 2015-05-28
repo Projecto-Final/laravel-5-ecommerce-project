@@ -26,7 +26,7 @@
            @elseif($i  == 3 || $i  == 4 || $i  == 5)
            <a class="image-gallery col-md-4" href="#">
             @endif
-            <div class="image-art" ><img style="width: auto;height:auto;" src="{{ url('images/subastas/'.$imagenes[$i]->imagen) }}" /></div>
+            <div class="image-art" ><img style="width: auto;height:100%;" src="{{ url('images/subastas/'.$imagenes[$i]->imagen) }}" /></div>
           </a> @endfor
         </div>
         <div id="MostrarPujas">

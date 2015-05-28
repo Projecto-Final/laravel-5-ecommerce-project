@@ -23,6 +23,7 @@ function perfil(){
 		+"<p>Nombre :</p>"+data[0].nombre
 		+"<p>Apellidos :</p>"+data[0].apellido
 		+"<p>Texto de presentación :</p>"+data[0].texto_presentacion
+		+"<p>Texto de presentación :</p><textarea disabled rows='5' cols='70'>"+data[0].texto_presentacion+"</textarea></br>"
 		+"<p>Direccion :</p>"+data[0].direccion
 		+"<p>Email :</p>"+data[0].email
 		+"<p>Localidad :</p>"+data[1].nombre
