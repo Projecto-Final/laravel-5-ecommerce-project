@@ -205,8 +205,8 @@ class LogedUserMethods extends Controller {
 	{			
 		$id = Auth::user()->id;
 		$user[0] = Usuario::find($id);
-		if($user->texto_presentacion == null){
-			$user->texto_presentacion = "...";
+		if($user[0]->texto_presentacion == null){
+			$user[0]->texto_presentacion = "...";
 		}
 		$user[1] = $user[0]->localidad;
 		$user[2] = Localidad::all();
