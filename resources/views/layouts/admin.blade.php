@@ -168,13 +168,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li><a href="{{ url('administracion/limpiar_cache') }}">Limpiar cache</a></li>
             </ul>
           </li>
-          <li class="treeview">
-            <a href=""><i class="fa fa-wrench"></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="{{ url('') }}">Link in level 2</a></li>
-              <li><a href="{{ url('') }}">Link in level 2</a></li>
-            </ul>
-          </li>
         </ul><!-- /.sidebar-menu -->
       </section>
       <!-- /.sidebar -->

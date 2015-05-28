@@ -14,7 +14,6 @@
 
 <div id="sns_content" class="wrap layout-m">
   <div class="container-fluid header_perfil" >
-    
     <div class="row back_img" style="background-image: url({{ url('images/profiles_wallpapers/'.$imagBack) }});">
     <span id="editarFportada" aria-hidden="true"><b> Actualizar foto perfil. <i class="fa fa-camera"></i></b></span>
       <div class="stadistic_info_user col-xs-12 col-md-12">
