@@ -53,9 +53,9 @@
             <td>{{ $usuario['reputacion'] }}</td>
             <td>
             @if($usuario['activa']==1)
-            <b class="badge bg-green">TRUE</b>
+             <b class="text-green">activa</b>  
             @else 
-            <b class="badge bg-grey">FALSE</b>
+            <b class="text-red">inactiva</b>  
             @endif
           </td>
             <td>
@@ -68,8 +68,11 @@
            <td> 
             <a href="{{ url(''.URL::current().'/editar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Editar </a> 
             <a href="{{ url(''.URL::current().'/eliminar/'.$usuario['id'])}}" class="btn btn-danger btn-xs"><i href="" class="fa fa-trash-o"></i> Eliminar</a>
-            <a href="{{ url(''.URL::current().'/activar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Activar </a>  
-            <a href="{{ url(''.URL::current().'/desactivar/'.$usuario['id'])}}" class="btn btn-success btn-xs"><i  class="fa fa-pencil-square-o"></i> Desactivar </a>  
+              @if($usuario['activa']==1)
+            <a href="{{ url(''.URL::current().'/desactivar/'.$usuario['id'])}}" class="btn bg-purple btn-xs"><i  class="fa fa-toggle-on"></i>  Desactivar </a>  
+            @else 
+            <a href="{{ url(''.URL::current().'/activar/'.$usuario['id'])}}" class="btn bg-purple btn-xs"><i  class="fa fa-toggle-off"></i>  Activar </a>  
+            @endif
           </tr>
           @endforeach
         </tbody>
