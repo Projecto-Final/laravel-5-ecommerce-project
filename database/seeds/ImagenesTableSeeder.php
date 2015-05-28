@@ -9,84 +9,58 @@ class ImagenesTableSeeder extends Seeder {
 	{
 		DB::table('imagenes')->delete();
 
-
 		Imagen::create([
-			'descripcion' => "el pobre thomas",
+			'descripcion' => "pokemon y",
 			'articulo_id' => 1,
-			'imagen' => "0_52_c4ca4238a0b923820dcc509a6f75849b.png",
-			]);
+			'imagen' => "0004549674259_500X500.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "java",
 			'articulo_id' => 2,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "Sun-Java-JDK_1.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "taza batman",
 			'articulo_id' => 3,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "taza-de-batman-negra-dc-comics-4dageek-147001-MLM7919052177_022015-O.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "hulk",
 			'articulo_id' => 4,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "guantes-de-hulk-con-con-sonidos-marvel-original-20233-MLV20185939378_102014-F.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "haruhi",
 			'articulo_id' => 5,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "8690-1.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "gorra",
 			'articulo_id' => 6,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "Zvcml21290257Qkl.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "galaxy",
 			'articulo_id' => 7,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "51r-VHwUUqL._SX425_.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
+			'descripcion' => "proteinas",
 			'articulo_id' => 8,
-			'imagen' => "maroto.jpg",
-			]);
-
-
-		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 9,
-			'imagen' => "maroto.jpg",
-			]);
+			'imagen' => "506_proteina-7-en-1-muscle-infusion-black-5lbs-nutrex_mpe-f-3652815987_012013.jpg",
+		]);
 
 		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 10,
-			'imagen' => "maroto.jpg",
-			]);
-
-		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 11,
-			'imagen' => "maroto.jpg",
-			]);
-
-		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 12,
-			'imagen' => "maroto.jpg",
-			]);
-
-		Imagen::create([
-			'descripcion' => "yare-yare",
-			'articulo_id' => 13,
-			'imagen' => "maroto.jpg",
-			]);
+			'descripcion' => "ultimate",
+			'articulo_id' => 8,
+			'imagen' => "PD14034225_image-1_2872851b.jpg",
+		]);
 	}
 }

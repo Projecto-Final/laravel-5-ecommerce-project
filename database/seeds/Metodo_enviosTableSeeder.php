@@ -10,8 +10,8 @@ class Metodo_enviosTableSeeder extends Seeder {
 		DB::table('Metodo_envios')->delete();
 
 		Metodo_envio::create([
-			'nombre' => 'Envío Express',
-			'descripcion' => 'Este método de envío es lo más rápido disponible. El tiempo de entrega es de 3 a 5 días laborables para todos los mayores destinos.',
+			'nombre' => 'Recojida local',
+			'descripcion' => 'Solo para la gente de la misma zona.',
 		]);
 
 		Metodo_envio::create([

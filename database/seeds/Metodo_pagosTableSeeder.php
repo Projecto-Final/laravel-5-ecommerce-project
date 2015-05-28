@@ -15,13 +15,13 @@ class Metodo_pagosTableSeeder extends Seeder {
 		]);
 
 		Metodo_pago::create([
-			'nombre' => 'Cheques o giros postales',
-			'descripcion' => 'Paga con Cheques o giros postales.',
+			'nombre' => 'Transferencia bancaria',
+			'descripcion' => 'Paga con tu cuenta bancaria.',
 		]);
 
 			Metodo_pago::create([
-			'nombre' => 'Pagos contra reembolso',
-			'descripcion' => 'Pagos contra reembolso en la mismísima entrega.',
+			'nombre' => 'Metalico',
+			'descripcion' => 'Queda con la otra persona y pagaselo.',
 		]);
 	}
 }

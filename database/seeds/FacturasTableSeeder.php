@@ -9,12 +9,15 @@ class FacturasTableSeeder extends Seeder {
 	{
 		DB::table('facturas')->delete();
 
+		$fecha = new DateTime('NOW');
+		$fecha->modify('-4 day');
+
 		Factura::create([
 			'usuario_id' => 3,
-			'articulo_id' => 1,
+			'articulo_id' => 5,
 			'nif' => "53654554Q",
-			'cantidad_pagada' => 30.3,
-			'fecha' => "2015-04-14 23:55:00",
+			'cantidad_pagada' => 6.99,
+			'fecha' => $fecha,
 		]);
 	}
 }
