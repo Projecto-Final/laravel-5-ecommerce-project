@@ -1,3 +1,5 @@
+<!-- VIEW COMO PUJADOR -->
+<!-- PUJABLE -> PUJA_USUARIO -> MADRE -->
 @extends('view_subasta')
 @section('pujable')
 <script src="{{ url('js/subasta.js') }}"></script>
@@ -16,8 +18,6 @@
           <input type="text" class="form-control" id="exampleInputAmount" value="{{ $subasta['puja_mayor'] }}" disabled="true">
         </div>
       </div>
-
-
 
       <input id="botonPuja" type="button" class="btn btn-primary" onclick='pujar( {{ $subasta["id"].' , "'.url("add_puja").'"' }} )' value="PUJAR {{ $subasta['incremento_precio']+$subasta['puja_mayor'] }}€">
     </form>

@@ -1,6 +1,8 @@
 <?php use App\Articulo; ?>
 <?php use App\Usuario; ?>
-
+<!-- VIEW MADRE PUJAS -->
+<!-- SUBASTADOR <- PUJA_USUARIO -->
+<!-- SUBASTADOR <- PUJABLE -->
 @extends('layouts.madre')
 
 

@@ -1,3 +1,5 @@
+<!-- VIEW COMO SUBASTADOR -->
+<!-- SUBASTADOR -> PUJA_USUARIO -> MADRE -->
 @extends('view_subasta')
 
 @section('user_subasta')
