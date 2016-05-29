@@ -9,9 +9,14 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 ## Installing project
 
 composer install
+
 configure database and password  (.env)
+
 php artisan migrate
+
 php artisan db:seed
+
+
 
 You can look at the different users from the seed of "Usuarios"
 
