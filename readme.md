@@ -8,12 +8,12 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 ## Installing project
 
--composer install
--configure .env
--php artisan migrate
--php artisan db:seed
+#composer install
+#configure .env
+#php artisan migrate
+#php artisan db:seed
 
-You can look at the different users from the seed of "Usuarios"
+#You can look at the different users from the seed of "Usuarios"
 
 ## Contributing
 
