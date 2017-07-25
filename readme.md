@@ -8,11 +8,12 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 ## Installing project
 
 <ol>
-  <li>composer install</li>
-  <li>configure database and password  (.env)</li>
-  <li>php artisan migrate</li>
-  <li>php artisan db:seed</li>
-<ol>
+  <li>Comamand in composer : composer update </li>
+  <li>Comamand in composer : composer install </li>
+  <li>Configure database and password  (.env)</li>
+  <li>Command in composer : php artisan migrate</li>
+  <li>Command in composer : php artisan db:seed</li>
+</ol>
 
 
 You can look at the different users from the seed of "Usuarios"
