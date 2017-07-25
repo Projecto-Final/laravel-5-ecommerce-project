@@ -22,7 +22,7 @@ You can look at the different users from the seed of "Usuarios"
 
 <ul>
   <li>Alejandro</li>
-  <li>Bartomeu</li>
-  <li>Sergio</li>
-  <li>Adria</li>
+  <li><a href="https://github.com/erojutsu">Bartomeu</a></li>
+  <li><a href="https://github.com/FunThingsAreFun">Sergio</a></li>
+  <li><a href="https://github.com/wellspirit">Adria</a></li>
 </ul>
