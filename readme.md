@@ -21,8 +21,8 @@ You can look at the different users from the seed of "Usuarios"
 ## Contributing
 
 <ul>
-<li><a href="https://github.com/alexpixel14">alexpixel14</a></li>
-  <li><a href="https://github.com/erojutsu">erojutsu</a></li>
-  <li><a href="https://github.com/FunThingsAreFun">FunThingsAreFun</a></li>
-  <li><a href="https://github.com/wellspirit">wellspirit</a></li>
+<li><a href="https://github.com/alexpixel14" target="_blank">alexpixel14</a></li>
+  <li><a href="https://github.com/erojutsu" target="_blank">erojutsu</a></li>
+  <li><a href="https://github.com/FunThingsAreFun" target="_blank">FunThingsAreFun</a></li>
+  <li><a href="https://github.com/wellspirit" target="_blank">wellspirit</a></li>
 </ul>
