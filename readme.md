@@ -21,7 +21,7 @@ You can look at the different users from the seed of "Usuarios"
 ## Contributing
 
 <ul>
-  <li>Alejandro</li>
+<li><a href="https://github.com/alexpixel14">Alejandro</a></li>
   <li><a href="https://github.com/erojutsu">Bartomeu</a></li>
   <li><a href="https://github.com/FunThingsAreFun">Sergio</a></li>
   <li><a href="https://github.com/wellspirit">Adria</a></li>
