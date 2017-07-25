@@ -22,7 +22,9 @@ You can look at the different users from the seed of "Usuarios"
 
 ## Contributing
 
-Alejandro
-Bartomeu
-Sergio 
-Adria
+<ul>
+  <li>Alejandro</li>
+  <li>Bartomeu</li>
+  <li>Sergio</li>
+  <li>Adria</li>
+</ul>
